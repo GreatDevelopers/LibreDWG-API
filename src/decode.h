@@ -10,11 +10,11 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * decode.h: decoding function prototypes
- * written by Felipe Castro
- * modified by Felipe Corrêa da Silva Sances
- * modified by Rodrigo Rodrigues da Silva
+/**
+ *     \file       decode.h
+ *     \brief      decoding function prototypes
+ *     \author     written by Felipe Castro, modified by Felipe Corrêa da Silva Sances,
+ *                 modified by Rodrigo Rodrigues da Silva, modified by Till Heuschmann
  */
 
 #ifndef DECODE_H
@@ -35,8 +35,7 @@
 #include "dwg.h"
 #include "print.h"
 
-/*--------------------------------------------------------------------------------
- * Welcome to the dark side of the moon...
+/* Welcome to the dark side of the moon...
  * MACROS
  */
 
@@ -245,26 +244,26 @@ void \
 #define DWG_OBJECT_END }
 
 int
-dwg_decode_data(Bit_Chain * bit_chain, Dwg_Data * dwg_data);
+dwg_decode_data(Bit_Chain *bit_chain, Dwg_Data *dwg_data);
 
 int
-dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent);
+dwg_decode_entity(Bit_Chain *dat, Dwg_Object_Entity *ent);
 
 int
-dwg_decode_object(Bit_Chain * dat, Dwg_Object_Object * ord);
+dwg_decode_object(Bit_Chain *dat, Dwg_Object_Object *ord);
 
 Dwg_Object_Ref *
-dwg_decode_handleref(Bit_Chain * dat, Dwg_Object * obj, Dwg_Data* dwg);
+dwg_decode_handleref(Bit_Chain *dat, Dwg_Object *obj, Dwg_Data *dwg);
 
 Dwg_Object_Ref *
-dwg_decode_handleref_with_code(Bit_Chain * dat, Dwg_Object * obj,
-                               Dwg_Data* dwg, unsigned int code);
+dwg_decode_handleref_with_code(Bit_Chain *dat, Dwg_Object *obj,
+                               Dwg_Data *dwg, unsigned int code);
 
 void
-dwg_decode_common_entity_handle_data(Bit_Chain * dat, Dwg_Object * obj);
+dwg_decode_common_entity_handle_data(Bit_Chain *dat, Dwg_Object *obj);
 
 Dwg_Resbuf*
-dwg_decode_xdata(Bit_Chain * dat, int size);
+dwg_decode_xdata(Bit_Chain *dat, int size);
 
 #endif
 
