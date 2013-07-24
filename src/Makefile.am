@@ -54,7 +54,7 @@ EXTRA_DIST = \
         decode_r2004.h \
 	encode.h \
         handle.h \
-        header.h  \
+        header.h \
 	logging.h \
         object.h \
         print.h \

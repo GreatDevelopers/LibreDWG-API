@@ -100,7 +100,7 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 libredwg_la_LIBADD =
 am_libredwg_la_OBJECTS = dwg.lo common.lo bits.lo classes.lo decode.lo \
 	decode_r13_r15.lo decode_r2004.lo decode_r2007.lo encode.lo \
-	handle.lo object.lo print.lo resolve_pointers.lo \
+	handle.lo header.lo object.lo print.lo resolve_pointers.lo \
 	section_locate.lo
 libredwg_la_OBJECTS = $(am_libredwg_la_OBJECTS)
 libredwg_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
@@ -130,12 +130,12 @@ HEADERS = $(include_HEADERS)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/avneet/libredwg/build-aux/missing --run aclocal-1.11
+ACLOCAL = ${SHELL} /home/avneet/GSOC-work/Refactor-LibreDWG/build-aux/missing --run aclocal-1.11
 AMTAR = $${TAR-tar}
 AR = ar
-AUTOCONF = ${SHELL} /home/avneet/libredwg/build-aux/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/avneet/libredwg/build-aux/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/avneet/libredwg/build-aux/missing --run automake-1.11
+AUTOCONF = ${SHELL} /home/avneet/GSOC-work/Refactor-LibreDWG/build-aux/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/avneet/GSOC-work/Refactor-LibreDWG/build-aux/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/avneet/GSOC-work/Refactor-LibreDWG/build-aux/missing --run automake-1.11
 AWK = gawk
 AX_SWIG_PYTHON_CPPFLAGS = -I/usr/include/python2.7
 AX_SWIG_PYTHON_OPT = -python
@@ -162,7 +162,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-ISODATE = 2013-07-20
+ISODATE = 2013-07-24
 LD = /usr/bin/ld -m elf_x86_64
 LDFLAGS = 
 LIBOBJS = 
@@ -171,7 +171,7 @@ LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIPO = 
 LN_S = ln -s
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/avneet/libredwg/build-aux/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/avneet/GSOC-work/Refactor-LibreDWG/build-aux/missing --run makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -206,10 +206,10 @@ STRIP = strip
 SWIG = /usr/bin/swig
 SWIG_LIB = /usr/share/swig2.0
 VERSION = 0.4-dev
-abs_builddir = /home/avneet/libredwg/src
-abs_srcdir = /home/avneet/libredwg/src
-abs_top_builddir = /home/avneet/libredwg
-abs_top_srcdir = /home/avneet/libredwg
+abs_builddir = /home/avneet/GSOC-work/Refactor-LibreDWG/src
+abs_srcdir = /home/avneet/GSOC-work/Refactor-LibreDWG/src
+abs_top_builddir = /home/avneet/GSOC-work/Refactor-LibreDWG
+abs_top_srcdir = /home/avneet/GSOC-work/Refactor-LibreDWG
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_DUMPBIN = 
@@ -238,7 +238,7 @@ host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/avneet/libredwg/build-aux/install-sh
+install_sh = ${SHELL} /home/avneet/GSOC-work/Refactor-LibreDWG/build-aux/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -274,6 +274,7 @@ libredwg_la_SOURCES = \
         decode_r2007.c \
 	encode.c \
         handle.c \
+        header.c \
         object.c \
         print.c \
         resolve_pointers.c \
@@ -296,6 +297,7 @@ EXTRA_DIST = \
         decode_r2004.h \
 	encode.h \
         handle.h \
+        header.h \
 	logging.h \
         object.h \
         print.h \
@@ -403,6 +405,7 @@ include ./$(DEPDIR)/decode_r2007.Plo
 include ./$(DEPDIR)/dwg.Plo
 include ./$(DEPDIR)/encode.Plo
 include ./$(DEPDIR)/handle.Plo
+include ./$(DEPDIR)/header.Plo
 include ./$(DEPDIR)/object.Plo
 include ./$(DEPDIR)/print.Plo
 include ./$(DEPDIR)/resolve_pointers.Plo

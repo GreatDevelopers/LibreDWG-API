@@ -18,6 +18,9 @@
  * modified by Till Heuschmann
  */
 
+#ifndef _DWG_OBJECT_H_
+#define _DWG_OBJECT_H_
+
 #include "config.h"
 #include <stdbool.h>
 #include <stdio.h>
@@ -27,20 +30,16 @@
 
 #include "common.h"
 #include "bits.h"
-#include "dwg.h"
+#include "print.h"
 
-
-// Public variable
 long unsigned int ktl_lastaddress;
 
-static void
+int
+dwg_decode_variable_type(Dwg_Data *dwg, Bit_Chain *dat,
+                         Dwg_Object *obj);
+
+void
 dwg_decode_add_object(Dwg_Data *dwg, Bit_Chain *dat,
                       long unsigned int address);
-static void
-read_R13_R15_section_header(Bit_Chain *dat, Dwg_Data *dwg);
 
-static void
-read_2004_section_header(Bit_Chain* dat, Dwg_Data *dwg);
-
-
-
+#endif

@@ -100,7 +100,7 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 libredwg_la_LIBADD =
 am_libredwg_la_OBJECTS = dwg.lo common.lo bits.lo classes.lo decode.lo \
 	decode_r13_r15.lo decode_r2004.lo decode_r2007.lo encode.lo \
-	handle.lo object.lo print.lo resolve_pointers.lo \
+	handle.lo header.lo object.lo print.lo resolve_pointers.lo \
 	section_locate.lo
 libredwg_la_OBJECTS = $(am_libredwg_la_OBJECTS)
 libredwg_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
@@ -274,6 +274,7 @@ libredwg_la_SOURCES = \
         decode_r2007.c \
 	encode.c \
         handle.c \
+        header.c \
         object.c \
         print.c \
         resolve_pointers.c \
@@ -296,6 +297,7 @@ EXTRA_DIST = \
         decode_r2004.h \
 	encode.h \
         handle.h \
+        header.h \
 	logging.h \
         object.h \
         print.h \
@@ -403,6 +405,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dwg.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/encode.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/handle.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/header.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/object.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/print.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/resolve_pointers.Plo@am__quote@
