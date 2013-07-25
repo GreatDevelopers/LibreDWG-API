@@ -10,12 +10,15 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * object.h: adding object functions
- * written by Felipe Castro
- * modified by Felipe Corrêa da Silva Sances
- * modified by Rodrigo Rodrigues da Silva
- * modified by Till Heuschmann
+/**
+ *     \file       object.h
+ *     \brief      Object function prototypes
+ *     \author     written by Felipe Castro
+ *     \author     modified by Felipe Corrêa da Silva Sances
+ *     \author     modified by Rodrigo Rodrigues da Silva
+ *     \author     modified by Till Heuschmann
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 #ifndef _DWG_OBJECT_H_
@@ -35,8 +38,7 @@
 long unsigned int ktl_lastaddress;
 
 int
-dwg_decode_variable_type(Dwg_Data *dwg, Bit_Chain *dat,
-                         Dwg_Object *obj);
+dwg_decode_variable_type(Dwg_Data *dwg, Bit_Chain *dat, Dwg_Object *obj);
 
 void
 dwg_decode_add_object(Dwg_Data *dwg, Bit_Chain *dat,

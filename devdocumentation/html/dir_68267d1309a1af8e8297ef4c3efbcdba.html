@@ -63,7 +63,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -85,75 +85,103 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
-<tr class="memitem:bits_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>bits.c</b> <a href="bits_8c_source.html">[code]</a></td></tr>
+<tr class="memitem:bits_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8c.html">bits.c</a> <a href="bits_8c_source.html">[code]</a></td></tr>
+<tr class="memdesc:bits_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Low level read and write functions. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:bits_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>bits.h</b> <a href="bits_8h_source.html">[code]</a></td></tr>
+<tr class="memitem:bits_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8h.html">bits.h</a> <a href="bits_8h_source.html">[code]</a></td></tr>
+<tr class="memdesc:bits_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Low level read and write function prototypes. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:classes_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>classes.c</b> <a href="classes_8c_source.html">[code]</a></td></tr>
+<tr class="memitem:classes_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classes_8c.html">classes.c</a> <a href="classes_8c_source.html">[code]</a></td></tr>
+<tr class="memdesc:classes_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class section functions. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:classes_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>classes.h</b> <a href="classes_8h_source.html">[code]</a></td></tr>
+<tr class="memitem:classes_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classes_8h.html">classes.h</a> <a href="classes_8h_source.html">[code]</a></td></tr>
+<tr class="memdesc:classes_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class section function prototypes. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:common_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>common.c</b> <a href="common_8c_source.html">[code]</a></td></tr>
+<tr class="memitem:common_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common_8c.html">common.c</a> <a href="common_8c_source.html">[code]</a></td></tr>
+<tr class="memdesc:common_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Common data arrays. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:common_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>common.h</b> <a href="common_8h_source.html">[code]</a></td></tr>
+<tr class="memitem:common_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common_8h.html">common.h</a> <a href="common_8h_source.html">[code]</a></td></tr>
+<tr class="memdesc:common_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Common general functions and macro. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:config_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>config.h</b> <a href="config_8h_source.html">[code]</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:decode_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html">decode.c</a> <a href="decode_8c_source.html">[code]</a></td></tr>
-<tr class="memdesc:decode_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">decoding functions <br/></td></tr>
+<tr class="memdesc:decode_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decoding functions. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:decode_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8h.html">decode.h</a> <a href="decode_8h_source.html">[code]</a></td></tr>
-<tr class="memdesc:decode_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">decoding function prototypes <br/></td></tr>
+<tr class="memdesc:decode_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decoding function prototypes. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:decode__r13__r15_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>decode_r13_r15.c</b> <a href="decode__r13__r15_8c_source.html">[code]</a></td></tr>
+<tr class="memitem:decode__r13__r15_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__r13__r15_8c.html">decode_r13_r15.c</a> <a href="decode__r13__r15_8c_source.html">[code]</a></td></tr>
+<tr class="memdesc:decode__r13__r15_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">R13-R15 decode functions. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:decode__r13__r15_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>decode_r13_r15.h</b> <a href="decode__r13__r15_8h_source.html">[code]</a></td></tr>
+<tr class="memitem:decode__r13__r15_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__r13__r15_8h.html">decode_r13_r15.h</a> <a href="decode__r13__r15_8h_source.html">[code]</a></td></tr>
+<tr class="memdesc:decode__r13__r15_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">R13-R15 decode function prototypes. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:decode__r2004_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>decode_r2004.c</b> <a href="decode__r2004_8c_source.html">[code]</a></td></tr>
+<tr class="memitem:decode__r2004_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__r2004_8c.html">decode_r2004.c</a> <a href="decode__r2004_8c_source.html">[code]</a></td></tr>
+<tr class="memdesc:decode__r2004_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">R2004 decode functions. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:decode__r2004_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>decode_r2004.h</b> <a href="decode__r2004_8h_source.html">[code]</a></td></tr>
+<tr class="memitem:decode__r2004_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__r2004_8h.html">decode_r2004.h</a> <a href="decode__r2004_8h_source.html">[code]</a></td></tr>
+<tr class="memdesc:decode__r2004_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">R2004 decode function prototypes. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:decode__r2007_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>decode_r2007.c</b> <a href="decode__r2007_8c_source.html">[code]</a></td></tr>
+<tr class="memitem:decode__r2007_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__r2007_8c.html">decode_r2007.c</a> <a href="decode__r2007_8c_source.html">[code]</a></td></tr>
+<tr class="memdesc:decode__r2007_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">R2007 decode functions. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:dwg_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>dwg.c</b> <a href="dwg_8c_source.html">[code]</a></td></tr>
+<tr class="memitem:dwg_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dwg_8c.html">dwg.c</a> <a href="dwg_8c_source.html">[code]</a></td></tr>
+<tr class="memdesc:dwg_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main functions and API. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:dwg_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>dwg.h</b> <a href="dwg_8h_source.html">[code]</a></td></tr>
+<tr class="memitem:dwg_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dwg_8h.html">dwg.h</a> <a href="dwg_8h_source.html">[code]</a></td></tr>
+<tr class="memdesc:dwg_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main include file. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:encode_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>encode.c</b> <a href="encode_8c_source.html">[code]</a></td></tr>
+<tr class="memitem:encode_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="encode_8c.html">encode.c</a> <a href="encode_8c_source.html">[code]</a></td></tr>
+<tr class="memdesc:encode_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">encoding functions <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:encode_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>encode.h</b> <a href="encode_8h_source.html">[code]</a></td></tr>
+<tr class="memitem:encode_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="encode_8h.html">encode.h</a> <a href="encode_8h_source.html">[code]</a></td></tr>
+<tr class="memdesc:encode_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encoding function prototypes. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:handle_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>handle.c</b> <a href="handle_8c_source.html">[code]</a></td></tr>
+<tr class="memitem:handle_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="handle_8c.html">handle.c</a> <a href="handle_8c_source.html">[code]</a></td></tr>
+<tr class="memdesc:handle_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle section functions. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:handle_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>handle.h</b> <a href="handle_8h_source.html">[code]</a></td></tr>
+<tr class="memitem:handle_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="handle_8h.html">handle.h</a> <a href="handle_8h_source.html">[code]</a></td></tr>
+<tr class="memdesc:handle_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle section function prototypes. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:header_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>header.c</b> <a href="header_8c_source.html">[code]</a></td></tr>
+<tr class="memitem:header_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8c.html">header.c</a> <a href="header_8c_source.html">[code]</a></td></tr>
+<tr class="memdesc:header_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Header section functions. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:header_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>header.h</b> <a href="header_8h_source.html">[code]</a></td></tr>
+<tr class="memitem:header_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html">header.h</a> <a href="header_8h_source.html">[code]</a></td></tr>
+<tr class="memdesc:header_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Header section function prototypes. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:logging_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>logging.h</b> <a href="logging_8h_source.html">[code]</a></td></tr>
+<tr class="memitem:logging_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logging_8h.html">logging.h</a> <a href="logging_8h_source.html">[code]</a></td></tr>
+<tr class="memdesc:logging_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logging macros. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:object_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>object.c</b> <a href="object_8c_source.html">[code]</a></td></tr>
+<tr class="memitem:object_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8c.html">object.c</a> <a href="object_8c_source.html">[code]</a></td></tr>
+<tr class="memdesc:object_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Object functions. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:object_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>object.h</b> <a href="object_8h_source.html">[code]</a></td></tr>
+<tr class="memitem:object_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html">object.h</a> <a href="object_8h_source.html">[code]</a></td></tr>
+<tr class="memdesc:object_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Object function prototypes. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:print_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>print.c</b> <a href="print_8c_source.html">[code]</a></td></tr>
+<tr class="memitem:print_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="print_8c.html">print.c</a> <a href="print_8c_source.html">[code]</a></td></tr>
+<tr class="memdesc:print_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print helper functions. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:print_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>print.h</b> <a href="print_8h_source.html">[code]</a></td></tr>
+<tr class="memitem:print_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="print_8h.html">print.h</a> <a href="print_8h_source.html">[code]</a></td></tr>
+<tr class="memdesc:print_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print helper function prototypes. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:resolve__pointers_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>resolve_pointers.c</b> <a href="resolve__pointers_8c_source.html">[code]</a></td></tr>
+<tr class="memitem:resolve__pointers_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="resolve__pointers_8c.html">resolve_pointers.c</a> <a href="resolve__pointers_8c_source.html">[code]</a></td></tr>
+<tr class="memdesc:resolve__pointers_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolve handle pointer functions. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:resolve__pointers_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>resolve_pointers.h</b> <a href="resolve__pointers_8h_source.html">[code]</a></td></tr>
+<tr class="memitem:resolve__pointers_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="resolve__pointers_8h.html">resolve_pointers.h</a> <a href="resolve__pointers_8h_source.html">[code]</a></td></tr>
+<tr class="memdesc:resolve__pointers_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolve handle pointer function prototypes. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:section__locate_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>section_locate.c</b> <a href="section__locate_8c_source.html">[code]</a></td></tr>
+<tr class="memitem:section__locate_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="section__locate_8c.html">section_locate.c</a> <a href="section__locate_8c_source.html">[code]</a></td></tr>
+<tr class="memdesc:section__locate_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Section locating functions. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:section__locate_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>section_locate.h</b> <a href="section__locate_8h_source.html">[code]</a></td></tr>
+<tr class="memitem:section__locate_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="section__locate_8h.html">section_locate.h</a> <a href="section__locate_8h_source.html">[code]</a></td></tr>
+<tr class="memdesc:section__locate_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Section locating function prototypes. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 24 2013 20:42:44 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jul 25 2013 20:23:22 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

@@ -12,9 +12,13 @@
 
 /**
  *     \file       decode.c
- *     \brief      decoding functions
- *     \author     written by Felipe Castro, modified by Felipe Corrêa da Silva Sances,
- *                 modified by Rodrigo Rodrigues da Silva, modified by Till Heuschmann
+ *     \brief      Decoding functions
+ *     \author     written by Felipe Castro
+ *     \author     modified by Felipe Corrêa da Silva Sances
+ *     \author     modified by Rodrigo Rodrigues da Silva
+ *     \author     modified by Till Heuschmann
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 #include "decode.h"
@@ -531,13 +535,12 @@ dwg_decode_handleref(Bit_Chain * dat, Dwg_Object * obj, Dwg_Data* dwg)
   if (!obj)
     return ref;
 
-  /*
-   * sometimes the code indicates the type of ownership
+  /* sometimes the code indicates the type of ownership
    * in other cases the handle is stored as an offset from some other
    * handle how is it determined?
    */
   ref->absolute_ref = 0;
-   //that's right: don't bother the code on the spec.
+   // that's right: don't bother the code on the spec.
   switch(ref->handleref.code)
     {
     case 0x06: // what if 6 means HARD_OWNER?

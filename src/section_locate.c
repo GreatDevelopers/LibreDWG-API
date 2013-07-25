@@ -10,12 +10,15 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * section_locate.c: locating section functions
- * written by Felipe Castro
- * modified by Felipe Corrêa da Silva Sances
- * modified by Rodrigo Rodrigues da Silva
- * modified by Till Heuschmann
+/**
+ *     \file       section_locate.c
+ *     \brief      Section locating functions
+ *     \author     written by Felipe Castro
+ *     \author     modified by Felipe Corrêa da Silva Sances
+ *     \author     modified by Rodrigo Rodrigues da Silva
+ *     \author     modified by Till Heuschmann
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 #include "section_locate.h"
@@ -25,8 +28,7 @@
 extern unsigned int
 bit_ckr8(unsigned int dx, unsigned char *adr, long n);
 
-/* Read R13-R15 Object Map
- */
+/** Read R13-R15 Object Map */
 void
 read_R13_R15_section_locate(Bit_Chain *dat, Dwg_Data *dwg)
 {
@@ -35,11 +37,11 @@ read_R13_R15_section_locate(Bit_Chain *dat, Dwg_Data *dwg)
 
   dwg->header.num_sections = bit_read_RL(dat);
 
-  //  why do we have this limit to only 6 sections?
-  //  It seems to be a bug, so I'll comment it out and will add dynamic
-  //  allocation of the sections vector.
-  //  OpenDWG spec speaks of 6 possible values for the record number
-  //  Maybe the original libdwg author got confused about that.
+  /* why do we have this limit to only 6 sections?
+   *  It seems to be a bug, so I'll comment it out and will add dynamic
+   *  allocation of the sections vector.
+   *  OpenDWG spec speaks of 6 possible values for the record number
+   *  Maybe the original libdwg author got confused about that. */
   /*
    if (dwg->header.num_sections > 6)
    dwg->header.num_sections = 6;
@@ -60,16 +62,16 @@ read_R13_R15_section_locate(Bit_Chain *dat, Dwg_Data *dwg)
   ckr2 = bit_read_RS(dat);
   if (ckr != ckr2)
     {
-      printf("header crc todo ckr:%x ckr2:%x\n", ckr, ckr2);
+      printf("header crc todo ckr:%x ckr2:%x \n", ckr, ckr2);
       return 1;
     }
 
   if (bit_search_sentinel(dat, dwg_sentinel(DWG_SENTINEL_HEADER_END)))
-    LOG_TRACE("\n HEADER (end): %8X\n", (unsigned int) dat->byte)
+    LOG_TRACE("\n HEADER (end): %8X \n", (unsigned int) dat->byte)
 }
 
-/* Read R2004 Section Map
- * The Section Map is a vector of number, size, and address triples used
+/** Read R2004 Section Map */
+/* The Section Map is a vector of number, size, and address triples used
  * to locate the sections in the file.
  */
 void
@@ -116,9 +118,9 @@ read_R2004_section_map(Bit_Chain *dat, Dwg_Data *dwg,
     bytes_remaining -= 8;
     ptr += 8;
 
-    LOG_TRACE("SectionNumber: %d\n", dwg->header.section[i].number)
-    LOG_TRACE("SectionSize: %x\n", dwg->header.section[i].size)
-    LOG_TRACE("SectionAddr: %x\n", dwg->header.section[i].address)
+    LOG_TRACE("SectionNumber: %d \n", dwg->header.section[i].number)
+    LOG_TRACE("SectionSize: %x \n", dwg->header.section[i].size)
+    LOG_TRACE("SectionAddr: %x \n", dwg->header.section[i].address)
 
     if (dwg->header.section[i].number < 0)
       {
@@ -129,10 +131,10 @@ read_R2004_section_map(Bit_Chain *dat, Dwg_Data *dwg,
         bytes_remaining -= 16;
         ptr += 16;
 
-        LOG_TRACE("Parent: %d\n", (int)dwg->header.section[i].parent)
-        LOG_TRACE("Left: %d\n", (int)dwg->header.section[i].left)
-        LOG_TRACE("Right: %d\n", (int)dwg->header.section[i].right)
-        LOG_TRACE("0x00: %d\n", (int)dwg->header.section[i].x00)
+        LOG_TRACE("Parent: %d \n", (int)dwg->header.section[i].parent)
+        LOG_TRACE("Left: %d \n", (int)dwg->header.section[i].left)
+        LOG_TRACE("Right: %d \n", (int)dwg->header.section[i].right)
+        LOG_TRACE("0x00: %d \n", (int)dwg->header.section[i].x00)
       }
 
     dwg->header.num_sections++;
@@ -140,4 +142,3 @@ read_R2004_section_map(Bit_Chain *dat, Dwg_Data *dwg,
   }
   free(decomp);
 }
-

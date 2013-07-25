@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -93,12 +93,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>decoding functions  
+<p>Decoding functions.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="decode_8h_source.html">decode.h</a>&quot;</code><br/>
-<code>#include &quot;logging.h&quot;</code><br/>
-<code>#include &quot;decode_r13_r15.h&quot;</code><br/>
-<code>#include &quot;decode_r2004.h&quot;</code><br/>
+<code>#include &quot;<a class="el" href="logging_8h_source.html">logging.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="decode__r13__r15_8h_source.html">decode_r13_r15.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="decode__r2004_8h_source.html">decode_r2004.h</a>&quot;</code><br/>
 <code>#include &quot;common_entity_handle_data.spec&quot;</code><br/>
 </div>
 <p><a href="decode_8c_source.html">Go to the source code of this file.</a></p>
@@ -132,31 +132,39 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ad95073b1392e500ad70c4bac4450a437"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad95073b1392e500ad70c4bac4450a437"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>read_r2007_meta_data</b> (<a class="el" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>read_r2007_meta_data</b> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
 <tr class="separator:ad95073b1392e500ad70c4bac4450a437"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade78c981d47b683c0d77e63b2d4bdabd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#ade78c981d47b683c0d77e63b2d4bdabd">dwg_decode_data</a> (<a class="el" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
+<tr class="memitem:ade78c981d47b683c0d77e63b2d4bdabd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#ade78c981d47b683c0d77e63b2d4bdabd">dwg_decode_data</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
 <tr class="separator:ade78c981d47b683c0d77e63b2d4bdabd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a147acad33243577181ad27028bbac840"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#a147acad33243577181ad27028bbac840">decode_R2007</a> (<a class="el" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
+<tr class="memitem:a147acad33243577181ad27028bbac840"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#a147acad33243577181ad27028bbac840">decode_R2007</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
 <tr class="separator:a147acad33243577181ad27028bbac840"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bcaf8a27d7d4fcc562403dba399a4f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#a4bcaf8a27d7d4fcc562403dba399a4f6">dwg_decode_entity</a> (<a class="el" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object__entity.html">Dwg_Object_Entity</a> *ent)</td></tr>
+<tr class="memitem:a4bcaf8a27d7d4fcc562403dba399a4f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#a4bcaf8a27d7d4fcc562403dba399a4f6">dwg_decode_entity</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object__entity.html">Dwg_Object_Entity</a> *ent)</td></tr>
 <tr class="separator:a4bcaf8a27d7d4fcc562403dba399a4f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e60622a02ae0d1ce47ddabb6a892655"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#a8e60622a02ae0d1ce47ddabb6a892655">dwg_decode_object</a> (<a class="el" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object__object.html">Dwg_Object_Object</a> *ord)</td></tr>
+<tr class="memitem:a8e60622a02ae0d1ce47ddabb6a892655"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#a8e60622a02ae0d1ce47ddabb6a892655">dwg_decode_object</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object__object.html">Dwg_Object_Object</a> *ord)</td></tr>
 <tr class="separator:a8e60622a02ae0d1ce47ddabb6a892655"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa058baab17a2e3f56df68921f1dc1dc4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__dwg__object__ref.html">Dwg_Object_Ref</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#aa058baab17a2e3f56df68921f1dc1dc4">dwg_decode_handleref</a> (<a class="el" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object.html">Dwg_Object</a> *obj, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
+<tr class="memitem:aa058baab17a2e3f56df68921f1dc1dc4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__dwg__object__ref.html">Dwg_Object_Ref</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#aa058baab17a2e3f56df68921f1dc1dc4">dwg_decode_handleref</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object.html">Dwg_Object</a> *obj, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
 <tr class="separator:aa058baab17a2e3f56df68921f1dc1dc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf9ea75237c9b898ad16460eb7fab711"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__dwg__object__ref.html">Dwg_Object_Ref</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#aaf9ea75237c9b898ad16460eb7fab711">dwg_decode_handleref_with_code</a> (<a class="el" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object.html">Dwg_Object</a> *obj, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, unsigned int code)</td></tr>
+<tr class="memitem:aaf9ea75237c9b898ad16460eb7fab711"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__dwg__object__ref.html">Dwg_Object_Ref</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#aaf9ea75237c9b898ad16460eb7fab711">dwg_decode_handleref_with_code</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object.html">Dwg_Object</a> *obj, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, unsigned int code)</td></tr>
 <tr class="separator:aaf9ea75237c9b898ad16460eb7fab711"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93f8782729bdc9d5b13e20f845f3d401"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#a93f8782729bdc9d5b13e20f845f3d401">dwg_decode_common_entity_handle_data</a> (<a class="el" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object.html">Dwg_Object</a> *obj)</td></tr>
+<tr class="memitem:a93f8782729bdc9d5b13e20f845f3d401"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#a93f8782729bdc9d5b13e20f845f3d401">dwg_decode_common_entity_handle_data</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object.html">Dwg_Object</a> *obj)</td></tr>
 <tr class="separator:a93f8782729bdc9d5b13e20f845f3d401"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01d0323348944aec52f99cfbbb012a4f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01d0323348944aec52f99cfbbb012a4f"></a>
 enum RES_BUF_VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>get_base_value_type</b> (short gc)</td></tr>
 <tr class="separator:a01d0323348944aec52f99cfbbb012a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab029ec1ea460fde23d196b25fee00e1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__dwg__resbuf.html">Dwg_Resbuf</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#ab029ec1ea460fde23d196b25fee00e1e">dwg_decode_xdata</a> (<a class="el" href="struct__bit__chain.html">Bit_Chain</a> *dat, int size)</td></tr>
+<tr class="memitem:ab029ec1ea460fde23d196b25fee00e1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__dwg__resbuf.html">Dwg_Resbuf</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#ab029ec1ea460fde23d196b25fee00e1e">dwg_decode_xdata</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, int size)</td></tr>
 <tr class="separator:ab029ec1ea460fde23d196b25fee00e1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>decoding functions </p>
-<dl class="section author"><dt>Author</dt><dd>written by Felipe Castro, modified by Felipe Corrêa da Silva Sances, modified by Rodrigo Rodrigues da Silva, modified by Till Heuschmann </dd></dl>
+<div class="textblock"><p>Decoding functions. </p>
+<dl class="section author"><dt>Author</dt><dd>written by Felipe Castro </dd>
+<dd>
+modified by Felipe Corrêa da Silva Sances </dd>
+<dd>
+modified by Rodrigo Rodrigues da Silva </dd>
+<dd>
+modified by Till Heuschmann </dd></dl>
+<dl class="section version"><dt>Version</dt><dd></dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>GNU General Public License (version 3 or later) </dd></dl>
 
 <p>Definition in file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -167,7 +175,7 @@ enum RES_BUF_VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ge
         <tr>
           <td class="memname">int decode_R2007 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__bit__chain.html">Bit_Chain</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
           <td class="paramname"><em>dat</em>, </td>
         </tr>
         <tr>
@@ -185,7 +193,7 @@ enum RES_BUF_VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 </div><div class="memdoc">
 <p>Decode DWG R2007 </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00136">136</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00147">147</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -196,7 +204,7 @@ enum RES_BUF_VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ge
         <tr>
           <td class="memname">void dwg_decode_common_entity_handle_data </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__bit__chain.html">Bit_Chain</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
           <td class="paramname"><em>dat</em>, </td>
         </tr>
         <tr>
@@ -214,7 +222,7 @@ enum RES_BUF_VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 </div><div class="memdoc">
 <p>Decode entity data </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00578">578</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00595">595</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -225,7 +233,7 @@ enum RES_BUF_VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ge
         <tr>
           <td class="memname">int dwg_decode_data </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__bit__chain.html">Bit_Chain</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
           <td class="paramname"><em>dat</em>, </td>
         </tr>
         <tr>
@@ -243,7 +251,7 @@ enum RES_BUF_VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 </div><div class="memdoc">
 <p>Decode DWG file </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00044">44</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00050">50</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -254,7 +262,7 @@ enum RES_BUF_VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ge
         <tr>
           <td class="memname">int dwg_decode_entity </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__bit__chain.html">Bit_Chain</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
           <td class="paramname"><em>dat</em>, </td>
         </tr>
         <tr>
@@ -272,7 +280,7 @@ enum RES_BUF_VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 </div><div class="memdoc">
 <p>Decode DWG entity </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00243">243</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00254">254</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -283,7 +291,7 @@ enum RES_BUF_VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ge
         <tr>
           <td class="memname"><a class="el" href="struct__dwg__object__ref.html">Dwg_Object_Ref</a>* dwg_decode_handleref </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__bit__chain.html">Bit_Chain</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
           <td class="paramname"><em>dat</em>, </td>
         </tr>
         <tr>
@@ -307,7 +315,7 @@ enum RES_BUF_VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 </div><div class="memdoc">
 <p>Decode handleref of object </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00479">479</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00493">493</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -318,7 +326,7 @@ enum RES_BUF_VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ge
         <tr>
           <td class="memname"><a class="el" href="struct__dwg__object__ref.html">Dwg_Object_Ref</a>* dwg_decode_handleref_with_code </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__bit__chain.html">Bit_Chain</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
           <td class="paramname"><em>dat</em>, </td>
         </tr>
         <tr>
@@ -348,7 +356,7 @@ enum RES_BUF_VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 </div><div class="memdoc">
 <p>Decode handleref through handle code </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00550">550</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00567">567</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -359,7 +367,7 @@ enum RES_BUF_VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ge
         <tr>
           <td class="memname">int dwg_decode_object </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__bit__chain.html">Bit_Chain</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
           <td class="paramname"><em>dat</em>, </td>
         </tr>
         <tr>
@@ -377,7 +385,7 @@ enum RES_BUF_VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 </div><div class="memdoc">
 <p>Decode DWG Object </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00411">411</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00423">423</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -388,7 +396,7 @@ enum RES_BUF_VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ge
         <tr>
           <td class="memname"><a class="el" href="struct__dwg__resbuf.html">Dwg_Resbuf</a>* dwg_decode_xdata </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__bit__chain.html">Bit_Chain</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
           <td class="paramname"><em>dat</em>, </td>
         </tr>
         <tr>
@@ -406,14 +414,14 @@ enum RES_BUF_VALUE_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 </div><div class="memdoc">
 <p>DEcode Xdata </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00697">697</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00714">714</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 24 2013 20:42:44 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jul 25 2013 20:23:21 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

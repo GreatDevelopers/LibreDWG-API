@@ -10,14 +10,16 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * classes.c: class section functions
- * written by Felipe Castro
- * modified by Felipe Corrêa da Silva Sances
- * modified by Rodrigo Rodrigues da Silva
- * modified by Till Heuschmann
+/**
+ *     \file       classes.c
+ *     \brief      Class section functions
+ *     \author     written by Felipe Castro
+ *     \author     modified by Felipe Corrêa da Silva Sances
+ *     \author     modified by Rodrigo Rodrigues da Silva
+ *     \author     modified by Till Heuschmann
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
-
 
 #include "classes.h"
 #include "decode_r2004.h"
@@ -26,8 +28,7 @@
 extern unsigned int
 bit_ckr8(unsigned int dx, unsigned char *adr, long n);
 
-/* Read R13_R15 Classes Section
- */
+/** R13_R15 Class Section */
 void
 read_R13_R15_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
 {
@@ -60,7 +61,7 @@ read_R13_R15_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
         dwg->dwg_class = (Dwg_Class *) malloc(sizeof (Dwg_Class));
       else
         dwg->dwg_class = (Dwg_Class *) realloc(dwg->dwg_class, (idc + 1)
-            * sizeof(Dwg_Class));
+                          * sizeof(Dwg_Class));
 
       dwg->dwg_class[idc].number = bit_read_BS(dat);
       dwg->dwg_class[idc].version = bit_read_BS(dat);
@@ -75,13 +76,13 @@ read_R13_R15_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
 
       dwg->num_classes++;
       /*
-      if (dwg->num_classes > 100)
-	{
-	  fprintf(stderr, "number of classes is greater than 100. TODO:
-                           Why should we stop here?\n");
-	  break; //TODO: Why?!
-	}
-      */
+       * if (dwg->num_classes > 100)
+       * {
+       *   fprintf(stderr, "number of classes is greater than 100. TODO:
+       *                   Why should we stop here?\n");
+       *   break; //TODO: Why?!
+       * }
+       */
     }
   while (dat->byte < (lasta - 1));
 
@@ -95,7 +96,7 @@ read_R13_R15_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
 
   if (ckr != ckr2)
     {
-      printf("section %d crc todo ckr:%x ckr2:%x\n",
+      printf("section %d crc todo ckr: %x ckr2:%x \n",
               dwg->header.section[1].number, ckr, ckr2);
       return -1;
     }
@@ -103,15 +104,15 @@ read_R13_R15_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
   dat->byte += 16;
   pvz = bit_read_RL(dat); // Unknown bitlong inter class and object
 
-  LOG_TRACE("Address: %lu / Content: 0x%#lX\n", dat->byte - 4, pvz)
-  LOG_INFO("Number of classes read: %u\n", dwg->num_classes)
+  LOG_TRACE("Address: %lu / Content: 0x%#lX \n", dat->byte - 4, pvz)
+  LOG_INFO("Number of classes read: %u \n", dwg->num_classes)
 }
 
 
 /* R2004 Class Section
  */
 void
-read_2004_section_classes(Bit_Chain* dat, Dwg_Data *dwg)
+read_2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
 {
   unsigned long int size;
   unsigned long int max_num;
@@ -161,11 +162,11 @@ read_2004_section_classes(Bit_Chain* dat, Dwg_Data *dwg)
           unknown       = bit_read_BL(&sec_dat);  // Unknown (normally 0L)
 
           LOG_TRACE("\n")
-          LOG_TRACE("Number: %d\n", dwg->dwg_class[idc].number)
-          LOG_TRACE("Version: %x\n", dwg->dwg_class[idc].version)
-          LOG_TRACE("Application name: %s\n", dwg->dwg_class[idc].appname)
-          LOG_TRACE("C++ class name: %s\n", dwg->dwg_class[idc].cppname)
-          LOG_TRACE("DXF record name: %s\n", dwg->dwg_class[idc].dxfname)
+          LOG_TRACE("Number: %d \n", dwg->dwg_class[idc].number)
+          LOG_TRACE("Version: %x \n", dwg->dwg_class[idc].version)
+          LOG_TRACE("Application name: %s \n", dwg->dwg_class[idc].appname)
+          LOG_TRACE("C++ class name: %s \n", dwg->dwg_class[idc].cppname)
+          LOG_TRACE("DXF record name: %s \n", dwg->dwg_class[idc].dxfname)
 
           if (strcmp((const char *)dwg->dwg_class[idc].dxfname,
               "LAYOUT") == 0)

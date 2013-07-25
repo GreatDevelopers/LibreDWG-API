@@ -10,12 +10,15 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * header.h: header functions
- * written by Felipe Castro
- * modified by Felipe Corrêa da Silva Sances
- * modified by Rodrigo Rodrigues da Silva
- * modified by Till Heuschmann
+/**
+ *     \file       header.h
+ *     \brief      Header section function prototypes
+ *     \author     written by Felipe Castro
+ *     \author     modified by Felipe Corrêa da Silva Sances
+ *     \author     modified by Rodrigo Rodrigues da Silva
+ *     \author     modified by Till Heuschmann
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 #ifndef _DWG_OBJECT_H_
@@ -40,6 +43,6 @@ void
 read_R13_R15_section_header(Bit_Chain *dat, Dwg_Data *dwg);
 
 void
-read_2004_section_header(Bit_Chain* dat, Dwg_Data *dwg);
+read_2004_section_header(Bit_Chain *dat, Dwg_Data *dwg);
 
 #endif

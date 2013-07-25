@@ -12,9 +12,13 @@
 
 /**
  *     \file       decode.h
- *     \brief      decoding function prototypes
- *     \author     written by Felipe Castro, modified by Felipe Corrêa da Silva Sances,
- *                 modified by Rodrigo Rodrigues da Silva, modified by Till Heuschmann
+ *     \brief      Decoding function prototypes
+ *     \author     written by Felipe Castro
+ *     \author     modified by Felipe Corrêa da Silva Sances
+ *     \author     modified by Rodrigo Rodrigues da Silva
+ *     \author     modified by Till Heuschmann
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 #ifndef DECODE_H
@@ -38,7 +42,6 @@
 /* Welcome to the dark side of the moon...
  * MACROS
  */
-
 #define IS_DECODER
 
 #define FIELD(name,type)\

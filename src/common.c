@@ -10,17 +10,21 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * common.c: common data arrays
- * written by Felipe Castro
- * modified by Felipe Corrêa da Silva Sances
- * modified by Rodrigo Rodrigues da Silva
+/**
+ *     \file       common.c
+ *     \brief      Common data arrays
+ *     \author     written by Felipe Castro
+ *     \author     modified by Felipe Corrêa da Silva Sances
+ *     \author     modified by Rodrigo Rodrigues da Silva
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 #include "config.h"
 #include "common.h"
 #include "stdio.h"
 
+/** DWG sentinel */
 unsigned char *
 dwg_sentinel(Dwg_Sentinel s)
 {
@@ -48,7 +52,9 @@ dwg_sentinel(Dwg_Sentinel s)
   return (sentinels[s]);
 }
 
+
 /* TODO: update with new codes */
+/** DWG version codes */
 char version_codes[8][7] =
   { "------", "AC1012", "AC1014", "AC1015", "AC1018", "AC1021", "AC1024", "------" };
 

@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>decoding function prototypes  
+<p>Decoding function prototypes.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;config.h&quot;</code><br/>
 <code>#include &lt;stdbool.h&gt;</code><br/>
@@ -100,10 +100,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;stdlib.h&gt;</code><br/>
 <code>#include &lt;string.h&gt;</code><br/>
 <code>#include &lt;assert.h&gt;</code><br/>
-<code>#include &quot;common.h&quot;</code><br/>
-<code>#include &quot;bits.h&quot;</code><br/>
-<code>#include &quot;dwg.h&quot;</code><br/>
-<code>#include &quot;print.h&quot;</code><br/>
+<code>#include &quot;<a class="el" href="common_8h_source.html">common.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="bits_8h_source.html">bits.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="dwg_8h_source.html">dwg.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="print_8h_source.html">print.h</a>&quot;</code><br/>
 </div>
 <p><a href="decode_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -168,13 +168,13 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_BT</b>(name)&#160;&#160;&#160;FIELD(name, BT);</td></tr>
 <tr class="separator:a74b9fbfbdd40aa4d48135361156653dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c3dc088edfc1ce4c194338d26948c15"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0c3dc088edfc1ce4c194338d26948c15"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_4BITS</b>(name)&#160;&#160;&#160;_obj-&gt;name = bit_read_4BITS(dat);</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_4BITS</b>(name)&#160;&#160;&#160;_obj-&gt;name = <a class="el" href="bits_8h.html#a2ec768c75807d09fd2a672d2f7c9053b">bit_read_4BITS</a>(dat);</td></tr>
 <tr class="separator:a0c3dc088edfc1ce4c194338d26948c15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67a183abd9eab747d2d52413073ed6d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67a183abd9eab747d2d52413073ed6d4"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_BE</b>(name)&#160;&#160;&#160;bit_read_BE(dat, &amp;_obj-&gt;name.x, &amp;_obj-&gt;name.y, &amp;_obj-&gt;name.z);</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_BE</b>(name)&#160;&#160;&#160;<a class="el" href="bits_8h.html#ab8e671460c7acf3b680b8db71890d6ae">bit_read_BE</a>(dat, &amp;_obj-&gt;name.x, &amp;_obj-&gt;name.y, &amp;_obj-&gt;name.z);</td></tr>
 <tr class="separator:a67a183abd9eab747d2d52413073ed6d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf87e0775fd57d702069e09d35b509a1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf87e0775fd57d702069e09d35b509a1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_DD</b>(name, _default)&#160;&#160;&#160;FIELD_VALUE(name) = bit_read_DD(dat, _default);</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_DD</b>(name, _default)&#160;&#160;&#160;FIELD_VALUE(name) = <a class="el" href="bits_8h.html#a1817f319c1f6eec068434d3d470b9ca2">bit_read_DD</a>(dat, _default);</td></tr>
 <tr class="separator:adf87e0775fd57d702069e09d35b509a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a075b6d7cbde6d974f8693eaa4489a776"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a075b6d7cbde6d974f8693eaa4489a776"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_2DD</b>(name, d1, d2)&#160;&#160;&#160;FIELD_DD(name.x, d1); FIELD_DD(name.y, d2);</td></tr>
@@ -247,24 +247,32 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a2c811c83c360c654d2a2a6802815fc0b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8h.html#a2c811c83c360c654d2a2a6802815fc0b">dwg_decode_data</a> (<a class="el" href="struct__bit__chain.html">Bit_Chain</a> *bit_chain, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg_data)</td></tr>
+<tr class="memitem:a2c811c83c360c654d2a2a6802815fc0b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8h.html#a2c811c83c360c654d2a2a6802815fc0b">dwg_decode_data</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *bit_chain, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg_data)</td></tr>
 <tr class="separator:a2c811c83c360c654d2a2a6802815fc0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bcaf8a27d7d4fcc562403dba399a4f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8h.html#a4bcaf8a27d7d4fcc562403dba399a4f6">dwg_decode_entity</a> (<a class="el" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object__entity.html">Dwg_Object_Entity</a> *ent)</td></tr>
+<tr class="memitem:a4bcaf8a27d7d4fcc562403dba399a4f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8h.html#a4bcaf8a27d7d4fcc562403dba399a4f6">dwg_decode_entity</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object__entity.html">Dwg_Object_Entity</a> *ent)</td></tr>
 <tr class="separator:a4bcaf8a27d7d4fcc562403dba399a4f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e60622a02ae0d1ce47ddabb6a892655"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8h.html#a8e60622a02ae0d1ce47ddabb6a892655">dwg_decode_object</a> (<a class="el" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object__object.html">Dwg_Object_Object</a> *ord)</td></tr>
+<tr class="memitem:a8e60622a02ae0d1ce47ddabb6a892655"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8h.html#a8e60622a02ae0d1ce47ddabb6a892655">dwg_decode_object</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object__object.html">Dwg_Object_Object</a> *ord)</td></tr>
 <tr class="separator:a8e60622a02ae0d1ce47ddabb6a892655"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa058baab17a2e3f56df68921f1dc1dc4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__dwg__object__ref.html">Dwg_Object_Ref</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8h.html#aa058baab17a2e3f56df68921f1dc1dc4">dwg_decode_handleref</a> (<a class="el" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object.html">Dwg_Object</a> *obj, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
+<tr class="memitem:aa058baab17a2e3f56df68921f1dc1dc4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__dwg__object__ref.html">Dwg_Object_Ref</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8h.html#aa058baab17a2e3f56df68921f1dc1dc4">dwg_decode_handleref</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object.html">Dwg_Object</a> *obj, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
 <tr class="separator:aa058baab17a2e3f56df68921f1dc1dc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf9ea75237c9b898ad16460eb7fab711"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__dwg__object__ref.html">Dwg_Object_Ref</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8h.html#aaf9ea75237c9b898ad16460eb7fab711">dwg_decode_handleref_with_code</a> (<a class="el" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object.html">Dwg_Object</a> *obj, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, unsigned int code)</td></tr>
+<tr class="memitem:aaf9ea75237c9b898ad16460eb7fab711"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__dwg__object__ref.html">Dwg_Object_Ref</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8h.html#aaf9ea75237c9b898ad16460eb7fab711">dwg_decode_handleref_with_code</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object.html">Dwg_Object</a> *obj, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, unsigned int code)</td></tr>
 <tr class="separator:aaf9ea75237c9b898ad16460eb7fab711"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93f8782729bdc9d5b13e20f845f3d401"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8h.html#a93f8782729bdc9d5b13e20f845f3d401">dwg_decode_common_entity_handle_data</a> (<a class="el" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object.html">Dwg_Object</a> *obj)</td></tr>
+<tr class="memitem:a93f8782729bdc9d5b13e20f845f3d401"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8h.html#a93f8782729bdc9d5b13e20f845f3d401">dwg_decode_common_entity_handle_data</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object.html">Dwg_Object</a> *obj)</td></tr>
 <tr class="separator:a93f8782729bdc9d5b13e20f845f3d401"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab029ec1ea460fde23d196b25fee00e1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__dwg__resbuf.html">Dwg_Resbuf</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8h.html#ab029ec1ea460fde23d196b25fee00e1e">dwg_decode_xdata</a> (<a class="el" href="struct__bit__chain.html">Bit_Chain</a> *dat, int size)</td></tr>
+<tr class="memitem:ab029ec1ea460fde23d196b25fee00e1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__dwg__resbuf.html">Dwg_Resbuf</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8h.html#ab029ec1ea460fde23d196b25fee00e1e">dwg_decode_xdata</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, int size)</td></tr>
 <tr class="separator:ab029ec1ea460fde23d196b25fee00e1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>decoding function prototypes </p>
-<dl class="section author"><dt>Author</dt><dd>written by Felipe Castro, modified by Felipe Corrêa da Silva Sances, modified by Rodrigo Rodrigues da Silva, modified by Till Heuschmann </dd></dl>
+<div class="textblock"><p>Decoding function prototypes. </p>
+<dl class="section author"><dt>Author</dt><dd>written by Felipe Castro </dd>
+<dd>
+modified by Felipe Corrêa da Silva Sances </dd>
+<dd>
+modified by Rodrigo Rodrigues da Silva </dd>
+<dd>
+modified by Till Heuschmann </dd></dl>
+<dl class="section version"><dt>Version</dt><dd></dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>GNU General Public License (version 3 or later) </dd></dl>
 
 <p>Definition in file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
@@ -282,15 +290,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">void \</div>
-<div class="line"> dwg_decode_##token (<a class="code" href="struct__bit__chain.html">Bit_Chain</a> * dat, <a class="code" href="struct__dwg__object.html">Dwg_Object</a> * obj)\</div>
+<div class="line"> dwg_decode_##token (<a class="code" href="struct__bit__chain.html">Bit_Chain</a> * dat, <a class="code" href="struct__dwg__object.html" title="General object struct.">Dwg_Object</a> * obj)\</div>
 <div class="line">{\</div>
 <div class="line">  int vcount, rcount, rcount2, rcount3;\</div>
-<div class="line">  Dwg_Entity_##token *ent, *_obj;<a class="code" href="struct__dwg__struct.html">\</a></div>
-<div class="line"><a class="code" href="struct__dwg__struct.html">  Dwg_Data</a>* dwg = obj-&gt;parent;\</div>
+<div class="line">  Dwg_Entity_##token *ent, *_obj;<a class="code" href="struct__dwg__struct.html" title="Main DWG struct.">\</a></div>
+<div class="line"><a class="code" href="struct__dwg__struct.html" title="Main DWG struct.">  Dwg_Data</a>* dwg = obj-&gt;parent;\</div>
 <div class="line">  LOG_INFO(<span class="stringliteral">&quot;Entity &quot;</span> #token <span class="stringliteral">&quot;:\n&quot;</span>)\</div>
 <div class="line">  dwg-&gt;num_entities++;\</div>
 <div class="line">  obj-&gt;supertype = DWG_SUPERTYPE_ENTITY;\</div>
-<div class="line">  obj-&gt;tio.entity = (<a class="code" href="struct__dwg__object__entity.html">Dwg_Object_Entity</a>*)malloc (<span class="keyword">sizeof</span> (<a class="code" href="struct__dwg__object__entity.html">Dwg_Object_Entity</a>));    \</div>
+<div class="line">  obj-&gt;tio.entity = (<a class="code" href="struct__dwg__object__entity.html" title="Structure for common entity attributes.">Dwg_Object_Entity</a>*)malloc (<span class="keyword">sizeof</span> (<a class="code" href="struct__dwg__object__entity.html" title="Structure for common entity attributes.">Dwg_Object_Entity</a>));    \</div>
 <div class="line">  obj-&gt;tio.entity-&gt;tio.token = (Dwg_Entity_##token *)calloc (<span class="keyword">sizeof</span> (Dwg_Entity_##token), 1); \</div>
 <div class="line">  ent = obj-&gt;tio.entity-&gt;tio.token;\</div>
 <div class="line">  _obj=ent;\</div>
@@ -301,7 +309,7 @@ Functions</h2></td></tr>
 <div class="line">    obj-&gt;handle.size,\</div>
 <div class="line">    obj-&gt;handle.value)</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00206">206</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00208">208</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -318,13 +326,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">void</span>  dwg_decode_ ## token (<a class="code" href="struct__bit__chain.html">Bit_Chain</a> * dat, <a class="code" href="struct__dwg__object.html">Dwg_Object</a> * obj) {\</div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">void</span>  dwg_decode_ ## token (<a class="code" href="struct__bit__chain.html">Bit_Chain</a> * dat, <a class="code" href="struct__dwg__object.html" title="General object struct.">Dwg_Object</a> * obj) {\</div>
 <div class="line">  int vcount, rcount, rcount2, rcount3;\</div>
-<div class="line">  Dwg_Object_##token *_obj;<a class="code" href="struct__dwg__struct.html">\</a></div>
-<div class="line"><a class="code" href="struct__dwg__struct.html">  Dwg_Data</a>* dwg = obj-&gt;parent;\</div>
+<div class="line">  Dwg_Object_##token *_obj;<a class="code" href="struct__dwg__struct.html" title="Main DWG struct.">\</a></div>
+<div class="line"><a class="code" href="struct__dwg__struct.html" title="Main DWG struct.">  Dwg_Data</a>* dwg = obj-&gt;parent;\</div>
 <div class="line">  LOG_INFO(<span class="stringliteral">&quot;Object &quot;</span> #token <span class="stringliteral">&quot;:\n&quot;</span>)\</div>
 <div class="line">  obj-&gt;supertype = DWG_SUPERTYPE_OBJECT;\</div>
-<div class="line">  obj-&gt;tio.object = (<a class="code" href="struct__dwg__object__object.html">Dwg_Object_Object</a>*)malloc (<span class="keyword">sizeof</span> (<a class="code" href="struct__dwg__object__object.html">Dwg_Object_Object</a>));    \</div>
+<div class="line">  obj-&gt;tio.object = (<a class="code" href="struct__dwg__object__object.html" title="Structure for ordinary object attributes.">Dwg_Object_Object</a>*)malloc (<span class="keyword">sizeof</span> (<a class="code" href="struct__dwg__object__object.html" title="Structure for ordinary object attributes.">Dwg_Object_Object</a>));    \</div>
 <div class="line">  obj-&gt;tio.object-&gt;tio.token = (Dwg_Object_##token * ) calloc (<span class="keyword">sizeof</span> (Dwg_Object_##token), 1); \</div>
 <div class="line">  obj-&gt;tio.object-&gt;object = obj;\</div>
 <div class="line">  if (<a class="code" href="decode_8c.html#a8e60622a02ae0d1ce47ddabb6a892655">dwg_decode_object</a> (dat, obj-&gt;tio.object)) return;\</div>
@@ -334,7 +342,7 @@ Functions</h2></td></tr>
 <div class="line">    obj-&gt;handle.size,\</div>
 <div class="line">    obj-&gt;handle.value)</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00229">229</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00231">231</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -357,7 +365,7 @@ Functions</h2></td></tr>
 <div class="line">      FIELD_HANDLE(reactors[vcount], code);\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00152">152</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00154">154</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -386,7 +394,7 @@ Functions</h2></td></tr>
 <div class="line">      FIELD_HANDLE(xdicobjhandle, code);\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00172">172</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00174">174</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -416,7 +424,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">_obj-&gt;name = bit_read_##type(dat);\</div>
 <div class="line">  LOG_TRACE(#name <span class="stringliteral">&quot;: &quot;</span> FORMAT_##type <span class="stringliteral">&quot;\n&quot;</span>, _obj-&gt;name)</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00045">45</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00047">47</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -450,7 +458,7 @@ Functions</h2></td></tr>
 <div class="line">      FIELD_2DD(name[vcount], FIELD_VALUE(name[vcount - 1].x), FIELD_VALUE(name[vcount - 1].y));\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00118">118</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00120">120</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -483,7 +491,7 @@ Functions</h2></td></tr>
 <div class="line">      FIELD_2RD(name[vcount]);\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00111">111</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00113">113</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -516,7 +524,7 @@ Functions</h2></td></tr>
 <div class="line">      FIELD_3DPOINT(name[vcount]);\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00126">126</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00128">128</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -533,10 +541,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">bit_read_CMC(dat, &amp;_obj-&gt;name);\</div>
+<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="bits_8c.html#a8785229f62158ea15f08412efeffc0e6">bit_read_CMC</a>(dat, &amp;_obj-&gt;name);\</div>
 <div class="line">    LOG_TRACE(#name <span class="stringliteral">&quot;: index %d\n&quot;</span>, _obj-&gt;name.index)</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00091">91</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00093">93</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -577,7 +585,7 @@ Functions</h2></td></tr>
 <div class="line">        _obj-&gt;name-&gt;handleref.value,\</div>
 <div class="line">        _obj-&gt;name-&gt;absolute_ref)</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00052">52</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00054">54</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -620,7 +628,7 @@ Functions</h2></td></tr>
 <div class="line">        }\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00098">98</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00100">100</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -659,7 +667,7 @@ Functions</h2></td></tr>
 <div class="line">      FIELD_HANDLE(name[vcount], code);\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00133">133</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00135">135</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -682,7 +690,7 @@ Functions</h2></td></tr>
 <div class="line">      FIELD_HANDLE(reactors[vcount], code);\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00145">145</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00147">147</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -718,7 +726,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">_obj-&gt;name = (type *) malloc(_obj-&gt;times * <span class="keyword">sizeof</span>(type));\</div>
 <div class="line">  for (rcount=0; rcount&lt;_obj-&gt;times; rcount++)</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00189">189</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00191">191</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -754,7 +762,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">_obj-&gt;name = (type *) malloc(_obj-&gt;times * <span class="keyword">sizeof</span>(type));\</div>
 <div class="line">  for (rcount2=0; rcount2&lt;_obj-&gt;times; rcount2++)</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00193">193</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00195">195</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -790,7 +798,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">_obj-&gt;name = (type *) malloc(_obj-&gt;times * <span class="keyword">sizeof</span>(type));\</div>
 <div class="line">  for (rcount3=0; rcount3&lt;_obj-&gt;times; rcount3++)</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00197">197</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00199">199</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -826,7 +834,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">_obj-&gt;name = (type *) malloc(times * <span class="keyword">sizeof</span>(type));\</div>
 <div class="line">  for (rcount=0; rcount&lt;times; rcount++)</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00185">185</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00187">187</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -855,7 +863,7 @@ Functions</h2></td></tr>
 <div class="line">      FIELD_HANDLE(xdicobjhandle, code);\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00159">159</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00161">161</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -867,7 +875,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void dwg_decode_common_entity_handle_data </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__bit__chain.html">Bit_Chain</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
           <td class="paramname"><em>dat</em>, </td>
         </tr>
         <tr>
@@ -885,7 +893,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Decode entity data </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00578">578</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00595">595</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -896,7 +904,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int dwg_decode_data </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__bit__chain.html">Bit_Chain</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
           <td class="paramname"><em>dat</em>, </td>
         </tr>
         <tr>
@@ -914,7 +922,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Decode DWG file </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00044">44</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00050">50</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -925,7 +933,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int dwg_decode_entity </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__bit__chain.html">Bit_Chain</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
           <td class="paramname"><em>dat</em>, </td>
         </tr>
         <tr>
@@ -943,7 +951,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Decode DWG entity </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00243">243</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00254">254</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -954,7 +962,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="struct__dwg__object__ref.html">Dwg_Object_Ref</a>* dwg_decode_handleref </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__bit__chain.html">Bit_Chain</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
           <td class="paramname"><em>dat</em>, </td>
         </tr>
         <tr>
@@ -978,7 +986,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Decode handleref of object </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00479">479</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00493">493</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -989,7 +997,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="struct__dwg__object__ref.html">Dwg_Object_Ref</a>* dwg_decode_handleref_with_code </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__bit__chain.html">Bit_Chain</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
           <td class="paramname"><em>dat</em>, </td>
         </tr>
         <tr>
@@ -1019,7 +1027,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Decode handleref through handle code </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00550">550</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00567">567</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -1030,7 +1038,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int dwg_decode_object </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__bit__chain.html">Bit_Chain</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
           <td class="paramname"><em>dat</em>, </td>
         </tr>
         <tr>
@@ -1048,7 +1056,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Decode DWG Object </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00411">411</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00423">423</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -1059,7 +1067,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="struct__dwg__resbuf.html">Dwg_Resbuf</a>* dwg_decode_xdata </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct__bit__chain.html">Bit_Chain</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
           <td class="paramname"><em>dat</em>, </td>
         </tr>
         <tr>
@@ -1077,14 +1085,14 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>DEcode Xdata </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00697">697</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00714">714</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 24 2013 20:42:44 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jul 25 2013 20:23:21 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

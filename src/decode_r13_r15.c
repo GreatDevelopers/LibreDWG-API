@@ -10,12 +10,15 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * decode_r13_r15.c: decoding functions
- * written by Felipe Castro
- * modified by Felipe Corrêa da Silva Sances
- * modified by Rodrigo Rodrigues da Silva
- * modified by Till Heuschmann
+/**
+ *     \file       decode_r13_r15.c
+ *     \brief      R13-R15 decode functions
+ *     \author     written by Felipe Castro
+ *     \author     modified by Felipe Corrêa da Silva Sances
+ *     \author     modified by Rodrigo Rodrigues da Silva
+ *     \author     modified by Till Heuschmann
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 #include "classes.h"
@@ -27,8 +30,7 @@
 #include "section_locate.h"
 
 
-/* Read Unknown Section 
- */
+/** Read Unknown Section */
 void
 read_section_unknown(Bit_Chain *dat, Dwg_Data *dwg)
 {
@@ -52,8 +54,7 @@ read_section_unknown(Bit_Chain *dat, Dwg_Data *dwg)
     }
 }
 
-/* Read Picture Section
- */
+/** Read Picture Section */
 void
 read_section_picture(Bit_Chain *dat, Dwg_Data *dwg)
 {
@@ -63,12 +64,12 @@ read_section_picture(Bit_Chain *dat, Dwg_Data *dwg)
       dat->bit = 0;
       start_address = dat->byte;
 
-      LOG_TRACE("\n PICTURE: %8X\n",
+      LOG_TRACE("\n PICTURE: %8X \n",
                 (unsigned int) start_address - 16)
 
       if (bit_search_sentinel(dat, dwg_sentinel(DWG_SENTINEL_PICTURE_END)))
         {
-          LOG_TRACE(" PICTURE (end): %8X\n",
+          LOG_TRACE(" PICTURE (end): %8X \n",
                     (unsigned int) dat->byte)
 
           dwg->picture.size = (dat->byte - 16) - start_address;
@@ -81,13 +82,12 @@ read_section_picture(Bit_Chain *dat, Dwg_Data *dwg)
     }
 }
 
-/* Read Second Header
- */
+/** Read Second Header */
 void
 read_section_second_header(Bit_Chain *dat, Dwg_Data *dwg)
 {
-  if (bit_search_sentinel(dat, 
-      dwg_sentinel(DWG_SENTINEL_SECOND_HEADER_BEGIN)))
+  if (bit_search_sentinel(dat, dwg_sentinel
+                          (DWG_SENTINEL_SECOND_HEADER_BEGIN)))
     {
       long unsigned int ckr;
       long unsigned int pvz;
@@ -95,7 +95,7 @@ read_section_second_header(Bit_Chain *dat, Dwg_Data *dwg)
       unsigned char sig, sig2;
       unsigned int i, j;
 
-      LOG_INFO("\n Second Header: %8X\n",
+      LOG_INFO("\n Second Header: %8X \n",
                (unsigned int) dat->byte-16)
 
       pvzadr = dat->byte;
@@ -134,16 +134,18 @@ read_section_second_header(Bit_Chain *dat, Dwg_Data *dwg)
         }
       if (dwg->second_header.unknown[3] != 0x78
           || dwg->second_header.unknown[5] != 0x06)
-        sig = bit_read_RC(dat); // To compensate in the event of a contingent
-                                // additional zero not read previously
+        sig = bit_read_RC(dat); /*To compensate in the event of a contingent
+                                 * additional zero not read previously */
 
       //puts("");
       for (i = 0; i < 6; i++)
         {
           sig = bit_read_RC(dat);
           //if (loglevel) fprintf (stderr, "[%u]\n", sig);
+
           pvz = bit_read_BL(dat);
           //if (loglevel) fprintf (stderr, " Address: %8X\n", pvz);
+
           pvz = bit_read_BL(dat);
           //if (loglevel) fprintf (stderr, "  Size: %8X\n", pvz);
         }
@@ -155,9 +157,11 @@ read_section_second_header(Bit_Chain *dat, Dwg_Data *dwg)
           sig2 = bit_read_RC(dat);
           dwg->second_header.handlerik[i].size = sig2;
           //if (loglevel) fprintf (stderr, "\nSize: %u\n", sig2);
+
           sig = bit_read_RC(dat);
           //if (loglevel) fprintf (stderr, "\t[%u]\n", sig);
           //if (loglevel) fprintf (stderr, "\tChain:");
+
           for (j = 0; j < sig2; j++)
             {
               sig = bit_read_RC(dat);
@@ -196,14 +200,13 @@ read_section_second_header(Bit_Chain *dat, Dwg_Data *dwg)
     }
 }
 
-/* Read Section Measurement
- */
+/** Read Section Measurement */
 void
 read_section_measurement(Bit_Chain *dat, Dwg_Data *dwg)
 {
-  LOG_INFO("\n Unknown 2: %8X\n",
+  LOG_INFO("\n Unknown 2: %8X \n",
            (unsigned int) dwg->header.section[4].address)
-  LOG_INFO(" Unknown 2 (end): %8X\n",
+  LOG_INFO(" Unknown 2 (end): %8X \n",
            (unsigned int) (dwg->header.section[4].address
            + dwg->header.section[4].size))
 
@@ -211,17 +214,16 @@ read_section_measurement(Bit_Chain *dat, Dwg_Data *dwg)
   dat->bit = 0;
   dwg->measurement = bit_read_RL(dat);
 
-  LOG_TRACE(" Size bytes :\t%lu\n", dat->size)
+  LOG_TRACE("Size bytes :\t%lu \n", dat->size)
 
   //step II of handles parsing: resolve pointers from handle value
   //XXX: move this somewhere else
-  LOG_TRACE("\n\nResolving pointers from ObjectRef vector.\n")
+  LOG_TRACE("\n\n Resolving pointers from ObjectRef vector.\n")
   resolve_objectref_vector(dwg);
   LOG_TRACE("\n")
 }
 
-/* Decode R13-R15 
- */
+/** Decode R13-R15 */
 int
 decode_R13_R15(Bit_Chain *dat, Dwg_Data *dwg)
 {
@@ -241,7 +243,7 @@ decode_R13_R15(Bit_Chain *dat, Dwg_Data *dwg)
 
   /* Image Seeker */
   pvz = bit_read_RL(dat);
-  LOG_TRACE("Image seeker: 0x%08X\n", (unsigned int) pvz)
+  LOG_TRACE("Image seeker: 0x%08X\ n", (unsigned int) pvz)
 
   /* unknown */
   sig = bit_read_RC(dat);

@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -88,6 +88,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
+<p>Structure for common entity attributes.  
+ <a href="struct__dwg__object__entity.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="dwg_8h_source.html">dwg.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -97,7 +100,7 @@ struct <a class="el" href="struct__dwg__object.html">_dwg_object</a> *&#160;</td
 <tr class="separator:a1ab4aa008fa123ed107de3cf7c238895"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3d417a636a9cfff8c422360b27cceea"><td class="memItemLeft" ><a class="anchor" id="ab3d417a636a9cfff8c422360b27cceea"></a>
 union {</td></tr>
-<tr class="memitem:a0986de7800e8758c0c122a331d797071"><td class="memItemLeft" >&#160;&#160;&#160;Dwg_Entity_UNUSED *&#160;&#160;&#160;<b>UNUSED</b></td></tr>
+<tr class="memitem:a0986de7800e8758c0c122a331d797071"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="dwg_8h.html#a7fff958f189073150f91a2527d49bdfa">Dwg_Entity_UNUSED</a> *&#160;&#160;&#160;<b>UNUSED</b></td></tr>
 <tr class="separator:a0986de7800e8758c0c122a331d797071"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36f349a3fc5fd1117a2ba3e83961dcd4"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="struct__dwg__entity__TEXT.html">Dwg_Entity_TEXT</a> *&#160;&#160;&#160;<b>TEXT</b></td></tr>
 <tr class="separator:a36f349a3fc5fd1117a2ba3e83961dcd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,9 +122,9 @@ union {</td></tr>
 <tr class="separator:a5fd05e9e9b4fca707772f615880cbb0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b221a38debe0193902fb76aff04aebb"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="struct__dwg__entity__VERTEX__3D.html">Dwg_Entity_VERTEX_3D</a> *&#160;&#160;&#160;<b>VERTEX_3D</b></td></tr>
 <tr class="separator:a8b221a38debe0193902fb76aff04aebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac25f7800bec010a75391dfcd327d5be"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="struct__dwg__entity__VERTEX__3D.html">Dwg_Entity_VERTEX_MESH</a> *&#160;&#160;&#160;<b>VERTEX_MESH</b></td></tr>
+<tr class="memitem:aac25f7800bec010a75391dfcd327d5be"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="dwg_8h.html#a1f016726bc16ce018fff997edb0224be">Dwg_Entity_VERTEX_MESH</a> *&#160;&#160;&#160;<b>VERTEX_MESH</b></td></tr>
 <tr class="separator:aac25f7800bec010a75391dfcd327d5be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90ddd214f5dcee3485d3cadbaf1fc190"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="struct__dwg__entity__VERTEX__3D.html">Dwg_Entity_VERTEX_PFACE</a> *&#160;&#160;&#160;<b>VERTEX_PFACE</b></td></tr>
+<tr class="memitem:a90ddd214f5dcee3485d3cadbaf1fc190"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="dwg_8h.html#a9717f6818cdf55e42bc25b700105d105">Dwg_Entity_VERTEX_PFACE</a> *&#160;&#160;&#160;<b>VERTEX_PFACE</b></td></tr>
 <tr class="separator:a90ddd214f5dcee3485d3cadbaf1fc190"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac278c79459fb0d4ce0b133470935d04c"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="struct__dwg__entity__VERTEX__PFACE__FACE.html">Dwg_Entity_VERTEX_PFACE_FACE</a> *&#160;&#160;&#160;<b>VERTEX_PFACE_FACE</b></td></tr>
 <tr class="separator:ac278c79459fb0d4ce0b133470935d04c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -171,13 +174,13 @@ union {</td></tr>
 <tr class="separator:a38b327b6a57d89aa9aff0a1878d98f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a182078e518ad6335ef55051bae44d1"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="struct__dwg__entity__3DSOLID.html">Dwg_Entity_3DSOLID</a> *&#160;&#160;&#160;<b>_3DSOLID</b></td></tr>
 <tr class="separator:a2a182078e518ad6335ef55051bae44d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2cd05efef125dafbe888d1a32f2385f"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="struct__dwg__entity__3DSOLID.html">Dwg_Entity_REGION</a> *&#160;&#160;&#160;<b>REGION</b></td></tr>
+<tr class="memitem:ae2cd05efef125dafbe888d1a32f2385f"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="dwg_8h.html#a7820fc5e21ba96612aa858997fbccdc5">Dwg_Entity_REGION</a> *&#160;&#160;&#160;<b>REGION</b></td></tr>
 <tr class="separator:ae2cd05efef125dafbe888d1a32f2385f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1266fe38682f6f518e0e10445bfe7ba"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="struct__dwg__entity__3DSOLID.html">Dwg_Entity_BODY</a> *&#160;&#160;&#160;<b>BODY</b></td></tr>
+<tr class="memitem:ae1266fe38682f6f518e0e10445bfe7ba"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="dwg_8h.html#a9c6989ac113fa68d04b562c5e19f6aac">Dwg_Entity_BODY</a> *&#160;&#160;&#160;<b>BODY</b></td></tr>
 <tr class="separator:ae1266fe38682f6f518e0e10445bfe7ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a849c5a64f1d6c8796394714e2b955b05"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="struct__dwg__entity__RAY.html">Dwg_Entity_RAY</a> *&#160;&#160;&#160;<b>RAY</b></td></tr>
 <tr class="separator:a849c5a64f1d6c8796394714e2b955b05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2bab13447d41a080a6b83689c44f70a4"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="struct__dwg__entity__RAY.html">Dwg_Entity_XLINE</a> *&#160;&#160;&#160;<b>XLINE</b></td></tr>
+<tr class="memitem:a2bab13447d41a080a6b83689c44f70a4"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="dwg_8h.html#aca805c2dd30a28b6e21c2da6c916765f">Dwg_Entity_XLINE</a> *&#160;&#160;&#160;<b>XLINE</b></td></tr>
 <tr class="separator:a2bab13447d41a080a6b83689c44f70a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a307775da0589b12275418e06acda442c"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="struct__dwg__entity__MTEXT.html">Dwg_Entity_MTEXT</a> *&#160;&#160;&#160;<b>MTEXT</b></td></tr>
 <tr class="separator:a307775da0589b12275418e06acda442c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -291,16 +294,16 @@ BITCODE_H&#160;</td><td class="memItemRight" valign="bottom"><b>material</b></td
 <tr class="separator:a7fff2e18aac9b80e4e0637baaab53b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Structure for common entity attributes </p>
+<div class="textblock"><p>Structure for common entity attributes. </p>
 
-<p>Definition at line <a class="el" href="dwg_8h_source.html#l02522">2522</a> of file <a class="el" href="dwg_8h_source.html">dwg.h</a>.</p>
+<p>Definition at line <a class="el" href="dwg_8h_source.html#l02656">2656</a> of file <a class="el" href="dwg_8h_source.html">dwg.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/<a class="el" href="dwg_8h_source.html">dwg.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 24 2013 20:42:44 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jul 25 2013 20:23:22 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

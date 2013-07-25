@@ -10,12 +10,15 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * section_locate.h: section locating functions
- * written by Felipe Castro
- * modified by Felipe Corrêa da Silva Sances
- * modified by Rodrigo Rodrigues da Silva
- * modified by Till Heuschmann
+/**
+ *     \file       section_locate.h
+ *     \brief      Section locating function prototypes
+ *     \author     written by Felipe Castro
+ *     \author     modified by Felipe Corrêa da Silva Sances
+ *     \author     modified by Rodrigo Rodrigues da Silva
+ *     \author     modified by Till Heuschmann
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 #ifndef _DWG_OBJECT_H_
@@ -37,7 +40,7 @@ void
 read_R13_R15_section_locate(Bit_Chain *dat, Dwg_Data *dwg);
 
 void
-read_R2004_section_map(Bit_Chain* dat, Dwg_Data * dwg,
+read_R2004_section_map(Bit_Chain *dat, Dwg_Data *dwg,
                        unsigned long int comp_data_size,
                        unsigned long int decomp_data_size);
 

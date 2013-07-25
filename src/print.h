@@ -10,9 +10,12 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * print.h: print helper function prototypes
- * written by Rodrigo Rodrigues da Silva
+/**
+ *     \file       print.h
+ *     \brief      Print helper function prototypes
+ *     \author     written by Rodrigo Rodrigues da Silva
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 #ifndef PRINT_H

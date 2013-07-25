@@ -10,12 +10,15 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * dwg.c: main include file
- * written by Felipe Castro
- * modified by Felipe Corrêa da Silva Sances
- * modified by Rodrigo Rodrigues da Silva
- * modified by Till Heuschmann
+/**
+ *     \file       dwg.h
+ *     \brief      Main include file
+ *     \author     written by Felipe Castro
+ *     \author     modified by Felipe Corrêa da Silva Sances
+ *     \author     modified by Rodrigo Rodrigues da Silva
+ *     \author     modified by Till Heuschmann
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 #ifndef DWG_H
@@ -61,23 +64,32 @@
 #define BITCODE_H Dwg_Object_Ref*
 #define BITCODE_4BITS BITCODE_RC
 #define FORMAT_4BITS "%1x" 
-
-#define BITCODE_T BITCODE_TV //TODO: implement version dependant string parsing
+//TODO: implement version dependant string parsing
+#define BITCODE_T BITCODE_TV 
 
 #define DWGCHAR wchar_t
 
+/**
+ *    \struct  _dwg_bitecode_2rd
+ */
 typedef struct _dwg_bitecode_2rd
 {
   BITCODE_RD x;
   BITCODE_RD y;
 } Dwg_Bitcode_2RD;
 
+/**
+ *    \struct  _dwg_bitecode_2bd
+ */
 typedef struct _dwg_bitecode_2bd
 {
   BITCODE_BD x;
   BITCODE_BD y;
 } Dwg_Bitcode_2BD;
 
+/**
+ *    \struct  _dwg_bitecode_3rd
+ */
 typedef struct _dwg_bitecode_3rd
 {
   BITCODE_RD x;
@@ -85,6 +97,9 @@ typedef struct _dwg_bitecode_3rd
   BITCODE_RD z;
 } Dwg_Bitcode_3RD;
 
+/**
+ *    \struct  _dwg_bitecode_3bd
+ */
 typedef struct _dwg_bitecode_3bd
 {
   BITCODE_BD x;
@@ -100,7 +115,8 @@ typedef struct _dwg_bitecode_3bd
 #define BITCODE_3DPOINT BITCODE_3BD
 
 /**
- Object supertypes that exist in dwg-files.
+ *    \enum    DWG_OBJECT_SUPERTYPE
+ *    \brief   Object supertypes that exist in dwg-files
  */
 typedef enum DWG_OBJECT_SUPERTYPE
 {
@@ -108,7 +124,8 @@ typedef enum DWG_OBJECT_SUPERTYPE
 } Dwg_Object_Supertype;
 
 /**
- Object types that exist in dwg-files.
+ *    \enum    DWG_OBJECT_TYPE
+ *    \brief   Object types that exist in dwg-files
  */
 typedef enum DWG_OBJECT_TYPE
 {
@@ -121,7 +138,7 @@ typedef enum DWG_OBJECT_TYPE
   DWG_TYPE_SEQEND = 0x06,
   DWG_TYPE_INSERT = 0x07,
   DWG_TYPE_MINSERT = 0x08,
-  //DWG_TYPE_<UNKNOWN> = 0x09,
+  // DWG_TYPE_<UNKNOWN> = 0x09,
   DWG_TYPE_VERTEX_2D = 0x0a,
   DWG_TYPE_VERTEX_3D = 0x0b,
   DWG_TYPE_VERTEX_MESH = 0x0c,
@@ -155,7 +172,7 @@ typedef enum DWG_OBJECT_TYPE
   DWG_TYPE_RAY = 0x28,
   DWG_TYPE_XLINE = 0x29,
   DWG_TYPE_DICTIONARY = 0x2a,
-  //DWG_TYPE_<UNKNOWN> = 0x2b,
+  // DWG_TYPE_<UNKNOWN> = 0x2b,
   DWG_TYPE_MTEXT = 0x2c,
   DWG_TYPE_LEADER = 0x2d,
   DWG_TYPE_TOLERANCE = 0x2e,
@@ -166,12 +183,12 @@ typedef enum DWG_OBJECT_TYPE
   DWG_TYPE_LAYER = 0x33,
   DWG_TYPE_SHAPEFILE_CONTROL = 0x34,
   DWG_TYPE_SHAPEFILE = 0x35,
-  //DWG_TYPE_<UNKNOWN> = 0x36,
+  // DWG_TYPE_<UNKNOWN> = 0x36,
   //DWG_TYPE_<UNKNOWN> = 0x37,
   DWG_TYPE_LTYPE_CONTROL = 0x38,
   DWG_TYPE_LTYPE = 0x39,
-  //DWG_TYPE_<UNKNOWN> = 0x3a,
-  //DWG_TYPE_<UNKNOWN> = 0x3b,
+  // DWG_TYPE_<UNKNOWN> = 0x3a,
+  // DWG_TYPE_<UNKNOWN> = 0x3b,
   DWG_TYPE_VIEW_CONTROL = 0x3c,
   DWG_TYPE_VIEW = 0x3d,
   DWG_TYPE_UCS_CONTROL = 0x3e,
@@ -186,19 +203,20 @@ typedef enum DWG_OBJECT_TYPE
   DWG_TYPE_VP_ENT_HDR = 0x47,
   DWG_TYPE_GROUP = 0x48,
   DWG_TYPE_MLINESTYLE = 0x49,
-  //DWG_TYPE_<UNKNOWN> = 0x4a
-  //DWG_TYPE_<UNKNOWN> = 0x4b
-  //DWG_TYPE_<UNKNOWN> = 0x4c
+  // DWG_TYPE_<UNKNOWN> = 0x4a
+  // DWG_TYPE_<UNKNOWN> = 0x4b
+  // DWG_TYPE_<UNKNOWN> = 0x4c
   DWG_TYPE_LWPLINE = 0x4d,
   DWG_TYPE_HATCH = 0x4e,
   DWG_TYPE_XRECORD = 0x4f,
   DWG_TYPE_PLACEHOLDER = 0x50,
-  //DWG_TYPE_<UNKNOWN> = 0x51,
+  // DWG_TYPE_<UNKNOWN> = 0x51,
   DWG_TYPE_LAYOUT = 0x52
 } Dwg_Object_Type;
 
 /**
- Struct for handles.
+ *    \struct  _dwg_handle
+ *    \brief   Struct for handles
  */
 typedef struct _dwg_handle
 {
@@ -208,7 +226,8 @@ typedef struct _dwg_handle
 } Dwg_Handle;
 
 /**
- Struct for object references.
+ *    \struct  _dwg_object_ref
+ *    \brief   Struct for object references
  */
 typedef struct _dwg_object_ref
 {
@@ -218,7 +237,8 @@ typedef struct _dwg_object_ref
 } Dwg_Object_Ref;
 
 /**
- Struct for CMC colors.
+ *    \struct  _dwg_color
+ *    \brief   Struct for CMC colors
  */
 typedef struct _dwg_color
 {
@@ -229,6 +249,9 @@ typedef struct _dwg_color
   char* book_name;
 } Dwg_Color;
 
+/**
+ *    \struct  _dwg_binary_chunk
+ */
 struct _dwg_binary_chunk
 {
   short size;
@@ -236,7 +259,8 @@ struct _dwg_binary_chunk
 };
 
 /**
- Struct for result buffers
+ *    \struct  _dwg_resbuf
+ *    \brief   Struct for result buffers
  */
 typedef struct _dwg_resbuf
 {
@@ -256,9 +280,9 @@ typedef struct _dwg_resbuf
 } Dwg_Resbuf;
 
 /**
- struct for dwg header
+ *    \struct  _dwg_header_variables
+ *    \brief   Struct for dwg header
  */
-
 typedef struct _dwg_header_variables {
   BITCODE_RL bitsize;
   BITCODE_BD unknown_0;
@@ -275,7 +299,7 @@ typedef struct _dwg_header_variables {
   BITCODE_H current_viewport_entity_header;
   BITCODE_B DIMASO;
   BITCODE_B DIMSHO;
-  BITCODE_B DIMSAV; //undocumented
+  BITCODE_B DIMSAV; // undocumented
   BITCODE_B PLINEGEN;
   BITCODE_B ORTHOMODE;
   BITCODE_B REGENMODE;
@@ -293,7 +317,7 @@ typedef struct _dwg_header_variables {
   BITCODE_B ATTDIA;
   BITCODE_B MIRRTEXT;
   BITCODE_B WORLDVIEW;
-  BITCODE_B WIREFRAME; //Undocumented
+  BITCODE_B WIREFRAME; // Undocumented
   BITCODE_B TILEMODE;
   BITCODE_B PLIMCHECK;
   BITCODE_B VISRETAIN;
@@ -585,14 +609,12 @@ typedef struct _dwg_header_variables {
   BITCODE_RS CRC;
 } Dwg_Header_Variables;
 
-/* OBJECTS *******************************************************************/
-/**
- Struct for UNUSED (0)
- */
-typedef int Dwg_Entity_UNUSED;
+/* OBJECTS */
+typedef int Dwg_Entity_UNUSED; /**< Struct for UNUSED (0) */
 
 /**
- Struct for TEXT (1)
+ *    \struct  _dwg_entity_TEXT
+ *    \brief   Struct for TEXT (1)
  */
 typedef struct _dwg_entity_TEXT
 {
@@ -614,7 +636,8 @@ typedef struct _dwg_entity_TEXT
 } Dwg_Entity_TEXT;
 
 /**
- Struct for ATTRIB (2)
+ *    \struct  _dwg_entity_ATTRIB
+ *    \brief   Struct for ATTRIB (2) 
  */
 typedef struct _dwg_entity_ATTRIB
 {
@@ -640,7 +663,8 @@ typedef struct _dwg_entity_ATTRIB
 } Dwg_Entity_ATTRIB;
 
 /**
- Struct for ATTDEF (3)
+ *    \struct  _dwg_entity_ATTDEF
+ *    \brief   Struct for ATTDEF (3)
  */
 typedef struct _dwg_entity_ATTDEF
 {
@@ -667,7 +691,8 @@ typedef struct _dwg_entity_ATTDEF
 } Dwg_Entity_ATTDEF;
 
 /**
- Struct for BLOCK (4)
+ *    \struct  _dwg_entity_BLOCK
+ *    \brief   Struct for BLOCK (4)
  */
 typedef struct _dwg_entity_BLOCK
 {
@@ -675,7 +700,8 @@ typedef struct _dwg_entity_BLOCK
 } Dwg_Entity_BLOCK;
 
 /**
- Struct for ENDBLK (5)
+ *    \struct  _dwg_entity_ENDBLK
+ *    \brief   Struct for ENDBLK (5)
  */
 typedef struct _dwg_entity_ENDBLK
 {
@@ -683,7 +709,8 @@ typedef struct _dwg_entity_ENDBLK
 } Dwg_Entity_ENDBLK;
 
 /**
- Struct for SEQEND (6)
+ *    \struct  _dwg_entity_SEQEND
+ *    \brief   Struct for SEQEND (6)
  */
 typedef struct _dwg_entity_SEQEND
 {
@@ -691,7 +718,8 @@ typedef struct _dwg_entity_SEQEND
 } Dwg_Entity_SEQEND;
 
 /**
- Struct for INSERT (7)
+ *    \struct  _dwg_entity_INSERT
+ *    \brief   Struct for INSERT (7)
  */
 typedef struct _dwg_entity_INSERT
 {
@@ -711,7 +739,8 @@ typedef struct _dwg_entity_INSERT
 } Dwg_Entity_INSERT;
 
 /**
- Struct for MINSERT (8)
+ *    \struct  _dwg_entity_MINSERT
+ *    \brief   Struct for MINSERT (8)
  */
 typedef struct _dwg_entity_MINSERT
 {
@@ -736,7 +765,8 @@ typedef struct _dwg_entity_MINSERT
 } Dwg_Entity_MINSERT;
 
 /**
- Struct for VERTEX_2D (10)
+ *    \struct  _dwg_entity_VERTEX_2D
+ *    \brief   Struct for VERTEX_2D (10)
  */
 typedef struct _dwg_entity_VERTEX_2D
 {
@@ -749,7 +779,8 @@ typedef struct _dwg_entity_VERTEX_2D
 } Dwg_Entity_VERTEX_2D;
 
 /**
- Struct for VERTEX_3D (11)
+ *    \struct  _dwg_entity_VERTEX_3D
+ *    \brief   Struct for VERTEX_3D (11)
  */
 typedef struct _dwg_entity_VERTEX_3D
 {
@@ -757,18 +788,15 @@ typedef struct _dwg_entity_VERTEX_3D
   BITCODE_3BD point;
 } Dwg_Entity_VERTEX_3D;
 
-/**
- Struct for VERTEX_MESH (12) - same as VERTEX_3D
- */
-typedef Dwg_Entity_VERTEX_3D Dwg_Entity_VERTEX_MESH;
+/** Struct for VERTEX_MESH (12) - same as VERTEX_3D */
+typedef Dwg_Entity_VERTEX_3D Dwg_Entity_VERTEX_MESH; 
+
+/** Struct for VERTEX_PFACE (13) - same as VERTEX_3D */
+typedef Dwg_Entity_VERTEX_3D Dwg_Entity_VERTEX_PFACE; 
 
 /**
- Struct for VERTEX_PFACE (13) - same as VERTEX_3D
- */
-typedef Dwg_Entity_VERTEX_3D Dwg_Entity_VERTEX_PFACE;
-
-/**
- Struct for VERTEX_PFACE_FACE (14)
+ *    \struct  _dwg_entity_VERTEX_PFACE_FACE
+ *    \brief   Struct for VERTEX_PFACE_FACE (14)
  */
 typedef struct _dwg_entity_VERTEX_PFACE_FACE
 {
@@ -776,7 +804,8 @@ typedef struct _dwg_entity_VERTEX_PFACE_FACE
 } Dwg_Entity_VERTEX_PFACE_FACE;
 
 /**
- Struct for 2D POLYLINE (15)
+ *    \struct  _dwg_entity_POLYLINE_2D
+ *    \brief   Struct for 2D POLYLINE (15)
  */
 typedef struct _dwg_entity_POLYLINE_2D
 {
@@ -795,7 +824,8 @@ typedef struct _dwg_entity_POLYLINE_2D
 } Dwg_Entity_POLYLINE_2D;
 
 /**
- Struct for 3D POLYLINE (16)
+ *    \struct  _dwg_entity_POLYLINE_3D
+ *    \brief   Struct for 3D POLYLINE (16)
  */
 typedef struct _dwg_entity_POLYLINE_3D
 {
@@ -809,7 +839,8 @@ typedef struct _dwg_entity_POLYLINE_3D
 } Dwg_Entity_POLYLINE_3D;
 
 /**
- Struct for ARC (17)
+ *    \struct  _dwg_entity_ARC
+ *    \brief   Struct for ARC (17)
  */
 typedef struct _dwg_entity_ARC
 {
@@ -822,7 +853,8 @@ typedef struct _dwg_entity_ARC
 } Dwg_Entity_ARC;
 
 /**
- Struct for CIRCLE (18)
+ *    \struct  _dwg_entity_CIRCLE
+ *    \brief   Struct for CIRCLE (18)
  */
 typedef struct _dwg_entity_CIRCLE
 {
@@ -833,7 +865,8 @@ typedef struct _dwg_entity_CIRCLE
 } Dwg_Entity_CIRCLE;
 
 /**
- Struct for LINE (19)
+ *    \struct  _dwg_entity_LINE
+ *    \brief   Struct for LINE (19)
  */
 typedef struct _dwg_entity_LINE
 {
@@ -870,7 +903,8 @@ typedef struct _dwg_entity_LINE
     BITCODE_B flip_arrow2;
 
 /**
- Struct for ordinate dimension - DIMENSION_ORDINATE (20)
+ *    \struct  _dwg_entity_DIMENSION_ORDINATE
+ *    \brief   Struct for ordinate dimension - DIMENSION_ORDINATE (20)
  */
 typedef struct _dwg_entity_DIMENSION_ORDINATE
 {
@@ -885,7 +919,8 @@ typedef struct _dwg_entity_DIMENSION_ORDINATE
 } Dwg_Entity_DIMENSION_ORDINATE;
 
 /**
- Struct for linear dimension - DIMENSION_LINEAR (21)
+ *    \struct  _dwg_entity_DIMENSION_LINEAR
+ *    \brief   Struct for linear dimension - DIMENSION_LINEAR (21)
  */
 typedef struct _dwg_entity_DIMENSION_LINEAR
 {
@@ -901,7 +936,8 @@ typedef struct _dwg_entity_DIMENSION_LINEAR
 } Dwg_Entity_DIMENSION_LINEAR;
 
 /**
- Struct for aligned dimension - DIMENSION_ALIGNED (22)
+ *    \struct  _dwg_entity_DIMENSION_ALIGNED
+ *    \brief   Struct for aligned dimension - DIMENSION_ALIGNED (22)
  */
 typedef struct _dwg_entity_DIMENSION_ALIGNED
 {
@@ -916,7 +952,8 @@ typedef struct _dwg_entity_DIMENSION_ALIGNED
 } Dwg_Entity_DIMENSION_ALIGNED;
 
 /**
- Struct for angular 3pt dimension - DIMENSION_ANG3PT (23)
+ *    \struct  _dwg_entity_DIMENSION_ANG3PT
+ *    \brief   Struct for angular 3pt dimension - DIMENSION_ANG3PT (23)
  */
 typedef struct _dwg_entity_DIMENSION_ANG3PT
 {
@@ -931,7 +968,8 @@ typedef struct _dwg_entity_DIMENSION_ANG3PT
 } Dwg_Entity_DIMENSION_ANG3PT;
 
 /**
- Struct for angular 2 line dimension - DIMENSION_ANG2LN (24)
+ *    \struct  _dwg_entity_DIMENSION_ANG2LN
+ *    \brief   Struct for angular 2 line dimension - DIMENSION_ANG2LN (24)
  */
 typedef struct _dwg_entity_DIMENSION_ANG2LN
 {
@@ -947,7 +985,8 @@ typedef struct _dwg_entity_DIMENSION_ANG2LN
 } Dwg_Entity_DIMENSION_ANG2LN;
 
 /**
- Struct for radius dimension - DIMENSION_RADIUS (25)
+ *    \struct  _dwg_entity_DIMENSION_RADIUS
+ *    \brief   Struct for radius dimension - DIMENSION_RADIUS (25)
  */
 typedef struct _dwg_entity_DIMENSION_RADIUS
 {
@@ -961,7 +1000,8 @@ typedef struct _dwg_entity_DIMENSION_RADIUS
 } Dwg_Entity_DIMENSION_RADIUS;
 
 /**
- Struct for diameter dimension - DIMENSION_DIAMETER (26)
+ *    \struct  _dwg_entity_DIMENSION_DIAMETER
+ *    \brief   Struct for diameter dimension - DIMENSION_DIAMETER (26)
  */
 typedef struct _dwg_entity_DIMENSION_DIAMETER
 {
@@ -975,7 +1015,8 @@ typedef struct _dwg_entity_DIMENSION_DIAMETER
 } Dwg_Entity_DIMENSION_DIAMETER;
 
 /**
- Struct for:  POINT (27)
+ *    \struct  _dwg_entity_POINT
+ *    \brief   Struct for POINT (27)
  */
 typedef struct _dwg_entity_POINT
 {
@@ -988,7 +1029,8 @@ typedef struct _dwg_entity_POINT
 } Dwg_Entity_POINT;
 
 /**
- Struct for:  3D FACE (28)
+ *    \struct  _dwg_entity_3D_FACE
+ *    \brief   Struct for 3D FACE (28)
  */
 typedef struct _dwg_entity_3D_FACE
 {
@@ -1002,7 +1044,8 @@ typedef struct _dwg_entity_3D_FACE
 } Dwg_Entity__3DFACE;
 
 /**
- Struct for:  POLYLINE (PFACE) (29)
+ *    \struct  _dwg_entity_POLYLINE_PFACE
+ *    \brief   Struct for POLYLINE (PFACE) (29)
  */
 typedef struct _dwg_entity_POLYLINE_PFACE
 {
@@ -1016,7 +1059,8 @@ typedef struct _dwg_entity_POLYLINE_PFACE
 } Dwg_Entity_POLYLINE_PFACE;
 
 /**
- Struct for:  POLYLINE (MESH) (30)
+ *    \struct  _dwg_entity_POLYLINE_MESH
+ *    \brief   Struct for POLYLINE (MESH) (30)
  */
 typedef struct _dwg_entity_POLYLINE_MESH
 {
@@ -1034,9 +1078,9 @@ typedef struct _dwg_entity_POLYLINE_MESH
 } Dwg_Entity_POLYLINE_MESH;
 
 /**
- Struct for:  SOLID (31)
+ *    \struct  _dwg_entity_SOLID
+ *    \brief   Struct for SOLID (31)
  */
-
 typedef struct _dwg_entity_SOLID
 {
   BITCODE_BT thickness;
@@ -1049,9 +1093,9 @@ typedef struct _dwg_entity_SOLID
 } Dwg_Entity_SOLID;
 
 /**
- Struct for:  TRACE (32)
+ *    \struct  _dwg_entity_TRACE
+ *    \brief   Struct for TRACE (32)
  */
-
 typedef struct _dwg_entity_TRACE
 {
   BITCODE_BT thickness;
@@ -1064,9 +1108,9 @@ typedef struct _dwg_entity_TRACE
 } Dwg_Entity_TRACE;
 
 /**
- Struct for:  SHAPE (33)
+ *    \struct  _dwg_entity_SHAPE
+ *    \brief   Struct for SHAPE (33)
  */
-
 typedef struct _dwg_entity_SHAPE
 {
   BITCODE_3BD ins_pt;
@@ -1079,10 +1123,11 @@ typedef struct _dwg_entity_SHAPE
   BITCODE_3BD extrusion;
   BITCODE_H shapefile;
 } Dwg_Entity_SHAPE;
-/**
- Struct for:  VIEWPORT ENTITY (34)
- */
 
+/**
+ *    \struct  _dwg_entity_VIEWPORT
+ *    \brief   Struct for VIEWPORT ENTITY (34)
+ */
 typedef struct _dwg_entity_VIEWPORT
 {
   BITCODE_3BD center;
@@ -1122,7 +1167,8 @@ typedef struct _dwg_entity_VIEWPORT
 } Dwg_Entity_VIEWPORT;
 
 /**
- Struct for ELLIPSE (35)
+ *    \struct  _dwg_entity_ELLIPSE
+ *    \brief   Struct for ELLIPSE (35)
  */
 typedef struct _dwg_entity_ELLIPSE
 {
@@ -1135,7 +1181,8 @@ typedef struct _dwg_entity_ELLIPSE
 } Dwg_Entity_ELLIPSE;
 
 /**
- Struct for spline - SPLINE (36)
+ *    \struct  _dwg_entity_SPLINE_point
+ *    \brief   Struct for SPLINE (36)
  */
 typedef struct _dwg_entity_SPLINE_point
 {
@@ -1144,6 +1191,9 @@ typedef struct _dwg_entity_SPLINE_point
   double z;
 } Dwg_Entity_SPLINE_point;
 
+/**
+ *    \struct  _dwg_entity_SPLINE_control_point
+ */
 typedef struct _dwg_entity_SPLINE_control_point
 {
   double x;
@@ -1152,6 +1202,9 @@ typedef struct _dwg_entity_SPLINE_control_point
   double w;
 } Dwg_Entity_SPLINE_control_point;
 
+/**
+ *    \struct  _dwg_entity_SPLINE
+ */
 typedef struct _dwg_entity_SPLINE
 {
   BITCODE_BS scenario;
@@ -1174,7 +1227,8 @@ typedef struct _dwg_entity_SPLINE
 } Dwg_Entity_SPLINE;
 
 /**
- Struct for 3DSOLID (38)
+ *    \struct  _dwg_entity_3DSOLID_wire
+ *    \brief   Struct for 3DSOLID (38)
  */
 #define Dwg_Entity_3DSOLID Dwg_Entity__3DSOLID
 typedef struct _dwg_entity_3DSOLID_wire
@@ -1196,6 +1250,9 @@ typedef struct _dwg_entity_3DSOLID_wire
   BITCODE_B has_shear;
 } Dwg_Entity_3DSOLID_wire;
 
+/**
+ *    \struct  _dwg_entity_3DSOLID_silhouette
+ */
 typedef struct _dwg_entity_3DSOLID_silhouette
 {
   BITCODE_BL vp_id;
@@ -1207,6 +1264,9 @@ typedef struct _dwg_entity_3DSOLID_silhouette
   Dwg_Entity_3DSOLID_wire * wires;
 } Dwg_Entity_3DSOLID_silhouette;
 
+/**
+ *    \struct  _dwg_entity_3DSOLID
+ */
 typedef struct _dwg_entity_3DSOLID
 {
   BITCODE_B acis_empty;
@@ -1232,18 +1292,15 @@ typedef struct _dwg_entity_3DSOLID
   unsigned char* raw_sat_data;
 } Dwg_Entity_3DSOLID;
 
-/**
- Struct for REGION (37)
- */
+/** Struct for REGION (37) */
 typedef Dwg_Entity_3DSOLID Dwg_Entity_REGION;
 
-/**
- Struct for BODY (39)
- */
+/** Struct for BODY (39) */
 typedef Dwg_Entity_3DSOLID Dwg_Entity_BODY;
 
 /**
- Struct for ray - RAY (40)
+ *    \struct  _dwg_entity_RAY
+ *    \brief   Struct for ray - RAY (40)
  */
 typedef struct _dwg_entity_RAY
 {
@@ -1251,13 +1308,12 @@ typedef struct _dwg_entity_RAY
   BITCODE_3BD vector;
 } Dwg_Entity_RAY;
 
-/**
- Struct for XLINE (41)
- */
+/** Struct for XLINE (41) */
 typedef Dwg_Entity_RAY Dwg_Entity_XLINE;
 
 /**
- Structure for DICTIONARY (42)
+ *    \struct  _dwg_entity_DICTIONARY
+ *    \brief   Struct for DICTIONARY (42)
  */
 typedef struct _dwg_entity_DICTIONARY
 {
@@ -1274,7 +1330,8 @@ typedef struct _dwg_entity_DICTIONARY
 } Dwg_Object_DICTIONARY;
 
 /**
- Struct for DICTIONARYWDLFT (varies)
+ *    \struct  _dwg_object_DICTIONARYWDLFT
+ *    \brief   Struct for DICTIONARYWDLFT (varies)
  */
 typedef struct _dwg_object_DICTIONARYWDLFT
 {
@@ -1291,7 +1348,8 @@ typedef struct _dwg_object_DICTIONARYWDLFT
 } Dwg_Object_DICTIONARYWDLFT;
 
 /**
- Struct for MTEXT (44)
+ *    \struct  _dwg_entity_MTEXT
+ *    \brief   Struct for MTEXT (44)
  */
 typedef struct _dwg_entity_MTEXT
 {
@@ -1314,7 +1372,8 @@ typedef struct _dwg_entity_MTEXT
 } Dwg_Entity_MTEXT;
 
 /**
- Struct for LEADER (45)
+ *    \struct  _dwg_entity_LEADER
+ *    \brief   Struct for LEADER (45)
  */
 typedef struct _dwg_entity_LEADER
 {
@@ -1346,7 +1405,8 @@ typedef struct _dwg_entity_LEADER
 } Dwg_Entity_LEADER;
 
 /**
- Struct for TOLERANCE (46)
+ *    \struct  _dwg_entity_TOLERANCE
+ *    \brief   Struct for TOLERANCE (46)
  */
 typedef struct _dwg_entity_TOLERANCE
 {
@@ -1361,7 +1421,8 @@ typedef struct _dwg_entity_TOLERANCE
 } Dwg_Entity_TOLERANCE;
 
 /**
- Structures for MLINE (47)
+ *    \struct  _dwg_entity_MLINE_line
+ *    \brief   Struct for MLINE (47)
  */
 typedef struct _dwg_entity_MLINE_line
 {
@@ -1371,6 +1432,9 @@ typedef struct _dwg_entity_MLINE_line
   BITCODE_BD* areafillparms;
 } Dwg_Entity_MLINE_line;
 
+/**
+ *    \struct  _dwg_entity_MLINE_vert
+ */
 typedef struct _dwg_entity_MLINE_vert
 {
   BITCODE_3BD vertex;
@@ -1379,6 +1443,9 @@ typedef struct _dwg_entity_MLINE_vert
   Dwg_Entity_MLINE_line* lines;
 } Dwg_Entity_MLINE_vert;
 
+/**
+ *    \struct  _dwg_entity_MLINE
+ */
 typedef struct _dwg_entity_MLINE
 {
   BITCODE_BD scale;
@@ -1386,14 +1453,15 @@ typedef struct _dwg_entity_MLINE
   BITCODE_3BD base_point;
   BITCODE_3BD extrusion;
   BITCODE_BS open_closed;
-  BITCODE_RC num_lines; //Linesinstyle
+  BITCODE_RC num_lines; // Linesinstyle
   BITCODE_BS num_verts;
   Dwg_Entity_MLINE_vert* verts;
   BITCODE_H mline_style;
 } Dwg_Entity_MLINE;
 
 /**
- Struct for BLOCK_CONTROL (48)
+ *    \struct  _dwg_object_BLOCK_CONTROL
+ *    \brief   Struct for BLOCK_CONTROL (48)
  */
 typedef struct _dwg_object_BLOCK_CONTROL
 {
@@ -1406,7 +1474,8 @@ typedef struct _dwg_object_BLOCK_CONTROL
 } Dwg_Object_BLOCK_CONTROL;
 
 /**
- Struct for BLOCK_HEADER (49)
+ *    \struct  _dwg_object_BLOCK_HEADER
+ *    \brief   Struct for BLOCK_HEADER (49)
  */
 typedef struct _dwg_object_BLOCK_HEADER
 {
@@ -1444,7 +1513,8 @@ typedef struct _dwg_object_BLOCK_HEADER
 } Dwg_Object_BLOCK_HEADER;
 
 /**
- Struct for LAYER_CONTROL (50)
+ *    \struct  _dwg_object_LAYER_CONTROL
+ *    \brief   Struct for LAYER_CONTROL (50)
  */
 typedef struct _dwg_object_LAYER_CONTROL
 {
@@ -1455,7 +1525,8 @@ typedef struct _dwg_object_LAYER_CONTROL
 } Dwg_Object_LAYER_CONTROL;
 
 /**
- Struct for LAYER (51)
+ *    \struct  _dwg_object_LAYER
+ *    \brief   Struct for LAYER (51)
  */
 typedef struct _dwg_object_LAYER
 {
@@ -1479,7 +1550,8 @@ typedef struct _dwg_object_LAYER
 } Dwg_Object_LAYER;
 
 /**
- Struct for SHAPEFILE_CONTROL (52)
+ *    \struct  _dwg_object_SHAPEFILE_CONTROL
+ *    \brief   Struct for SHAPEFILE_CONTROL (52)
  */
 typedef struct _dwg_object_SHAPEFILE_CONTROL
 {
@@ -1490,7 +1562,8 @@ typedef struct _dwg_object_SHAPEFILE_CONTROL
 } Dwg_Object_SHAPEFILE_CONTROL;
 
 /**
- Struct for SHAPEFILE (53)
+ *    \struct  _dwg_object_SHAPEFILE
+ *    \brief   Struct for SHAPEFILE (53)
  */
 typedef struct _dwg_object_SHAPEFILE
 {
@@ -1516,7 +1589,8 @@ typedef struct _dwg_object_SHAPEFILE
 // 54 and 55 are UNKNOWN OBJECTS
 
 /**
- Struct for LTYPE_CONTROL (56)
+ *    \struct  _dwg_object_LTYPE_CONTROL
+ *    \brief   Struct for LTYPE_CONTROL (56)
  */
 typedef struct _dwg_object_LTYPE_CONTROL
 {
@@ -1529,9 +1603,9 @@ typedef struct _dwg_object_LTYPE_CONTROL
 } Dwg_Object_LTYPE_CONTROL;
 
 /**
- Struct for LTYPE (57)
+ *    \struct  _ltype_dash
+ *    \brief   Struct for LTYPE (57)
  */
-
 typedef struct _ltype_dash{
     BITCODE_BD length;
     BITCODE_BS complex_shapecode;
@@ -1542,6 +1616,9 @@ typedef struct _ltype_dash{
     BITCODE_BS shape_flag;
 } LTYPE_dash;
 
+/**
+ *    \struct  _dwg_object_LTYPE
+ */
 typedef struct _dwg_object_LTYPE
 {
   BITCODE_TV entry_name;
@@ -1562,9 +1639,8 @@ typedef struct _dwg_object_LTYPE
 } Dwg_Object_LTYPE;
 
 // 58 and 59 are UNKNOWN OBJECTS
-
 /**
- Struct for VIEW_CONTROL (60)
+ *    \struct  _dwg_object_VIEW_CONTROL
  */
 typedef struct _dwg_object_VIEW_CONTROL
 {
@@ -1575,7 +1651,8 @@ typedef struct _dwg_object_VIEW_CONTROL
 } Dwg_Object_VIEW_CONTROL;
 
 /**
- Struct for VIEW (61)
+ *    \struct  _dwg_object_VIEW
+ *    \brief   Struct for VIEW (61)
  */
 typedef struct _dwg_object_VIEW
 {
@@ -1612,7 +1689,8 @@ typedef struct _dwg_object_VIEW
 } Dwg_Object_VIEW;
 
 /**
- Struct for UCS_CONTROL (62)
+ *    \struct  _dwg_object_UCS_CONTROL
+ *    \brief   Struct for UCS_CONTROL (62)
  */
 typedef struct _dwg_object_UCS_CONTROL
 {
@@ -1623,7 +1701,8 @@ typedef struct _dwg_object_UCS_CONTROL
 } Dwg_Object_UCS_CONTROL;
 
 /**
- Struct for UCS (63)
+ *    \struct  _dwg_object_UCS
+ *    \brief   Struct for UCS (63)
  */
 typedef struct _dwg_object_UCS
 {
@@ -1646,7 +1725,8 @@ typedef struct _dwg_object_UCS
 } Dwg_Object_UCS;
 
 /**
- Struct for VPORT_CONTROL (64)
+ *    \struct  _dwg_object_VPORT_CONTROL
+ *    \brief   Struct for VPORT_CONTROL (64)
  */
 typedef struct _dwg_object_VPORT_CONTROL
 {
@@ -1657,7 +1737,8 @@ typedef struct _dwg_object_VPORT_CONTROL
 } Dwg_Object_VPORT_CONTROL;
 
 /**
- Struct for VPORT (65)
+ *    \struct  _dwg_object_VPORT
+ *    \brief   Struct for VPORT (65)
  */
 typedef struct _dwg_object_VPORT
 {
@@ -1717,7 +1798,8 @@ typedef struct _dwg_object_VPORT
 } Dwg_Object_VPORT;
 
 /**
- Struct for APPID_CONTROL (66)
+ *    \struct  _dwg_object_APPID_CONTROL
+ *    \brief   Struct for  APPID_CONTROL (66)
  */
 typedef struct _dwg_object_APPID_CONTROL
 {
@@ -1728,7 +1810,8 @@ typedef struct _dwg_object_APPID_CONTROL
 } Dwg_Object_APPID_CONTROL;
 
 /**
- Struct for APPID (67)
+ *    \struct  _dwg_object_APPID
+ *    \brief   Struct for APPID (67)
  */
 typedef struct _dwg_object_APPID
 {
@@ -1744,19 +1827,21 @@ typedef struct _dwg_object_APPID
 } Dwg_Object_APPID;
 
 /**
- Struct for DIMSTYLE_CONTROL (68)
+ *    \struct  _dwg_object_DIMSTYLE_CONTROL
+ *    \brief   Struct for DIMSTYLE_CONTROL (68)
  */
 typedef struct _dwg_object_DIMSTYLE_CONTROL
 {
   BITCODE_BS num_entries;
-  BITCODE_H unknown_handle;  /*This is not stated in the spec*/
+  BITCODE_H unknown_handle;  /* This is not stated in the spec */
   BITCODE_H null_handle;
   BITCODE_H xdicobjhandle;
   BITCODE_H* dimstyles;
 } Dwg_Object_DIMSTYLE_CONTROL;
 
 /**
- Struct for DIMSTYLE (69)
+ *    \struct  _dwg_object_DIMSTYLE
+ *    \brief   Struct for DIMSTYLE (69)
  */
 typedef struct _dwg_object_DIMSTYLE
 {
@@ -1867,7 +1952,8 @@ typedef struct _dwg_object_DIMSTYLE
 } Dwg_Object_DIMSTYLE;
 
 /**
- Struct for VP_ENT_HDR_CONTROL (70)
+ *    \struct  _dwg_object_VP_ENT_HDR_CONTROL
+ *    \brief   Struct for VP_ENT_HDR_CONTROL (70)
  */
 typedef struct _dwg_object_VP_ENT_HDR_CONTROL
 {
@@ -1878,7 +1964,8 @@ typedef struct _dwg_object_VP_ENT_HDR_CONTROL
 } Dwg_Object_VP_ENT_HDR_CONTROL;
 
 /**
- Struct for VP_ENT_HDR (71)
+ *    \struct  _dwg_object_VP_ENT_HDR
+ *    \brief   Struct for VP_ENT_HDR (71)
  */
 typedef struct _dwg_object_VP_ENT_HDR
 {
@@ -1894,7 +1981,8 @@ typedef struct _dwg_object_VP_ENT_HDR
 } Dwg_Object_VP_ENT_HDR;
 
 /**
- Struct for GROUP (72)
+ *    \struct  _dwg_object_GROUP
+ *    \brief   Struct for GROUP (72)
  */
 typedef struct _dwg_object_GROUP
 {
@@ -1909,7 +1997,8 @@ typedef struct _dwg_object_GROUP
 } Dwg_Object_GROUP;
 
 /**
- Struct for MLINESTYLE (73)
+ *    \struct  _dwg_object_MLINESTYLE_line
+ *    \brief   Struct for MLINESTYLE (73)
  */
 typedef struct _dwg_object_MLINESTYLE_line
 {
@@ -1918,6 +2007,9 @@ typedef struct _dwg_object_MLINESTYLE_line
   BITCODE_BS ltindex;
 } Dwg_Object_MLINESTYLE_line;
 
+/**
+ *    \struct  _dwg_object_MLINESTYLE
+ */
 typedef struct _dwg_object_MLINESTYLE
 {
   BITCODE_TV name;
@@ -1935,7 +2027,8 @@ typedef struct _dwg_object_MLINESTYLE
 } Dwg_Object_MLINESTYLE;
 
 /**
- Struct for DICTIONARYVAR (varies)
+ *    \struct  _dwg_object_DICTIONARYVAR
+ *    \brief   Struct for DICTIONARYVAR (varies)
  */
 typedef struct _dwg_object_DICTIONARYVAR
 {
@@ -1947,9 +2040,9 @@ typedef struct _dwg_object_DICTIONARYVAR
 } Dwg_Object_DICTIONARYVAR;
 
 /**
- Structs for HATCH (varies)
+ *    \struct  _dwg_entity_HATCH_color
+ *    \brief   Struct for HATCH (varies)
  */
-
 typedef struct _dwg_entity_HATCH_color
 {
   BITCODE_BD unknown_double;
@@ -1958,12 +2051,18 @@ typedef struct _dwg_entity_HATCH_color
   BITCODE_RC ignored_color_byte;
 } Dwg_Entity_HATCH_Color;
 
+/**
+ *    \struct  _dwg_entity_HATCH_control_point
+ */
 typedef struct _dwg_entity_HATCH_control_point
 {
   BITCODE_2RD point;
   BITCODE_BD weigth;
 } Dwg_Entity_HATCH_ControlPoint;
 
+/**
+ *    \struct  _dwg_entity_HATCH_pathseg
+ */
 typedef struct _dwg_entity_HATCH_pathseg
 {
   BITCODE_RC type_status;
@@ -1977,12 +2076,12 @@ typedef struct _dwg_entity_HATCH_pathseg
   BITCODE_BD end_angle;
   BITCODE_B is_ccw;
   /* ELLIPTICAL ARC */
-//BITCODE_2RD center
+  // BITCODE_2RD center
   BITCODE_2RD endpoint;
   BITCODE_BD minor_major_ratio;
-//BITCODE_BD start_angle;
-//BITCODE_BD end_angle;
-//BITCODE_B is_ccw;
+  // BITCODE_BD start_angle;
+  // BITCODE_BD end_angle;
+  // BITCODE_B is_ccw;
   /* SPLINE */
   BITCODE_BL degree;
   BITCODE_B is_rational;
@@ -1993,27 +2092,35 @@ typedef struct _dwg_entity_HATCH_pathseg
   Dwg_Entity_HATCH_ControlPoint* control_points;
 } Dwg_Entity_HATCH_PathSeg;
 
-
+/**
+ *    \struct  _dwg_entity_HATCH_polylinepath
+ */
 typedef struct _dwg_entity_HATCH_polylinepath
 {
   BITCODE_2RD point;
   BITCODE_BD bulge;
 } Dwg_Entity_HATCH_PolylinePath;
 
+/**
+ *    \struct  _dwg_entity_HATCH_path 
+ */
 typedef struct _dwg_entity_HATCH_path
 {
   BITCODE_BL flag;
   BITCODE_BL num_path_segs;
   Dwg_Entity_HATCH_PathSeg* segs;
 
-  /*POLYLINE PATH:*/
+  /* POLYLINE PATH: */
   BITCODE_B bulges_present;
   BITCODE_B closed;
-  //BITCODE_BL num_path_segs;
+  // BITCODE_BL num_path_segs;
   Dwg_Entity_HATCH_PolylinePath* polyline_paths;
   BITCODE_BL num_boundary_obj_handles;
 } Dwg_Entity_HATCH_Path;
 
+/**
+ *    \struct  _dwg_entity_HATCH 
+ */
 typedef struct _dwg_entity_HATCH
 {
   BITCODE_BL is_gradient_fill;
@@ -2025,7 +2132,7 @@ typedef struct _dwg_entity_HATCH
   BITCODE_BL num_colors;
   Dwg_Entity_HATCH_Color* colors;
   BITCODE_TV gradient_name;
-  BITCODE_BD z_coord; //x,y always 0.0
+  BITCODE_BD z_coord; // x,y always 0.0
   BITCODE_3BD extrusion;
   BITCODE_TV name;
   BITCODE_B solid_fill;
@@ -2035,7 +2142,8 @@ typedef struct _dwg_entity_HATCH
 } Dwg_Entity_HATCH;
 
 /**
- Struct for IDBUFFER (varies)
+ *    \struct  _dwg_object_IDBUFFER
+ *    \brief   Struct for  IDBUFFER (varies)
  */
 typedef struct _dwg_object_IDBUFFER
 {
@@ -2048,7 +2156,8 @@ typedef struct _dwg_object_IDBUFFER
 } Dwg_Object_IDBUFFER;
 
 /**
- Struct for IMAGE (varies)
+ *    \struct   _dwg_entity_IMAGE_clip_vert
+ *    \brief   Struct for IMAGE (varies)
  */
 typedef struct _dwg_entity_IMAGE_clip_vert
 {
@@ -2056,6 +2165,9 @@ typedef struct _dwg_entity_IMAGE_clip_vert
   double y;
 } Dwg_Entity_IMAGE_clip_vert;
 
+/**
+ *    \struct  _dwg_entity_IMAGE
+ */
 typedef struct _dwg_entity_IMAGE
 {
   BITCODE_BL class_version;
@@ -2082,7 +2194,8 @@ typedef struct _dwg_entity_IMAGE
 } Dwg_Entity_IMAGE;
 
 /**
- Struct for IMAGEDEF (varies)
+ *    \struct  _dwg_object_IMAGEDEF
+ *    \brief   Struct for IMAGEDEF (varies)
  */
 typedef struct _dwg_object_IMAGEDEF
 {
@@ -2098,7 +2211,8 @@ typedef struct _dwg_object_IMAGEDEF
 } Dwg_Object_IMAGEDEF;
 
 /**
- Struct for IMAGEDEFREACTOR (varies)
+ *    \struct  _dwg_object_IMAGEDEFREACTOR
+ *    \brief   Struct for IMAGEDEFREACTOR (varies)
  */
 typedef struct _dwg_object_IMAGEDEFREACTOR
 {
@@ -2109,7 +2223,8 @@ typedef struct _dwg_object_IMAGEDEFREACTOR
 } Dwg_Object_IMAGEDEFREACTOR;
 
 /**
- Struct for LAYER_INDEX (varies)
+ *    \struct  _dwg_layer_entry
+ *    \brief   Struct for LAYER_INDEX (varies)
  */
 typedef struct _dwg_layer_entry
 {
@@ -2117,6 +2232,9 @@ typedef struct _dwg_layer_entry
   BITCODE_TV index_str;
 } Dwg_LAYER_entry;
 
+/**
+ *    \struct  _dwg_object_LAYER_INDEX
+ */
 typedef struct _dwg_object_LAYER_INDEX
 {
   BITCODE_BL timestamp1;
@@ -2130,7 +2248,8 @@ typedef struct _dwg_object_LAYER_INDEX
 } Dwg_Object_LAYER_INDEX;
 
 /**
- Struct for LAYOUT (varies)
+ *    \struct  _dwg_object_LAYOUT
+ *    \brief   Struct for LAYOUT (varies)
  */
 typedef struct _dwg_object_LAYOUT
 {
@@ -2188,15 +2307,18 @@ typedef struct _dwg_object_LAYOUT
 } Dwg_Object_LAYOUT;
 
 /**
- Structures for LWPLINE
+ *    \struct  _dwg_entity_LWPLINE_width
+ *    \brief   Struct for LWPLINE
  */
-
 typedef struct _dwg_entity_LWPLINE_width
 {
   BITCODE_BD start;
   BITCODE_BD end;
 } Dwg_Entity_LWPLINE_width;
 
+/**
+ *    \struct  _dwg_entity_LWPLINE
+ */
 typedef struct _dwg_entity_LWPLINE
 {
   BITCODE_BS flags;
@@ -2213,7 +2335,8 @@ typedef struct _dwg_entity_LWPLINE
 } Dwg_Entity_LWPLINE;
 
 /**
- Struct for OLE2FRAME
+ *    \struct  _dwg_entity_OLE2FRAME
+ *    \brief   Struct for OLE2FRAME
  */
 typedef struct _dwg_entity_OLE2FRAME
 {
@@ -2223,9 +2346,9 @@ typedef struct _dwg_entity_OLE2FRAME
   BITCODE_RC* data;
   BITCODE_RC unknown;
 } Dwg_Entity_OLE2FRAME;
-
 /**
- Struct for PROXY (varies)
+ *    \struct  _dwg_object_PROXY
+ *    \brief   Struct for PROXY (varies)
  */
 typedef struct _dwg_object_PROXY
 {
@@ -2239,7 +2362,8 @@ typedef struct _dwg_object_PROXY
 } Dwg_Object_PROXY;
 
 /**
- Struct for PLACEHOLDER (varies)
+ *    \struct  _dwg_object_PLACEHOLDER
+ *    \brief   Struct for PLACEHOLDER (varies)
  */
 typedef struct _dwg_object_PLACEHOLDER
 {
@@ -2249,7 +2373,8 @@ typedef struct _dwg_object_PLACEHOLDER
 } Dwg_Object_PLACEHOLDER;
 
 /**
- Struct for RASTERVARIABLES (varies)
+ *    \struct  _dwg_object_RASTERVARIABLES
+ *    \brief   Struct for RASTERVARIABLES (varies)
  */
 typedef struct _dwg_object_RASTERVARIABLES
 {
@@ -2263,7 +2388,8 @@ typedef struct _dwg_object_RASTERVARIABLES
 } Dwg_Object_RASTERVARIABLES;
 
 /**
- Struct for SORTENTSTABLE (varies)
+ *    \struct  _dwg_object_SORTENTSTABLE
+ *    \brief   Struct for SORTENTSTABLE (varies)
  */
 typedef struct _dwg_object_SORTENTSTABLE
 {
@@ -2277,7 +2403,8 @@ typedef struct _dwg_object_SORTENTSTABLE
 } Dwg_Object_SORTENTSTABLE;
 
 /**
- Struct for SPATIAL_FILTER (varies)
+ *    \struct  _dwg_object_SPATIAL_FILTER
+ *    \brief   Struct for SPATIAL_FILTER (varies)
  */
 typedef struct _dwg_object_SPATIAL_FILTER
 {
@@ -2298,7 +2425,8 @@ typedef struct _dwg_object_SPATIAL_FILTER
 } Dwg_Object_SPATIAL_FILTER;
 
 /**
- Struct for SPATIAL_INDEX (varies)
+ *    \struct  _dwg_object_SPATIAL_INDEX
+ *    \brief   Struct for SPATIAL_INDEX (varies)
  */
 typedef struct _dwg_object_SPATIAL_INDEX
 {
@@ -2311,9 +2439,9 @@ typedef struct _dwg_object_SPATIAL_INDEX
 } Dwg_Object_SPATIAL_INDEX;
 
 /**
- Structs for TABLE (varies)
+ *    \struct  _dwg_entity_TABLE_cell
+ *    \brief   Struct for TABLE (varies)
  */
-
 typedef struct _dwg_entity_TABLE_cell
 {
   BITCODE_BS type;
@@ -2367,6 +2495,9 @@ typedef struct _dwg_entity_TABLE_cell
   BITCODE_H text_style_override;
 } Dwg_Entity_TABLE_Cell;
 
+/**
+ *    \struct  _dwg_entity_TABLE
+ */
 typedef struct _dwg_entity_TABLE
 {
   BITCODE_3BD insertion_point;
@@ -2480,28 +2611,31 @@ typedef struct _dwg_entity_TABLE
   BITCODE_H data_row_style_override;
 } Dwg_Entity_TABLE;
 
-//NOT SURE ABOUT THIS ONE (IS IT OBJECT OR ENTITY?):
+// Not sure about this one (Is It OBJECT or ENTITY?):
 /**
- Struct for VBA_PROJECT (varies)
+ *    \struct  _dwg_object_VBA_PROJECT
+ *    \brief   Struct for VBA_PROJECT (varies)
  */
 typedef struct _dwg_object_VBA_PROJECT
 {
   char dummy;
-//TODO 
+  //TODO 
 } Dwg_Object_VBA_PROJECT;
 
-//NOT SURE ABOUT THIS ONE (IS IT OBJECT OR ENTITY?):
+// Not sure about this one (Is It OBJECT or ENTITY?):
 /**
- Struct for WIPEOUTVARIABLE (varies)
+ *    \struct   _dwg_object_WIPEOUTVARIABLE
+ *    \brief    Struct for WIPEOUTVARIABLE (varies)
  */
 typedef struct _dwg_object_WIPEOUTVARIABLE
 {
   char dummy;
-//TODO 
+  //TODO 
 } Dwg_Object_WIPEOUTVARIABLE;
 
 /**
- Struct for XRECORD (varies)
+ *    \struct  _dwg_object_XRECORD
+ *    \brief   Struct for XRECORD (varies)
  */
 typedef struct _dwg_object_XRECORD
 {
@@ -2514,10 +2648,10 @@ typedef struct _dwg_object_XRECORD
   BITCODE_H* objid_handles;
 } Dwg_Object_XRECORD;
 
-/* OBJECTS - END ************************************************************/
-
+/* OBJECTS - END */
 /**
- Structure for common entity attributes
+ *    \struct  _dwg_object_entity
+ *    \brief   Structure for common entity attributes
  */
 typedef struct _dwg_object_entity
 {
@@ -2577,7 +2711,7 @@ typedef struct _dwg_object_entity
   } tio;
 
   BITCODE_RL bitsize;
-  //Dwg_Handle handle;
+  // Dwg_Handle handle;
 
   BITCODE_BS extended_size;
   Dwg_Handle extended_handle;
@@ -2601,11 +2735,11 @@ typedef struct _dwg_object_entity
   BITCODE_BS invisible;
   BITCODE_RC lineweight;
 
-  //XXX I think this field is deprecated due to
-  //the new handle parsing functions
+  // XXX I think this field is deprecated due to
+  // the new handle parsing functions
   unsigned int num_handles;
 
-  //Common Entity Handle Data
+  // Common Entity Handle Data
   BITCODE_H subentity;
   BITCODE_H* reactors;
   BITCODE_H xdicobjhandle;
@@ -2619,7 +2753,8 @@ typedef struct _dwg_object_entity
 } Dwg_Object_Entity;
 
 /**
- Structure for ordinary object attributes
+ *    \struct  _dwg_object_object
+ *    \brief   Structure for ordinary object attributes
  */
 typedef struct _dwg_object_object
 {
@@ -2668,22 +2803,23 @@ typedef struct _dwg_object_object
   } tio;
 
   long unsigned int bitsize;
-  //Dwg_Handle handle;
+  // Dwg_Handle handle;
   unsigned int extended_size;
   Dwg_Handle extended_handle;
   unsigned char *extended;
 
-//TODO: should these be removed?
+  // TODO: should these be removed?
   long unsigned int num_reactors;
   unsigned char xdic_missing_flag;
-  //		unsigned char picture_exists;
+  // unsigned char picture_exists;
 
   unsigned int num_handles;
   Dwg_Handle *handleref;
 } Dwg_Object_Object;
 
 /**
- General object struct
+ *    \struct  _dwg_object
+ *    \brief   General object struct
  */
 typedef struct _dwg_object
 {
@@ -2707,7 +2843,8 @@ typedef struct _dwg_object
 } Dwg_Object;
 
 /**
- Struct for classes
+ *    \struct  _dwg_class
+ *    \brief   Struct for classes
  */
 typedef struct _dwg_class
 {
@@ -2721,7 +2858,8 @@ typedef struct _dwg_class
 } Dwg_Class;
 
 /**
- Dwg_Chain same as Bit_Chain in "bits.h"
+ *    \struct  _dwg_chain
+ *    \brief   Dwg_Chain same as Bit_Chain in "bits.h"
  */
 typedef struct _dwg_chain
 {
@@ -2731,15 +2869,19 @@ typedef struct _dwg_chain
   unsigned char bit;
 } Dwg_Chain;
 
+/**
+ *    \struct  _dwg_section
+ *    \brief   Struct for DWG section
+ */
 typedef struct _dwg_section
 {
   int number;
   unsigned int address;
   unsigned int size;
-	int parent;
-	int left;
-	int right;
-	int x00;
+  int parent;
+  int left;
+  int right;
+  int x00;
 } Dwg_Section;
 
 typedef struct
@@ -2756,6 +2898,9 @@ typedef struct
   Dwg_Section **sections;
 } Dwg_Section_Info;
 
+/**
+ *  \enum   DWG_SECTION_TYPE
+ */
 typedef enum DWG_SECTION_TYPE
 {
   SECTION_HEADER = 0x01,
@@ -2777,7 +2922,8 @@ typedef enum DWG_SECTION_TYPE
 } Dwg_Section_Type;
 
 /**
- Main DWG struct
+ *    \struct  _dwg_struct
+ *    \brief   Main DWG struct
  */
 typedef struct _dwg_struct
 {
@@ -2791,7 +2937,7 @@ typedef struct _dwg_struct
     Dwg_Section_Info* section_info;
   } header;
 
-#		define DWG_UNKNOWN1_SIZE 123
+  #define DWG_UNKNOWN1_SIZE 123
   Dwg_Chain unknown1;
 
   Dwg_Chain picture;
@@ -2805,7 +2951,7 @@ typedef struct _dwg_struct
 
   long unsigned int num_layers;
   long unsigned int num_entities;
-  //Dwg_Object *layer;
+  // Dwg_Object *layer;
 
   long unsigned int num_object_refs;
   Dwg_Object_Ref ** object_ref;
@@ -2830,9 +2976,7 @@ typedef struct _dwg_struct
 
 } Dwg_Data;
 
-/*--------------------------------------------------
- * Functions
- */
+/* Functions */
 
 int
 dwg_read_file(char *filename, Dwg_Data * dwg);

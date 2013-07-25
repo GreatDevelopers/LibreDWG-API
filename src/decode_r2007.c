@@ -10,9 +10,12 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * decode_r2007.c: functions to decode R2007 (r21) files
- * written by Till Heuschmann
+/**
+ *     \file       decode_r2007.c
+ *     \brief      R2007 decode functions
+ *     \author     written by Till Heuschmann
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 #include <stdio.h>
