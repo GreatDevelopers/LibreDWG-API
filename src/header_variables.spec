@@ -538,8 +538,8 @@
       FIELD_RC(unknown_45);
       FIELD_RC(unknown_46);
       FIELD_B(unknown_47);
-      FIELD_CMC (unknown_48);
-      FIELD_HANDLE unknown_49, ANYCODE);
+      FIELD_CMC(unknown_48);
+      FIELD_HANDLE(unknown_49, ANYCODE);
       FIELD_HANDLE(unknown_50, ANYCODE);
       FIELD_HANDLE(unknown_51, ANYCODE);
       FIELD_RC(unknown_52);

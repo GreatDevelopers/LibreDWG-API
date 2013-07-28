@@ -24,7 +24,7 @@
 #include "object.h"
 #include "decode.h"
 #include "logging.h"
-#include "dwg.spec"
+#include <dwg.spec>
 #include "dwg.h"
 
 static unsigned int loglevel;

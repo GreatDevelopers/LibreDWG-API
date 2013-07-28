@@ -201,4 +201,9 @@ bit_explore_chain(Bit_Chain *dat, long unsigned int size);
 unsigned int
 bit_ckr8(unsigned int dx, unsigned char *adr, long n);
 
+/* 32-bit CRC
+ */
+unsigned long int
+bit_ckr32 (unsigned int seed, unsigned char *adr, unsigned int n);
+
 #endif

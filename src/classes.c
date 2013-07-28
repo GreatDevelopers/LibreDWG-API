@@ -25,9 +25,6 @@
 #include "decode_r2004.h"
 #include "logging.h"
 
-extern unsigned int
-bit_ckr8(unsigned int dx, unsigned char *adr, long n);
-
 /** R13_R15 Class Section */
 void
 read_R13_R15_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
@@ -109,8 +106,7 @@ read_R13_R15_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
 }
 
 
-/* R2004 Class Section
- */
+/** R2004 Class Section */
 void
 read_2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
 {
@@ -175,6 +171,30 @@ read_2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
           dwg->num_classes++;
         } while (sec_dat.byte < (size - 1));
     }
-    free(sec_dat.chain);
+
+  /* Check CRC-on */
+  long unsigned int pvz;
+  unsigned long int ckr, ckr2;
+  
+  sec_dat.byte = dwg->header.section[1].address + dwg->header.section[1].size
+                 - 18;
+  sec_dat.bit = 0;
+ 
+  ckr  = bit_read_RL(dat);
+  ckr2 = bit_ckr32(0xc0c1, dat->chain + dwg->header.section[1].address + 16,
+                   dwg->header.section[1].size - 34);
+ 
+  if (ckr != ckr2)
+    {
+      printf("Section %d crc todo ckr:%x ckr2:%x \n",
+              dwg->header.section[1].number, ckr, ckr2);
+      return -1;
+    }
+ 
+  sec_dat.byte += 16;
+  pvz = bit_read_RL(dat); // Unknown bitlong inter class and object
+  LOG_TRACE("Address: %lu / Content: 0x%#lX \n", sec_dat.byte - 4, pvz)
+  LOG_INFO("Number of classes read: %u\n", dwg->num_classes)
+  free(sec_dat.chain);
 }
 
