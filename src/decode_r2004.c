@@ -485,17 +485,32 @@ decode_R2004(Bit_Chain* dat, Dwg_Data * dwg)
   int i;
   int32_t preview_address, security_type, unknown_long,
           dwg_property_address, vba_proj_address;
-  unsigned char sig, dwg_ver, maint_release_ver;
-
-  //6 bytes of 0x00
-  dat->byte = 0x06;
-  LOG_INFO("6 bytes of 0x00: ")
+  unsigned char ver_string, sig, dwg_ver, maint_release_ver, acad_maint_ver;
+ 
+  /* 6 bytes of 0x00 */
+  dat->byte = 0x00;
+  LOG_INFO("Version string: ")
   for (i = 0; i < 6; i++)
+    {
+      ver_string = bit_read_RC(dat);
+      LOG_INFO( "0x%02X", ver_string)
+    }
+  LOG_INFO("\n")
+
+  /* 5 bytes of 0x00 */
+  dat->byte = 0x06;
+  LOG_INFO("5 bytes of 0x00: ")
+  for (i = 0; i < 4; i++)
     {
       sig = bit_read_RC(dat);
       LOG_INFO( "0x%02X ", sig)
     }
   LOG_INFO("\n")
+
+  /* Maintenance release version */
+  dat->byte = 0x0B;
+  maint_release_ver = bit_read_RC(dat);
+  LOG_INFO( "Maintenanace release version: 0x%02X\n", maint_release_ver)
 
   /* Byte 0x00, 0x01, or 0x03 */
   dat->byte = 0x0C;
@@ -514,8 +529,8 @@ decode_R2004(Bit_Chain* dat, Dwg_Data * dwg)
 
   /* MaintReleaseVer */
   dat->byte = 0x12;
-  maint_release_ver = bit_read_RC(dat);
-  LOG_INFO("MaintRelease: %u\n", maint_release_ver)
+  acad_maint_ver = bit_read_RC(dat);
+  LOG_INFO("MaintRelease: %u\n", acad_maint_ver)
 
   /* Codepage */
   dat->byte = 0x13;
@@ -535,18 +550,18 @@ decode_R2004(Bit_Chain* dat, Dwg_Data * dwg)
   /* SecurityType */
   dat->byte = 0x18;
   security_type = bit_read_RL(dat);
-  LOG_INFO("SecurityType: 0x%08X\n", (unsigned int) security_type)
+  LOG_INFO("Security Type: 0x%08X\n", (unsigned int) security_type)
 
   /* Unknown long */
   dat->byte = 0x1C;
   unknown_long = bit_read_RL(dat);
   LOG_INFO("Unknown long: 0x%08X\n", (unsigned int) unknown_long)
 
-  /* DWG Property Addr */
+  /* Summary Info Addr */
   dat->byte = 0x20;
   dwg_property_address = bit_read_RL(dat);
-  LOG_INFO("DWG Property Addr: 0x%08X\n",
-        (unsigned int) dwg_property_address)
+  LOG_INFO("Summary Info Addr: 0x%08X\n",
+           (unsigned int) dwg_property_address)
 
   /* VBA Project Addr */
   dat->byte = 0x24;

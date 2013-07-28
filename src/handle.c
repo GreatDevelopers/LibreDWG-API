@@ -246,7 +246,7 @@ read_2004_section_handles(Bit_Chain *dat, Dwg_Data *dwg)
       sgdc[1] = bit_read_RC(&hdl_dat);
       
       ckr = (sgdc[0] << 8) | sgdc[1];
-      ckr2 = bit_ckr32(0xc0c1, hdl_dat.chain + duabyte, section_size);
+      ckr2 = bit_ckr32(0xc0c1, &hdl_dat.chain + duabyte, section_size);
  
       if (ckr != ckr2)
         {
