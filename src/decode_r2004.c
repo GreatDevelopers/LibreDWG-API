@@ -59,8 +59,7 @@ typedef union _encrypted_section_header
   } fields;
 } encrypted_section_header;
 
-/* R2004 Literal Length
- */
+/** R2004 Literal Length */
 int
 read_literal_length(Bit_Chain* dat, unsigned char *opcode)
 {
@@ -86,8 +85,7 @@ read_literal_length(Bit_Chain* dat, unsigned char *opcode)
   return 0;
 }
 
-/* R2004 Long Compression Offset
- */
+/** R2004 Long Compression Offset */
 int
 read_long_compression_offset(Bit_Chain* dat)
 {
@@ -102,8 +100,7 @@ read_long_compression_offset(Bit_Chain* dat)
   return total + byte;
 }
 
-/* R2004 Two Byte Offset
- */
+/** R2004 Two Byte Offset */
 int
 read_two_byte_offset(Bit_Chain* dat, int* lit_length)
 {
@@ -115,8 +112,7 @@ read_two_byte_offset(Bit_Chain* dat, int* lit_length)
   return offset;
 }
 
-/* Decompresses a system section of a 2004 DWG flie
- */
+/** Decompresses a system section of a 2004 DWG flie */
 int
 decompress_R2004_section(Bit_Chain* dat, char *decomp,
                          unsigned long int comp_data_size)
@@ -198,7 +194,7 @@ decompress_R2004_section(Bit_Chain* dat, char *decomp,
       else
           return 1;  // error in input stream
 
-      //LOG_TRACE("got compressed data %d\n",comp_bytes)
+      // LOG_TRACE("got compressed data %d\n",comp_bytes)
       // copy "compressed data"
       src = dst - comp_offset - 1;
       assert(src > decomp);
@@ -206,7 +202,7 @@ decompress_R2004_section(Bit_Chain* dat, char *decomp,
         *dst++ = *src++;
 
       // copy "literal data"
-      //LOG_TRACE("got literal data %d\n",lit_length)
+      // LOG_TRACE("got literal data %d\n",lit_length)
       for (i = 0; i < lit_length; ++i)
         *dst++ = bit_read_RC(dat);
     }
@@ -295,7 +291,7 @@ read_R2004_section_info(Bit_Chain* dat, Dwg_Data *dwg,
   for (i = 0; i < dwg->header.num_descriptions; ++i)
     {
       dwg->header.section_info[i].size            = *((int*)ptr);
-      dwg->header.section_info[i].unknown1 	      = *((int*)ptr + 1);
+      dwg->header.section_info[i].unknown1 	  = *((int*)ptr + 1);
       dwg->header.section_info[i].num_sections    = *((int*)ptr + 2);
       dwg->header.section_info[i].max_decomp_size = *((int*)ptr + 3);
       dwg->header.section_info[i].unknown2        = *((int*)ptr + 4);
@@ -307,57 +303,57 @@ read_R2004_section_info(Bit_Chain* dat, Dwg_Data *dwg,
       ptr += 64;
 
       LOG_TRACE("\nSection Info description fields\n")
-      LOG_TRACE("Size:                  %d",
-           (int) dwg->header.section_info[i].size)
-      LOG_TRACE("Unknown:               %d\n",
-           (int) dwg->header.section_info[i].unknown1)
-      LOG_TRACE("Number of sections:    %d\n",
-           (int) dwg->header.section_info[i].num_sections)
+      LOG_TRACE("Size: %d", (int) dwg->header.section_info[i].size)
+      LOG_TRACE("Unknown: %d\n", (int) dwg->header.section_info[i].unknown1)
+      LOG_TRACE("Number of sections:  %d\n",
+                (int) dwg->header.section_info[i].num_sections)
       LOG_TRACE("Max decompressed size: %d\n",
-           (int) dwg->header.section_info[i].max_decomp_size)
-      LOG_TRACE("Unknown:               %d\n",
-           (int) dwg->header.section_info[i].unknown2)
-      LOG_TRACE("Compressed (0x02):     %x\n",
-           (unsigned int) dwg->header.section_info[i].compressed)
-      LOG_TRACE("Section Type:          %d\n",
-           (int) dwg->header.section_info[i].type)
-      LOG_TRACE("Encrypted:             %d\n",
-           (int) dwg->header.section_info[i].encrypted)
-      LOG_TRACE("SectionName:           %s\n\n",
-            dwg->header.section_info[i].name)
+                (int) dwg->header.section_info[i].max_decomp_size)
+      LOG_TRACE("Unknown: %d\n", (int) dwg->header.section_info[i].unknown2)
+      LOG_TRACE("Compressed (0x02): %x\n",
+                (unsigned int) dwg->header.section_info[i].compressed)
+      LOG_TRACE("Section Type: %d\n", (int) dwg->header.section_info[i].type)
+      LOG_TRACE("Encrypted: %d\n", (int) dwg->header.section_info[i].encrypted)
+      LOG_TRACE("Section Name: %s\n\n", dwg->header.section_info[i].name)
 
-      dwg->header.section_info[i].sections = (Dwg_Section**)
-        malloc(dwg->header.section_info[i].num_sections * sizeof(Dwg_Section*));
+      dwg->header.section_info[i].sections = (Dwg_Section**) malloc
+                                      (dwg->header.section_info[i].num_sections
+                                             * sizeof(Dwg_Section*));
 
       if (dwg->header.section_info[i].num_sections < 10000)
 	{
-	  LOG_INFO("section count %ld in area %d\n",dwg->header.section_info[i].num_sections,i)
+	  LOG_INFO("Section count %ld in area %d\n", 
+                   dwg->header.section_info[i].num_sections, i)
 
 	  for (j = 0; j < dwg->header.section_info[i].num_sections; j++)
 	    {
 	      section_number = *((int*)ptr);      // Index into SectionMap
 	      data_size      = *((int*)ptr + 1);
 	      start_offset   = *((int*)ptr + 2);
-	      unknown        = *((int*)ptr + 3);  // high 32 bits of 64-bit start offset?
+              // high 32 bits of 64-bit start offset?
+	      unknown        = *((int*)ptr + 3);  
 	      ptr += 16;
 
-	      dwg->header.section_info[i].sections[j] = find_section(dwg, section_number);
+	      dwg->header.section_info[i].sections[j] = find_section(dwg,
+                                                        section_number);
 
 	      LOG_TRACE("Section Number: %d\n", section_number)
 	      LOG_TRACE("Data size:      %d\n", data_size)
 	      LOG_TRACE("Start offset:   %x\n", start_offset)
 	      LOG_TRACE("Unknown:        %d\n", unknown)
 	    }
-	}// sanity check
+	}  // sanity check
       else
 	{
-	  LOG_ERROR("section count %ld in area %d too high! skipping\n",dwg->header.section_info[i].num_sections,i)
+	  LOG_ERROR("section count %ld in area %d too high! skipping\n",
+                    dwg->header.section_info[i].num_sections, i)
 	}
     }
+
   free(decomp);
 }
 
-
+/** Compresses a system section of a 2004 DWG flie */
 int
 read_2004_compressed_section(Bit_Chain* dat, Dwg_Data *dwg,
                             Bit_Chain* sec_dat,
@@ -379,7 +375,8 @@ read_2004_compressed_section(Bit_Chain* dat, Dwg_Data *dwg,
 
   max_decomp_size = info->num_sections * info->max_decomp_size;
 
-  decomp = (char *)malloc(max_decomp_size * sizeof(char));
+  decomp = (char *) malloc(max_decomp_size * sizeof(char));
+
   if (decomp == 0)
     return 2;   // No memory
 
@@ -392,29 +389,25 @@ read_2004_compressed_section(Bit_Chain* dat, Dwg_Data *dwg,
         es.char_data[j] = bit_read_RC(dat);
 
       sec_mask = 0x4164536b ^ address;
+
       for (j = 0; j < 8; ++j)
         es.long_data[j] ^= sec_mask;
 
   LOG_INFO("\n=== Section (Class) ===\n")
-  LOG_INFO("Section Tag (should be 0x4163043b): %x\n",
-          (unsigned int) es.fields.tag)
-  LOG_INFO("Section Type:     %x\n",
+  LOG_INFO("Section Tag (should be 0x4163043b): %x \n",
+           (unsigned int) es.fields.tag)
+  LOG_INFO("Section Type: %x \n",
           (unsigned int) es.fields.section_type)
-  LOG_INFO("Data size:   %x\n",
-          (unsigned int) es.fields.data_size)   // this is the number of bytes that is read in decompress_R2004_section (+ 2bytes)
-  LOG_INFO("Comp data size:     %x\n",
-          (unsigned int) es.fields.section_size)
-  LOG_INFO("StartOffset:      %x\n",
-          (unsigned int) es.fields.start_offset)
-  LOG_INFO("Unknown:          %x\n",
-          (unsigned int) es.fields.unknown);
-  LOG_INFO("Checksum1:        %x\n",
-        (unsigned int) es.fields.checksum_1)
-  LOG_INFO("Checksum2:        %x\n\n",
-        (unsigned int) es.fields.checksum_2)
+  // this is the number of bytes that is read in decompress_R2004_section (+ 2bytes)
+  LOG_INFO("Data size: %x\n", (unsigned int) es.fields.data_size)   
+  LOG_INFO("Comp data size: %x\n", (unsigned int) es.fields.section_size)
+  LOG_INFO("StartOffset: %x \n", (unsigned int) es.fields.start_offset)
+  LOG_INFO("Unknown: %x \n", (unsigned int) es.fields.unknown);
+  LOG_INFO("Checksum1: %x \n", (unsigned int) es.fields.checksum_1)
+  LOG_INFO("Checksum2: %x \n\n", (unsigned int) es.fields.checksum_2)
 
-      decompress_R2004_section(dat, &decomp[i * info->max_decomp_size],
-        es.fields.data_size);
+  decompress_R2004_section(dat, &decomp[i * info->max_decomp_size],
+                           es.fields.data_size);
     }
 
   sec_dat->bit     = 0;
@@ -426,6 +419,7 @@ read_2004_compressed_section(Bit_Chain* dat, Dwg_Data *dwg,
   return 0;
 }
 
+/** Decode R2004 version */
 int
 decode_R2004(Bit_Chain* dat, Dwg_Data * dwg)
 {
@@ -483,8 +477,8 @@ decode_R2004(Bit_Chain* dat, Dwg_Data * dwg)
   Dwg_Section *section;
 
   int i;
-  int32_t preview_address, security_type, unknown_long,
-          dwg_property_address, vba_proj_address;
+  int32_t preview_address, security_type, unknown_long, dwg_property_address,
+          vba_proj_address;
   unsigned char ver_string, sig, dwg_ver, maint_release_ver, acad_maint_ver;
  
   /* 6 bytes of 0x00 */
@@ -560,14 +554,12 @@ decode_R2004(Bit_Chain* dat, Dwg_Data * dwg)
   /* Summary Info Addr */
   dat->byte = 0x20;
   dwg_property_address = bit_read_RL(dat);
-  LOG_INFO("Summary Info Addr: 0x%08X\n",
-           (unsigned int) dwg_property_address)
+  LOG_INFO("Summary Info Addr: 0x%08X\n", (unsigned int) dwg_property_address)
 
   /* VBA Project Addr */
   dat->byte = 0x24;
   vba_proj_address = bit_read_RL(dat);
-  LOG_INFO("VBA Project Addr: 0x%08X\n",
-        (unsigned int) vba_proj_address)
+  LOG_INFO("VBA Project Addr: 0x%08X\n", (unsigned int) vba_proj_address)
 
   /* 0x00000080 */
   dat->byte = 0x28;
@@ -580,9 +572,8 @@ decode_R2004(Bit_Chain* dat, Dwg_Data * dwg)
     {
       sig = bit_read_RC(dat);
       if (sig != 0 && loglevel)
-        LOG_ERROR(
-            "Warning: Byte should be zero! But a value=%x was read instead.\n",
-            sig)
+        LOG_ERROR("Warning: Byte should be zero! But a value = %x was read "
+                  "instead.\n", sig)
     }
 
   dat->byte = 0x80;
@@ -595,87 +586,88 @@ decode_R2004(Bit_Chain* dat, Dwg_Data * dwg)
 
   if (loglevel)
     {
-      LOG_TRACE("\n#### 2004 File Header Data fields ####\n")
+      LOG_TRACE("\n 2004 File Header Data fields \n")
       LOG_TRACE("File ID string (must be AcFssFcAJMB): ");
+
       for (i = 0; i < 12; i++)
         {
           LOG_TRACE("%c", _2004_header_data.fields.file_ID_string[i])
         }
+
       LOG_TRACE("\n")
-      LOG_TRACE("0x00 (long): %x\n",
-          (unsigned int) _2004_header_data.fields.x00)
-      LOG_TRACE("0x6c (long): %x\n",
-          (unsigned int) _2004_header_data.fields.x6c)
-      LOG_TRACE("0x04 (long): %x\n",
-          (unsigned int) _2004_header_data.fields.x04)
-      LOG_TRACE("Root tree node gap: %x\n",
-          (unsigned int) _2004_header_data.fields.root_tree_node_gap)
-      LOG_TRACE("Lowermost left tree node gap: %x\n",
-          (unsigned int) _2004_header_data.fields.lowermost_left_tree_node_gap)
-      LOG_TRACE("Lowermost right tree node gap: %x\n",
-          (unsigned int) _2004_header_data.fields.lowermost_right_tree_node_gap)
-      LOG_TRACE("Unknown long: %x\n",
-          (unsigned int) _2004_header_data.fields.unknown_long)
-      LOG_TRACE("Last section id: %x\n",
-          (unsigned int) _2004_header_data.fields.last_section_id)
+      LOG_TRACE("0x00 (long): %x \n",
+                (unsigned int) _2004_header_data.fields.x00)
+      LOG_TRACE("0x6c (long): %x \n",
+                 (unsigned int) _2004_header_data.fields.x6c)
+      LOG_TRACE("0x04 (long): %x \n",
+                 (unsigned int) _2004_header_data.fields.x04)
+      LOG_TRACE("Root tree node gap: %x \n",
+                (unsigned int) _2004_header_data.fields.root_tree_node_gap)
+      LOG_TRACE("Lowermost left tree node gap: %x \n",
+                (unsigned int) _2004_header_data.fields.lowermost_left_tree_node_gap)
+      LOG_TRACE("Lowermost right tree node gap: %x \n",
+                (unsigned int) _2004_header_data.fields.lowermost_right_tree_node_gap)
+      LOG_TRACE("Unknown long: %x \n",
+                (unsigned int) _2004_header_data.fields.unknown_long)
+      LOG_TRACE("Last section id: %x  \n",
+                (unsigned int) _2004_header_data.fields.last_section_id)
       LOG_TRACE("Last section address: %x\n",
-          (unsigned int) _2004_header_data.fields.last_section_address)
-      LOG_TRACE("0x00 (long): %x\n",
-          (unsigned int) _2004_header_data.fields.x00_2)
+                (unsigned int) _2004_header_data.fields.last_section_address)
+      LOG_TRACE("0x00 (long): %x \n",
+                (unsigned int) _2004_header_data.fields.x00_2)
       LOG_TRACE("Second header address: %x\n",
-          (unsigned int) _2004_header_data.fields.second_header_address)
-      LOG_TRACE("0x00 (long): %x\n",
-          (unsigned int) _2004_header_data.fields.x00_3)
-      LOG_TRACE("Gap amount: %x\n",
-          (unsigned int) _2004_header_data.fields.gap_amount)
-      LOG_TRACE("Section amount: %x\n",
-          (unsigned int) _2004_header_data.fields.section_amount)
-      LOG_TRACE("0x20 (long): %x\n",
-          (unsigned int) _2004_header_data.fields.x20)
-      LOG_TRACE("0x80 (long): %x\n",
-          (unsigned int) _2004_header_data.fields.x80)
-      LOG_TRACE("0x40 (long): %x\n",
-          (unsigned int) _2004_header_data.fields.x40)
-      LOG_TRACE("Section map id: %x\n",
-          (unsigned int) _2004_header_data.fields.section_map_id)
-      LOG_TRACE("Section map address: %x\n",
-          (unsigned int) _2004_header_data.fields.section_map_address + 0x100)
-      LOG_TRACE("0x00 (long): %x\n",
-          (unsigned int) _2004_header_data.fields.x00_4)
-      LOG_TRACE("Section Info id: %x\n",
-          (unsigned int) _2004_header_data.fields.section_info_id)
-      LOG_TRACE("Section array size: %x\n",
-          (unsigned int) _2004_header_data.fields.section_array_size)
-      LOG_TRACE("Gap array size: %x\n",
-          (unsigned int) _2004_header_data.fields.gap_array_size)
+                (unsigned int) _2004_header_data.fields.second_header_address)
+      LOG_TRACE("0x00 (long): %x \n",
+                (unsigned int) _2004_header_data.fields.x00_3)
+      LOG_TRACE("Gap amount: %x \n",
+                (unsigned int) _2004_header_data.fields.gap_amount)
+      LOG_TRACE("Section amount: %x \n",
+                (unsigned int) _2004_header_data.fields.section_amount)
+      LOG_TRACE("0x20 (long): %x \n",
+                (unsigned int) _2004_header_data.fields.x20)
+      LOG_TRACE("0x80 (long): %x \n",
+                (unsigned int) _2004_header_data.fields.x80)
+      LOG_TRACE("0x40 (long): %x \n",
+                (unsigned int) _2004_header_data.fields.x40)
+      LOG_TRACE("Section map id: %x \n",
+                (unsigned int) _2004_header_data.fields.section_map_id)
+      LOG_TRACE("Section map address: %x \n",
+                (unsigned int) _2004_header_data.fields.section_map_address 
+                 + 0x100)
+      LOG_TRACE("0x00 (long): %x \n",
+                (unsigned int) _2004_header_data.fields.x00_4)
+      LOG_TRACE("Section Info id: %x \n",
+                (unsigned int) _2004_header_data.fields.section_info_id)
+      LOG_TRACE("Section array size: %x \n",
+                (unsigned int) _2004_header_data.fields.section_array_size)
+      LOG_TRACE("Gap array size: %x \n",
+                (unsigned int) _2004_header_data.fields.gap_array_size)
       LOG_TRACE("CRC: %x\n", (unsigned int) _2004_header_data.fields.CRC)
     }
 
-  /*-------------------------------------------------------------------------
-   * Section Map
-   */
+  /* Section Map */
   dat->byte = _2004_header_data.fields.section_map_address + 0x100;
 
-  LOG_TRACE("\n\nRaw system section bytes:\n");
+  LOG_TRACE("\n\n Raw system section bytes: \n");
   for (i = 0; i < 0x14; i++)
     {
       ss.data[i] = bit_read_RC(dat);
       LOG_TRACE("%x ", ss.data[i])
     }
 
-  LOG_TRACE("\n=== System Section (Section Map) ===\n")
-  LOG_TRACE("Section Type (should be 0x4163043b): %x\n",
-          (unsigned int) ss.fields.section_type)
-  LOG_TRACE("DecompDataSize: %x\n",
-          (unsigned int) ss.fields.decomp_data_size)
-  LOG_TRACE("CompDataSize: %x\n",
-          (unsigned int) ss.fields.comp_data_size)
-  LOG_TRACE("Compression Type: %x\n",
-          (unsigned int) ss.fields.compression_type)
-  LOG_TRACE("Checksum: %x\n\n", (unsigned int) ss.fields.checksum)
+  LOG_TRACE("\n System Section (Section Map) \n")
+  LOG_TRACE("Section Type (should be 0x4163043b): %x \n",
+            (unsigned int) ss.fields.section_type)
+  LOG_TRACE("DecompDataSize: %x \n",
+            (unsigned int) ss.fields.decomp_data_size)
+  LOG_TRACE("CompDataSize: %x \n",
+            (unsigned int) ss.fields.comp_data_size)
+  LOG_TRACE("Compression Type: %x \n",
+            (unsigned int) ss.fields.compression_type)
+  LOG_TRACE("Checksum: %x \n\n", (unsigned int) ss.fields.checksum)
 
-  read_R2004_section_map(dat, dwg,
-      ss.fields.comp_data_size, ss.fields.decomp_data_size);
+  read_R2004_section_map(dat, dwg, ss.fields.comp_data_size,
+                         ss.fields.decomp_data_size);
 
   if (dwg->header.section == 0)
     {
@@ -683,34 +675,32 @@ decode_R2004(Bit_Chain* dat, Dwg_Data * dwg)
       return -1;
     }
 
-  /*-------------------------------------------------------------------------
-   * Section Info
-   */
+  /* Section Info */
   section = find_section(dwg, _2004_header_data.fields.section_info_id);
 
   if (section != 0)
     {
       dat->byte = section->address;
-      LOG_TRACE("\nRaw system section bytes:\n")
+      LOG_TRACE("\n Raw system section bytes: \n")
       for (i = 0; i < 0x14; i++)
         {
           ss.data[i] = bit_read_RC(dat);
           LOG_TRACE("%x ", ss.data[i])
         }
 
-      LOG_TRACE("\n=== System Section (Section Info) ===\n")
-      LOG_TRACE("Section Type (should be 0x4163043b): %x\n",
-              (unsigned int) ss.fields.section_type)
-      LOG_TRACE("DecompDataSize: %x\n",
-              (unsigned int) ss.fields.decomp_data_size)
-      LOG_TRACE("CompDataSize: %x\n",
-              (unsigned int) ss.fields.comp_data_size)
-      LOG_TRACE("Compression Type: %x\n",
-              (unsigned int) ss.fields.compression_type)
-      LOG_TRACE("Checksum: %x\n\n", (unsigned int) ss.fields.checksum)
+      LOG_TRACE("\n  System Section (Section Info) \n")
+      LOG_TRACE("Section Type (should be 0x4163043b): %x \n",
+                (unsigned int) ss.fields.section_type)
+      LOG_TRACE("DecompDataSize: %x \n",
+                (unsigned int) ss.fields.decomp_data_size)
+      LOG_TRACE("CompDataSize: %x \n",
+                (unsigned int) ss.fields.comp_data_size)
+      LOG_TRACE("Compression Type: %x \n",
+                (unsigned int) ss.fields.compression_type)
+      LOG_TRACE("Checksum: %x \n\n", (unsigned int) ss.fields.checksum)
 
-       read_R2004_section_info(dat, dwg,
-         ss.fields.comp_data_size, ss.fields.decomp_data_size);
+       read_R2004_section_info(dat, dwg, ss.fields.comp_data_size,
+                               ss.fields.decomp_data_size);
     }
 
   read_2004_section_classes(dat, dwg);

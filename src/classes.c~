@@ -172,7 +172,7 @@ read_2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
         } while (sec_dat.byte < (size - 1));
     }
 
-  /* Check CRC-on */
+  /* Check CRC on */
   long unsigned int pvz;
   unsigned long int ckr, ckr2;
   
@@ -186,7 +186,7 @@ read_2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
  
   if (ckr != ckr2)
     {
-      printf("Section %d crc todo ckr:%x ckr2:%x \n",
+      printf("Section %d crc todo ckr:%x ckr2:%x \n\n",
               dwg->header.section[1].number, ckr, ckr2);
       return -1;
     }
@@ -197,4 +197,3 @@ read_2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
   LOG_INFO("Number of classes read: %u\n", dwg->num_classes)
   free(sec_dat.chain);
 }
-

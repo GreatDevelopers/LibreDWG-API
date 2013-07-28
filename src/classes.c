@@ -158,11 +158,11 @@ read_2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
           unknown       = bit_read_BL(&sec_dat);  // Unknown (normally 0L)
 
           LOG_TRACE("\n")
-          LOG_TRACE("Number: %d \n", dwg->dwg_class[idc].number)
-          LOG_TRACE("Version: %x \n", dwg->dwg_class[idc].version)
+          LOG_TRACE("Number: %d \n",           dwg->dwg_class[idc].number)
+          LOG_TRACE("Version: %x \n",          dwg->dwg_class[idc].version)
           LOG_TRACE("Application name: %s \n", dwg->dwg_class[idc].appname)
-          LOG_TRACE("C++ class name: %s \n", dwg->dwg_class[idc].cppname)
-          LOG_TRACE("DXF record name: %s \n", dwg->dwg_class[idc].dxfname)
+          LOG_TRACE("C++ class name: %s \n",   dwg->dwg_class[idc].cppname)
+          LOG_TRACE("DXF record name: %s \n",  dwg->dwg_class[idc].dxfname)
 
           if (strcmp((const char *)dwg->dwg_class[idc].dxfname,
               "LAYOUT") == 0)
@@ -172,7 +172,7 @@ read_2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
         } while (sec_dat.byte < (size - 1));
     }
 
-  /* Check CRC-on */
+  /* Check CRC on */
   long unsigned int pvz;
   unsigned long int ckr, ckr2;
   
@@ -197,4 +197,3 @@ read_2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
   LOG_INFO("Number of classes read: %u\n", dwg->num_classes)
   free(sec_dat.chain);
 }
-

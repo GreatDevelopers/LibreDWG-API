@@ -30,6 +30,8 @@ static unsigned int loglevel;
 
 #define DWG_LOGLEVEL loglevel
 
+/*   \struct     r2007_file_header
+ */
 typedef struct r2007_file_header
 {
   int64_t header_size;            // 0x70
@@ -68,7 +70,8 @@ typedef struct r2007_file_header
   int64_t header_crc;
 } r2007_file_header;
 
-/* page map */
+/** \struct    page map
+ */
 typedef struct _r2007_page
 {
   int64_t id;
@@ -77,7 +80,8 @@ typedef struct _r2007_page
   struct _r2007_page *next;
 } r2007_page;
 
-/* section page */
+/** \struct   section page
+ */
 typedef struct _r2007_section_page
 {
   int64_t offset;
@@ -89,7 +93,8 @@ typedef struct _r2007_section_page
   int64_t crc;
 } r2007_section_page;
 
-/* section map */
+/**   \struct   section map
+ */
 typedef struct _r2007_section
 {
   int64_t  data_size;    // max size of page
