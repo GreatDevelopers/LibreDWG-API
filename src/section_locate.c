@@ -149,7 +149,7 @@ read_R2004_section_map(Bit_Chain *dat, Dwg_Data *dwg,
 
   if (ckr != ckr2)
     {
-      printf("Header CRC todo ckr: %x ckr2: %x \n", ckr, ckr2);
+      printf("Header CRC todo ckr: %x ckr2: %x \n\n", ckr, ckr2);
       return 1;
     }
 

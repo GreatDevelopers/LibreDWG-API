@@ -172,7 +172,7 @@ read_2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
         } while (sec_dat.byte < (size - 1));
     }
 
-  // Check CRC-on
+  /* Check CRC-on */
   long unsigned int pvz;
   unsigned long int ckr, ckr2;
   

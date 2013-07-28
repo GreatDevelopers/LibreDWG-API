@@ -233,7 +233,28 @@ read_2004_section_handles(Bit_Chain *dat, Dwg_Data *dwg)
       if (hdl_dat.byte == previous_address)
         break;
 
-      hdl_dat.byte += 2; // CRC
+      // check CRC on
+      if (hdl_dat.bit > 0)
+        {
+           hdl_dat.byte += 2;
+           hdl_dat.bit = 0;
+        }
+
+      unsigned long int ckr, ckr2;
+    
+      sgdc[0] = bit_read_RC(&hdl_dat);
+      sgdc[1] = bit_read_RC(&hdl_dat);
+      
+      ckr = (sgdc[0] << 8) | sgdc[1];
+      ckr2 = bit_ckr32(0xc0c1, hdl_dat.chain + duabyte, section_size);
+ 
+      if (ckr != ckr2)
+        {
+          printf("Section Handle obj %d CRC todo ckr: %x ckr2: %x \n \n",
+                  dwg->header.section[2].number, ckr, ckr2);
+         return -1;
+         }
+
       if (hdl_dat.byte >= maplasta)
         break;
     }

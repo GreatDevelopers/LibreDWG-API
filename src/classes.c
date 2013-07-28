@@ -186,7 +186,7 @@ read_2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
  
   if (ckr != ckr2)
     {
-      printf("Section %d crc todo ckr:%x ckr2:%x \n",
+      printf("Section %d crc todo ckr:%x ckr2:%x \n\n",
               dwg->header.section[1].number, ckr, ckr2);
       return -1;
     }
