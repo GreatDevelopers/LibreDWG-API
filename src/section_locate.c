@@ -140,5 +140,18 @@ read_R2004_section_map(Bit_Chain *dat, Dwg_Data *dwg,
     dwg->header.num_sections++;
     i++;
   }
+
+  // check CRC
+  unsigned long int ckr, ckr2;
+
+  ckr  = bit_ckr32(0xc0c1, dat->chain, dat->byte);
+  ckr2 = bit_read_RL(dat);
+
+  if (ckr != ckr2)
+    {
+      printf("Header CRC todo ckr: %x ckr2: %x \n", ckr, ckr2);
+      return 1;
+    }
+
   free(decomp);
 }
