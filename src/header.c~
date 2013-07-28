@@ -10,17 +10,20 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * header.c: header functions
- * written by Felipe Castro
- * modified by Felipe Corrêa da Silva Sances
- * modified by Rodrigo Rodrigues da Silva
- * modified by Till Heuschmann
+/**
+ *     \file       header.c
+ *     \brief      Header section functions
+ *     \author     written by Felipe Castro
+ *     \author     modified by Felipe Corrêa da Silva Sances
+ *     \author     modified by Rodrigo Rodrigues da Silva
+ *     \author     modified by Till Heuschmann
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
+#include "decode.h"
 #include "header.h"
 #include "decode_r2004.h"
-#include "decode.h" 
 #include "logging.h"
 
 extern unsigned int
@@ -35,23 +38,22 @@ dwg_decode_header_variables(Bit_Chain *dat, Dwg_Data *dwg)
   #include "header_variables.spec"
 }
 
-/* Read R13-R15 Header Section
- */
+/** Read R13-R15 Header Section */
 void
 read_R13_R15_section_header(Bit_Chain *dat, Dwg_Data *dwg)
 {
   unsigned long int pvz;
   unsigned int ckr, ckr2;
 
-  LOG_INFO("\n Header Variables: %8X\n",
+  LOG_INFO("\n Header Variables: %8X \n",
            (unsigned int) dwg->header.section[0].address)
-  LOG_INFO(" Header Variables (end): %8X\n",
+  LOG_INFO("Header Variables (end): %8X \n",
            (unsigned int) (dwg->header.section[0].address
            + dwg->header.section[0].size))
 
   dat->byte = dwg->header.section[0].address + 16;
   pvz = bit_read_RL(dat);
-  LOG_TRACE(" Length: %lu\n", pvz)
+  LOG_TRACE("Length: %lu \n", pvz)
 
   dat->bit = 0;
   dwg_decode_header_variables(dat, dwg);
@@ -66,31 +68,29 @@ read_R13_R15_section_header(Bit_Chain *dat, Dwg_Data *dwg)
 
   if (ckr != ckr2)
     {
-      printf("section %d crc todo ckr:%x ckr2:%x\n",
-              dwg->header.section[0].number, ckr, ckr2);
+      printf("section %d crc todo ckr:%x ckr2:%x \n",
+             dwg->header.section[0].number, ckr, ckr2);
       return -1;
     }
 }
 
-/* R2004 Header Section
- */
+/** R2004 Header Section */
 void
-read_2004_section_header(Bit_Chain* dat, Dwg_Data *dwg)
+read_2004_section_header(Bit_Chain *dat, Dwg_Data *dwg)
 {
   Bit_Chain sec_dat;
 
   if (read_2004_compressed_section(dat, dwg, &sec_dat, 
-      SECTION_HEADER) != 0)
+                                   SECTION_HEADER) != 0)
     return;
 
   if (bit_search_sentinel(&sec_dat, 
       dwg_sentinel(DWG_SENTINEL_VARIABLE_BEGIN)))
     {
       unsigned long int size = bit_read_RL(&sec_dat);
-      LOG_TRACE("Length: %lu\n", size);
+      LOG_TRACE("Length: %lu \n", size);
       
       dwg_decode_header_variables(&sec_dat, dwg);
     }
   free(sec_dat.chain);
 }
-

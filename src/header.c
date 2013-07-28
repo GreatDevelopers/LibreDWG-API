@@ -92,5 +92,23 @@ read_2004_section_header(Bit_Chain *dat, Dwg_Data *dwg)
       
       dwg_decode_header_variables(&sec_dat, dwg);
     }
+
+  // Check CRC-on
+  unsigned long int ckr, ckr2;
+  
+  sec_dat.byte = dwg->header.section[0].address + dwg->header.section[0].size
+                 - 18;
+  sec_dat.bit = 0;
+ 
+  ckr  = bit_read_RL(&sec_dat);
+  ckr2 = bit_ckr32(0xc0c1, &sec_dat.chain + dwg->header.section[0].address
+                    + 16, dwg->header.section[0].size - 34);
+ 
+   if (ckr != ckr2)
+     {
+       printf("Section %d CRC todo ckr: %x ckr2: %x \n\n",
+               dwg->header.section[0].number, ckr, ckr2);
+       return -1;
+    }
   free(sec_dat.chain);
 }
