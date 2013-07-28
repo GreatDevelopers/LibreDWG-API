@@ -10,12 +10,15 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * decode_r2004.c: R2004 decoding functions
- * written by Felipe Castro
- * modified by Felipe Corrêa da Silva Sances
- * modified by Rodrigo Rodrigues da Silva
- * modified by Till Heuschmann
+/**
+ *     \file       decode_r2004.c
+ *     \brief      R2004 decode functions
+ *     \author     written by Felipe Castro
+ *     \author     modified by Felipe Corrêa da Silva Sances
+ *     \author     modified by Rodrigo Rodrigues da Silva
+ *     \author     modified by Till Heuschmann
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 #include <stdint.h>
@@ -23,7 +26,6 @@
 
 #include "decode_r2004.h"
 #include "classes.h"
-#include "decode_r13_r15.h"
 #include "handle.h"
 #include "header.h"
 #include "logging.h"
@@ -226,8 +228,40 @@ find_section(Dwg_Data *dwg, unsigned long int index)
   return 0;
 }
 
-/* Read R2004 Section Info
- */
+/** Section page checksum */
+unsigned int
+page_checksum (unsigned int seed, unsigned char *data, unsigned int size)
+{
+  //seed = 0;
+  unsigned int sum1, sum2, opcode, chunksize;
+  int i = 0;
+  sum1 = seed & 0xffff;
+  sum2 = seed >> 0x10;
+  opcode = 0x15b0; 
+
+  while (size!=0)
+    {
+      if ( &opcode > size)
+         return (chunksize = &opcode);
+      else
+         return (chunksize = size);
+ 
+      size -= chunksize;
+
+      for (i; i < chunksize; i++)
+         {
+           sum1 += *data++;
+           sum2 += sum1;
+         }
+      
+      sum1 %= 0xFFF1;
+      sum2 %= 0xFFF1;
+    }
+
+   return (sum2 << 0x10) | (sum1 & 0xffff);
+}
+
+/** Read R2004 Section Info */
 void
 read_R2004_section_info(Bit_Chain* dat, Dwg_Data *dwg,
                         unsigned long int comp_data_size,

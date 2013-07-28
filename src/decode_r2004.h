@@ -52,6 +52,9 @@ decompress_R2004_section(Bit_Chain* dat, char *decomp,
 Dwg_Section*
 find_section(Dwg_Data *dwg, unsigned long int index);
 
+unsigned int
+page_checksum (unsigned int seed, unsigned char *data, unsigned int size);
+
 void
 read_R2004_section_info(Bit_Chain* dat, Dwg_Data *dwg,
                         unsigned long int comp_data_size,

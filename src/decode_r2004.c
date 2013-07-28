@@ -228,8 +228,40 @@ find_section(Dwg_Data *dwg, unsigned long int index)
   return 0;
 }
 
-/* Read R2004 Section Info
- */
+/** Section page checksum */
+unsigned int
+page_checksum (unsigned int seed, unsigned char *data, unsigned int size)
+{
+  //seed = 0;
+  unsigned int sum1, sum2, opcode, chunksize;
+  int i = 0;
+  sum1 = seed & 0xffff;
+  sum2 = seed >> 0x10;
+  opcode = 0x15b0; 
+
+  while (size!=0)
+    {
+      if ( &opcode > size)
+         return (chunksize = &opcode);
+      else
+         return (chunksize = size);
+ 
+      size -= chunksize;
+
+      for (i; i < chunksize; i++)
+         {
+           sum1 += *data++;
+           sum2 += sum1;
+         }
+      
+      sum1 %= 0xFFF1;
+      sum2 %= 0xFFF1;
+    }
+
+   return (sum2 << 0x10) | (sum1 & 0xffff);
+}
+
+/** Read R2004 Section Info */
 void
 read_R2004_section_info(Bit_Chain* dat, Dwg_Data *dwg,
                         unsigned long int comp_data_size,
