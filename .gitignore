@@ -3,7 +3,7 @@
 *.lo
 *.la
 
-*~
+*.c~
 
 # filenames, anywhere
 Makefile.in
