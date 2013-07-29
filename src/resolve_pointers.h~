@@ -10,12 +10,15 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * decode.c: decoding functions
- * written by Felipe Castro
- * modified by Felipe Corrêa da Silva Sances
- * modified by Rodrigo Rodrigues da Silva
- * modified by Till Heuschmann
+/**
+ *     \file       resolve_pointers.h
+ *     \brief      Resolve handle pointer function prototypes
+ *     \author     written by Felipe Castro
+ *     \author     modified by Felipe Corrêa da Silva Sances
+ *     \author     modified by Rodrigo Rodrigues da Silva
+ *     \author     modified by Till Heuschmann
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 #ifndef _DWG_OBJECT_H_
@@ -31,13 +34,12 @@
 #include "common.h"
 #include "bits.h"
 #include "dwg.h"
-#include "decode.h"
 #include "print.h"
 
 void
-resolve_objectref_vector(Dwg_Data * dwg);
+resolve_objectref_vector(Dwg_Data *dwg);
 
 Dwg_Object *
-dwg_resolve_handle(Dwg_Data* dwg, unsigned long int handle);
+dwg_resolve_handle(Dwg_Data *dwg, unsigned long int handle);
 
 #endif

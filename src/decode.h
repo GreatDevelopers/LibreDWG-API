@@ -24,9 +24,6 @@
 #ifndef DECODE_H
 #define DECODE_H
 
-#ifndef _DWG_OBJECT_H_
-#define _DWG_OBJECT_H_
-
 #include "config.h"
 #include <stdbool.h>
 #include <stdio.h>
@@ -267,8 +264,6 @@ dwg_decode_common_entity_handle_data(Bit_Chain *dat, Dwg_Object *obj);
 
 Dwg_Resbuf*
 dwg_decode_xdata(Bit_Chain *dat, int size);
-
-#endif
 
 #undef IS_DECODER
 

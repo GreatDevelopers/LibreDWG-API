@@ -21,8 +21,8 @@
  *     \copyright  GNU General Public License (version 3 or later)
  */
 
-#ifndef _DWG_OBJECT_H_
-#define _DWG_OBJECT_H_
+#ifndef _DWG_LOCATE_H_
+#define _DWG_LOCATE_H_
 
 #include "config.h"
 #include <stdbool.h>
