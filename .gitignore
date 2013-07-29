@@ -4,6 +4,8 @@
 *.la
 
 *.c~
+*.h~
+*.*~
 
 # filenames, anywhere
 Makefile.in
