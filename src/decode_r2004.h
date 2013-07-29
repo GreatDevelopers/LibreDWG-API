@@ -30,6 +30,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include <stdint.h>
+#include <sys/types.h>
 
 #include "common.h"
 #include "bits.h"
@@ -47,22 +49,20 @@ read_two_byte_offset(Bit_Chain* dat, int* lit_length);
 
 int
 decompress_R2004_section(Bit_Chain* dat, char *decomp,
-                         unsigned long int comp_data_size);
+                         uint32_t comp_data_size);
 
 Dwg_Section*
-find_section(Dwg_Data *dwg, unsigned long int index);
+find_section(Dwg_Data *dwg, uint32_t index);
 
-unsigned int
-page_checksum (unsigned int seed, unsigned char *data, unsigned int size);
+int32_t
+page_checksum (int32_t seed, unsigned char *data, int32_t size);
 
 void
-read_R2004_section_info(Bit_Chain* dat, Dwg_Data *dwg,
-                        unsigned long int comp_data_size,
-                        unsigned long int decomp_data_size);
+read_R2004_section_info(Bit_Chain *dat, Dwg_Data *dwg, uint32_t comp_data_size,
+                        uint32_t decomp_data_size);
 
 int
-read_2004_compressed_section(Bit_Chain* dat, Dwg_Data *dwg,
-                            Bit_Chain* sec_dat,
-                            long unsigned int section_type);
+read_2004_compressed_section(Bit_Chain* dat, Dwg_Data *dwg, Bit_Chain *sec_dat,
+                             uint32_t section_type);
 
 #endif

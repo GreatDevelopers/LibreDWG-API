@@ -30,6 +30,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include <stdint.h>
+#include <sys/types.h>
 
 #include "common.h"
 #include "bits.h"
@@ -40,6 +42,6 @@ void
 resolve_objectref_vector(Dwg_Data *dwg);
 
 Dwg_Object *
-dwg_resolve_handle(Dwg_Data *dwg, unsigned long int handle);
+dwg_resolve_handle(Dwg_Data *dwg, uint32_t handle);
 
 #endif

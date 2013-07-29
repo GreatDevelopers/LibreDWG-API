@@ -33,8 +33,7 @@ static unsigned int loglevel;
 
 /** Decode object */
 void
-dwg_decode_add_object(Dwg_Data *dwg, Bit_Chain *dat,
-                      long unsigned int address)
+dwg_decode_add_object(Dwg_Data *dwg, Bit_Chain *dat, uint32_t address)
 {
   long unsigned int previous_address;
   long unsigned int object_address;

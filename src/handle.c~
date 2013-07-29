@@ -25,21 +25,14 @@
 #include "object.h"
 #include "decode_r2004.h"
 
-extern unsigned int
-bit_ckr8(unsigned int dx, unsigned char *adr, long n);
 
 /** Read R13-R15 Object-map Section */
 void
 read_R13_R15_section_object_map(Bit_Chain *dat, Dwg_Data *dwg)
 {
-  unsigned int section_size = 0;
+  uint8_t section_size = 0, ckr, ckr2, antckr;
   unsigned char sgdc[2];
-  unsigned int ckr, ckr2, antckr;
-  long unsigned int size;
-  long unsigned int maplasta;
-  long unsigned int duabyte;
-  long unsigned int object_begin;
-  long unsigned int object_end;
+  uint32_t size, maplasta, duabyte, object_begin, object_end;
 
   dat->byte = dwg->header.section[2].address;
   dat->bit = 0;
@@ -50,9 +43,7 @@ read_R13_R15_section_object_map(Bit_Chain *dat, Dwg_Data *dwg)
   object_end = 0;
   do
     {
-      long unsigned int last_address;
-      long unsigned int last_handle;
-      long unsigned int previous_address = 0;
+      uint32_t last_address, last_handle, previous_address = 0;
 
       duabyte = dat->byte;
       sgdc[0] = bit_read_RC(dat);
@@ -71,9 +62,9 @@ read_R13_R15_section_object_map(Bit_Chain *dat, Dwg_Data *dwg)
 
       while (dat->byte - duabyte < section_size)
         {
-          long unsigned int kobj;
-          long int pvztkt;
-          long int pvzadr;
+          uint32_t kobj;
+          int32_t pvztkt;
+          int32_t pvzadr;
 
           previous_address = dat->byte;
           pvztkt = bit_read_MC(dat);
@@ -175,19 +166,16 @@ read_R13_R15_section_object_map(Bit_Chain *dat, Dwg_Data *dwg)
 void
 read_2004_section_handles(Bit_Chain *dat, Dwg_Data *dwg)
 {
-  unsigned int section_size = 0;
+  uint8_t section_size = 0;
   unsigned char sgdc[2];
-  long unsigned int duabyte;
-  long unsigned int maplasta;
+  uint32_t duabyte, maplasta;
   Bit_Chain hdl_dat;
   Bit_Chain obj_dat;
 
-  if (read_2004_compressed_section(dat, dwg, &obj_dat, 
-      SECTION_DBOBJECTS) != 0)
+  if (read_2004_compressed_section(dat, dwg, &obj_dat, SECTION_DBOBJECTS) != 0)
     return;
 
-  if (read_2004_compressed_section(dat, dwg, &hdl_dat, 
-      SECTION_HANDLES) != 0)
+  if (read_2004_compressed_section(dat, dwg, &hdl_dat, SECTION_HANDLES) != 0)
     {
       free(obj_dat.chain);
       return;
@@ -198,9 +186,7 @@ read_2004_section_handles(Bit_Chain *dat, Dwg_Data *dwg)
 
   do
     {
-      long unsigned int last_offset;
-      long unsigned int last_handle;
-      long unsigned int previous_address = 0;
+      uint32_t last_offset, last_handle, previous_address = 0;
 
       duabyte = hdl_dat.byte;
       sgdc[0] = bit_read_RC(&hdl_dat);
@@ -216,8 +202,7 @@ read_2004_section_handles(Bit_Chain *dat, Dwg_Data *dwg)
       last_offset = 0;
       while (hdl_dat.byte - duabyte < section_size)
         {
-          long int pvztkt;
-          long int pvzadr;
+          int32_t pvztkt, pvzadr;
 
           previous_address = hdl_dat.byte;
 
@@ -233,7 +218,7 @@ read_2004_section_handles(Bit_Chain *dat, Dwg_Data *dwg)
       if (hdl_dat.byte == previous_address)
         break;
 
-      // check CRC on
+      /* check CRC on */
       if (hdl_dat.bit > 0)
         {
            hdl_dat.byte += 2;
@@ -246,7 +231,7 @@ read_2004_section_handles(Bit_Chain *dat, Dwg_Data *dwg)
       sgdc[1] = bit_read_RC(&hdl_dat);
       
       ckr = (sgdc[0] << 8) | sgdc[1];
-      ckr2 = bit_ckr32(0xc0c1, hdl_dat.chain + duabyte, section_size);
+      ckr2 = bit_ckr32(0xc0c1, &hdl_dat.chain + duabyte, section_size);
  
       if (ckr != ckr2)
         {

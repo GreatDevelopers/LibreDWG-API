@@ -25,14 +25,11 @@
 #include "decode_r2004.h"
 #include "logging.h"
 
-extern unsigned int
-bit_ckr8(unsigned int dx, unsigned char *adr, long n);
-
 /** Read R13-R15 Object Map */
 void
 read_R13_R15_section_locate(Bit_Chain *dat, Dwg_Data *dwg)
 {
-  unsigned int ckr, ckr2;
+  uint8_t ckr, ckr2;
   int i;
 
   dwg->header.num_sections = bit_read_RL(dat);
@@ -52,14 +49,15 @@ read_R13_R15_section_locate(Bit_Chain *dat, Dwg_Data *dwg)
 
   for (i = 0; i < dwg->header.num_sections; i++)
     {
-      dwg->header.section[i].number = bit_read_RC(dat);
+      dwg->header.section[i].number  = bit_read_RC(dat);
       dwg->header.section[i].address = bit_read_RL(dat);
-      dwg->header.section[i].size = bit_read_RL(dat);
+      dwg->header.section[i].size    = bit_read_RL(dat);
     }
 
-  // Check CRC-on
-  ckr = bit_ckr8(0xc0c1, dat->chain, dat->byte);
+  /* Check CRC on */
+  ckr  = bit_ckr8(0xc0c1, dat->chain, dat->byte);
   ckr2 = bit_read_RS(dat);
+
   if (ckr != ckr2)
     {
       printf("header crc todo ckr:%x ckr2:%x \n", ckr, ckr2);
@@ -75,14 +73,11 @@ read_R13_R15_section_locate(Bit_Chain *dat, Dwg_Data *dwg)
  * to locate the sections in the file.
  */
 void
-read_R2004_section_map(Bit_Chain *dat, Dwg_Data *dwg,
-                       unsigned long int comp_data_size,
-                       unsigned long int decomp_data_size)
+read_R2004_section_map(Bit_Chain *dat, Dwg_Data *dwg, uint32_t comp_data_size,
+                       uint32_t decomp_data_size)
 {
   char *decomp, *ptr;
-  int section_address;
-  int bytes_remaining;
-  int i;
+  int section_address, bytes_remaining, i;
 
   dwg->header.num_sections = 0;
   dwg->header.section = 0;
@@ -125,24 +120,24 @@ read_R2004_section_map(Bit_Chain *dat, Dwg_Data *dwg,
     if (dwg->header.section[i].number < 0)
       {
         dwg->header.section[i].parent = *((int*) ptr);
-        dwg->header.section[i].left = *((int*) ptr + 1);
-        dwg->header.section[i].right = *((int*) ptr + 2);
-        dwg->header.section[i].x00 = *((int*) ptr + 3);
+        dwg->header.section[i].left   = *((int*) ptr + 1);
+        dwg->header.section[i].right  = *((int*) ptr + 2);
+        dwg->header.section[i].x00    = *((int*) ptr + 3);
         bytes_remaining -= 16;
         ptr += 16;
 
         LOG_TRACE("Parent: %d \n", (int)dwg->header.section[i].parent)
-        LOG_TRACE("Left: %d \n", (int)dwg->header.section[i].left)
-        LOG_TRACE("Right: %d \n", (int)dwg->header.section[i].right)
-        LOG_TRACE("0x00: %d \n", (int)dwg->header.section[i].x00)
+        LOG_TRACE("Left: %d \n",   (int)dwg->header.section[i].left)
+        LOG_TRACE("Right: %d \n",  (int)dwg->header.section[i].right)
+        LOG_TRACE("0x00: %d \n",   (int)dwg->header.section[i].x00)
       }
 
     dwg->header.num_sections++;
     i++;
   }
 
-  // check CRC
-  unsigned long int ckr, ckr2;
+  /* check CRC */
+  uint32_t ckr, ckr2;
 
   ckr  = bit_ckr32(0xc0c1, dat->chain, dat->byte);
   ckr2 = bit_read_RL(dat);

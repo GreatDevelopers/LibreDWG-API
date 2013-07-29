@@ -30,6 +30,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include <stdint.h>
+#include <sys/types.h>
 
 #include "common.h"
 #include "bits.h"
@@ -40,8 +42,7 @@ void
 read_R13_R15_section_locate(Bit_Chain *dat, Dwg_Data *dwg);
 
 void
-read_R2004_section_map(Bit_Chain *dat, Dwg_Data *dwg,
-                       unsigned long int comp_data_size,
-                       unsigned long int decomp_data_size);
+read_R2004_section_map(Bit_Chain *dat, Dwg_Data *dwg, uint32_t comp_data_size,
+                       uint32_t decomp_data_size);
 
 #endif

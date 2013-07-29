@@ -225,7 +225,7 @@ find_section(Dwg_Data *dwg, uint32_t index)
 }
 
 /** Section page checksum */
-unsigned int
+int32_t
 page_checksum (int32_t seed, unsigned char *data, int32_t size)
 {
   //seed = 0;

@@ -34,6 +34,8 @@ decode.lo: decode.c decode.h config.h \
  /usr/include/x86_64-linux-gnu/bits/string2.h \
  /usr/include/x86_64-linux-gnu/bits/string3.h /usr/include/assert.h \
  common.h bits.h dwg.h print.h logging.h decode_r13_r15.h decode_r2004.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.7/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar.h \
  common_entity_handle_data.spec
 
 decode.h:
@@ -143,5 +145,11 @@ logging.h:
 decode_r13_r15.h:
 
 decode_r2004.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.7/include/stdint.h:
+
+/usr/include/stdint.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
 
 common_entity_handle_data.spec:

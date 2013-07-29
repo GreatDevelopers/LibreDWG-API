@@ -30,18 +30,19 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include <stdint.h>
+#include <sys/types.h>
 
 #include "common.h"
 #include "bits.h"
 #include "print.h"
 
-long unsigned int ktl_lastaddress;
+uint32_t ktl_lastaddress;
 
 int
 dwg_decode_variable_type(Dwg_Data *dwg, Bit_Chain *dat, Dwg_Object *obj);
 
 void
-dwg_decode_add_object(Dwg_Data *dwg, Bit_Chain *dat,
-                      long unsigned int address);
+dwg_decode_add_object(Dwg_Data *dwg, Bit_Chain *dat, uint32_t address);
 
 #endif

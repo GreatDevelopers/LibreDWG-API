@@ -29,14 +29,11 @@
 void
 read_R13_R15_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
 {
-  long unsigned int size;
-  long unsigned int lasta, pvz;
-  unsigned int ckr, ckr2, i;
+  uint32_t size, lasta, pvz;
+  uint8_t ckr, ckr2, i;
 
-  LOG_INFO("\n CLASS: %8X\n",
-           (unsigned int) dwg->header.section[1].address)
-  LOG_INFO(" CLASS (end): %8X\n",
-           (unsigned int) (dwg->header.section[1].address
+  LOG_INFO("\n CLASS: %8X\n", (unsigned int) dwg->header.section[1].address)
+  LOG_INFO(" CLASS (end): %8X\n", (unsigned int)(dwg->header.section[1].address
            + dwg->header.section[1].size))
 
   dat->byte = dwg->header.section[1].address + 16;
@@ -110,9 +107,7 @@ read_R13_R15_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
 void
 read_2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
 {
-  unsigned long int size;
-  unsigned long int max_num;
-  unsigned long int num_objects, dwg_version, maint_version, unknown;
+  uint32_t size, max_num, num_objects, dwg_version, maint_version, unknown;
   char c;
   Bit_Chain sec_dat;
 
@@ -134,16 +129,17 @@ read_2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
 
       do
         {
-          unsigned int idc;
+          uint8_t idc;
 
           idc = dwg->num_classes;
+
           if (idc == 0)
             dwg->dwg_class = (Dwg_Class *) malloc(sizeof (Dwg_Class));
           else
             dwg->dwg_class = (Dwg_Class *) realloc(dwg->dwg_class,
                              (idc + 1) * sizeof (Dwg_Class));
 
-          dwg->dwg_class[idc].number = bit_read_BS(&sec_dat);
+          dwg->dwg_class[idc].number  = bit_read_BS(&sec_dat);
           dwg->dwg_class[idc].version = bit_read_BS(&sec_dat);
           dwg->dwg_class[idc].appname = bit_read_TV(&sec_dat);
           dwg->dwg_class[idc].cppname = bit_read_TV(&sec_dat);

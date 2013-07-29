@@ -28,8 +28,9 @@
 void
 resolve_objectref_vector(Dwg_Data *dwg)
 {
-  long unsigned int i;
+  uint32_t i;
   Dwg_Object *obj;
+
   for (i = 0; i < dwg->num_object_refs; i++)
     {
       LOG_TRACE("\n====\n")
@@ -63,10 +64,10 @@ resolve_objectref_vector(Dwg_Data *dwg)
 
 /** Find a pointer to an object given it's id (handle) */
 Dwg_Object *
-dwg_resolve_handle(Dwg_Data *dwg, long unsigned int absref)
+dwg_resolve_handle(Dwg_Data *dwg, uint32_t absref)
 {
   // FIXME: find a faster algorithm
-  long unsigned int i;
+  uint32_t i;
   for (i = 0; i < dwg->num_objects; i++)
     {
       if (dwg->object[i].handle.value == absref)

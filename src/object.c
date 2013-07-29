@@ -24,7 +24,7 @@
 #include "object.h"
 #include "decode.h"
 #include "logging.h"
-#include <dwg.spec>
+#include "dwg.spec"
 #include "dwg.h"
 
 static unsigned int loglevel;
@@ -33,11 +33,9 @@ static unsigned int loglevel;
 
 /** Decode object */
 void
-dwg_decode_add_object(Dwg_Data *dwg, Bit_Chain *dat,
-                      long unsigned int address)
+dwg_decode_add_object(Dwg_Data *dwg, Bit_Chain *dat, uint32_t address)
 {
-  long unsigned int previous_address;
-  long unsigned int object_address;
+  uint32_t previous_address, object_address;
   unsigned char previous_bit;
   Dwg_Object *obj;
 

@@ -21,9 +21,6 @@
  *     \copyright  GNU General Public License (version 3 or later)
  */
 
-#include <stdint.h>
-#include <sys/types.h>
-
 #include "decode_r2004.h"
 #include "classes.h"
 #include "handle.h"

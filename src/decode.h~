@@ -268,4 +268,3 @@ dwg_decode_xdata(Bit_Chain *dat, int size);
 #undef IS_DECODER
 
 #endif
-
