@@ -42,9 +42,6 @@ static bool env_var_checked_p;
 
 #define REFS_PER_REALLOC 100
 
-int
-read_r2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg);
-
 /** Decode DWG file */
 int
 dwg_decode_data(Bit_Chain * dat, Dwg_Data * dwg)
@@ -57,6 +54,7 @@ dwg_decode_data(Bit_Chain * dat, Dwg_Data * dwg)
   dwg->num_classes = 0;
 
   #ifdef USE_TRACING
+
   /* Before starting, set the logging level, but only do so once.  */
   if (! env_var_checked_p)
     {

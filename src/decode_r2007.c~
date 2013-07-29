@@ -93,7 +93,8 @@ typedef struct _r2007_section_page
   int64_t crc;
 } r2007_section_page;
 
-/* section map */
+/**   \struct   section map
+ */
 typedef struct _r2007_section
 {
   int64_t  data_size;    // max size of page

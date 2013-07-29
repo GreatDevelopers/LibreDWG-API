@@ -30,6 +30,9 @@ static unsigned int loglevel;
 
 #define DWG_LOGLEVEL loglevel
 
+int
+read_r2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg);
+
 /*   \struct     r2007_file_header
  */
 typedef struct r2007_file_header

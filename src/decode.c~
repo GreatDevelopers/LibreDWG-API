@@ -10,12 +10,15 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * decode.c: decoding functions
- * written by Felipe Castro
- * modified by Felipe Corrêa da Silva Sances
- * modified by Rodrigo Rodrigues da Silva
- * modified by Till Heuschmann
+/**
+ *     \file       decode.c
+ *     \brief      Decoding functions
+ *     \author     written by Felipe Castro
+ *     \author     modified by Felipe Corrêa da Silva Sances
+ *     \author     modified by Rodrigo Rodrigues da Silva
+ *     \author     modified by Till Heuschmann
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 #include "decode.h"
@@ -23,28 +26,23 @@
 #include "decode_r13_r15.h"
 #include "decode_r2004.h"
 
-// extern unsigned int
-// bit_ckr8(unsigned int dx, unsigned char *adr, long n);
 
-/* The logging level for the read (decode) path.  */
+/* The logging level for the read (decode) path. */
 static unsigned int loglevel;
 
 #ifdef USE_TRACING
+
 /* This flag means we have checked the environment variable
-   LIBREDWG_TRACE and set `loglevel' appropriately.  */
+ *  LIBREDWG_TRACE and set `loglevel' appropriately.
+ */
 static bool env_var_checked_p;
 
 #define DWG_LOGLEVEL loglevel
-#endif  /* USE_TRACING */
-
+#endif  // USE_TRACING
 
 #define REFS_PER_REALLOC 100
 
-int read_r2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg);
-
-/*--------------------------------------------------------------------------------
- * Public function definitions
- */
+/** Decode DWG file */
 int
 dwg_decode_data(Bit_Chain * dat, Dwg_Data * dwg)
 {
@@ -55,7 +53,7 @@ dwg_decode_data(Bit_Chain * dat, Dwg_Data * dwg)
   dwg->num_objects = 0;
   dwg->num_classes = 0;
 
-#ifdef USE_TRACING
+  #ifdef USE_TRACING
   /* Before starting, set the logging level, but only do so once.  */
   if (! env_var_checked_p)
     {
@@ -65,7 +63,7 @@ dwg_decode_data(Bit_Chain * dat, Dwg_Data * dwg)
         loglevel = atoi (probe);
       env_var_checked_p = true;
     }
-#endif  /* USE_TRACING */
+  #endif  /* USE_TRACING */
 
   /* Version */
   dat->byte = 0;
@@ -76,18 +74,23 @@ dwg_decode_data(Bit_Chain * dat, Dwg_Data * dwg)
   dwg->header.version = 0;
   if (!strcmp(version, version_codes[R_13]))
     dwg->header.version = R_13;
+
   if (!strcmp(version, version_codes[R_14]))
     dwg->header.version = R_14;
+
   if (!strcmp(version, version_codes[R_2000]))
     dwg->header.version = R_2000;
+
   if (!strcmp(version, version_codes[R_2004]))
     dwg->header.version = R_2004;
+
   if (!strcmp(version, version_codes[R_2007]))
     dwg->header.version = R_2007;
+
   if (dwg->header.version == 0)
     {
       LOG_ERROR("Invalid or unimplemented version code! "
-        "This file's version code is: %s\n", version)
+                 "This file's version code is: %s\n", version)
       return -1;
     }
   dat->version = (Dwg_Version_Type)dwg->header.version;
@@ -95,10 +98,11 @@ dwg_decode_data(Bit_Chain * dat, Dwg_Data * dwg)
 
   PRE(R_2000)
     {
-      LOG_INFO(
-          "WARNING: This version of LibreDWG is only capable of safely decoding version R2000 (code: AC1015) dwg-files.\n"
-            "This file's version code is: %s Support for this version is still experimental."
-            "It might crash or give you invalid output.\n", version)
+      LOG_INFO("WARNING: This version of LibreDWG is only capable "
+               "of safely decoding version R2000 (code: AC1015) "
+               "dwg-files.\n This file's version code is: %s Support "
+               "for this version is still experimental. It might "
+               "crash or give you invalid output.\n", version)
       return decode_R13_R15(dat, dwg);
     }
 
@@ -109,29 +113,33 @@ dwg_decode_data(Bit_Chain * dat, Dwg_Data * dwg)
 
   VERSION(R_2004)
     {
-      LOG_INFO(
-          "WARNING: This version of LibreDWG is only capable of properly decoding version R2000 (code: AC1015) dwg-files.\n"
-            "This file's version code is: %s\n This version is not yet actively developed."
-            "It will probably crash and/or give you invalid output.\n", version)
+      LOG_INFO("WARNING: This version of LibreDWG is only capable "
+               "of properly decoding version R2000 (code: AC1015) "
+               "dwg-files.\n This file's version code is: %s\n This "
+               "version is not yet actively developed. It will "
+               "probably crash and/or give you invalid output.\n",
+               version)
       return decode_R2004(dat, dwg);
     }
 
   VERSION(R_2007)
     {
-      LOG_INFO(
-          "WARNING: This version of LibreDWG is only capable of properly decoding version R2000 (code: AC1015) dwg-files.\n"
-            "This file's version code is: %s\n This version is not yet actively developed."
-            "It will probably crash and/or give you invalid output.\n", version)
+      LOG_INFO("WARNING: This version of LibreDWG is only capable "
+               "of properly decoding version R2000 (code: AC1015) "
+               "dwg-files.\n This file's version code is: %s\n This "
+               "version is not yet actively developed. It will "
+               "probably crash and/or give you invalid output.\n",
+               version)
       return decode_R2007(dat, dwg);
     }
 
-  //This line should not be reached!
-  LOG_ERROR(
-      "ERROR: LibreDWG does not support this version: %s.\n",
-      version)
+  // This line should not be reached!
+  LOG_ERROR("ERROR: LibreDWG does not support this version: %s.\n",
+            version)
   return -1;
 }
 
+/** Decode DWG R2007 */
 int
 decode_R2007(Bit_Chain* dat, Dwg_Data * dwg)
 {
@@ -229,19 +237,16 @@ decode_R2007(Bit_Chain* dat, Dwg_Data * dwg)
   LOG_TRACE("\n\n")
 
   /////////////////////////////////////////
-  //	incomplete implementation!
+  // incomplete implementation!
   /////////////////////////////////////////
   resolve_objectref_vector(dwg);
 
-  LOG_ERROR(
-      "Decoding of DWG version R2007 header is not fully implemented yet. we are going to try\n")
+  LOG_ERROR("Decoding of DWG version R2007 header is not fully "
+            "implemented yet. we are going to try\n")
   return 0;
 }
 
-/*--------------------------------------------------------------------------------
- * Private functions
- */
-
+/** Decode DWG entity */
 int
 dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
 {
@@ -257,9 +262,9 @@ dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
   error = bit_read_H(dat, &(ent->object->handle));
   if (error)
     {
-      LOG_ERROR(
-          "dwg_decode_entity:\tError in object handle! Current Bit_Chain address: 0x%0x\n",
-          (unsigned int) dat->byte)
+      LOG_ERROR("dwg_decode_entity: \t Error in object handle! "
+                "Current Bit_Chain address: 0x%0x \n",
+                (unsigned int) dat->byte)
       ent->bitsize = 0;
       ent->extended_size = 0;
       ent->picture_exists = 0;
@@ -270,12 +275,12 @@ dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
   ent->extended_size = 0;
   while (size = bit_read_BS(dat))
     {
-      LOG_TRACE("EED size: %lu\n", (long unsigned int)size)
+      LOG_TRACE("EED size: %lu \n", (long unsigned int)size)
       if (size > 10210)
         {
-          LOG_ERROR(
-              "dwg_decode_entity: Absurd! Extended object data size: %lu. Object: %lu (handle).\n",
-              (long unsigned int) size, ent->object->handle.value)
+          LOG_ERROR("dwg_decode_entity: Absurd! Extended object "
+                    "data size: %lu. Object: %lu (handle).\n",
+                    (long unsigned int) size, ent->object->handle.value)
           ent->bitsize = 0;
           ent->extended_size = 0;
           ent->picture_exists = 0;
@@ -286,17 +291,18 @@ dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
         }
       if (ent->extended_size == 0)
         {
-          ent->extended = (char *)malloc(size);
+          ent->extended = (char *) malloc(size);
           ent->extended_size = size;
         }
       else
         {
           ent->extended_size += size;
-          ent->extended = (char *)realloc(ent->extended, ent->extended_size);
+          ent->extended = (char *)realloc(ent->extended, 
+                                          ent->extended_size);
         }
       error = bit_read_H(dat, &ent->extended_handle);
       if (error)
-        LOG_ERROR("Error reading extended handle!\n");
+        LOG_ERROR("Error reading extended handle! \n");
       for (i = ent->extended_size - size; i < ent->extended_size; i++)
         ent->extended[i] = bit_read_RC(dat);
     }
@@ -306,15 +312,15 @@ dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
       ent->picture_size = bit_read_RL(dat);
       if (ent->picture_size < 210210)
         {
-          ent->picture = (char *)malloc(ent->picture_size);
+          ent->picture = (char *) malloc(ent->picture_size);
           for (i = 0; i < ent->picture_size; i++)
             ent->picture[i] = bit_read_RC(dat);
         }
       else
         {
-          LOG_ERROR(
-              "dwg_decode_entity:  Absurd! Picture-size: %lu kB. Object: %lu (handle).\n",
-              ent->picture_size / 1000, ent->object->handle.value)
+          LOG_ERROR("dwg_decode_entity: Absurd! Picture-size: "
+                    "%lu kB. Object: %lu (handle).\n",
+                    ent->picture_size / 1000, ent->object->handle.value)
           bit_advance_position(dat, -(4 * 8 + 1));
         }
     }
@@ -409,6 +415,7 @@ dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
   return 0;
 }
 
+/** Decode DWG Object */
 int
 dwg_decode_object(Bit_Chain * dat, Dwg_Object_Object * ord)
 {
@@ -424,22 +431,22 @@ dwg_decode_object(Bit_Chain * dat, Dwg_Object_Object * ord)
   error = bit_read_H(dat, &ord->object->handle);
   if (error)
     {
-      LOG_ERROR(
-          "\tError in object handle! Bit_Chain current address: 0x%0x\n",
-          (unsigned int) dat->byte)
+      LOG_ERROR("\t Error in object handle! Bit_Chain current address: "
+                "0x%0x \n", (unsigned int) dat->byte)
       ord->bitsize = 0;
       ord->extended_size = 0;
       ord->num_handles = 0;
       return -1;
     }
   ord->extended_size = 0;
+
   while (size = bit_read_BS(dat))
     {
       if (size > 10210)
         {
-          LOG_ERROR(
-              "dwg_decode_object: Absurd! Extended object data size: %lu. Object: %lu (handle).\n",
-              (long unsigned int) size, ord->object->handle.value)
+          LOG_ERROR("dwg_decode_object: Absurd! Extended object data "
+                    "size: %lu. Object: %lu (handle).\n",
+                    (long unsigned int) size, ord->object->handle.value)
           ord->bitsize = 0;
           ord->extended_size = 0;
           ord->num_handles = 0;
@@ -447,13 +454,14 @@ dwg_decode_object(Bit_Chain * dat, Dwg_Object_Object * ord)
         }
       if (ord->extended_size == 0)
         {
-          ord->extended = (unsigned char *)malloc(size);
+          ord->extended = (unsigned char *) malloc(size);
           ord->extended_size = size;
         }
       else
         {
           ord->extended_size += size;
-          ord->extended = (unsigned char *)realloc(ord->extended, ord->extended_size);
+          ord->extended = (unsigned char *) realloc(ord->extended,
+                                                    ord->extended_size);
         }
       error = bit_read_H(dat, &ord->extended_handle);
       if (error)
@@ -477,7 +485,7 @@ dwg_decode_object(Bit_Chain * dat, Dwg_Object_Object * ord)
   return 0;
 }
 
-
+/** Decode handleref of object */
 Dwg_Object_Ref *
 dwg_decode_handleref(Bit_Chain * dat, Dwg_Object * obj, Dwg_Data* dwg)
 {
@@ -488,13 +496,14 @@ dwg_decode_handleref(Bit_Chain * dat, Dwg_Object * obj, Dwg_Data* dwg)
     {
       if (obj)
         {
-          LOG_ERROR(
-            "Could not read handleref in object whose handle is: %d.%d.%lu\n",
-            obj->handle.code, obj->handle.size, obj->handle.value)
+          LOG_ERROR("Could not read handleref in object whose "
+                    "handle is: %d.%d.%lu\n", obj->handle.code,
+                    obj->handle.size, obj->handle.value)
         }
       else
         {
-          LOG_ERROR("Could not read handleref in the header variables section\n")
+          LOG_ERROR("Could not read handleref in the header "
+                    "variables section \n")
         }
       free(ref);
       return 0;
@@ -502,12 +511,14 @@ dwg_decode_handleref(Bit_Chain * dat, Dwg_Object * obj, Dwg_Data* dwg)
 
   //Reserve memory space for object references
   if (dwg->num_object_refs == 0)
-    dwg->object_ref = (Dwg_Object_Ref **) malloc(REFS_PER_REALLOC * sizeof(Dwg_Object_Ref*));
+    dwg->object_ref = (Dwg_Object_Ref **) malloc(REFS_PER_REALLOC * 
+                                                 sizeof(Dwg_Object_Ref*));
   else
     if (dwg->num_object_refs % REFS_PER_REALLOC == 0)
       {
         dwg->object_ref = (Dwg_Object_Ref **) realloc(dwg->object_ref,
-            (dwg->num_object_refs + REFS_PER_REALLOC) * sizeof(Dwg_Object_Ref*));
+                           (dwg->num_object_refs + REFS_PER_REALLOC) *
+                           sizeof(Dwg_Object_Ref*));
       }
 
   dwg->object_ref[dwg->num_object_refs++] = ref;
@@ -515,20 +526,21 @@ dwg_decode_handleref(Bit_Chain * dat, Dwg_Object * obj, Dwg_Data* dwg)
   ref->absolute_ref = ref->handleref.value;
   ref->obj = 0;
 
-  //we receive a null obj when we are reading
-  // handles in the header variables section
+  /* we receive a null obj when we are reading
+   * handles in the header variables section
+   */
   if (!obj)
     return ref;
 
-  /*
-   * sometimes the code indicates the type of ownership
-   * in other cases the handle is stored as an offset from some other handle
-   * how is it determined?
+  /* sometimes the code indicates the type of ownership
+   * in other cases the handle is stored as an offset from some other
+   * handle how is it determined?
    */
   ref->absolute_ref = 0;
-  switch(ref->handleref.code) //that's right: don't bother the code on the spec.
+   // that's right: don't bother the code on the spec.
+  switch(ref->handleref.code)
     {
-    case 0x06: //what if 6 means HARD_OWNER?
+    case 0x06: // what if 6 means HARD_OWNER?
       ref->absolute_ref = (obj->handle.value + 1);
       break;
     case 0x08:
@@ -547,29 +559,35 @@ dwg_decode_handleref(Bit_Chain * dat, Dwg_Object * obj, Dwg_Data* dwg)
   return ref;
 }
 
+/** Decode handleref through handle code */
 Dwg_Object_Ref *
-dwg_decode_handleref_with_code(Bit_Chain * dat, Dwg_Object * obj, Dwg_Data* dwg, unsigned int code)
+dwg_decode_handleref_with_code(Bit_Chain * dat, Dwg_Object * obj,
+                               Dwg_Data* dwg, unsigned int code)
 {
   Dwg_Object_Ref * ref;
   ref = dwg_decode_handleref(dat, obj, dwg);
 
   if (!ref)
     {
-      LOG_ERROR("dwg_decode_handleref_with_code: ref is a null pointer\n");
+      LOG_ERROR("dwg_decode_handleref_with_code: ref is a null pointer \n");
       return 0;
     }
 
   if (ref->absolute_ref == 0 && ref->handleref.code != code)
     {
-      LOG_ERROR("Expected a CODE %d handle, got a %d\n", code, ref->handleref.code)
-      //TODO: At the moment we are tolerating wrong codes in handles.
-      // in the future we might want to get strict and return 0 here so that code will crash
-      // whenever it reaches the first handle parsing error. This might make debugging easier.
-      //return 0;
+      LOG_ERROR("Expected a CODE %d handle, got a %d\n", code,
+                ref->handleref.code)
+      /*TODO: At the moment we are tolerating wrong codes in handles.
+       * in the future we might want to get strict and return 0 here so 
+       * that code will crash whenever it reaches the first handle parsing
+       * error. This might make debugging easier.
+       */
+      return 0;
     }
   return ref;
 }
 
+/** Decode entity data */
 void
 dwg_decode_common_entity_handle_data(Bit_Chain * dat, Dwg_Object * obj)
 {
@@ -688,6 +706,7 @@ get_base_value_type(short gc)
   return VT_INVALID;
 }
 
+/** DEcode Xdata */
 Dwg_Resbuf*
 dwg_decode_xdata(Bit_Chain * dat, int size)
 {
@@ -744,7 +763,8 @@ dwg_decode_xdata(Bit_Chain * dat, int size)
           rbuf->value.chunk.size = bit_read_RC(dat);          
           if (rbuf->value.chunk.size > 0)
             {
-              rbuf->value.chunk.data = (char *)malloc(rbuf->value.chunk.size * sizeof(char));
+              rbuf->value.chunk.data = (char *)malloc(rbuf->value.chunk.size
+                                                      * sizeof(char));
               for (i = 0; i < rbuf->value.chunk.size; i++)
                 rbuf->value.chunk.data[i] = bit_read_RC(dat);
             }
