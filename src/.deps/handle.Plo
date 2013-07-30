@@ -35,7 +35,7 @@ handle.lo: handle.c handle.h config.h \
  /usr/include/x86_64-linux-gnu/bits/string3.h /usr/include/assert.h \
  /usr/lib/gcc/x86_64-linux-gnu/4.7/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h common.h bits.h dwg.h \
- logging.h object.h print.h decode_r2004.h
+ object.h print.h decode_r2004.h logging.h
 
 handle.h:
 
@@ -143,10 +143,10 @@ bits.h:
 
 dwg.h:
 
-logging.h:
-
 object.h:
 
 print.h:
 
 decode_r2004.h:
+
+logging.h:

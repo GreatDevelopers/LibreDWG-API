@@ -243,7 +243,7 @@ decode_R13_R15(Bit_Chain *dat, Dwg_Data *dwg)
 
   /* Image Seeker */
   pvz = bit_read_RL(dat);
-  LOG_TRACE("Image seeker: 0x%08X\ n", (unsigned int) pvz)
+  LOG_TRACE("Image seeker: 0x%08X \n", (unsigned int) pvz)
 
   /* unknown */
   sig = bit_read_RC(dat);

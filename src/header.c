@@ -50,7 +50,7 @@ read_R13_R15_section_header(Bit_Chain *dat, Dwg_Data *dwg)
 
   dat->byte = dwg->header.section[0].address + 16;
   pvz = bit_read_RL(dat);
-  LOG_TRACE("Length: %lu \n", pvz)
+  LOG_TRACE("Length: %x \n", pvz)
 
   dat->bit = 0;
   dwg_decode_header_variables(dat, dwg);
@@ -85,7 +85,7 @@ read_2004_section_header(Bit_Chain *dat, Dwg_Data *dwg)
       dwg_sentinel(DWG_SENTINEL_VARIABLE_BEGIN)))
     {
       uint32_t size = bit_read_RL(&sec_dat);
-      LOG_TRACE("Length: %lu \n", size);
+      LOG_TRACE("Length: %x \n", size);
       
       dwg_decode_header_variables(&sec_dat, dwg);
     }

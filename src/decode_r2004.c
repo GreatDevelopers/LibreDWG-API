@@ -29,7 +29,7 @@
 #include "resolve_pointers.h"
 #include "section_locate.h"
 
-static unsigned int loglevel;
+extern unsigned int loglevel;
 
 #define DWG_LOGLEVEL loglevel
 

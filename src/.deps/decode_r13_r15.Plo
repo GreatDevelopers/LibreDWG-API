@@ -35,7 +35,7 @@ decode_r13_r15.lo: decode_r13_r15.c classes.h config.h \
  /usr/include/x86_64-linux-gnu/bits/string3.h /usr/include/assert.h \
  /usr/lib/gcc/x86_64-linux-gnu/4.7/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h common.h bits.h dwg.h \
- decode_r13_r15.h print.h handle.h logging.h header.h resolve_pointers.h \
+ decode_r13_r15.h print.h handle.h header.h logging.h resolve_pointers.h \
  section_locate.h
 
 classes.h:
@@ -150,9 +150,9 @@ print.h:
 
 handle.h:
 
-logging.h:
-
 header.h:
+
+logging.h:
 
 resolve_pointers.h:
 

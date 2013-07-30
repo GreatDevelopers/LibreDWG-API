@@ -36,7 +36,6 @@
 #include "common.h"
 #include "bits.h"
 #include "dwg.h"
-#include "logging.h"
 
 void
 read_R13_R15_section_object_map(Bit_Chain *dat, Dwg_Data *dwg);

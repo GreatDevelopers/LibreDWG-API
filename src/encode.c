@@ -488,7 +488,7 @@ dwg_encode_chains(Dwg_Data *dwg, Bit_Chain *dat)
       bit_write_CRC(dat, omap[i].address, 0xC0C1);
     }
     for (i = 0; i < dwg->num_objects; i++) 
-      LOG_INFO ("Object(%i): %6lu / Address: %08X / Idc: %u\n", 
+      LOG_INFO ("Object(%lu): %6lu / Address: %08lu / Idc: %u\n", 
 		 i, omap[i].handle, omap[i].address, omap[i].idc);
 
   /* Unknown bitdouble between objects and object map
@@ -696,7 +696,7 @@ dwg_encode_add_object(Dwg_Object *obj, Bit_Chain *dat,
    */
   dat->byte = address;
   dat->bit = 0;
-  LOG_INFO("\n\n\n Object number: %lu", obj->index)
+  LOG_INFO("\n\n\n Object number: %u", obj->index)
 
   bit_write_MS(dat, obj->size);
   object_address = dat->byte;

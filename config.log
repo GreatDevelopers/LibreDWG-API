@@ -548,6 +548,7 @@ config.status:1111: creating examples/Makefile
 config.status:1111: creating bindings/Makefile
 config.status:1111: creating bindings/python/Makefile
 config.status:1111: creating src/config.h
+config.status:1292: src/config.h is unchanged
 config.status:1340: executing depfiles commands
 config.status:1340: executing libtool commands
 
@@ -689,7 +690,7 @@ INSTALL_DATA='${INSTALL} -m 644'
 INSTALL_PROGRAM='${INSTALL}'
 INSTALL_SCRIPT='${INSTALL}'
 INSTALL_STRIP_PROGRAM='$(install_sh) -c -s'
-ISODATE='2013-07-29'
+ISODATE='2013-07-30'
 LD='/usr/bin/ld -m elf_x86_64'
 LDFLAGS=''
 LIBOBJS=''

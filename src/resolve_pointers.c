@@ -57,7 +57,7 @@ resolve_objectref_vector(Dwg_Data *dwg)
           if (obj)
             dwg_print_object(obj);
           else
-            LOG_ERROR("Null object pointer: object_ref[%lu] \n", i)
+            LOG_ERROR("Null object pointer: object_ref[%x] \n", i)
         }
     }
 }
@@ -75,7 +75,7 @@ dwg_resolve_handle(Dwg_Data *dwg, uint32_t absref)
           return &dwg->object[i];
         }
     }
-  LOG_ERROR("Object not found: %lu \n", absref)
+  LOG_ERROR("Object not found: %x \n", absref)
   return 0;
 }
 

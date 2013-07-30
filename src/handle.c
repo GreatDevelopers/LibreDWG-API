@@ -24,6 +24,7 @@
 #include "handle.h"
 #include "object.h"
 #include "decode_r2004.h"
+#include "logging.h"
 
 
 /** Read R13-R15 Object-map Section */

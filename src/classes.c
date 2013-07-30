@@ -40,7 +40,7 @@ read_R13_R15_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
   dat->bit = 0;
   size = bit_read_RL(dat);
   lasta = dat->byte + size;
-  LOG_TRACE(" Length: %lu\n", size);
+  LOG_TRACE(" Length: %x\n", size);
 
   //read the classes
   dwg->dwg_ot_layout = 0;
@@ -98,7 +98,7 @@ read_R13_R15_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
   dat->byte += 16;
   pvz = bit_read_RL(dat); // Unknown bitlong inter class and object
 
-  LOG_TRACE("Address: %lu / Content: 0x%#lX \n", dat->byte - 4, pvz)
+  LOG_TRACE("Address: %lu / Content: 0x%#x \n", dat->byte - 4, pvz)
   LOG_INFO("Number of classes read: %u \n", dwg->num_classes)
 }
 
@@ -169,8 +169,7 @@ read_2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
     }
 
   /* Check CRC on */
-  long unsigned int pvz;
-  unsigned long int ckr, ckr2;
+  uint32_t pvz, ckr, ckr2;
   
   sec_dat.byte = dwg->header.section[1].address + dwg->header.section[1].size
                  - 18;
@@ -189,7 +188,7 @@ read_2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
  
   sec_dat.byte += 16;
   pvz = bit_read_RL(dat); // Unknown bitlong inter class and object
-  LOG_TRACE("Address: %lu / Content: 0x%#lX \n", sec_dat.byte - 4, pvz)
+  LOG_TRACE("Address: %lu / Content: 0x%#x \n", sec_dat.byte - 4, pvz)
   LOG_INFO("Number of classes read: %u\n", dwg->num_classes)
   free(sec_dat.chain);
 }

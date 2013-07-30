@@ -189,7 +189,7 @@ dwg_bmp(Dwg_Data *stk, long int *size)
       else if (code == 3)
         {
           bit_read_RL(dat);
-          LOG_TRACE("\t\t WMF size: 0x%x \n", bit_read_RL (dat))
+          LOG_TRACE("\t\t WMF size: 0x%lx \n", bit_read_RL (dat))
         }
       else
         {
