@@ -99,6 +99,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;stdlib.h&gt;</code><br/>
 <code>#include &lt;string.h&gt;</code><br/>
 <code>#include &lt;assert.h&gt;</code><br/>
+<code>#include &lt;stdint.h&gt;</code><br/>
+<code>#include &lt;sys/types.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="common_8h_source.html">common.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="bits_8h_source.html">bits.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="dwg_8h_source.html">dwg.h</a>&quot;</code><br/>
@@ -111,9 +113,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a2774650b9071c8aaa7c0b77eebdb0d33"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2774650b9071c8aaa7c0b77eebdb0d33"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>resolve_objectref_vector</b> (<a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
 <tr class="separator:a2774650b9071c8aaa7c0b77eebdb0d33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a319964ab1f493c0987130f2968653573"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a319964ab1f493c0987130f2968653573"></a>
-<a class="el" href="struct__dwg__object.html">Dwg_Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>dwg_resolve_handle</b> (<a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, unsigned long int handle)</td></tr>
-<tr class="separator:a319964ab1f493c0987130f2968653573"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55c1a4009291d03ea7c362544ce74edf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__dwg__object.html">Dwg_Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="resolve__pointers_8h.html#a55c1a4009291d03ea7c362544ce74edf">dwg_resolve_handle</a> (<a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, uint32_t handle)</td></tr>
+<tr class="separator:a55c1a4009291d03ea7c362544ce74edf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Resolve handle pointer function prototypes. </p>
@@ -128,10 +129,40 @@ modified by Till Heuschmann </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>GNU General Public License (version 3 or later) </dd></dl>
 
 <p>Definition in file <a class="el" href="resolve__pointers_8h_source.html">resolve_pointers.h</a>.</p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a55c1a4009291d03ea7c362544ce74edf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct__dwg__object.html">Dwg_Object</a>* dwg_resolve_handle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *&#160;</td>
+          <td class="paramname"><em>dwg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>absref</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Find a pointer to an object given it's id (handle) </p>
+
+<p>Definition at line <a class="el" href="resolve__pointers_8c_source.html#l00067">67</a> of file <a class="el" href="resolve__pointers_8c_source.html">resolve_pointers.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 29 2013 00:15:39 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 29 2013 14:09:09 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

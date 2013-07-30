@@ -99,6 +99,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;stdlib.h&gt;</code><br/>
 <code>#include &lt;string.h&gt;</code><br/>
 <code>#include &lt;assert.h&gt;</code><br/>
+<code>#include &lt;stdint.h&gt;</code><br/>
+<code>#include &lt;sys/types.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="common_8h_source.html">common.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="bits_8h_source.html">bits.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="dwg_8h_source.html">dwg.h</a>&quot;</code><br/>
@@ -110,8 +112,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Functions</h2></td></tr>
 <tr class="memitem:ab0729d2da981c4d81d09fdf2e28f9370"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="section__locate_8h.html#ab0729d2da981c4d81d09fdf2e28f9370">read_R13_R15_section_locate</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
 <tr class="separator:ab0729d2da981c4d81d09fdf2e28f9370"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdf004109e75c4516951c2cc0499ce93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="section__locate_8h.html#afdf004109e75c4516951c2cc0499ce93">read_R2004_section_map</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, unsigned long int comp_data_size, unsigned long int decomp_data_size)</td></tr>
-<tr class="separator:afdf004109e75c4516951c2cc0499ce93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23811e58cc4855c41185f7621950ed08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="section__locate_8h.html#a23811e58cc4855c41185f7621950ed08">read_R2004_section_map</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, uint32_t comp_data_size, uint32_t decomp_data_size)</td></tr>
+<tr class="separator:a23811e58cc4855c41185f7621950ed08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Section locating function prototypes. </p>
@@ -152,11 +154,11 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Read R13-R15 Object Map </p>
 
-<p>Definition at line <a class="el" href="section__locate_8c_source.html#l00033">33</a> of file <a class="el" href="section__locate_8c_source.html">section_locate.c</a>.</p>
+<p>Definition at line <a class="el" href="section__locate_8c_source.html#l00030">30</a> of file <a class="el" href="section__locate_8c_source.html">section_locate.c</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="afdf004109e75c4516951c2cc0499ce93"></a>
+<a class="anchor" id="a23811e58cc4855c41185f7621950ed08"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -175,13 +177,13 @@ modified by Till Heuschmann </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned long int&#160;</td>
+          <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>comp_data_size</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned long int&#160;</td>
+          <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>decomp_data_size</em>&#160;</td>
         </tr>
         <tr>
@@ -193,14 +195,14 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Read R2004 Section Map </p>
 
-<p>Definition at line <a class="el" href="section__locate_8c_source.html#l00078">78</a> of file <a class="el" href="section__locate_8c_source.html">section_locate.c</a>.</p>
+<p>Definition at line <a class="el" href="section__locate_8c_source.html#l00076">76</a> of file <a class="el" href="section__locate_8c_source.html">section_locate.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 29 2013 00:15:39 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 29 2013 14:09:09 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

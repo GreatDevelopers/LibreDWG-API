@@ -37,8 +37,6 @@
 #include "bits.h"
 #include "print.h"
 
-uint32_t ktl_lastaddress;
-
 int
 dwg_decode_variable_type(Dwg_Data *dwg, Bit_Chain *dat, Dwg_Object *obj);
 

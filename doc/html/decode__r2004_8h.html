@@ -99,6 +99,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;stdlib.h&gt;</code><br/>
 <code>#include &lt;string.h&gt;</code><br/>
 <code>#include &lt;assert.h&gt;</code><br/>
+<code>#include &lt;stdint.h&gt;</code><br/>
+<code>#include &lt;sys/types.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="common_8h_source.html">common.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="bits_8h_source.html">bits.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="dwg_8h_source.html">dwg.h</a>&quot;</code><br/>
@@ -114,17 +116,17 @@ Functions</h2></td></tr>
 <tr class="separator:a0734912f5761e8595c61ccdd9eab1f6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70bba5e784023ab016ebfe697853af3c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__r2004_8h.html#a70bba5e784023ab016ebfe697853af3c">read_two_byte_offset</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, int *lit_length)</td></tr>
 <tr class="separator:a70bba5e784023ab016ebfe697853af3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5494506382896a7cd11b74b477dc2d7d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__r2004_8h.html#a5494506382896a7cd11b74b477dc2d7d">decompress_R2004_section</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, char *decomp, unsigned long int comp_data_size)</td></tr>
-<tr class="separator:a5494506382896a7cd11b74b477dc2d7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7552771eb6a6ea44281d945df189212c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7552771eb6a6ea44281d945df189212c"></a>
-<a class="el" href="struct__dwg__section.html">Dwg_Section</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>find_section</b> (<a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, unsigned long int index)</td></tr>
-<tr class="separator:a7552771eb6a6ea44281d945df189212c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adae2a80dd8f4d54ba416b919ae990e8a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__r2004_8h.html#adae2a80dd8f4d54ba416b919ae990e8a">page_checksum</a> (unsigned int seed, unsigned char *data, unsigned int size)</td></tr>
-<tr class="separator:adae2a80dd8f4d54ba416b919ae990e8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02270c4186050fa9cb24edd8c6ebfbb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__r2004_8h.html#a02270c4186050fa9cb24edd8c6ebfbb6">read_R2004_section_info</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, unsigned long int comp_data_size, unsigned long int decomp_data_size)</td></tr>
-<tr class="separator:a02270c4186050fa9cb24edd8c6ebfbb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af01e9b86f26c2395ace23c523498d262"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__r2004_8h.html#af01e9b86f26c2395ace23c523498d262">read_2004_compressed_section</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, <a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *sec_dat, long unsigned int section_type)</td></tr>
-<tr class="separator:af01e9b86f26c2395ace23c523498d262"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04e73bdd31f6182d453df185f56f3d00"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__r2004_8h.html#a04e73bdd31f6182d453df185f56f3d00">decompress_R2004_section</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, char *decomp, uint32_t comp_data_size)</td></tr>
+<tr class="separator:a04e73bdd31f6182d453df185f56f3d00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63d4d0071ad17fba438060fd43b580a4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63d4d0071ad17fba438060fd43b580a4"></a>
+<a class="el" href="struct__dwg__section.html">Dwg_Section</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>find_section</b> (<a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, uint32_t index)</td></tr>
+<tr class="separator:a63d4d0071ad17fba438060fd43b580a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86c1bb9704850190cdbbc1a448fb145c"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__r2004_8h.html#a86c1bb9704850190cdbbc1a448fb145c">page_checksum</a> (int32_t seed, unsigned char *data, int32_t size)</td></tr>
+<tr class="separator:a86c1bb9704850190cdbbc1a448fb145c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64a52309affdb853c5fdc998d869eced"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__r2004_8h.html#a64a52309affdb853c5fdc998d869eced">read_R2004_section_info</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, uint32_t comp_data_size, uint32_t decomp_data_size)</td></tr>
+<tr class="separator:a64a52309affdb853c5fdc998d869eced"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf52e39d99e11c6ab1be9e56a2e046fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode__r2004_8h.html#acf52e39d99e11c6ab1be9e56a2e046fe">read_2004_compressed_section</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, <a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *sec_dat, uint32_t section_type)</td></tr>
+<tr class="separator:acf52e39d99e11c6ab1be9e56a2e046fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>R2004 decode function prototypes. </p>
@@ -165,11 +167,11 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Decode R2004 version </p>
 
-<p>Definition at line <a class="el" href="decode__r2004_8c_source.html#l00427">427</a> of file <a class="el" href="decode__r2004_8c_source.html">decode_r2004.c</a>.</p>
+<p>Definition at line <a class="el" href="decode__r2004_8c_source.html#l00416">416</a> of file <a class="el" href="decode__r2004_8c_source.html">decode_r2004.c</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a5494506382896a7cd11b74b477dc2d7d"></a>
+<a class="anchor" id="a04e73bdd31f6182d453df185f56f3d00"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -188,7 +190,7 @@ modified by Till Heuschmann </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned long int&#160;</td>
+          <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>comp_data_size</em>&#160;</td>
         </tr>
         <tr>
@@ -200,18 +202,18 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Decompresses a system section of a 2004 DWG flie </p>
 
-<p>Definition at line <a class="el" href="decode__r2004_8c_source.html#l00117">117</a> of file <a class="el" href="decode__r2004_8c_source.html">decode_r2004.c</a>.</p>
+<p>Definition at line <a class="el" href="decode__r2004_8c_source.html#l00114">114</a> of file <a class="el" href="decode__r2004_8c_source.html">decode_r2004.c</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="adae2a80dd8f4d54ba416b919ae990e8a"></a>
+<a class="anchor" id="a86c1bb9704850190cdbbc1a448fb145c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int page_checksum </td>
+          <td class="memname">int32_t page_checksum </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype">int32_t&#160;</td>
           <td class="paramname"><em>seed</em>, </td>
         </tr>
         <tr>
@@ -223,7 +225,7 @@ modified by Till Heuschmann </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype">int32_t&#160;</td>
           <td class="paramname"><em>size</em>&#160;</td>
         </tr>
         <tr>
@@ -235,11 +237,11 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Section page checksum </p>
 
-<p>Definition at line <a class="el" href="decode__r2004_8c_source.html#l00229">229</a> of file <a class="el" href="decode__r2004_8c_source.html">decode_r2004.c</a>.</p>
+<p>Definition at line <a class="el" href="decode__r2004_8c_source.html#l00226">226</a> of file <a class="el" href="decode__r2004_8c_source.html">decode_r2004.c</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="af01e9b86f26c2395ace23c523498d262"></a>
+<a class="anchor" id="acf52e39d99e11c6ab1be9e56a2e046fe"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -264,7 +266,7 @@ modified by Till Heuschmann </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">long unsigned int&#160;</td>
+          <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>section_type</em>&#160;</td>
         </tr>
         <tr>
@@ -276,7 +278,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Compresses a system section of a 2004 DWG flie </p>
 
-<p>Definition at line <a class="el" href="decode__r2004_8c_source.html#l00358">358</a> of file <a class="el" href="decode__r2004_8c_source.html">decode_r2004.c</a>.</p>
+<p>Definition at line <a class="el" href="decode__r2004_8c_source.html#l00351">351</a> of file <a class="el" href="decode__r2004_8c_source.html">decode_r2004.c</a>.</p>
 
 </div>
 </div>
@@ -295,11 +297,11 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>R2004 Long Compression Offset </p>
 
-<p>Definition at line <a class="el" href="decode__r2004_8c_source.html#l00090">90</a> of file <a class="el" href="decode__r2004_8c_source.html">decode_r2004.c</a>.</p>
+<p>Definition at line <a class="el" href="decode__r2004_8c_source.html#l00087">87</a> of file <a class="el" href="decode__r2004_8c_source.html">decode_r2004.c</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a02270c4186050fa9cb24edd8c6ebfbb6"></a>
+<a class="anchor" id="a64a52309affdb853c5fdc998d869eced"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -318,13 +320,13 @@ modified by Till Heuschmann </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned long int&#160;</td>
+          <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>comp_data_size</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned long int&#160;</td>
+          <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>decomp_data_size</em>&#160;</td>
         </tr>
         <tr>
@@ -336,7 +338,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Read R2004 Section Info </p>
 
-<p>Definition at line <a class="el" href="decode__r2004_8c_source.html#l00262">262</a> of file <a class="el" href="decode__r2004_8c_source.html">decode_r2004.c</a>.</p>
+<p>Definition at line <a class="el" href="decode__r2004_8c_source.html#l00259">259</a> of file <a class="el" href="decode__r2004_8c_source.html">decode_r2004.c</a>.</p>
 
 </div>
 </div>
@@ -365,14 +367,14 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>R2004 Two Byte Offset </p>
 
-<p>Definition at line <a class="el" href="decode__r2004_8c_source.html#l00105">105</a> of file <a class="el" href="decode__r2004_8c_source.html">decode_r2004.c</a>.</p>
+<p>Definition at line <a class="el" href="decode__r2004_8c_source.html#l00102">102</a> of file <a class="el" href="decode__r2004_8c_source.html">decode_r2004.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 29 2013 00:15:39 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 29 2013 14:09:09 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

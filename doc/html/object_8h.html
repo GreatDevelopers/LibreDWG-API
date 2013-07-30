@@ -100,6 +100,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;stdlib.h&gt;</code><br/>
 <code>#include &lt;string.h&gt;</code><br/>
 <code>#include &lt;assert.h&gt;</code><br/>
+<code>#include &lt;stdint.h&gt;</code><br/>
+<code>#include &lt;sys/types.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="common_8h_source.html">common.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="bits_8h_source.html">bits.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="print_8h_source.html">print.h</a>&quot;</code><br/>
@@ -110,14 +112,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Functions</h2></td></tr>
 <tr class="memitem:a93839d24b4f42cc30e54585055f8bb5a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html#a93839d24b4f42cc30e54585055f8bb5a">dwg_decode_variable_type</a> (<a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, <a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object.html">Dwg_Object</a> *obj)</td></tr>
 <tr class="separator:a93839d24b4f42cc30e54585055f8bb5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2eacb3e59208b2b9fcc920b5fea40e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html#ad2eacb3e59208b2b9fcc920b5fea40e0">dwg_decode_add_object</a> (<a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, <a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, long unsigned int address)</td></tr>
-<tr class="separator:ad2eacb3e59208b2b9fcc920b5fea40e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b370e2c9f0198481f8d62ffdfbb5139"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html#a2b370e2c9f0198481f8d62ffdfbb5139">dwg_decode_add_object</a> (<a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, <a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, uint32_t address)</td></tr>
+<tr class="separator:a2b370e2c9f0198481f8d62ffdfbb5139"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a7eafb03626668038cb8d53c736d6cea7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7eafb03626668038cb8d53c736d6cea7"></a>
-long unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>ktl_lastaddress</b></td></tr>
-<tr class="separator:a7eafb03626668038cb8d53c736d6cea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae73f15f31d5867b795cde0361a8025c2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae73f15f31d5867b795cde0361a8025c2"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>ktl_lastaddress</b></td></tr>
+<tr class="separator:ae73f15f31d5867b795cde0361a8025c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Object function prototypes. </p>
@@ -133,7 +135,7 @@ modified by Till Heuschmann </dd></dl>
 
 <p>Definition in file <a class="el" href="object_8h_source.html">object.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ad2eacb3e59208b2b9fcc920b5fea40e0"></a>
+<a class="anchor" id="a2b370e2c9f0198481f8d62ffdfbb5139"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -152,7 +154,7 @@ modified by Till Heuschmann </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">long unsigned int&#160;</td>
+          <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>address</em>&#160;</td>
         </tr>
         <tr>
@@ -199,14 +201,14 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Returns 1 if object could be decoded and 0 otherwise </p>
 
-<p>Definition at line <a class="el" href="object_8c_source.html#l00339">339</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
+<p>Definition at line <a class="el" href="object_8c_source.html#l00337">337</a> of file <a class="el" href="object_8c_source.html">object.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 29 2013 00:15:39 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 29 2013 14:09:09 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

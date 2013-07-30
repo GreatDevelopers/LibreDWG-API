@@ -162,6 +162,9 @@ typedef struct <a class="el" href="struct__r2007__section.html">_r2007_section</
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ad95073b1392e500ad70c4bac4450a437"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad95073b1392e500ad70c4bac4450a437"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>read_r2007_meta_data</b> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
+<tr class="separator:ad95073b1392e500ad70c4bac4450a437"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cf9749f8fae03a6f81802a0ea579a64"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7cf9749f8fae03a6f81802a0ea579a64"></a>
 <a class="el" href="struct__r2007__section.html">r2007_section</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get_section</b> (<a class="el" href="struct__r2007__section.html">r2007_section</a> *sections_map, int64_t hashcode)</td></tr>
 <tr class="separator:a7cf9749f8fae03a6f81802a0ea579a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -222,9 +225,6 @@ DWGCHAR *&#160;</td><td class="memItemRight" valign="bottom"><b>bfr_read_string<
 <tr class="memitem:afdf376e53425baacbe56665748e97785"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afdf376e53425baacbe56665748e97785"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>read_file_header</b> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="structr2007__file__header.html">r2007_file_header</a> *file_header)</td></tr>
 <tr class="separator:afdf376e53425baacbe56665748e97785"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad95073b1392e500ad70c4bac4450a437"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad95073b1392e500ad70c4bac4450a437"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>read_r2007_meta_data</b> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
-<tr class="separator:ad95073b1392e500ad70c4bac4450a437"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>R2007 decode functions. </p>
@@ -250,7 +250,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>read_r2007_meta_data</
 <b>Value:</b><div class="fragment"><div class="line">*(uint32_t*)dst = *(uint32_t*)(src + offset); \</div>
 <div class="line">dst += 4;</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode__r2007_8c_source.html#l00128">128</a> of file <a class="el" href="decode__r2007_8c_source.html">decode_r2007.c</a>.</p>
+<p>Definition at line <a class="el" href="decode__r2007_8c_source.html#l00131">131</a> of file <a class="el" href="decode__r2007_8c_source.html">decode_r2007.c</a>.</p>
 
 </div>
 </div>
@@ -270,14 +270,14 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>read_r2007_meta_data</
 <b>Value:</b><div class="fragment"><div class="line">*(uint64_t*)dst = *(uint64_t*)(src + offset); \</div>
 <div class="line">dst += 8;</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode__r2007_8c_source.html#l00132">132</a> of file <a class="el" href="decode__r2007_8c_source.html">decode_r2007.c</a>.</p>
+<p>Definition at line <a class="el" href="decode__r2007_8c_source.html#l00135">135</a> of file <a class="el" href="decode__r2007_8c_source.html">decode_r2007.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 29 2013 00:15:39 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 29 2013 14:09:09 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

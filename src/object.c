@@ -28,6 +28,7 @@
 #include "dwg.h"
 
 static unsigned int loglevel;
+uint32_t ktl_lastaddress;
 
 // #define DWG_LOGLEVEL loglevel
 
