@@ -54,6 +54,7 @@ dwg_decode_data(Bit_Chain * dat, Dwg_Data * dwg)
   dwg->num_classes = 0;
 
   #ifdef USE_TRACING
+
   /* Before starting, set the logging level, but only do so once.  */
   if (! env_var_checked_p)
     {

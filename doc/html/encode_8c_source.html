@@ -564,7 +564,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;      <a class="code" href="bits_8c.html#a4d71fd04f8a40b9b0467cb2a3caf0ce0">bit_write_CRC</a>(dat, omap[i].address, 0xC0C1);</div>
 <div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;    }</div>
 <div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; dwg-&gt;num_objects; i++) </div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;      LOG_INFO (<span class="stringliteral">&quot;Object(%i): %6lu / Address: %08X / Idc: %u\n&quot;</span>, </div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;      LOG_INFO (<span class="stringliteral">&quot;Object(%lu): %6lu / Address: %08lu / Idc: %u\n&quot;</span>, </div>
 <div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;         i, omap[i].handle, omap[i].address, omap[i].idc);</div>
 <div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;</div>
 <div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;  <span class="comment">/* Unknown bitdouble between objects and object map</span></div>
@@ -772,7 +772,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;<span class="comment">   */</span></div>
 <div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;  dat-&gt;byte = address;</div>
 <div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;  dat-&gt;bit = 0;</div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;  LOG_INFO(<span class="stringliteral">&quot;\n\n\n Object number: %lu&quot;</span>, obj-&gt;index)</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;  LOG_INFO(<span class="stringliteral">&quot;\n\n\n Object number: %u&quot;</span>, obj-&gt;index)</div>
 <div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;</div>
 <div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;  <a class="code" href="bits_8c.html#a9d7501bdace44fe45e5a9f1fcb1314ce">bit_write_MS</a>(dat, obj-&gt;size);</div>
 <div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;  object_address = dat-&gt;byte;</div>
@@ -1204,7 +1204,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 29 2013 14:09:09 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 31 2013 11:47:21 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

@@ -73,7 +73,7 @@ void
 output_TEXT(Dwg_Object* obj)
 {
   Dwg_Entity_TEXT* text;
-  text = obj->tio.entity->tio.TEXT;
+  text = obj->as.entity->as.TEXT;
 
   /*TODO: Juca, fix it properly: */
   if (text->text_value[0] == '&') return;
@@ -89,7 +89,7 @@ void
 output_LINE(Dwg_Object* obj)
 {
   Dwg_Entity_LINE* line;
-  line = obj->tio.entity->tio.LINE;
+  line = obj->as.entity->as.LINE;
   printf(
       "\t<path id=\"dwg-object-%d\" d=\"M %f,%f %f,%f\" style=\"fill:none;stroke:blue;stroke-width:0.1px\" />\n",
       obj->index, transform_X(line->start.x), transform_Y(line->start.y), transform_X(line->end.x), transform_Y(line->end.y));
@@ -99,7 +99,7 @@ void
 output_CIRCLE(Dwg_Object* obj)
 {
   Dwg_Entity_CIRCLE* circle;
-  circle = obj->tio.entity->tio.CIRCLE;
+  circle = obj->as.entity->as.CIRCLE;
   printf(
       "\t<circle id=\"dwg-object-%d\" cx=\"%f\" cy=\"%f\" r=\"%f\" fill=\"none\" stroke=\"blue\" stroke-width=\"0.1px\" />\n",
       obj->index, transform_X(circle->center.x), transform_Y(circle->center.y), circle->radius);
@@ -109,7 +109,7 @@ void
 output_ARC(Dwg_Object* obj)
 {
   Dwg_Entity_ARC* arc;
-  arc = obj->tio.entity->tio.ARC;
+  arc = obj->as.entity->as.ARC;
   double x_start = arc->center.x + arc->radius * cos(arc->start_angle);
   double y_start = arc->center.y + arc->radius * sin(arc->start_angle);
   double x_end = arc->center.x + arc->radius * cos(arc->end_angle);
@@ -126,7 +126,7 @@ void
 output_INSERT(Dwg_Object* obj)
 {
   Dwg_Entity_INSERT* insert;
-  insert = obj->tio.entity->tio.INSERT;
+  insert = obj->as.entity->as.INSERT;
   //if (insert->block_header->handleref.code == 5)
   if(42) //XXX did this to test the new handleref.code handling "code"
     {
@@ -203,13 +203,13 @@ void output_BLOCK_HEADER(Dwg_Object_Ref* ref)
 
   /* TODO: Review.  (This check avoids a segfault, but it is
      still unclear whether or not the condition is valid.)  */
-  if (!ref->obj->tio.object)
+  if (!ref->obj->as.object)
     {
-      fprintf(stderr, "Found null ref->obj->tio.object\n");
+      fprintf(stderr, "Found null ref->obj->as.object\n");
       return;
     }
 
-  hdr = ref->obj->tio.object->tio.BLOCK_HEADER;
+  hdr = ref->obj->as.object->as.BLOCK_HEADER;
   printf(
       "\t<g id=\"symbol-%lu\" >\n\t\t<!-- %s -->\n", ref->absolute_ref, hdr->entry_name);
 
@@ -261,7 +261,7 @@ output_SVG(Dwg_Data* dwg)
     }
 
   Dwg_Object_BLOCK_CONTROL* block_control;
-  block_control = obj->tio.object->tio.BLOCK_CONTROL;
+  block_control = obj->as.object->as.BLOCK_CONTROL;
   printf("\t<defs>\n");
   for (i=0; i<block_control->num_entries; i++)
     {

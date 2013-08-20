@@ -28,6 +28,7 @@
 #include "dwg.h"
 
 static unsigned int loglevel;
+uint32_t ktl_lastaddress;
 
 // #define DWG_LOGLEVEL loglevel
 
@@ -35,8 +36,7 @@ static unsigned int loglevel;
 void
 dwg_decode_add_object(Dwg_Data *dwg, Bit_Chain *dat, uint32_t address)
 {
-  long unsigned int previous_address;
-  long unsigned int object_address;
+  uint32_t previous_address, object_address;
   unsigned char previous_bit;
   Dwg_Object *obj;
 

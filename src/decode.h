@@ -142,15 +142,15 @@
   _obj->name = dwg_decode_xdata(dat, _obj->size)
 
 #define REACTORS(code)\
-  FIELD_VALUE(reactors) = (BITCODE_H*) malloc(sizeof(BITCODE_H) * obj->tio.object->num_reactors);\
-  for (vcount=0; vcount<obj->tio.object->num_reactors; vcount++)\
+  FIELD_VALUE(reactors) = (BITCODE_H*) malloc(sizeof(BITCODE_H) * obj->as.object->num_reactors);\
+  for (vcount=0; vcount<obj->as.object->num_reactors; vcount++)\
     {\
       FIELD_HANDLE(reactors[vcount], code);\
     }
 
 #define ENT_REACTORS(code)\
-  FIELD_VALUE(reactors) = (BITCODE_H*) malloc(sizeof(BITCODE_H) * obj->tio.entity->num_reactors);\
-  for (vcount=0; vcount<obj->tio.entity->num_reactors; vcount++)\
+  FIELD_VALUE(reactors) = (BITCODE_H*) malloc(sizeof(BITCODE_H) * obj->as.entity->num_reactors);\
+  for (vcount=0; vcount<obj->as.entity->num_reactors; vcount++)\
     {\
       FIELD_HANDLE(reactors[vcount], code);\
     }
@@ -158,7 +158,7 @@
 #define XDICOBJHANDLE(code)\
   SINCE(R_2004)\
     {\
-      if (!obj->tio.object->xdic_missing_flag)\
+      if (!obj->as.object->xdic_missing_flag)\
         {\
           FIELD_HANDLE(xdicobjhandle, code);\
         }\
@@ -171,7 +171,7 @@
 #define ENT_XDICOBJHANDLE(code)\
   SINCE(R_2004)\
     {\
-      if (!obj->tio.entity->xdic_missing_flag)\
+      if (!obj->as.entity->xdic_missing_flag)\
         {\
           FIELD_HANDLE(xdicobjhandle, code);\
         }\
@@ -212,12 +212,12 @@ void \
   LOG_INFO("Entity " #token ":\n")\
   dwg->num_entities++;\
   obj->supertype = DWG_SUPERTYPE_ENTITY;\
-  obj->tio.entity = (Dwg_Object_Entity*)malloc (sizeof (Dwg_Object_Entity));	\
-  obj->tio.entity->tio.token = (Dwg_Entity_##token *)calloc (sizeof (Dwg_Entity_##token), 1); \
-  ent = obj->tio.entity->tio.token;\
+  obj->as.entity = (Dwg_Object_Entity*)malloc (sizeof (Dwg_Object_Entity));	\
+  obj->as.entity->as.token = (Dwg_Entity_##token *)calloc (sizeof (Dwg_Entity_##token), 1); \
+  ent = obj->as.entity->as.token;\
   _obj=ent;\
-  obj->tio.entity->object = obj;\
-  if (dwg_decode_entity (dat, obj->tio.entity)) return;\
+  obj->as.entity->object = obj;\
+  if (dwg_decode_entity (dat, obj->as.entity)) return;\
   LOG_INFO("Entity handle: %d.%d.%lu\n",\
     obj->handle.code,\
     obj->handle.size,\
@@ -231,11 +231,11 @@ void \
   Dwg_Data* dwg = obj->parent;\
   LOG_INFO("Object " #token ":\n")\
   obj->supertype = DWG_SUPERTYPE_OBJECT;\
-  obj->tio.object = (Dwg_Object_Object*)malloc (sizeof (Dwg_Object_Object));	\
-  obj->tio.object->tio.token = (Dwg_Object_##token * ) calloc (sizeof (Dwg_Object_##token), 1); \
-  obj->tio.object->object = obj;\
-  if (dwg_decode_object (dat, obj->tio.object)) return;\
-  _obj = obj->tio.object->tio.token;\
+  obj->as.object = (Dwg_Object_Object*)malloc (sizeof (Dwg_Object_Object));	\
+  obj->as.object->as.token = (Dwg_Object_##token * ) calloc (sizeof (Dwg_Object_##token), 1); \
+  obj->as.object->object = obj;\
+  if (dwg_decode_object (dat, obj->as.object)) return;\
+  _obj = obj->as.object->as.token;\
   LOG_INFO("Object handle: %d.%d.%lu\n",\
     obj->handle.code,\
     obj->handle.size,\

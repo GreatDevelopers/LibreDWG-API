@@ -128,7 +128,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  dat-&gt;byte = dwg-&gt;header.section[0].address + 16;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  pvz = <a class="code" href="bits_8c.html#aff017ae6e9346e585cb3f1004122e49f">bit_read_RL</a>(dat);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  LOG_TRACE(<span class="stringliteral">&quot;Length: %lu \n&quot;</span>, pvz)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  LOG_TRACE(<span class="stringliteral">&quot;Length: %x \n&quot;</span>, pvz)</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  dat-&gt;bit = 0;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  dwg_decode_header_variables(dat, dwg);</div>
@@ -162,7 +162,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <a class="code" href="common_8c.html#a0047a08c783e6c7c05a925a8af730074">dwg_sentinel</a>(DWG_SENTINEL_VARIABLE_BEGIN)))</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    {</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      uint32_t size = <a class="code" href="bits_8c.html#aff017ae6e9346e585cb3f1004122e49f">bit_read_RL</a>(&amp;sec_dat);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      LOG_TRACE(<span class="stringliteral">&quot;Length: %lu \n&quot;</span>, size);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      LOG_TRACE(<span class="stringliteral">&quot;Length: %x \n&quot;</span>, size);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      </div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      dwg_decode_header_variables(&amp;sec_dat, dwg);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
@@ -189,7 +189,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 29 2013 14:09:09 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 31 2013 11:47:21 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

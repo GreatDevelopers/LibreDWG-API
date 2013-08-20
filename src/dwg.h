@@ -2708,7 +2708,7 @@ typedef struct _dwg_object_entity
     Dwg_Entity_OLE2FRAME *OLE2FRAME;
     Dwg_Entity_TABLE *TABLE;
     Dwg_Entity_HATCH *HATCH;
-  } tio;
+  } as;
 
   BITCODE_RL bitsize;
   // Dwg_Handle handle;
@@ -2800,7 +2800,7 @@ typedef struct _dwg_object_object
     Dwg_Object_XRECORD *XRECORD;
     Dwg_Object_VBA_PROJECT *VBA_PROJECT;
     Dwg_Object_WIPEOUTVARIABLE *WIPEOUTVARIABLE;
-  } tio;
+  } as;
 
   long unsigned int bitsize;
   // Dwg_Handle handle;
@@ -2834,7 +2834,7 @@ typedef struct _dwg_object
     Dwg_Object_Entity *entity;
     Dwg_Object_Object *object;
     unsigned char *unknown;
-  } tio;
+  } as;
 
   Dwg_Handle handle;
 

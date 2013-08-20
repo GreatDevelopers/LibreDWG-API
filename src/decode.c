@@ -599,7 +599,7 @@ dwg_decode_common_entity_handle_data(Bit_Chain * dat, Dwg_Object * obj)
   int i;
   long unsigned int vcount;
   Dwg_Object_Entity *_obj;
-  ent = obj->tio.entity;
+  ent = obj->as.entity;
   _obj = ent;
 
   #include "common_entity_handle_data.spec"

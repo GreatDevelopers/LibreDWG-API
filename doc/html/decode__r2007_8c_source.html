@@ -108,7 +108,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="bits_8h.html" title="Low level read and write function prototypes.">bits.h</a>&quot;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="logging_8h.html" title="Logging macros.">logging.h</a>&quot;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> loglevel;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> loglevel;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define DWG_LOGLEVEL loglevel</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span></div>
@@ -780,14 +780,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;      bfr_read(section, &amp;ptr, 64);</div>
 <div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;    </div>
 <div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;      LOG_TRACE(<span class="stringliteral">&quot;\n--- Section ---\n&quot;</span>)</div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;      LOG_TRACE(&quot;data size:     %lld\n&quot;, section-&gt;data_size)</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;      LOG_TRACE(&quot;max size:      %lld\n&quot;, section-&gt;max_size)</div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;      LOG_TRACE(&quot;encryption:    %lld\n&quot;, section-&gt;encrypted)</div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;      LOG_TRACE(&quot;hashcode:      %llx\n&quot;, section-&gt;hashcode)</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;      LOG_TRACE(&quot;name length:   %lld\n&quot;, section-&gt;name_length)</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;      LOG_TRACE(&quot;unknown:       %lld\n&quot;, section-&gt;unknown)</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;      LOG_TRACE(&quot;encoding:      %lld\n&quot;, section-&gt;encoded)</div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;      LOG_TRACE(&quot;num pages:     %lld\n&quot;, section-&gt;num_pages)      </div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;      LOG_TRACE(&quot;data size:     %jd\n&quot;, section-&gt;data_size)</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;      LOG_TRACE(&quot;max size:      %jd\n&quot;, section-&gt;max_size)</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;      LOG_TRACE(&quot;encryption:    %jd\n&quot;, section-&gt;encrypted)</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;      LOG_TRACE(&quot;hashcode:      %jd\n&quot;, section-&gt;hashcode)</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;      LOG_TRACE(&quot;name length:   %jd\n&quot;, section-&gt;name_length)</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;      LOG_TRACE(&quot;unknown:       %jd\n&quot;, section-&gt;unknown)</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;      LOG_TRACE(&quot;encoding:      %jd\n&quot;, section-&gt;encoded)</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;      LOG_TRACE(&quot;num pages:     %jd\n&quot;, section-&gt;num_pages)      </div>
 <div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;    </div>
 <div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;      section-&gt;next  = 0;</div>
 <div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;      section-&gt;pages = 0;</div>
@@ -819,13 +819,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;          bfr_read(section-&gt;pages[i], &amp;ptr, 56);</div>
 <div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;      </div>
 <div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;          LOG_TRACE(<span class="stringliteral">&quot;\n   --- Page ---\n&quot;</span>)</div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;          LOG_TRACE(&quot;   offset:        %lld\n&quot;, section-&gt;pages[i]-&gt;offset);</div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;          LOG_TRACE(&quot;   size:          %lld\n&quot;, section-&gt;pages[i]-&gt;size);</div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;          LOG_TRACE(&quot;   <span class="keywordtype">id</span>:            %lld\n&quot;, section-&gt;pages[i]-&gt;<span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;          LOG_TRACE(&quot;   uncomp_size:   %lld\n&quot;, section-&gt;pages[i]-&gt;uncomp_size);</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;          LOG_TRACE(&quot;   comp_size:     %lld\n&quot;, section-&gt;pages[i]-&gt;comp_size);</div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;          LOG_TRACE(&quot;   checksum:      %llx\n&quot;, section-&gt;pages[i]-&gt;checksum);</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;          LOG_TRACE(&quot;   crc:           %llx\n\n&quot;, section-&gt;pages[i]-&gt;crc);</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;          LOG_TRACE(&quot;   offset:        %jd\n&quot;, section-&gt;pages[i]-&gt;offset);</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;          LOG_TRACE(&quot;   size:          %jd\n&quot;, section-&gt;pages[i]-&gt;size);</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;          LOG_TRACE(&quot;   <span class="keywordtype">id</span>:            %jd\n&quot;, section-&gt;pages[i]-&gt;<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;          LOG_TRACE(&quot;   uncomp_size:   %jd\n&quot;, section-&gt;pages[i]-&gt;uncomp_size);</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;          LOG_TRACE(&quot;   comp_size:     %jd\n&quot;, section-&gt;pages[i]-&gt;comp_size);</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;          LOG_TRACE(&quot;   checksum:      %jd\n&quot;, section-&gt;pages[i]-&gt;checksum);</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;          LOG_TRACE(&quot;   crc:           %jd\n\n&quot;, section-&gt;pages[i]-&gt;crc);</div>
 <div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;        }</div>
 <div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;    }</div>
 <div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;  </div>
@@ -872,9 +872,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;      index = page-&gt;id &gt; 0 ? page-&gt;id : -page-&gt;id;</div>
 <div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;    </div>
 <div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;      LOG_TRACE(<span class="stringliteral">&quot;\n--- Page ---\n&quot;</span>)</div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;      LOG_TRACE(&quot;size:    0x%llx\n&quot;, page-&gt;size)</div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;      LOG_TRACE(&quot;<span class="keywordtype">id</span>:      0x%llx\n&quot;, page-&gt;<span class="keywordtype">id</span>)</div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;      LOG_TRACE(&quot;offset:  0x%llx\n\n&quot;, page-&gt;offset)</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;      LOG_TRACE(&quot;size:    0x%jd\n&quot;, page-&gt;size)</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;      LOG_TRACE(&quot;<span class="keywordtype">id</span>:      0x%jd\n&quot;, page-&gt;<span class="keywordtype">id</span>)</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;      LOG_TRACE(&quot;offset:  0x%jd\n\n&quot;, page-&gt;offset)</div>
 <div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;    </div>
 <div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;      page-&gt;next = 0;      </div>
 <div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;    </div>
@@ -1035,7 +1035,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 29 2013 14:09:09 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 31 2013 11:47:21 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

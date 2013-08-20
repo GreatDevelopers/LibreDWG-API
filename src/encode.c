@@ -119,7 +119,7 @@ bit_write_BE(dat, FIELD_VALUE(name.x), FIELD_VALUE(name.y), FIELD_VALUE(name.z))
     }
 
 #define REACTORS(code)\
-  for (vcount=0; vcount<obj->tio.object->num_reactors; vcount++)\
+  for (vcount=0; vcount<obj->as.object->num_reactors; vcount++)\
     {\
       FIELD_HANDLE(reactors[vcount], code);\
     }
@@ -127,7 +127,7 @@ bit_write_BE(dat, FIELD_VALUE(name.x), FIELD_VALUE(name.y), FIELD_VALUE(name.z))
 #define XDICOBJHANDLE(code)\
   SINCE(R_2004)\
     {\
-      if (!obj->tio.object->xdic_missing_flag)\
+      if (!obj->as.object->xdic_missing_flag)\
         FIELD_HANDLE(xdicobjhandle, code);\
     }\
   PRIOR_VERSIONS\
@@ -139,7 +139,7 @@ bit_write_BE(dat, FIELD_VALUE(name.x), FIELD_VALUE(name.y), FIELD_VALUE(name.z))
 #define ENT_XDICOBJHANDLE(code)\
   SINCE(R_2004)\
     {\
-      if (!obj->tio.entity->xdic_missing_flag)\
+      if (!obj->as.entity->xdic_missing_flag)\
         {\
           FIELD_HANDLE(xdicobjhandle, code);\
         }\
@@ -203,7 +203,7 @@ bit_write_BE(dat, FIELD_VALUE(name.x), FIELD_VALUE(name.y), FIELD_VALUE(name.z))
 {\
   int vcount, rcount, rcount2, rcount3;\
   Dwg_Data* dwg = obj->parent;\
-  Dwg_Entity_##token * _obj = obj->tio.entity->tio.token;\
+  Dwg_Entity_##token * _obj = obj->as.entity->as.token;\
   LOG_INFO("Entity " #token ":\n")\
 
 #define DWG_ENTITY_END }
@@ -213,14 +213,14 @@ bit_write_BE(dat, FIELD_VALUE(name.x), FIELD_VALUE(name.y), FIELD_VALUE(name.z))
 {\
   int vcount, rcount, rcount2, rcount3;\
   Dwg_Data* dwg = obj->parent; \
-  Dwg_Object_##token * _obj = obj->tio.object->tio.token; \
+  Dwg_Object_##token * _obj = obj->as.object->as.token; \
   LOG_INFO("Entity " #token ":\n")\
 
 #define DWG_OBJECT_END }
 
 #define ENT_REACTORS(code)\
-  FIELD_VALUE(reactors) = (BITCODE_H*) malloc(sizeof(BITCODE_H) * obj->tio.entity->num_reactors);\
-  for (vcount=0; vcount<obj->tio.entity->num_reactors; vcount++)\
+  FIELD_VALUE(reactors) = (BITCODE_H*) malloc(sizeof(BITCODE_H) * obj->as.entity->num_reactors);\
+  for (vcount=0; vcount<obj->as.entity->num_reactors; vcount++)\
     {\
       FIELD_HANDLE(reactors[vcount], code);\
     }
@@ -419,7 +419,7 @@ dwg_encode_chains(Dwg_Data *dwg, Bit_Chain *dat)
         omap[i].handle = dwg->object[i].handle.value;
       else if (dwg->object[i].supertype == DWG_SUPERTYPE_UNKNOWN)
         {
-          nkn.chain = dwg->object[i].tio.unknown;
+          nkn.chain = dwg->object[i].as.unknown;
           nkn.size = dwg->object[i].size;
           nkn.byte = nkn.bit = 0;
           bit_read_BS(&nkn);
@@ -465,7 +465,7 @@ dwg_encode_chains(Dwg_Data *dwg, Bit_Chain *dat)
           bit_write_MS(dat, obj->size);
           if (dat->byte + obj->size >= dat->size - 2)
             bit_chain_alloc(dat);
-          memcpy(&dat->chain[dat->byte], obj->tio.unknown, obj->size);
+          memcpy(&dat->chain[dat->byte], obj->as.unknown, obj->size);
           dat->byte += obj->size;
         }
       else
@@ -942,8 +942,8 @@ dwg_encode_add_object(Dwg_Object *obj, Bit_Chain *dat,
           }
 
         obj->supertype = DWG_SUPERTYPE_UNKNOWN;
-        obj->tio.unknown = (unsigned char*) malloc(obj->size);
-        memcpy(obj->tio.unknown, &dat->chain[object_address], obj->size);
+        obj->as.unknown = (unsigned char*) malloc(obj->size);
+        memcpy(obj->as.unknown, &dat->chain[object_address], obj->size);
       }
     }
 
@@ -970,35 +970,35 @@ dwg_encode_entity(Dwg_Object *obj, Bit_Chain *dat)
   unsigned int extended_size;
   int i;
   
-  size =  obj->tio.entity->bitsize;
+  size =  obj->as.entity->bitsize;
   bit_write_RL(dat, size);
   bit_write_H(dat, &(obj->handle));
-  extended_size = obj->tio.entity->extended_size;
+  extended_size = obj->as.entity->extended_size;
   bit_write_BS(dat, extended_size);
-  bit_write_H(dat, &(obj->tio.entity->extended_handle));
+  bit_write_H(dat, &(obj->as.entity->extended_handle));
   
   for(i = extended_size - size; i < extended_size; i++)
-    bit_write_RC(dat, obj->tio.entity->extended[i]);
+    bit_write_RC(dat, obj->as.entity->extended[i]);
     
-  bit_write_B(dat, obj->tio.entity->picture_exists);
-  if (obj->tio.entity->picture_exists)
+  bit_write_B(dat, obj->as.entity->picture_exists);
+  if (obj->as.entity->picture_exists)
     {
-      bit_write_RL(dat, obj->tio.entity->picture_size);
-      if(obj->tio.entity->picture_size < 210210)
+      bit_write_RL(dat, obj->as.entity->picture_size);
+      if(obj->as.entity->picture_size < 210210)
         {
-          for(i=0; i < obj->tio.entity->picture_size; i++)
-            bit_write_RC(dat, obj->tio.entity->picture[i]);
+          for(i=0; i < obj->as.entity->picture_size; i++)
+            bit_write_RC(dat, obj->as.entity->picture[i]);
         }
       else 
         {
           LOG_ERROR("dwg_encode_entity:  Absurd! Picture-size: %lu kB."
                     " Object: %lu (handle).\n",
-                    obj->tio.entity->picture_size / 1000, obj->handle.value)
+                    obj->as.entity->picture_size / 1000, obj->handle.value)
           bit_advance_position(dat, -(4 * 8 + 1));
         }
      }
   
-  Dwg_Object_Entity *ent = obj->tio.entity;
+  Dwg_Object_Entity *ent = obj->as.entity;
   VERSIONS(R_13, R_14)
     {
       bit_write_RL(dat, ent->bitsize);
@@ -1054,7 +1054,7 @@ dwg_encode_common_entity_handle_data(Bit_Chain *dat, Dwg_Object *obj)
   int i;
   long unsigned int vcount;
   Dwg_Object_Entity *_obj;
-  ent = obj->tio.entity;
+  ent = obj->as.entity;
   _obj = ent;
 
   //#include "common_entity_handle_data.spec"
@@ -1087,7 +1087,7 @@ void
 dwg_encode_object(Dwg_Object *obj, Bit_Chain *dat)
 {
  // XXX need a review
-  Dwg_Object_Object *ord = obj->tio.object;
+  Dwg_Object_Object *ord = obj->as.object;
   int i;
   
    SINCE(R_2000)

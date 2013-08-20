@@ -57,15 +57,15 @@ load_dwg(char *filename)
       switch (dwg.object[i].type)
         {
       case DWG_TYPE_LINE:
-        line = dwg.object[i].tio.entity->tio.LINE;
+        line = dwg.object[i].as.entity->as.LINE;
         add_line(line->start.x, line->end.x, line->start.y, line->end.y);
         break;
       case DWG_TYPE_CIRCLE:
-        circle = dwg.object[i].tio.entity->tio.CIRCLE;
+        circle = dwg.object[i].as.entity->as.CIRCLE;
         add_circle(circle->center.x, circle->center.y, circle->radius);
         break;
       case DWG_TYPE_TEXT:
-        text = dwg.object[i].tio.entity->tio.TEXT;
+        text = dwg.object[i].as.entity->as.TEXT;
         add_text(text->insertion_pt.x, text->insertion_pt.y, text->text_value);
         break;
         }

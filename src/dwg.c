@@ -269,7 +269,7 @@ dwg_page_y_max(Dwg_Data *dwg)
 unsigned int
 dwg_get_layer_count(Dwg_Data *dwg)
 {
-  return dwg->layer_control->tio.object->tio.LAYER_CONTROL->num_entries;
+  return dwg->layer_control->as.object->as.LAYER_CONTROL->num_entries;
 }
 
 Dwg_Object_LAYER **
@@ -281,8 +281,8 @@ dwg_get_layers(Dwg_Data *dwg)
                                sizeof (Dwg_Object_LAYER*));
   for (i=0; i < dwg_get_layer_count(dwg); i++)
     {
-      layers[i] = dwg->layer_control->tio.object->tio.LAYER_CONTROL->
-                  layers[i]->obj->tio.object->tio.LAYER;
+      layers[i] = dwg->layer_control->as.object->as.LAYER_CONTROL->
+                  layers[i]->obj->as.object->as.LAYER;
     }
   return layers;
 }
@@ -316,7 +316,7 @@ dwg_get_entities(Dwg_Data *dwg)
     {
       if (dwg->object[i].supertype == DWG_SUPERTYPE_ENTITY)
         {
-          entities[ent_count] = dwg->object[i].tio.entity;
+          entities[ent_count] = dwg->object[i].as.entity;
           ent_count++;
         }
     }
@@ -326,7 +326,7 @@ dwg_get_entities(Dwg_Data *dwg)
 Dwg_Object_LAYER *
 dwg_get_entity_layer(Dwg_Object_Entity *ent)
 {
-  return ent->layer->obj->tio.object->tio.LAYER;
+  return ent->layer->obj->as.object->as.LAYER;
 }
 
 Dwg_Object*
