@@ -45,6 +45,6 @@ void
 read_R13_R15_section_header(Bit_Chain *dat, Dwg_Data *dwg);
 
 void
-read_2004_section_header(Bit_Chain *dat, Dwg_Data *dwg);
+read_R18_R18_section_header(Bit_Chain *dat, Dwg_Data *dwg);
 
 #endif

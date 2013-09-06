@@ -24,6 +24,7 @@
 #include "handle.h"
 #include "object.h"
 #include "decode_r2004.h"
+#include "logging.h"
 
 
 /** Read R13-R15 Object-map Section */
@@ -225,7 +226,7 @@ read_2004_section_handles(Bit_Chain *dat, Dwg_Data *dwg)
            hdl_dat.bit = 0;
         }
 
-      unsigned long int ckr, ckr2;
+      uint32_t ckr, ckr2;
     
       sgdc[0] = bit_read_RC(&hdl_dat);
       sgdc[1] = bit_read_RC(&hdl_dat);

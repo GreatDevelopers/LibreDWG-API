@@ -41,6 +41,6 @@ void
 read_R13_R15_section_object_map(Bit_Chain *dat, Dwg_Data *dwg);
 
 void
-read_2004_section_handles(Bit_Chain *dat, Dwg_Data *dwg);
+read_R18_R21_section_handles(Bit_Chain *dat, Dwg_Data *dwg);
 
 #endif

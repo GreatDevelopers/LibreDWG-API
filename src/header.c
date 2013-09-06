@@ -73,7 +73,7 @@ read_R13_R15_section_header(Bit_Chain *dat, Dwg_Data *dwg)
 
 /** R2004 Header Section */
 void
-read_2004_section_header(Bit_Chain *dat, Dwg_Data *dwg)
+read_R18_R18_section_header(Bit_Chain *dat, Dwg_Data *dwg)
 {
   Bit_Chain sec_dat;
 
