@@ -35,7 +35,7 @@
 #include "dwg.h"
 #include "print.h"
 
-/*   \struct     r2007_file_header
+/** \struct   r2007_file_header
  */
 typedef struct r2007_file_header
 {
@@ -75,7 +75,7 @@ typedef struct r2007_file_header
   int64_t header_crc;
 } r2007_file_header;
 
-/** \struct    page map
+/** \struct   page map
  */
 typedef struct _r2007_page
 {
@@ -160,8 +160,10 @@ read_data_page(Bit_Chain *dat, unsigned char *decomp, int64_t page_size,
                int64_t size_comp, int64_t size_uncomp);
 
 int
-read_data_section(Bit_Chain *sec_dat, Bit_Chain *dat, r2007_section *sections_map, 
-                  r2007_page *pages_map, int64_t hashcode);
+read_data_section(Bit_Chain *sec_dat, Bit_Chain *dat,
+                  r2007_section *sections_map, r2007_page *pages_map,
+                  int64_t hashcode);
+
 void 
 read_file_header(Bit_Chain *dat, r2007_file_header *file_header);
 
@@ -169,15 +171,15 @@ char*
 decode_rs(const char *src, int block_count, int data_size);
 
 r2007_page*
-read_pages_map(Bit_Chain *dat, int64_t size_comp,
-               int64_t size_uncomp, int64_t correction);
+read_pages_map(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
+               int64_t correction);
 
 char*
 read_system_page(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
                  int64_t repeat_count);
 r2007_section*
-read_sections_map(Bit_Chain *dat, int64_t size_comp, 
-                  int64_t size_uncomp, int64_t correction);
+read_sections_map(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
+                  int64_t correction);
 
 void
 bfr_read(void *dst, char **src, size_t size);
