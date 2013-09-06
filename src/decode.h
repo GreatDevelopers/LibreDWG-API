@@ -265,6 +265,4 @@ dwg_decode_common_entity_handle_data(Bit_Chain *dat, Dwg_Object *obj);
 Dwg_Resbuf*
 dwg_decode_xdata(Bit_Chain *dat, int size);
 
-
-
 #endif

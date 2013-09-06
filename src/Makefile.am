@@ -42,23 +42,24 @@ libredwg_la_LDFLAGS = \
 include_HEADERS = dwg.h
 
 EXTRA_DIST = \
-	dwg.spec \
-        header_variables.spec \
+	dwg.spec                       \
+        header_variables.spec          \
         common_entity_handle_data.spec \
-	$(include_HEADERS) \
-	common.h \
-	bits.h \
-        classes.h \
-	decode.h \
-        decode_r13_r15.h \
-        decode_r2004.h \
-	encode.h \
-        handle.h \
-        header.h \
-	logging.h \
-        object.h \
-        print.h \
-        resolve_pointers.h \
+	$(include_HEADERS)             \
+	common.h                       \
+	bits.h                         \
+        classes.h                      \
+	decode.h                       \
+        decode_r13_r15.h               \
+        decode_r2004.h                 \
+        decode_r2007.h                 \
+	encode.h                       \
+        handle.h                       \
+        header.h                       \
+	logging.h                      \
+        object.h                       \
+        print.h                        \
+        resolve_pointers.h             \
         section_locate.h
 
 #check_PROGRAMS = test testsvg

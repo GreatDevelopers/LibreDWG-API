@@ -18,106 +18,12 @@
  *     \copyright  GNU General Public License (version 3 or later)
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <sys/types.h>
-#include <stdbool.h>
-#include "bits.h"
+#include "decode_r2007.h"
 #include "logging.h"
 
 unsigned int loglevel;
 
 #define DWG_LOGLEVEL loglevel
-
-int
-read_r2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg);
-
-/*   \struct     r2007_file_header
- */
-typedef struct r2007_file_header
-{
-  int64_t header_size;            // 0x70
-  int64_t file_size;
-  int64_t pages_map_crc_compressed;
-  int64_t pages_map_correction;
-  int64_t pages_map_crc_seed;
-  int64_t pages_map2_offset;
-  int64_t pages_map2_id;
-  int64_t pages_map_offset;       // starting address of the Page Map section
-  int64_t pages_map_id;
-  int64_t header2_offset;
-  int64_t pages_map_size_comp;    // the compressed size of section
-  int64_t pages_map_size_uncomp;
-  int64_t pages_amount;
-  int64_t pages_maxid;
-  int64_t unknown1;               // 0x20
-  int64_t unknown2;               // 0x40
-  int64_t pages_map_crc_uncomp;
-  int64_t unknown3;               // 0xf800
-  int64_t unknown4;               // 4
-  int64_t unknown5;               // 1
-  int64_t sections_amount;
-  int64_t sections_map_crc_uncomp;
-  int64_t sections_map_size_comp;
-  int64_t sections_map2_id;
-  int64_t sections_map_id;
-  int64_t sections_map_size_uncomp;
-  int64_t sections_map_crc_comp;
-  int64_t sections_map_correction;
-  int64_t sections_map_crc_seed;
-  int64_t stream_version;         // 0x60100
-  int64_t crc_seed;
-  int64_t crc_seed_encoded;
-  int64_t random_seed;
-  int64_t header_crc;
-} r2007_file_header;
-
-/** \struct    page map
- */
-typedef struct _r2007_page
-{
-  int64_t id;
-  int64_t size;  
-  int64_t offset;
-  struct _r2007_page *next;
-} r2007_page;
-
-/** \struct   section page
- */
-typedef struct _r2007_section_page
-{
-  int64_t offset;
-  int64_t size;
-  int64_t id;
-  int64_t uncomp_size;  // src_size
-  int64_t comp_size;
-  int64_t checksum;
-  int64_t crc;
-} r2007_section_page;
-
-/**   \struct   section map
- */
-typedef struct _r2007_section
-{
-  int64_t  data_size;    // max size of page
-  int64_t  max_size;
-  int64_t  encrypted;
-  int64_t  hashcode;
-  int64_t  name_length;  // 0x22
-  int64_t  unknown;      // 0x00
-  int64_t  encoded;
-  int64_t  num_pages;
-  wchar_t *name;
-  r2007_section_page **pages;
-  struct _r2007_section *next;
-} r2007_section;
-
-
-r2007_section* get_section(r2007_section *sections_map, int64_t hashcode);
-r2007_page* get_page(r2007_page *pages_map, int64_t id);
-void pages_destroy(r2007_page *page);
-void sections_destroy(r2007_section *section);
 
 #define copy_1(offset) \
 *dst++ = *(src + offset);

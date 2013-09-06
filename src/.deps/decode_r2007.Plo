@@ -1,4 +1,5 @@
-decode_r2007.lo: decode_r2007.c /usr/include/stdio.h \
+decode_r2007.lo: decode_r2007.c decode_r2007.h config.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.7/include/stdbool.h /usr/include/stdio.h \
  /usr/include/features.h /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/predefs.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -28,14 +29,19 @@ decode_r2007.lo: decode_r2007.c /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /usr/include/x86_64-linux-gnu/bits/stdlib.h \
- /usr/lib/gcc/x86_64-linux-gnu/4.7/include/stdint.h /usr/include/stdint.h \
- /usr/include/x86_64-linux-gnu/bits/wchar.h \
- /usr/lib/gcc/x86_64-linux-gnu/4.7/include/stdbool.h bits.h dwg.h \
- common.h logging.h /usr/include/string.h /usr/include/xlocale.h \
- /usr/include/x86_64-linux-gnu/bits/string.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h \
+ /usr/include/xlocale.h /usr/include/x86_64-linux-gnu/bits/string.h \
  /usr/include/x86_64-linux-gnu/bits/string2.h \
- /usr/include/x86_64-linux-gnu/bits/string3.h
+ /usr/include/x86_64-linux-gnu/bits/string3.h /usr/include/assert.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.7/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar.h common.h bits.h dwg.h print.h \
+ logging.h
+
+decode_r2007.h:
+
+config.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.7/include/stdbool.h:
 
 /usr/include/stdio.h:
 
@@ -113,22 +119,6 @@ decode_r2007.lo: decode_r2007.c /usr/include/stdio.h \
 
 /usr/include/x86_64-linux-gnu/bits/stdlib.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/4.7/include/stdint.h:
-
-/usr/include/stdint.h:
-
-/usr/include/x86_64-linux-gnu/bits/wchar.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/4.7/include/stdbool.h:
-
-bits.h:
-
-dwg.h:
-
-common.h:
-
-logging.h:
-
 /usr/include/string.h:
 
 /usr/include/xlocale.h:
@@ -138,3 +128,21 @@ logging.h:
 /usr/include/x86_64-linux-gnu/bits/string2.h:
 
 /usr/include/x86_64-linux-gnu/bits/string3.h:
+
+/usr/include/assert.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.7/include/stdint.h:
+
+/usr/include/stdint.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
+
+common.h:
+
+bits.h:
+
+dwg.h:
+
+print.h:
+
+logging.h:

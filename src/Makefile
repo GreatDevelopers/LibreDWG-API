@@ -162,7 +162,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-ISODATE = 2013-07-31
+ISODATE = 2013-09-06
 LD = /usr/bin/ld -m elf_x86_64
 LDFLAGS = 
 LIBOBJS = 
@@ -285,23 +285,24 @@ libredwg_la_LDFLAGS = \
 
 include_HEADERS = dwg.h
 EXTRA_DIST = \
-	dwg.spec \
-        header_variables.spec \
+	dwg.spec                       \
+        header_variables.spec          \
         common_entity_handle_data.spec \
-	$(include_HEADERS) \
-	common.h \
-	bits.h \
-        classes.h \
-	decode.h \
-        decode_r13_r15.h \
-        decode_r2004.h \
-	encode.h \
-        handle.h \
-        header.h \
-	logging.h \
-        object.h \
-        print.h \
-        resolve_pointers.h \
+	$(include_HEADERS)             \
+	common.h                       \
+	bits.h                         \
+        classes.h                      \
+	decode.h                       \
+        decode_r13_r15.h               \
+        decode_r2004.h                 \
+        decode_r2007.h                 \
+	encode.h                       \
+        handle.h                       \
+        header.h                       \
+	logging.h                      \
+        object.h                       \
+        print.h                        \
+        resolve_pointers.h             \
         section_locate.h
 
 all: config.h
