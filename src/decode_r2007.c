@@ -253,7 +253,7 @@ read_literal_length(unsigned char **src, unsigned char opcode)
   
   if (length == 0x17)
     {
-      int n = *(*src)++;
+      uint32_t n = *(*src)++;
       length += n;
     
       if (n == 0xff)
@@ -805,3 +805,111 @@ read_r2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg)
 
   return 0;
 }
+
+/** Decode DWG R2007 */
+int
+decode_R2007(Bit_Chain* dat, Dwg_Data * dwg)
+{
+  int i;
+  unsigned long int preview_address, security_type, unknown_long,
+      dwg_property_address, vba_proj_address, app_info_address;
+  unsigned char sig, DwgVer, MaintReleaseVer;
+
+  /* 5 bytes of 0x00 */
+  dat->byte = 0x06;
+  LOG_TRACE("5 bytes of 0x00: ")
+  for (i = 0; i < 5; i++)
+    {
+      sig = bit_read_RC(dat);
+      if (loglevel)
+        LOG_TRACE("0x%02X ", sig)
+    }
+  LOG_TRACE("\n")
+
+  /* Unknown */
+  dat->byte = 0x0B;
+  sig = bit_read_RC(dat);
+  LOG_TRACE("Unknown: 0x%02X\n", sig)
+
+  /* Byte 0x00, 0x01, or 0x03 */
+  dat->byte = 0x0C;
+  sig = bit_read_RC(dat);
+  LOG_TRACE("Byte 0x00, 0x01, or 0x03: 0x%02X\n", sig)
+
+  /* Preview Address */
+  dat->byte = 0x0D;
+  preview_address = bit_read_RL(dat);
+  LOG_TRACE("Preview Address: 0x%08X\n", (unsigned int) preview_address)
+
+  /* DwgVer */
+  dat->byte = 0x11;
+  DwgVer = bit_read_RC(dat);
+  LOG_INFO("DwgVer: %u\n", DwgVer)
+
+  /* MaintReleaseVer */
+  dat->byte = 0x12;
+  MaintReleaseVer = bit_read_RC(dat);
+  LOG_INFO("MaintRelease: %u\n", MaintReleaseVer)
+
+  /* Codepage */
+  dat->byte = 0x13;
+  dwg->header.codepage = bit_read_RS(dat);
+  LOG_TRACE("Codepage: %u\n", dwg->header.codepage)
+
+  /* Unknown */
+  dat->byte = 0x15;
+  LOG_TRACE("Unknown: ")
+  for (i = 0; i < 3; i++)
+    {
+      sig = bit_read_RC(dat);
+      LOG_TRACE("0x%02X ", sig)
+    }
+  LOG_TRACE("\n")
+
+  /* SecurityType */
+  dat->byte = 0x18;
+  security_type = bit_read_RL(dat);
+  LOG_TRACE("SecurityType: 0x%08X\n", (unsigned int) security_type)
+
+  /* Unknown long */
+  dat->byte = 0x1C;
+  unknown_long = bit_read_RL(dat);
+  LOG_TRACE("Unknown long: 0x%08X\n", (unsigned int) unknown_long)
+
+  /* DWG Property Addr */
+  dat->byte = 0x20;
+  dwg_property_address = bit_read_RL(dat);
+  LOG_TRACE("DWG Property Addr: 0x%08X\n",
+        (unsigned int) dwg_property_address)
+
+  /* VBA Project Addr */
+  dat->byte = 0x24;
+  vba_proj_address = bit_read_RL(dat);
+  LOG_TRACE("VBA Project Addr: 0x%08X\n",
+        (unsigned int) vba_proj_address)
+
+  /* 0x00000080 */
+  dat->byte = 0x28;
+  unknown_long = bit_read_RL(dat);
+  LOG_TRACE("0x00000080: 0x%08X\n", (unsigned int) unknown_long)
+
+  /* Application Info Address */
+  dat->byte = 0x2C;
+  app_info_address = bit_read_RL(dat);
+  LOG_TRACE("Application Info Address: 0x%08X\n",
+        (unsigned int) app_info_address)
+
+  read_r2007_meta_data(dat, dwg);
+  
+  LOG_TRACE("\n\n")
+
+  /////////////////////////////////////////
+  // incomplete implementation!
+  /////////////////////////////////////////
+  resolve_objectref_vector(dwg);
+
+  LOG_ERROR("Decoding of DWG version R2007 header is not fully "
+            "implemented yet. we are going to try\n")
+  return 0;
+}
+

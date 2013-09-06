@@ -204,4 +204,10 @@ bit_ckr8(unsigned int dx, unsigned char *adr, long n);
 unsigned long int
 bit_ckr32 (unsigned int seed, unsigned char *adr, unsigned int n);
 
+uint8_t
+calculate_normal_crc(uint8_t *data, uint64_t crc);
+
+uint8_t
+calculate_mirror_crc(uint8_t *data, uint64_t crc);
+
 #endif

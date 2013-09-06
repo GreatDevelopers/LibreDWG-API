@@ -146,6 +146,9 @@ void
 sections_destroy(r2007_section *section);
 
 int
+decode_R2007(Bit_Chain *dat, Dwg_Data *dwg);
+
+int
 read_r2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg);
 
 static uint32_t
