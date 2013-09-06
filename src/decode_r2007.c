@@ -45,7 +45,6 @@ dst += 8;
 #define copy_16(offset) \
 dst = copy_bytes_16(dst, src + offset);
 
-
 char* 
 copy_bytes_2(char *dst, char *src)
 {
@@ -255,7 +254,6 @@ read_literal_length(unsigned char **src, unsigned char opcode)
   if (length == 0x17)
     {
       int n = *(*src)++;
-    
       length += n;
     
       if (n == 0xff)
@@ -264,13 +262,11 @@ read_literal_length(unsigned char **src, unsigned char opcode)
             {
               n = *(*src)++;
               n |= (*(*src)++ << 8);
-        
               length += n;
             } 
           while (n == 0xFFFF);
         }
     }
-  
   return length;
 }
 
@@ -328,9 +324,8 @@ read_instructions(unsigned char **src, unsigned char *opcode, uint32_t *offset,
 int 
 decompress_r2007(char *dst, int dst_size, char *src, int src_size)
 {
-  uint32_t length = 0;
-  uint32_t offset = 0;
-  
+  uint32_t length = 0, offset = 0;
+
   char *dst_end = dst + dst_size;
   char *src_end = src + src_size;
   
@@ -344,7 +339,6 @@ decompress_r2007(char *dst, int dst_size, char *src, int src_size)
       if (length == 0)
         return 1;   
     } 
-  
   while (src < src_end)
     {   
       if (length == 0)
@@ -354,23 +348,19 @@ decompress_r2007(char *dst, int dst_size, char *src, int src_size)
         return 1;
       
       copy_compressed_bytes(dst, src, length);
-      
       dst += length;
       src += length;
-      
       length = 0;
       
       if (src >= src_end)
         return 0;
       
       opcode = *src++;
-      
       read_instructions((unsigned char**)&src, &opcode, &offset, &length);
       
       while (1)
         {
           copy_bytes(dst, length, offset);
-        
           dst += length;
           length = (opcode & 7);   
         
@@ -388,10 +378,8 @@ decompress_r2007(char *dst, int dst_size, char *src, int src_size)
           read_instructions((unsigned char**)&src, &opcode, &offset, &length);
         } 
     }
-  
   return 0;
 }
-
 
 char*
 decode_rs(const char *src, int block_count, int data_size)
@@ -409,23 +397,19 @@ decode_rs(const char *src, int block_count, int data_size)
           *dst++ = *src;
           src += block_count;
         }
-      
       src = ++src_base;
     }
-  
   return (dst_base);
 }
 
 char*
-read_system_page(Bit_Chain* dat, int64_t size_comp, int64_t size_uncomp,
+read_system_page(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
                  int64_t repeat_count)
 {
   int i;
-  
   int64_t pesize;      // Pre RS encoded size
   int64_t block_count; // Number of RS encoded blocks
   int64_t page_size;
-  
   char *rsdata;        // RS encoded data
   char *pedata;        // Pre RS encoded data
   char *data;          // The data RS unencoded and uncompressed
@@ -439,14 +423,13 @@ read_system_page(Bit_Chain* dat, int64_t size_comp, int64_t size_uncomp,
   // Multiply with codeword size (255) and round to a multiple of 8
   page_size = (block_count * 255 + 7) & ~7;
   
-  
-  data = (char*)malloc(size_uncomp + page_size);
+  data = (char*) malloc(size_uncomp + page_size);
+
   if (data == 0)
     {
       //TODO: report error
       return 0;
     }
-  
   rsdata = &data[size_uncomp];
   
   for (i = 0; i < page_size; i++)
@@ -460,43 +443,36 @@ read_system_page(Bit_Chain* dat, int64_t size_comp, int64_t size_uncomp,
     memcpy(data, pedata, size_uncomp);
   
   free(pedata);
-  
   return data;
 }
 
 int
-read_data_page(Bit_Chain* dat, unsigned char *decomp, int64_t page_size, 
+read_data_page(Bit_Chain *dat, unsigned char *decomp, int64_t page_size,
                int64_t size_comp, int64_t size_uncomp)
 {
   int i;
-  
   int64_t pesize;      // Pre RS encoded size
   int64_t block_count; // Number of RS encoded blocks
-  
   char *rsdata;        // RS encoded data
   char *pedata;        // Pre RS encoded data
   
-    // Round to a multiple of 8
+  // Round to a multiple of 8
   pesize = ((size_comp + 7) & ~7);
-  
   block_count = (pesize + 0xFB - 1) / 0xFB;
-  
   rsdata = (char*)malloc(page_size * sizeof(char));
+
   if (rsdata == NULL)
     return 1;
   
   for (i = 0; i < page_size; i++)
     rsdata[i] = bit_read_RC(dat);  
-  
   pedata = decode_rs(rsdata, block_count, 0xFB);
   
   if (size_comp < size_uncomp)
     decompress_r2007((char*)decomp, size_uncomp, pedata, size_comp);
   else
     memcpy(decomp, pedata, size_uncomp);
-  
   free(pedata);
-  
   return 0;
 }
 
@@ -511,15 +487,15 @@ read_data_section(Bit_Chain *sec_dat, Bit_Chain *dat, r2007_section *sections_ma
   int i;
   
   section = get_section(sections_map, hashcode);
+
   if (section == NULL)
-    return 1;   // Failed to find section
-  
+    return 1;        // Failed to find section
   max_decomp_size = section->data_size;
-  
   decomp = (unsigned char *)malloc(max_decomp_size * sizeof(char));
+
   if (decomp == NULL)
-    return 2;   // No memory  
-  
+    return 2;      // No memory
+
   for (i = 0; i < (int)section->num_pages; i++)
     {
       page = get_page(pages_map, section->pages[i]->id);
@@ -528,22 +504,21 @@ read_data_section(Bit_Chain *sec_dat, Bit_Chain *dat, r2007_section *sections_ma
           free(decomp);
           return 3;   // Failed to find page
         }
-    
       dat->byte = page->offset; 
+
       if (read_data_page(dat, &decomp[section->pages[i]->offset], page->size, 
-                         section->pages[i]->comp_size, section->pages[i]->uncomp_size) != 0)
+                         section->pages[i]->comp_size,
+                         section->pages[i]->uncomp_size) != 0)
         {
           free(decomp);
           return 4;   // Failed to read page
         }
     }
-  
   sec_dat->bit     = 0;
   sec_dat->byte    = 0;
   sec_dat->chain   = decomp;
   sec_dat->size    = max_decomp_size;
   sec_dat->version = dat->version;    
-  
   return 0;
 }
 
@@ -570,55 +545,45 @@ bfr_read_string(char **src)
       ptr++;
       length++;
     }
-  
   wsize = length * sizeof(DWGCHAR) + sizeof(DWGCHAR);
-  
   str = str_base = (DWGCHAR*) malloc(wsize);
-  
   ptr = (uint16_t*)*src;
+
   for (i = 0; i < length; i++)
     {
       *str++ = (DWGCHAR)(*ptr++);
     }
-  
   *src += length * 2 + 2;
   *str = 0;
-  
   return str_base;
 }
 
 r2007_section*
-read_sections_map(Bit_Chain* dat, int64_t size_comp, 
-                  int64_t size_uncomp, int64_t correction)
+read_sections_map(Bit_Chain* dat, int64_t size_comp, int64_t size_uncomp,
+                  int64_t correction)
 {
-  char *data;
-  r2007_section *sections = 0, *last_section = 0, *section;
-  char *ptr, *ptr_end;
+  char *data, *ptr, *ptr_end;
+  r2007_section *section, *sections = 0, *last_section = 0;
   int i;
   
   data = read_system_page(dat, size_comp, size_uncomp, correction);
-  
   ptr = data;
   ptr_end = data + size_uncomp;
-  
   LOG_TRACE("\n=== System Section (Section Map) ===\n")
   
   while (ptr < ptr_end)
     {
       section = (r2007_section*) malloc(sizeof(r2007_section));
-    
       bfr_read(section, &ptr, 64);
-    
-      LOG_TRACE("\n--- Section ---\n")
-      LOG_TRACE("data size:     %jd\n", section->data_size)
-      LOG_TRACE("max size:      %jd\n", section->max_size)
-      LOG_TRACE("encryption:    %jd\n", section->encrypted)
-      LOG_TRACE("hashcode:      %jd\n", section->hashcode)
-      LOG_TRACE("name length:   %jd\n", section->name_length)
-      LOG_TRACE("unknown:       %jd\n", section->unknown)
-      LOG_TRACE("encoding:      %jd\n", section->encoded)
-      LOG_TRACE("num pages:     %jd\n", section->num_pages)      
-    
+      LOG_TRACE("\n Section \n")
+      LOG_TRACE("data size:   %jd\n", section->data_size)
+      LOG_TRACE("max size:    %jd\n", section->max_size)
+      LOG_TRACE("encryption:  %jd\n", section->encrypted)
+      LOG_TRACE("hashcode:    %jd\n", section->hashcode)
+      LOG_TRACE("name length: %jd\n", section->name_length)
+      LOG_TRACE("unknown:     %jd\n", section->unknown)
+      LOG_TRACE("encoding:    %jd\n", section->encoded)
+      LOG_TRACE("num pages:   %jd\n", section->num_pages)      
       section->next  = 0;
       section->pages = 0;
     
@@ -635,41 +600,35 @@ read_sections_map(Bit_Chain* dat, int64_t size_comp,
     
       // Section Name
       section->name = bfr_read_string(&ptr);
-    
       LOG_TRACE("Section name:  %ls\n", (DWGCHAR*)section->name)      
-    
-      section->pages = (r2007_section_page**) malloc(
-        (size_t)section->num_pages * sizeof(r2007_section_page*));
+      section->pages = (r2007_section_page**) malloc((size_t)section->num_pages
+                        * sizeof(r2007_section_page*));
     
       for (i = 0; i < section->num_pages; i++)
         {
-          section->pages[i] = (r2007_section_page*) malloc(
-                                                       sizeof(r2007_section_page));
-      
+          section->pages[i] = (r2007_section_page*)
+                               malloc(sizeof(r2007_section_page));
           bfr_read(section->pages[i], &ptr, 56);
-      
-          LOG_TRACE("\n   --- Page ---\n")
-          LOG_TRACE("   offset:        %jd\n", section->pages[i]->offset);
-          LOG_TRACE("   size:          %jd\n", section->pages[i]->size);
-          LOG_TRACE("   id:            %jd\n", section->pages[i]->id);
-          LOG_TRACE("   uncomp_size:   %jd\n", section->pages[i]->uncomp_size);
-          LOG_TRACE("   comp_size:     %jd\n", section->pages[i]->comp_size);
-          LOG_TRACE("   checksum:      %jd\n", section->pages[i]->checksum);
-          LOG_TRACE("   crc:           %jd\n\n", section->pages[i]->crc);
+          LOG_TRACE("\n Page \n")
+          LOG_TRACE(" offset:      %jd\n", section->pages[i]->offset);
+          LOG_TRACE(" size:        %jd\n", section->pages[i]->size);
+          LOG_TRACE(" id:          %jd\n", section->pages[i]->id);
+          LOG_TRACE(" uncomp_size: %jd\n", section->pages[i]->uncomp_size);
+          LOG_TRACE(" comp_size:   %jd\n", section->pages[i]->comp_size);
+          LOG_TRACE(" checksum:    %jd\n", section->pages[i]->checksum);
+          LOG_TRACE(" crc:         %jd\n", section->pages[i]->crc);
         }
     }
-  
   free(data);
-  
   return sections;
 }
 
 r2007_page*
-read_pages_map(Bit_Chain* dat, int64_t size_comp,
-               int64_t size_uncomp, int64_t correction)
+read_pages_map(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
+               int64_t correction)
 {
   char *data, *ptr, *ptr_end;  
-  r2007_page *pages = 0, *last_page = 0, *page;
+  r2007_page *page, *pages = 0, *last_page = 0;
   int64_t offset = 0x480;   //dat->byte;
   int64_t index;
   
@@ -677,15 +636,14 @@ read_pages_map(Bit_Chain* dat, int64_t size_comp,
   
   if (data == NULL)
     return NULL;  
-  
   ptr = data;
   ptr_end = data + size_uncomp;
-  
-  LOG_TRACE("\n=== System Section (Pages Map) ===\n")
+  LOG_TRACE("\n System Section (Pages Map) \n")
   
   while (ptr < ptr_end)
     {
       page = (r2007_page*) malloc(sizeof(r2007_page));
+
       if (page == NULL)
         {
           //TODO: report error
@@ -693,19 +651,15 @@ read_pages_map(Bit_Chain* dat, int64_t size_comp,
           pages_destroy(pages);
           return NULL;
         }
-    
       page->size   = bfr_read_int64(ptr);
       page->id     = bfr_read_int64(ptr);
       page->offset = offset;
       offset += page->size;
-    
       index = page->id > 0 ? page->id : -page->id;
-    
-      LOG_TRACE("\n--- Page ---\n")
-      LOG_TRACE("size:    0x%jd\n", page->size)
-      LOG_TRACE("id:      0x%jd\n", page->id)
-      LOG_TRACE("offset:  0x%jd\n\n", page->offset)
-    
+      LOG_TRACE("\n Page \n")
+      LOG_TRACE("size:   0x%jd\n", page->size)
+      LOG_TRACE("id:     0x%jd\n", page->id)
+      LOG_TRACE("offset: 0x%jd\n", page->offset)
       page->next = 0;      
     
       if (pages == 0)
@@ -716,9 +670,7 @@ read_pages_map(Bit_Chain* dat, int64_t size_comp,
           last_page = page;
         }           
     }
-  
   free(data);
-  
   return pages;
 }
 
@@ -735,7 +687,6 @@ get_page(r2007_page *pages_map, int64_t id)
         break;
       page = page->next;
     }
-  
   return page;
 }
 
@@ -765,7 +716,6 @@ get_section(r2007_section *sections_map, int64_t hashcode)
         break;
       section = section->next;
     }
-  
   return section;
 }
 
@@ -784,32 +734,26 @@ sections_destroy(r2007_section *section)
             {
               free(section->pages[section->num_pages]);
             }
-      
           free(section->pages);
         }
-    
       free(section);
       section = next;
     }
 }
 
 void 
-read_file_header(Bit_Chain* dat, r2007_file_header *file_header)
+read_file_header(Bit_Chain *dat, r2007_file_header *file_header)
 {
-  char data[0x3d8];
-  char *pedata;
-  int64_t seqence_crc;
-  int64_t seqence_key;
-  int64_t compr_crc;
+  char *pedata, data[0x3d8];
+  int64_t seqence_crc, seqence_key, compr_crc;
   int32_t compr_len;
   int i;
   
   dat->byte = 0x80;
+
   for (i = 0; i < 0x3d8; i++)
     data[i] = bit_read_RC(dat);
-  
   pedata = decode_rs(data, 3, 239);
-  
   seqence_crc = *((int64_t*)pedata);
   seqence_key = *((int64_t*)&pedata[8]);
   compr_crc   = *((int64_t*)&pedata[16]);
@@ -819,7 +763,6 @@ read_file_header(Bit_Chain* dat, r2007_file_header *file_header)
     decompress_r2007((char*)file_header, 0x110, &pedata[32], compr_len);
   else
     memcpy(file_header, &pedata[32], sizeof(r2007_file_header));
-  
   free(pedata);
 }
 
@@ -831,24 +774,24 @@ read_r2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg)
   r2007_section *sections_map;
    
   loglevel = 9;
-
   read_file_header(dat, &file_header);
   
-    // Pages Map
-  dat->byte += 0x28;  // overread check data
+  // Pages Map
+  dat->byte += 0x28;    // overread check data
   dat->byte += file_header.pages_map_offset;
-  
   pages_map = read_pages_map(dat, file_header.pages_map_size_comp,
-    file_header.pages_map_size_uncomp, file_header.pages_map_correction);  
+                             file_header.pages_map_size_uncomp,
+                             file_header.pages_map_correction); 
   
-    // Sections Map
+  // Sections Map
   page = get_page(pages_map, file_header.sections_map_id);
   
   if (page != NULL)
     {
       dat->byte = page->offset;
       sections_map = read_sections_map(dat, file_header.sections_map_size_comp,
-        file_header.sections_map_size_uncomp, file_header.sections_map_correction);
+                                       file_header.sections_map_size_uncomp,
+                                       file_header.sections_map_correction);
     }
   
   // Section Classes
