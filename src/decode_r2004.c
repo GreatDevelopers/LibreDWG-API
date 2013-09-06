@@ -473,7 +473,7 @@ decode_R2004(Bit_Chain* dat, Dwg_Data * dwg)
           vba_proj_address;
   unsigned char ver_string, sig, dwg_ver, maint_release_ver, acad_maint_ver;
  
-  /* 6 bytes of 0x00 */
+  /* Version string */
   dat->byte = 0x00;
   LOG_INFO("Version string: ")
   for (i = 0; i < 6; i++)

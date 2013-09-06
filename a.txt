@@ -2,143 +2,529 @@ Making all in src
 make[1]: Entering directory `/home/avneet/refactoring/src'
 make  all-am
 make[2]: Entering directory `/home/avneet/refactoring/src'
-/bin/bash ../libtool --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.     -g -O2 -MT dwg.lo -MD -MP -MF .deps/dwg.Tpo -c -o dwg.lo dwg.c
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT dwg.lo -MD -MP -MF .deps/dwg.Tpo -c dwg.c  -fPIC -DPIC -o .libs/dwg.o
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT dwg.lo -MD -MP -MF .deps/dwg.Tpo -c dwg.c -o dwg.o >/dev/null 2>&1
-mv -f .deps/dwg.Tpo .deps/dwg.Plo
-/bin/bash ../libtool --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.     -g -O2 -MT common.lo -MD -MP -MF .deps/common.Tpo -c -o common.lo common.c
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT common.lo -MD -MP -MF .deps/common.Tpo -c common.c  -fPIC -DPIC -o .libs/common.o
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT common.lo -MD -MP -MF .deps/common.Tpo -c common.c -o common.o >/dev/null 2>&1
-mv -f .deps/common.Tpo .deps/common.Plo
 /bin/bash ../libtool --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.     -g -O2 -MT bits.lo -MD -MP -MF .deps/bits.Tpo -c -o bits.lo bits.c
 libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT bits.lo -MD -MP -MF .deps/bits.Tpo -c bits.c  -fPIC -DPIC -o .libs/bits.o
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT bits.lo -MD -MP -MF .deps/bits.Tpo -c bits.c -o bits.o >/dev/null 2>&1
-mv -f .deps/bits.Tpo .deps/bits.Plo
-/bin/bash ../libtool --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.     -g -O2 -MT classes.lo -MD -MP -MF .deps/classes.Tpo -c -o classes.lo classes.c
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT classes.lo -MD -MP -MF .deps/classes.Tpo -c classes.c  -fPIC -DPIC -o .libs/classes.o
-classes.c: In function 'read_R13_R15_section_classes':
-classes.c:95:7: warning: 'return' with a value, in function returning void [enabled by default]
-classes.c: In function 'read_2004_section_classes':
-classes.c:186:7: warning: 'return' with a value, in function returning void [enabled by default]
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT classes.lo -MD -MP -MF .deps/classes.Tpo -c classes.c -o classes.o >/dev/null 2>&1
-mv -f .deps/classes.Tpo .deps/classes.Plo
-/bin/bash ../libtool --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.     -g -O2 -MT decode.lo -MD -MP -MF .deps/decode.Tpo -c -o decode.lo decode.c
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT decode.lo -MD -MP -MF .deps/decode.Tpo -c decode.c  -fPIC -DPIC -o .libs/decode.o
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT decode.lo -MD -MP -MF .deps/decode.Tpo -c decode.c -o decode.o >/dev/null 2>&1
-mv -f .deps/decode.Tpo .deps/decode.Plo
-/bin/bash ../libtool --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.     -g -O2 -MT decode_r13_r15.lo -MD -MP -MF .deps/decode_r13_r15.Tpo -c -o decode_r13_r15.lo decode_r13_r15.c
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT decode_r13_r15.lo -MD -MP -MF .deps/decode_r13_r15.Tpo -c decode_r13_r15.c  -fPIC -DPIC -o .libs/decode_r13_r15.o
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT decode_r13_r15.lo -MD -MP -MF .deps/decode_r13_r15.Tpo -c decode_r13_r15.c -o decode_r13_r15.o >/dev/null 2>&1
-mv -f .deps/decode_r13_r15.Tpo .deps/decode_r13_r15.Plo
-/bin/bash ../libtool --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.     -g -O2 -MT decode_r2004.lo -MD -MP -MF .deps/decode_r2004.Tpo -c -o decode_r2004.lo decode_r2004.c
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT decode_r2004.lo -MD -MP -MF .deps/decode_r2004.Tpo -c decode_r2004.c  -fPIC -DPIC -o .libs/decode_r2004.o
-decode_r2004.c:34:0: warning: "DWG_LOGLEVEL" redefined [enabled by default]
-In file included from decode_r2004.c:28:0:
-logging.h:45:0: note: this is the location of the previous definition
-decode_r2004.c: In function 'page_checksum':
-decode_r2004.c:237:20: warning: comparison between pointer and integer [enabled by default]
-decode_r2004.c:238:28: warning: assignment makes integer from pointer without a cast [enabled by default]
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT decode_r2004.lo -MD -MP -MF .deps/decode_r2004.Tpo -c decode_r2004.c -o decode_r2004.o >/dev/null 2>&1
-mv -f .deps/decode_r2004.Tpo .deps/decode_r2004.Plo
-/bin/bash ../libtool --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.     -g -O2 -MT decode_r2007.lo -MD -MP -MF .deps/decode_r2007.Tpo -c -o decode_r2007.lo decode_r2007.c
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT decode_r2007.lo -MD -MP -MF .deps/decode_r2007.Tpo -c decode_r2007.c  -fPIC -DPIC -o .libs/decode_r2007.o
-decode_r2007.c:31:0: warning: "DWG_LOGLEVEL" redefined [enabled by default]
-In file included from decode_r2007.c:27:0:
-logging.h:45:0: note: this is the location of the previous definition
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT decode_r2007.lo -MD -MP -MF .deps/decode_r2007.Tpo -c decode_r2007.c -o decode_r2007.o >/dev/null 2>&1
-mv -f .deps/decode_r2007.Tpo .deps/decode_r2007.Plo
-/bin/bash ../libtool --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.     -g -O2 -MT encode.lo -MD -MP -MF .deps/encode.Tpo -c -o encode.lo encode.c
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT encode.lo -MD -MP -MF .deps/encode.Tpo -c encode.c  -fPIC -DPIC -o .libs/encode.o
-encode.c:1048:1: warning: conflicting types for 'dwg_encode_common_entity_handle_data' [enabled by default]
-In file included from encode.c:235:0:
-dwg.spec:52:3: note: previous implicit declaration of 'dwg_encode_common_entity_handle_data' was here
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT encode.lo -MD -MP -MF .deps/encode.Tpo -c encode.c -o encode.o >/dev/null 2>&1
-mv -f .deps/encode.Tpo .deps/encode.Plo
-/bin/bash ../libtool --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.     -g -O2 -MT handle.lo -MD -MP -MF .deps/handle.Tpo -c -o handle.lo handle.c
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT handle.lo -MD -MP -MF .deps/handle.Tpo -c handle.c  -fPIC -DPIC -o .libs/handle.o
-handle.c: In function 'read_R13_R15_section_object_map':
-handle.c:58:11: warning: 'return' with a value, in function returning void [enabled by default]
-handle.c:118:11: warning: 'return' with a value, in function returning void [enabled by default]
-handle.c: In function 'read_2004_section_handles':
-handle.c:235:7: warning: passing argument 2 of 'bit_ckr32' from incompatible pointer type [enabled by default]
-In file included from handle.h:37:0,
-                 from handle.c:24:
-bits.h:205:1: note: expected 'unsigned char *' but argument is of type 'unsigned char **'
-handle.c:241:10: warning: 'return' with a value, in function returning void [enabled by default]
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT handle.lo -MD -MP -MF .deps/handle.Tpo -c handle.c -o handle.o >/dev/null 2>&1
-mv -f .deps/handle.Tpo .deps/handle.Plo
-/bin/bash ../libtool --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.     -g -O2 -MT header.lo -MD -MP -MF .deps/header.Tpo -c -o header.lo header.c
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT header.lo -MD -MP -MF .deps/header.Tpo -c header.c  -fPIC -DPIC -o .libs/header.o
-header.c: In function 'read_R13_R15_section_header':
-header.c:70:7: warning: 'return' with a value, in function returning void [enabled by default]
-header.c: In function 'read_2004_section_header':
-header.c:102:21: warning: passing argument 2 of 'bit_ckr32' from incompatible pointer type [enabled by default]
-In file included from decode.h:35:0,
-                 from header.c:24:
-bits.h:205:1: note: expected 'unsigned char *' but argument is of type 'unsigned char **'
-header.c:108:8: warning: 'return' with a value, in function returning void [enabled by default]
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT header.lo -MD -MP -MF .deps/header.Tpo -c header.c -o header.o >/dev/null 2>&1
-mv -f .deps/header.Tpo .deps/header.Plo
-/bin/bash ../libtool --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.     -g -O2 -MT object.lo -MD -MP -MF .deps/object.Tpo -c -o object.lo object.c
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT object.lo -MD -MP -MF .deps/object.Tpo -c object.c  -fPIC -DPIC -o .libs/object.o
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT object.lo -MD -MP -MF .deps/object.Tpo -c object.c -o object.o >/dev/null 2>&1
-mv -f .deps/object.Tpo .deps/object.Plo
-/bin/bash ../libtool --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.     -g -O2 -MT print.lo -MD -MP -MF .deps/print.Tpo -c -o print.lo print.c
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT print.lo -MD -MP -MF .deps/print.Tpo -c print.c  -fPIC -DPIC -o .libs/print.o
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT print.lo -MD -MP -MF .deps/print.Tpo -c print.c -o print.o >/dev/null 2>&1
-mv -f .deps/print.Tpo .deps/print.Plo
-/bin/bash ../libtool --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.     -g -O2 -MT resolve_pointers.lo -MD -MP -MF .deps/resolve_pointers.Tpo -c -o resolve_pointers.lo resolve_pointers.c
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT resolve_pointers.lo -MD -MP -MF .deps/resolve_pointers.Tpo -c resolve_pointers.c  -fPIC -DPIC -o .libs/resolve_pointers.o
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT resolve_pointers.lo -MD -MP -MF .deps/resolve_pointers.Tpo -c resolve_pointers.c -o resolve_pointers.o >/dev/null 2>&1
-mv -f .deps/resolve_pointers.Tpo .deps/resolve_pointers.Plo
-/bin/bash ../libtool --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.     -g -O2 -MT section_locate.lo -MD -MP -MF .deps/section_locate.Tpo -c -o section_locate.lo section_locate.c
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT section_locate.lo -MD -MP -MF .deps/section_locate.Tpo -c section_locate.c  -fPIC -DPIC -o .libs/section_locate.o
-section_locate.c: In function 'read_R13_R15_section_locate':
-section_locate.c:64:7: warning: 'return' with a value, in function returning void [enabled by default]
-section_locate.c: In function 'read_R2004_section_map':
-section_locate.c:148:7: warning: 'return' with a value, in function returning void [enabled by default]
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -MT section_locate.lo -MD -MP -MF .deps/section_locate.Tpo -c section_locate.c -o section_locate.o >/dev/null 2>&1
-mv -f .deps/section_locate.Tpo .deps/section_locate.Plo
-/bin/bash ../libtool --tag=CC   --mode=link gcc  -g -O2 -version-info 0:0:0  -o libredwg.la -rpath /usr/local/lib dwg.lo common.lo bits.lo classes.lo decode.lo decode_r13_r15.lo decode_r2004.lo decode_r2007.lo encode.lo handle.lo header.lo object.lo print.lo resolve_pointers.lo section_locate.lo  
-libtool: link: gcc -shared  -fPIC -DPIC  .libs/dwg.o .libs/common.o .libs/bits.o .libs/classes.o .libs/decode.o .libs/decode_r13_r15.o .libs/decode_r2004.o .libs/decode_r2007.o .libs/encode.o .libs/handle.o .libs/header.o .libs/object.o .libs/print.o .libs/resolve_pointers.o .libs/section_locate.o    -O2   -Wl,-soname -Wl,libredwg.so.0 -o .libs/libredwg.so.0.0.0
-libtool: link: (cd ".libs" && rm -f "libredwg.so.0" && ln -s "libredwg.so.0.0.0" "libredwg.so.0")
-libtool: link: (cd ".libs" && rm -f "libredwg.so" && ln -s "libredwg.so.0.0.0" "libredwg.so")
-libtool: link: ar cru .libs/libredwg.a  dwg.o common.o bits.o classes.o decode.o decode_r13_r15.o decode_r2004.o decode_r2007.o encode.o handle.o header.o object.o print.o resolve_pointers.o section_locate.o
-libtool: link: ranlib .libs/libredwg.a
-libtool: link: ( cd ".libs" && rm -f "libredwg.la" && ln -s "../libredwg.la" "libredwg.la" )
+bits.c:1136:1: error: conflicting types for 'calculate_normal_crc'
+In file included from bits.c:30:0:
+bits.h:208:1: note: previous declaration of 'calculate_normal_crc' was here
+bits.c: In function 'calculate_normal_crc':
+bits.c:1139:5: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1139:5: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1140:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1140:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1140:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1141:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1141:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1141:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1142:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1142:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1142:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1143:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1143:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1143:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1144:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1144:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1144:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1145:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1145:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1145:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1146:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1146:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1146:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1147:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1147:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1147:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1148:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1148:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1148:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1149:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1149:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1149:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1150:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1150:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1150:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1151:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1151:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1151:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1152:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1152:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1152:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1153:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1153:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1153:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1154:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1154:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1154:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1155:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1155:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1155:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1156:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1156:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1156:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1157:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1157:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1157:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1158:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1158:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1158:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1159:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1159:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1159:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1160:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1160:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1160:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1161:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1161:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1161:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1162:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1162:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1162:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1163:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1163:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1163:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1164:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1164:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1164:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1165:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1165:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1165:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1166:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1166:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1166:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1167:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1167:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1167:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1168:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1168:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1168:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1169:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1169:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1169:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1170:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1170:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1170:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1171:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1171:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1171:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1172:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1172:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1172:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1173:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1173:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1173:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1174:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1174:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1174:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1175:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1175:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1175:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1176:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1176:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1176:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1177:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1177:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1177:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1178:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1178:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1178:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1179:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1179:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1179:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1180:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1180:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1180:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1181:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1181:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1181:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1182:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1182:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1182:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1183:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1183:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1183:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1184:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1184:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1184:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1185:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1185:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1185:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1186:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1186:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1186:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1187:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1187:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1187:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1188:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1188:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1188:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1189:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1189:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1189:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1190:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1190:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1190:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1191:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1191:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1191:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1192:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1192:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1192:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1193:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1193:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1193:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1194:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1194:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1194:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1195:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1195:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1195:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1196:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1196:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1196:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1197:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1197:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1197:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1198:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1198:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1198:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1199:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1199:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1199:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1200:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1200:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1200:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1201:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1201:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1201:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1202:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1202:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1202:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1203:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1203:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1203:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1204:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1204:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1204:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1205:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1205:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1205:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1206:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1206:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1206:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1207:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1207:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1207:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1208:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1208:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1208:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1209:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1209:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1209:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1210:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1210:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1210:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1211:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1211:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1211:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1212:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1212:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1212:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1213:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1213:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1213:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1214:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1214:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1214:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1215:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1215:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1215:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1216:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1216:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1216:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1217:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1217:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1217:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1218:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1218:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1218:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1219:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1219:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1219:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1220:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1220:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1220:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1221:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1221:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1221:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1222:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1222:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1222:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1223:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1223:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1223:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1224:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c: At top level:
+bits.c:1233:1: error: conflicting types for 'calculate_mirror_crc'
+In file included from bits.c:30:0:
+bits.h:211:1: note: previous declaration of 'calculate_mirror_crc' was here
+bits.c: In function 'calculate_mirror_crc':
+bits.c:1236:5: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1236:5: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1237:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1237:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1237:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1238:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1238:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1238:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1239:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1239:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1239:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1240:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1240:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1240:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1241:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1241:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1241:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1242:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1242:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1242:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1243:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1243:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1243:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1244:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1244:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1244:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1245:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1245:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1245:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1246:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1246:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1246:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1247:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1247:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1247:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1248:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1248:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1248:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1249:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1249:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1249:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1250:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1250:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1250:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1251:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1251:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1251:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1252:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1252:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1252:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1253:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1253:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1253:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1254:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1254:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1254:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1255:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1255:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1255:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1256:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1256:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1256:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1257:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1257:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1257:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1258:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1258:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1258:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1259:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1259:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1259:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1260:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1260:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1260:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1261:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1261:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1261:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1262:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1262:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1262:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1263:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1263:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1263:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1264:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1264:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1264:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1265:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1265:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1265:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1266:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1266:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1266:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1267:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1267:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1267:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1268:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1268:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1268:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1269:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1269:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1269:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1270:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1270:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1270:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1271:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1271:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1271:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1272:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1272:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1272:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1273:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1273:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1273:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1274:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1274:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1274:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1275:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1275:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1275:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1276:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1276:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1276:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1277:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1277:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1277:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1278:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1278:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1278:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1279:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1279:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1279:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1280:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1280:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1280:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1281:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1281:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1281:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1282:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1282:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1282:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1283:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1283:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1283:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1284:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1284:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1284:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1285:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1285:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1285:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1286:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1286:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1286:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1287:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1287:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1287:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1288:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1288:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1288:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1289:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1289:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1289:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1290:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1290:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1290:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1291:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1291:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1291:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1292:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1292:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1292:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1293:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1293:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1293:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1294:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1294:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1294:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1295:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1295:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1295:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1296:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1296:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1296:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1297:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1297:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1297:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1298:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1298:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1298:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1299:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1299:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1299:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1300:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1300:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1300:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1301:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1301:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1301:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1302:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1302:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1302:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1303:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1303:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1303:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1304:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1304:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1304:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1305:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1305:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1305:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1306:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1306:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1306:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1307:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1307:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1307:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1308:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1308:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1308:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1309:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1309:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1309:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1310:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1310:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1310:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1311:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1311:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1311:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1312:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1312:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1312:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1313:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1313:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1313:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1314:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1314:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1314:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1315:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1315:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1315:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1316:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1316:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1316:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1317:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1317:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1317:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1318:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1318:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1318:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1319:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1319:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1319:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1320:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1320:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1320:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+bits.c:1321:10: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+make[2]: *** [bits.lo] Error 1
 make[2]: Leaving directory `/home/avneet/refactoring/src'
+make[1]: *** [all] Error 2
 make[1]: Leaving directory `/home/avneet/refactoring/src'
-Making all in doc
-make[1]: Entering directory `/home/avneet/refactoring/doc'
-make[1]: Nothing to be done for `all'.
-make[1]: Leaving directory `/home/avneet/refactoring/doc'
-Making all in examples
-make[1]: Entering directory `/home/avneet/refactoring/examples'
-make[1]: Nothing to be done for `all'.
-make[1]: Leaving directory `/home/avneet/refactoring/examples'
-Making all in bindings
-make[1]: Entering directory `/home/avneet/refactoring/bindings'
-Making all in python
-make[2]: Entering directory `/home/avneet/refactoring/bindings/python'
-make  all-am
-make[3]: Entering directory `/home/avneet/refactoring/bindings/python'
-/bin/bash ../../libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I../../src  -I../../src -I/usr/include/python2.7   -g -O2 -MT _libredwg_la-swig_wrap_python.lo -MD -MP -MF .deps/_libredwg_la-swig_wrap_python.Tpo -c -o _libredwg_la-swig_wrap_python.lo `test -f './swig_wrap_python.c' || echo './'`./swig_wrap_python.c
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I../../src -I../../src -I/usr/include/python2.7 -g -O2 -MT _libredwg_la-swig_wrap_python.lo -MD -MP -MF .deps/_libredwg_la-swig_wrap_python.Tpo -c ./swig_wrap_python.c  -fPIC -DPIC -o .libs/_libredwg_la-swig_wrap_python.o
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I../../src -I../../src -I/usr/include/python2.7 -g -O2 -MT _libredwg_la-swig_wrap_python.lo -MD -MP -MF .deps/_libredwg_la-swig_wrap_python.Tpo -c ./swig_wrap_python.c -o _libredwg_la-swig_wrap_python.o >/dev/null 2>&1
-mv -f .deps/_libredwg_la-swig_wrap_python.Tpo .deps/_libredwg_la-swig_wrap_python.Plo
-/bin/bash ../../libtool --tag=CC   --mode=link gcc  -g -O2 -module  -o _libredwg.la -rpath /usr/local/lib/python2.7/dist-packages _libredwg_la-swig_wrap_python.lo  ../../src/libredwg.la 
-libtool: link: gcc -shared  -fPIC -DPIC  .libs/_libredwg_la-swig_wrap_python.o   -Wl,-rpath -Wl,/home/avneet/refactoring/src/.libs ../../src/.libs/libredwg.so  -O2   -Wl,-soname -Wl,_libredwg.so.0 -o .libs/_libredwg.so.0.0.0
-libtool: link: (cd ".libs" && rm -f "_libredwg.so.0" && ln -s "_libredwg.so.0.0.0" "_libredwg.so.0")
-libtool: link: (cd ".libs" && rm -f "_libredwg.so" && ln -s "_libredwg.so.0.0.0" "_libredwg.so")
-libtool: link: ar cru .libs/_libredwg.a  _libredwg_la-swig_wrap_python.o
-libtool: link: ranlib .libs/_libredwg.a
-libtool: link: ( cd ".libs" && rm -f "_libredwg.la" && ln -s "../_libredwg.la" "_libredwg.la" )
-make[3]: Leaving directory `/home/avneet/refactoring/bindings/python'
-make[2]: Leaving directory `/home/avneet/refactoring/bindings/python'
-make[2]: Entering directory `/home/avneet/refactoring/bindings'
-make[2]: Nothing to be done for `all-am'.
-make[2]: Leaving directory `/home/avneet/refactoring/bindings'
-make[1]: Leaving directory `/home/avneet/refactoring/bindings'
-make[1]: Entering directory `/home/avneet/refactoring'
-make[1]: Nothing to be done for `all-am'.
-make[1]: Leaving directory `/home/avneet/refactoring'
+make: *** [all-recursive] Error 1

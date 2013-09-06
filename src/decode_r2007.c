@@ -811,9 +811,19 @@ int
 decode_R2007(Bit_Chain* dat, Dwg_Data * dwg)
 {
   int i;
-  unsigned long int preview_address, security_type, unknown_long,
-      dwg_property_address, vba_proj_address, app_info_address;
-  unsigned char sig, DwgVer, MaintReleaseVer;
+  uint8_t ver_string, sig, dwg_ver, maint_release_ver, acad_maint_ver;
+  uint32_t preview_address, security_type, unknown_long, summary_info_address,
+           vba_proj_address, app_info_address;
+
+  /* Version string */
+  dat->byte = 0x00;
+  LOG_INFO("Version string: ")
+  for (i = 0; i < 6; i++)
+    {
+      ver_string = bit_read_RC(dat);
+      LOG_INFO("0x%02X", ver_string)
+    }
+  LOG_INFO("\n")
 
   /* 5 bytes of 0x00 */
   dat->byte = 0x06;
@@ -822,14 +832,14 @@ decode_R2007(Bit_Chain* dat, Dwg_Data * dwg)
     {
       sig = bit_read_RC(dat);
       if (loglevel)
-        LOG_TRACE("0x%02X ", sig)
+        LOG_TRACE("0x%02X", sig)
     }
   LOG_TRACE("\n")
 
-  /* Unknown */
+  /* Maintenance release version */
   dat->byte = 0x0B;
-  sig = bit_read_RC(dat);
-  LOG_TRACE("Unknown: 0x%02X\n", sig)
+  maint_release_ver = bit_read_RC(dat);
+  LOG_TRACE("Maintenance release version: 0x%02X\n", maint_release_ver)
 
   /* Byte 0x00, 0x01, or 0x03 */
   dat->byte = 0x0C;
@@ -839,17 +849,17 @@ decode_R2007(Bit_Chain* dat, Dwg_Data * dwg)
   /* Preview Address */
   dat->byte = 0x0D;
   preview_address = bit_read_RL(dat);
-  LOG_TRACE("Preview Address: 0x%08X\n", (unsigned int) preview_address)
+  LOG_TRACE("Preview Address: 0x%08X\n", preview_address)
 
-  /* DwgVer */
+  /* Dwg Version */
   dat->byte = 0x11;
-  DwgVer = bit_read_RC(dat);
-  LOG_INFO("DwgVer: %u\n", DwgVer)
+  dwg_ver = bit_read_RC(dat);
+  LOG_INFO("Dwg Version: %u\n", dwg_ver)
 
-  /* MaintReleaseVer */
+  /* Acad maintenance version */
   dat->byte = 0x12;
-  MaintReleaseVer = bit_read_RC(dat);
-  LOG_INFO("MaintRelease: %u\n", MaintReleaseVer)
+  acad_maint_ver = bit_read_RC(dat);
+  LOG_INFO("AcadMaintRelease: %u\n", acad_maint_ver)
 
   /* Codepage */
   dat->byte = 0x13;
@@ -862,42 +872,39 @@ decode_R2007(Bit_Chain* dat, Dwg_Data * dwg)
   for (i = 0; i < 3; i++)
     {
       sig = bit_read_RC(dat);
-      LOG_TRACE("0x%02X ", sig)
+      LOG_TRACE("0x%02X", sig)
     }
   LOG_TRACE("\n")
 
   /* SecurityType */
   dat->byte = 0x18;
   security_type = bit_read_RL(dat);
-  LOG_TRACE("SecurityType: 0x%08X\n", (unsigned int) security_type)
+  LOG_TRACE("SecurityType: 0x%08X\n", security_type)
 
   /* Unknown long */
   dat->byte = 0x1C;
   unknown_long = bit_read_RL(dat);
-  LOG_TRACE("Unknown long: 0x%08X\n", (unsigned int) unknown_long)
+  LOG_TRACE("Unknown long: 0x%08X\n", unknown_long)
 
-  /* DWG Property Addr */
+  /* Summary info Addr */
   dat->byte = 0x20;
-  dwg_property_address = bit_read_RL(dat);
-  LOG_TRACE("DWG Property Addr: 0x%08X\n",
-        (unsigned int) dwg_property_address)
+  summary_info_address = bit_read_RL(dat);
+  LOG_TRACE("Summary info Addr: 0x%08X\n", summary_info_address)
 
   /* VBA Project Addr */
   dat->byte = 0x24;
   vba_proj_address = bit_read_RL(dat);
-  LOG_TRACE("VBA Project Addr: 0x%08X\n",
-        (unsigned int) vba_proj_address)
+  LOG_TRACE("VBA Project Addr: 0x%08X\n", vba_proj_address)
 
   /* 0x00000080 */
   dat->byte = 0x28;
   unknown_long = bit_read_RL(dat);
-  LOG_TRACE("0x00000080: 0x%08X\n", (unsigned int) unknown_long)
+  LOG_TRACE("0x00000080: 0x%08X\n", unknown_long)
 
   /* Application Info Address */
   dat->byte = 0x2C;
   app_info_address = bit_read_RL(dat);
-  LOG_TRACE("Application Info Address: 0x%08X\n",
-        (unsigned int) app_info_address)
+  LOG_TRACE("Application Info Address: 0x%08X\n", app_info_address)
 
   read_r2007_meta_data(dat, dwg);
   

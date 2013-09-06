@@ -1132,10 +1132,10 @@ bit_ckr32 (unsigned int seed, unsigned char *adr, unsigned int n)
 /** 64-bit Normal CRC for 1-byte*/
 /* See spec version 5.3 at page number 61
 */
-uint8_t
-calculate_normal_crc(uint8_t *data, uint64_t crc)
+unsigned int
+calculate_normal_crc(unsigned char data, unsigned long int crc)
 {
-  static unsigned int ckr64table[256] =
+  static unsigned long int ckr64table[256] =
     { 0x0000000000000000, 0x42f0e1eba9ea3693, 0x85e1c3d753d46d26,
         0xc711223cfa3e5bb5, 0x493366450e42ecdf, 0x0bc387aea7a8da4c,
         0xccd2a5925d9681f9, 0x8e224479f47cb76a, 0x9266cc8a1c85d9be,
@@ -1223,16 +1223,16 @@ calculate_normal_crc(uint8_t *data, uint64_t crc)
         0x5dedc41a34bbeeb2, 0x1f1d25f19d51d821, 0xd80c07cd676f8394,
         0x9afce626ce85b507 };
 
-  return ckr64table[(data ^ (crc >> 56)) & 0xff] ^ (crc << 8);
+  return (ckr64table[(data ^ (crc >> 56)) & 0xff] ^ (crc << 8));
 }
 
 /** 64-bit Mirror CRC for 1-byte*/
 /* See spec version 5.3 at page number 62
 */
-uint8_t
-calculate_mirror_crc(uint8_t *data, uint64_t crc)
+unsigned int
+calculate_mirror_crc(unsigned char data, unsigned long int crc)
 {
-  static unsigned int ckr64table[256] =
+  static unsigned long int ckr64table[256] =
     {  0x0000000000000000, 0x7ad870c830358979, 0xf5b0e190606b12f2,
          0x8f689158505e9b8b, 0xc038e5739841b68f, 0xbae095bba8743ff6,
          0x358804e3f82aa47d, 0x4f50742bc81f2d04, 0xab28ecb46814fe75,
@@ -1320,19 +1320,6 @@ calculate_mirror_crc(uint8_t *data, uint64_t crc)
          0xa6df411fbfb21ca3, 0xdc0731d78f8795da, 0x536fa08fdfd90e51,
          0x29b7d047efec8728 };
 
-  return ckr64table[(crc ^ data) & 0xff] ^ (crc >> 8);
+  return (ckr64table[(crc ^ data) & 0xff] ^ (crc >> 8));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
