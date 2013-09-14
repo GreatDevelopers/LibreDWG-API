@@ -547,7 +547,7 @@ get_base_value_type(short gc)
               if (gc <= 429) return VT_INT32;
               if (gc <= 439) return VT_STRING;
             }
-          else            // 330-389
+          else            // 300-389
             {
               if (gc <= 309) return VT_STRING;
               if (gc <= 319) return VT_BINARY;
@@ -624,8 +624,11 @@ dwg_decode_xdata(Bit_Chain * dat, int size)
       switch (get_base_value_type(rbuf->type))
         {
         case VT_STRING:
-          length   = bit_read_RS(dat);          
-          codepage = bit_read_RC(dat);
+          length   = bit_read_RS(dat);
+
+          if (dat->version <= R_2004)
+            codepage = bit_read_RC(dat);
+
           if (length > 0)
             {
               rbuf->value.str = (char *)malloc((length + 1) * sizeof(char));

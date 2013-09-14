@@ -1977,15 +1977,20 @@ DWG_OBJECT(VIEW);
   FIELD(front_clip, BD);
   FIELD(back_clip, BD);
   
-  //FIELD(view_mode, RC); //??? 4bits
-  bit_read_B(dat);
-  bit_read_B(dat);
-  bit_read_B(dat);
-  bit_read_B(dat);
+  FIELD_4BITS(view_mode);
 
   SINCE(R_2000)
     {
       FIELD(render_mode, RC);
+    }
+
+  SINCE(R_2007)   
+    {
+      FIELD_B(use_default_lights);
+      FIELD_RC(default_lightining_type);
+      FIELD_BD(brightness);
+      FIELD_BD(contrast);
+      FIELD_CMC(ambient_color);
     }
 
   FIELD(pspace_flag, B);
@@ -2113,6 +2118,7 @@ DWG_OBJECT(VPORT);
   FIELD_BD (lens_length);
   FIELD_BD (front_clip);
   FIELD_BD (back_clip);
+
   FIELD_4BITS (view_mode);
 
   SINCE(R_2000)

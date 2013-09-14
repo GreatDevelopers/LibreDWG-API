@@ -51,6 +51,10 @@
 #define FORMAT_RD "%f"
 #define BITCODE_BL long unsigned int
 #define FORMAT_BL "%lu"
+#define BITCODE_T unsigned char *
+#define FORMAT_T "\"%s\""
+#define BITCODE_TU DWGCHAR *
+#define FORMAT_TU "\"%ls\""
 #define BITCODE_TV unsigned char *
 #define FORMAT_TV "\"%s\""
 #define BITCODE_BT BITCODE_DOUBLE
@@ -64,10 +68,12 @@
 #define BITCODE_H Dwg_Object_Ref*
 #define BITCODE_4BITS BITCODE_RC
 #define FORMAT_4BITS "%1x" 
-//TODO: implement version dependant string parsing
-#define BITCODE_T BITCODE_TV 
 
-#define DWGCHAR wchar_t
+#ifdef _MSC_VER
+#  define DWGCHAR wchar_t
+#else
+#  define DWGCHAR unsigned short
+#endif
 
 /**
  *    \struct  _dwg_bitecode_2rd
@@ -203,9 +209,9 @@ typedef enum DWG_OBJECT_TYPE
   DWG_TYPE_VP_ENT_HDR = 0x47,
   DWG_TYPE_GROUP = 0x48,
   DWG_TYPE_MLINESTYLE = 0x49,
-  // DWG_TYPE_<UNKNOWN> = 0x4a
+  DWG_TYPE_OLE2FRAME = 0x4a
   // DWG_TYPE_<UNKNOWN> = 0x4b
-  // DWG_TYPE_<UNKNOWN> = 0x4c
+  DWG_TYPE_LONG_TRANSACTION = 0x4c
   DWG_TYPE_LWPLINE = 0x4d,
   DWG_TYPE_HATCH = 0x4e,
   DWG_TYPE_XRECORD = 0x4f,
@@ -268,6 +274,7 @@ typedef struct _dwg_resbuf
   union 
   {
     char   *str;
+    DWGCHAR *wstr;
     double  pt[3];
     char    i8;
     short   i16;
@@ -568,39 +575,39 @@ typedef struct _dwg_header_variables {
   BITCODE_H LTYPE_BYLAYER;
   BITCODE_H LTYPE_BYBLOCK;
   BITCODE_H LTYPE_CONTINUOUS;
-  BITCODE_B unknown_20;
+  BITCODE_B CAMERADISPLAY;
   BITCODE_BL unknown_21;
   BITCODE_BL unknown_22;
   BITCODE_BD unknown_23;
-  BITCODE_BD unknown_24;
-  BITCODE_BD unknown_25;
-  BITCODE_BD unknown_26;
-  BITCODE_BD unknown_27;
-  BITCODE_BD unknown_28;
-  BITCODE_RC unknown_29;
-  BITCODE_RC unknown_30;
-  BITCODE_BD unknown_31;
-  BITCODE_BD unknown_32;
-  BITCODE_BD unknown_33;
-  BITCODE_BD unknown_34;
-  BITCODE_BD unknown_35;
-  BITCODE_BD unknown_36;
-  BITCODE_BS unknown_37;
-  BITCODE_RC unknown_38;
-  BITCODE_BD unknown_39;
-  BITCODE_BD unknown_40;
-  BITCODE_BD unknown_41;
-  BITCODE_BL unknown_42;
-  BITCODE_RC unknown_43;
-  BITCODE_RC unknown_44;
-  BITCODE_RC unknown_45;
-  BITCODE_RC unknown_46;
+  BITCODE_BD STEPSPERSEC;
+  BITCODE_BD STEPSIZE;
+  BITCODE_BD DWF3DPREC;
+  BITCODE_BD LENSLENGTH;
+  BITCODE_BD CAMERAHEIGHT;
+  BITCODE_RC SOLIDHIST;
+  BITCODE_RC SHOWHIST;
+  BITCODE_BD PSOLWIDTH;
+  BITCODE_BD PSOLHEIGHT;
+  BITCODE_BD LOFTANG1;
+  BITCODE_BD LOFTANG2;
+  BITCODE_BD LOFTMAG1;
+  BITCODE_BD LOFTMAG2;
+  BITCODE_BS LOFTPARAM;
+  BITCODE_RC LOFTNORMALS;
+  BITCODE_BD LATITUDE;
+  BITCODE_BD LONGITUDE;
+  BITCODE_BD NORTHDIRECTION;
+  BITCODE_BL TIMEZONE;
+  BITCODE_RC LIGHTGLYPHDISPLAY;
+  BITCODE_RC TILEMODELIGHTSYNCH;
+  BITCODE_RC DWFFRAME;
+  BITCODE_RC DGNFRAME;
   BITCODE_B unknown_47;
-  BITCODE_CMC unknown_48;
-  BITCODE_H unknown_49;
-  BITCODE_H unknown_50;
-  BITCODE_H unknown_51;
-  BITCODE_RC unknown_52;
+  BITCODE_CMC INTERFERECOLOR;
+  BITCODE_H INTERFEREOBJVS;
+  BITCODE_H INTERFEREVPVS;
+  BITCODE_H DRAGVS;
+  BITCODE_RC CSHADOW;
   BITCODE_BD unknown_53;
   BITCODE_BS unknown_54;
   BITCODE_BS unknown_55;
@@ -1671,6 +1678,11 @@ typedef struct _dwg_object_VIEW
   BITCODE_BD back_clip;
   BITCODE_4BITS view_mode;
   BITCODE_RC render_mode;
+  BITCODE_B use_default_lights;       // R21
+  BITCODE_RC default_lightining_type; // R21
+  BITCODE_BD brightness;              // R21
+  BITCODE_BD contrast;                // R21
+  BITCODE_CMC ambient_color;          // R21 
   BITCODE_B pspace_flag;
   BITCODE_B associated_ucs;
   BITCODE_3BD origin;
@@ -2649,6 +2661,7 @@ typedef struct _dwg_object_XRECORD
 } Dwg_Object_XRECORD;
 
 /* OBJECTS - END */
+
 /**
  *    \struct  _dwg_object_entity
  *    \brief   Structure for common entity attributes
@@ -2708,7 +2721,7 @@ typedef struct _dwg_object_entity
     Dwg_Entity_OLE2FRAME *OLE2FRAME;
     Dwg_Entity_TABLE *TABLE;
     Dwg_Entity_HATCH *HATCH;
-  } tio;
+  } as;
 
   BITCODE_RL bitsize;
   // Dwg_Handle handle;

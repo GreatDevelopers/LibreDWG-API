@@ -132,12 +132,26 @@ bit_write_BB(Bit_Chain *dat, unsigned char value)
 BITCODE_4BITS
 bit_read_4BITS(Bit_Chain *dat)
 {
-  BITCODE_4BITS result = bit_read_RC(dat);
-  bit_advance_position(dat, -4);
-  /* perhaps we have an issue here when the 4bit field is near the end of a bitstream?
-   * (since we initially advance 8bits and then later rewind 4bits)
-   */
-  return (result & 0xf0) >> 4;
+  unsigned char result;
+  unsigned char byte;
+  
+  byte = dat->chain[dat->byte];
+
+  if (dat->bit < 5)
+    result = (byte & (0xf0 >> dat->bit)) >> (4 - dat->bit);
+  else
+    {
+    result = (byte & (0xf0 >> dat->bit)) << (dat->bit - 4);
+    
+    if (dat->byte < dat->size - 1)
+      {
+      byte = dat->chain[dat->byte + 1];
+      result |= (byte & 0xe0) >> (12 - dat->bit);
+      }
+    }
+  
+  bit_advance_position(dat, 4);
+  return result;
 }
 
 /** Write 1 nibble */

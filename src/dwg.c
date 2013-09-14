@@ -82,6 +82,8 @@ dwg_read_file(char *filename, Dwg_Data *dwg_data)
     }
   fclose(fp);
 
+  memset(dwg_data, 0, sizeof(Dwg_Data));
+
   /* Decode the dwg structure */
   dwg_data->bit_chain = &bit_chain;
 

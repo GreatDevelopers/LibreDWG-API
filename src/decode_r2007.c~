@@ -979,9 +979,6 @@ decode_R2007(Bit_Chain* dat, Dwg_Data * dwg)
 
   LOG_TRACE("\n\n")
 
-  /////////////////////////////////////////
-  // incomplete implementation!
-  /////////////////////////////////////////
   resolve_objectref_vector(dwg);
 
   LOG_ERROR("Decoding of DWG version R2007 header is not fully "

@@ -624,14 +624,27 @@ dwg_decode_xdata(Bit_Chain * dat, int size)
       switch (get_base_value_type(rbuf->type))
         {
         case VT_STRING:
-          length   = bit_read_RS(dat);          
-          codepage = bit_read_RC(dat);
+          length   = bit_read_RS(dat);
+
+          if (dat->version <= R_2004)
+            codepage = bit_read_RC(dat);
+
           if (length > 0)
             {
-              rbuf->value.str = (char *)malloc((length + 1) * sizeof(char));
-              for (i = 0; i < length; i++)
-                rbuf->value.str[i] = bit_read_RC(dat);
-              rbuf->value.str[i] = '\0';
+              if (dat->version >= R_2007)
+                {
+                  rbuf->value.wstr = (DWGCHAR *)malloc((length + 1) * sizeof(DWGCHAR));
+                  for (i = 0; i < length; i++)
+                    rbuf->value.wstr[i] = bit_read_RS(dat);
+                  rbuf->value.wstr[i] = '\0';
+                }
+              else
+                {
+                  rbuf->value.str = (char *)malloc((length + 1) * sizeof(char));
+                  for (i = 0; i < length; i++)
+                    rbuf->value.str[i] = bit_read_RC(dat);
+                  rbuf->value.str[i] = '\0';
+                }
             }
           break;
         case VT_REAL:
