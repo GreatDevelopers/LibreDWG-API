@@ -110,7 +110,7 @@ typedef struct _r2007_section
   int64_t  unknown;      // 0x00
   int64_t  encoded;
   int64_t  num_pages;
-  wchar_t *name;
+  DWGCHAR  *name;
   r2007_section_page **pages;
   struct _r2007_section *next;
 } r2007_section;
@@ -150,6 +150,10 @@ decode_R2007(Bit_Chain *dat, Dwg_Data *dwg);
 
 int
 read_r2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg);
+
+Bit_Chain *
+string_stream_init(Bit_Chain *sstream, Bit_Chain *dat, 
+                   unsigned long int bitpos, int check_present_bit);
 
 static uint32_t
 read_literal_length(unsigned char **src, unsigned char opcode);

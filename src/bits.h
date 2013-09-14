@@ -46,6 +46,9 @@ typedef struct _bit_chain
   long unsigned int byte;
   unsigned char bit;
   Dwg_Version_Type version;
+  long unsigned int handles_address;
+  long unsigned int string_byte;
+  unsigned char string_bit;
 } Bit_Chain;
 
 /* Functions for raw data manipulations
@@ -164,10 +167,19 @@ bit_write_CRC(Bit_Chain *dat, long unsigned int start_address,
               unsigned int semo);
 
 unsigned char *
-bit_read_TV(Bit_Chain *dat);
+bit_read_T(Bit_Chain *dat);
+
+DWGCHAR *
+bit_read_TU(Bit_Chain *dat);
+
+unsigned char *
+bit_read_TV(Bit_Chain *dat, Bit_Chain *dat_string);
 
 void
-bit_write_TV(Bit_Chain *dat, unsigned char *value);
+bit_write_T(Bit_Chain *dat, unsigned char *chain);
+
+void
+bit_write_TV(Bit_Chain *dat, unsigned char *chain);
 
 long unsigned int
 bit_read_L(Bit_Chain *dat);
@@ -176,7 +188,7 @@ void
 bit_write_L(Bit_Chain *dat, long unsigned int value);
 
 void
-bit_read_CMC(Bit_Chain *dat, Dwg_Color *color);
+bit_read_CMC(Bit_Chain *dat, Dwg_Color *color, Bit_Chain *dat_string);
 
 void
 bit_write_CMC(Bit_Chain *dat, Dwg_Color *color);

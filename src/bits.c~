@@ -816,11 +816,10 @@ bit_write_CRC(Bit_Chain *dat, long unsigned int start_address,
   return (crc);
 }
 
-/** Read simple text. After usage, the allocated memory must
- * be properly freed.
+/** Read simple text. After usage, the allocated memory must be properly freed.
  */
-BITCODE_TV
-bit_read_TV(Bit_Chain *dat)
+BITCODE_T
+bit_read_T(Bit_Chain *dat)
 {
   unsigned int i;
   unsigned int length;
@@ -828,9 +827,11 @@ bit_read_TV(Bit_Chain *dat)
 
   length = bit_read_BS(dat);
   chain = (unsigned char *) malloc(length + 1);
+
   for (i = 0; i < length; i++)
     {
       chain[i] = bit_read_RC(dat);
+
       if (chain[i] == 0)
         chain[i] = '*';
       else if (!isprint (chain[i]))
@@ -841,17 +842,78 @@ bit_read_TV(Bit_Chain *dat)
   return (chain);
 }
 
+/** Read unicode text. After usage, the allocated memory must be properly freed.
+ */
+BITCODE_TU
+bit_read_TU(Bit_Chain * dat)
+{
+  unsigned int i;
+  unsigned int length;
+  unsigned char *chain;
+  
+  length = bit_read_BS(dat);
+  chain = (unsigned char *) malloc(length + 1);
+
+  for (i = 0; i < length; i++)
+    {
+      chain[i] = bit_read_RS(dat) & 0xFF;
+
+      if (chain[i] == 0)
+        chain[i] = '*';
+    }
+  chain[i] = '\0';  
+  
+  return (BITCODE_TU)(chain);
+  
+  /* Use this when all strings are converted to unicode
+  DWGCHAR *chain;
+  
+  length = bit_read_BS(dat);
+  chain = (DWGCHAR *) malloc((length + 1) * sizeof(DWGCHAR));
+
+  for (i = 0; i < length; i++)
+    {
+      chain[i] = bit_read_RS(dat);
+
+      if (chain[i] == 0)
+        chain[i] = '*';
+    }
+  chain[i] = '\0';  
+  return (chain);
+  */
+}
+
+/** Read variable text
+ */
+BITCODE_TV
+bit_read_TV(Bit_Chain * dat, Bit_Chain * dat_string)
+{
+  SINCE(R_2007)
+    {
+		return (BITCODE_TV)bit_read_TU(dat_string);
+    }
+
+  return bit_read_T(dat);
+}
+
 /** Write simple text */
 void
-bit_write_TV(Bit_Chain *dat, unsigned char *chain)
+bit_write_T(Bit_Chain *dat, unsigned char *chain)
 {
   int i;
   int length;
 
   length = strlen((const char *) chain);
   bit_write_BS(dat, length);
+
   for (i = 0; i < length; i++)
     bit_write_RC(dat, chain[i]);
+}
+
+void
+bit_write_TV(Bit_Chain *dat, unsigned char *chain)
+{
+  bit_write_T(dat, chain);
 }
 
 /** Read 1 bitlong according to normal order */
@@ -883,15 +945,25 @@ bit_write_L(Bit_Chain * dat, long unsigned int value)
 
 /** Read color */
 void
-bit_read_CMC(Bit_Chain *dat, Dwg_Color *color)
+bit_read_CMC(Bit_Chain *dat, Dwg_Color *color, Bit_Chain *dat_string)
 {
-  color->index = bit_read_BS(dat);
-  if (dat->version >= R_2004)
+  if (dat->version >= R_2007)
     {
       color->rgb = bit_read_BL(dat);
+    }
+  else
+    {
+      color->index = bit_read_BS(dat);
+
+      if (dat->version >= R_2004)
+        color->rgb = bit_read_BL(dat);
+    }
+    
+  if (dat->version >= R_2004)
+    {
       color->byte = bit_read_RC(dat);
       if (color->byte & 1)
-        color->name = (char*)bit_read_TV(dat);
+        color->name = (char*)bit_read_TV(dat, dat_string);
       if (color->byte & 2)
         color->book_name = (char*)bit_read_TV(dat);
     }
@@ -1232,7 +1304,7 @@ calculate_normal_crc(unsigned char data, unsigned long int crc)
 unsigned int
 calculate_mirror_crc(unsigned char data, unsigned long int crc)
 {
-  static unsigned int ckr64table[256] =
+  static unsigned long int ckr64table[256] =
     {  0x0000000000000000, 0x7ad870c830358979, 0xf5b0e190606b12f2,
          0x8f689158505e9b8b, 0xc038e5739841b68f, 0xbae095bba8743ff6,
          0x358804e3f82aa47d, 0x4f50742bc81f2d04, 0xab28ecb46814fe75,

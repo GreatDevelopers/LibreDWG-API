@@ -59,9 +59,9 @@ read_R13_R15_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
 
       dwg->dwg_class[idc].number = bit_read_BS(dat);
       dwg->dwg_class[idc].version = bit_read_BS(dat);
-      dwg->dwg_class[idc].appname = bit_read_TV(dat);
-      dwg->dwg_class[idc].cppname = bit_read_TV(dat);
-      dwg->dwg_class[idc].dxfname = bit_read_TV(dat);
+      dwg->dwg_class[idc].appname = bit_read_T(dat);
+      dwg->dwg_class[idc].cppname = bit_read_T(dat);
+      dwg->dwg_class[idc].dxfname = bit_read_T(dat);
       dwg->dwg_class[idc].wasazombie = bit_read_B(dat);
       dwg->dwg_class[idc].item_class_id = bit_read_BS(dat);
 
@@ -105,7 +105,7 @@ read_R13_R15_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
 
 /** R2004 Class Section */
 void
-read_2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
+read_R2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
 {
   uint32_t size, max_num, num_objects, dwg_version, maint_version, unknown;
   char c;
@@ -141,9 +141,9 @@ read_2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
 
           dwg->dwg_class[idc].number  = bit_read_BS(&sec_dat);
           dwg->dwg_class[idc].version = bit_read_BS(&sec_dat);
-          dwg->dwg_class[idc].appname = bit_read_TV(&sec_dat);
-          dwg->dwg_class[idc].cppname = bit_read_TV(&sec_dat);
-          dwg->dwg_class[idc].dxfname = bit_read_TV(&sec_dat);
+          dwg->dwg_class[idc].appname = bit_read_T(&sec_dat);
+          dwg->dwg_class[idc].cppname = bit_read_T(&sec_dat);
+          dwg->dwg_class[idc].dxfname = bit_read_T(&sec_dat);
           dwg->dwg_class[idc].wasazombie = bit_read_B(&sec_dat);
           dwg->dwg_class[idc].item_class_id = bit_read_BS(&sec_dat);
 
@@ -192,3 +192,67 @@ read_2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
   LOG_INFO("Number of classes read: %u\n", dwg->num_classes)
   free(sec_dat.chain);
 }
+
+/** R2007 Class Section */
+void
+read_R2007_section_classes(Bit_Chain *dat, Dwg_Data *dwg, 
+                           r2007_section *sections_map, r2007_page *pages_map)
+{
+  Bit_Chain sec_dat;
+  
+  if (read_data_section(&sec_dat, dat, sections_map, pages_map, 0x3f54045f) != 0)
+    return;  
+  dwg->dwg_ot_layout = 0;
+  dwg->num_classes   = 0;
+
+  if (bit_search_sentinel(&sec_dat, dwg_sentinel(DWG_SENTINEL_CLASS_BEGIN)))
+    {
+      uint32_t size, num_bits, max_num, num_objects, dwg_version,
+               maint_version, unknown1, unknown2;
+      char unknown;
+      Bit_Chain sstream;
+    
+      size     = bit_read_RL(&sec_dat);  // size of class data area
+      num_bits = bit_read_RL(&sec_dat);  // size in bits
+      max_num  = bit_read_BL(&sec_dat);  // Maxiumum class number
+      unknown  = bit_read_B(&sec_dat);
+      string_stream_init(&sstream, &sec_dat, num_bits, 0);
+    
+      do
+        {
+          unsigned int idc;
+
+          idc = dwg->num_classes;
+
+          if (idc == 0)
+            dwg->dwg_class = (Dwg_Class *) malloc(sizeof(Dwg_Class));
+          else
+            dwg->dwg_class = (Dwg_Class *) realloc(dwg->dwg_class, (idc + 1)
+                * sizeof(Dwg_Class));
+
+          dwg->dwg_class[idc].number        = bit_read_BS(&sec_dat);
+          dwg->dwg_class[idc].version       = bit_read_BS(&sec_dat);
+          dwg->dwg_class[idc].wasazombie    = bit_read_B(&sec_dat);
+          dwg->dwg_class[idc].item_class_id = bit_read_BS(&sec_dat);  // 0x1F2 or 0x1F3
+          dwg->dwg_class[idc].appname       = (char*)bit_read_TU(&sstream);
+          dwg->dwg_class[idc].cppname       = (char*)bit_read_TU(&sstream);
+          dwg->dwg_class[idc].dxfname       = (char*)bit_read_TU(&sstream);
+        
+          num_objects   = bit_read_BL(&sec_dat);  // DXF 91
+          dwg_version   = bit_read_BL(&sec_dat);  // Dwg Version
+          maint_version = bit_read_BL(&sec_dat);  // Maintenance release version.
+          unknown1      = bit_read_BL(&sec_dat);  // Unknown (normally 0L)
+          unknown2      = bit_read_BL(&sec_dat);  // Unknown (normally 0L)
+
+          dwg->num_classes++;
+        
+          if (dwg->dwg_class[idc].number == max_num)
+            break;
+        } 
+      while (sec_dat.byte < (size - 1));
+    }
+  free(sec_dat.chain);
+}
+
+
+

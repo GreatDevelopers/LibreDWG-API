@@ -74,8 +74,13 @@
 #define FIELD_RL(name) FIELD(name, RL);
 #define FIELD_MC(name) FIELD(name, MC);
 #define FIELD_MS(name) FIELD(name, MS);
-#define FIELD_TV(name) FIELD(name, TV);
-#define FIELD_T FIELD_TV /*TODO: implement version dependant string fields */
+
+#define FIELD_T(name) FIELD(name, T);
+#define FIELD_TU(name) FIELD(name, TU);
+#define FIELD_TV(name)\
+  _obj->name = bit_read_TV(dat, sstream);\
+  LOG_TRACE(#name ":\t\t" FORMAT_TV "\n", _obj->name)
+
 #define FIELD_BT(name) FIELD(name, BT);
 #define FIELD_4BITS(name) _obj->name = bit_read_4BITS(dat);
 
@@ -88,7 +93,7 @@
 #define FIELD_3BD(name) FIELD(name.x, BD); FIELD(name.y, BD); FIELD(name.z, BD);
 #define FIELD_3DPOINT(name) FIELD_3BD(name)
 #define FIELD_CMC(name)\
-    bit_read_CMC(dat, &_obj->name);\
+    bit_read_CMC(dat, &_obj->name, sstream);\
     LOG_TRACE(#name ": index %d\n", _obj->name.index)
 
 //FIELD_VECTOR_N(name, type, size):
@@ -106,6 +111,17 @@
     }
 
 #define FIELD_VECTOR(name, type, size) FIELD_VECTOR_N(name, type, _obj->size)
+
+#define FIELD_VECTOR_TV(name, size)\
+  if (_obj->size > 0)\
+    {\
+      _obj->name = (BITCODE_TV*) malloc(_obj->size * sizeof(BITCODE_TV));\
+      for (vcount=0; vcount< _obj->size; vcount++)\
+        {\
+          _obj->name[vcount] = bit_read_TV(dat, sstream);\
+          LOG_TRACE(#name "[%d]: " FORMAT_TV "\n", vcount, _obj->name[vcount])\
+        }\
+    }
 
 #define FIELD_2RD_VECTOR(name, size)\
   _obj->name = (BITCODE_2RD *) malloc(_obj->size * sizeof(BITCODE_2RD));\
@@ -199,6 +215,13 @@
 
 //TODO unify REPEAT macros!
 
+#define SEEK_TO_HANDLES \
+  SINCE(R_2007) \
+    { \
+      dat->byte = (dat->handles_address >> 3); \
+      dat->bit  = (dat->handles_address & 7); \
+    }
+
 #define COMMON_ENTITY_HANDLE_DATA \
   dwg_decode_common_entity_handle_data(dat, obj)
 
@@ -207,6 +230,8 @@ void \
  dwg_decode_##token (Bit_Chain * dat, Dwg_Object * obj)\
 {\
   int vcount, rcount, rcount2, rcount3;\
+  Bit_Chain string_stream;\
+  Bit_Chain *sstream = &string_stream;\
   Dwg_Entity_##token *ent, *_obj;\
   Dwg_Data* dwg = obj->parent;\
   LOG_INFO("Entity " #token ":\n")\
@@ -218,15 +243,21 @@ void \
   _obj=ent;\
   obj->as.entity->object = obj;\
   if (dwg_decode_entity (dat, obj->as.entity)) return;\
-  LOG_INFO("Entity handle: %d.%d.%lu\n",\
+  LOG_INFO("Entity handle: %x.%x.%lx\n",\
     obj->handle.code,\
     obj->handle.size,\
-    obj->handle.value)
+    obj->handle.value)\
+  SINCE(R_2007)\
+  {\
+    sstream = string_stream_init(&string_stream, dat, dat->handles_address, 1);\
+  }
 
 #define DWG_ENTITY_END }
 
 #define DWG_OBJECT(token) void  dwg_decode_ ## token (Bit_Chain * dat, Dwg_Object * obj) {\
   int vcount, rcount, rcount2, rcount3;\
+  Bit_Chain string_stream;\
+  Bit_Chain *sstream = &string_stream;\
   Dwg_Object_##token *_obj;\
   Dwg_Data* dwg = obj->parent;\
   LOG_INFO("Object " #token ":\n")\
@@ -236,10 +267,14 @@ void \
   obj->as.object->object = obj;\
   if (dwg_decode_object (dat, obj->as.object)) return;\
   _obj = obj->as.object->as.token;\
-  LOG_INFO("Object handle: %d.%d.%lu\n",\
+  LOG_INFO("Object handle: %x.%x.%lx\n",\
     obj->handle.code,\
     obj->handle.size,\
-    obj->handle.value)
+    obj->handle.value)\
+  SINCE(R_2007)\
+  {\
+    sstream = string_stream_init(&string_stream, dat, dat->handles_address, 1);\
+  }
 
 #define DWG_OBJECT_END }
 //#undef IS_DECODER

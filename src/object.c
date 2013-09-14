@@ -69,7 +69,11 @@ dwg_decode_add_object(Dwg_Data *dwg, Bit_Chain *dat, uint32_t address)
   obj->parent = dwg;
   obj->size = bit_read_MS(dat);
   object_address = dat->byte;
-  ktl_lastaddress = dat->byte + obj->size; // calculate the bitsize
+  ktl_lastaddress = dat->byte + obj->size; // calculate the size
+
+  // Pre calculate address of handles section in bits.
+  dat->handles_address = dat->byte << 3;
+ 
   obj->type = bit_read_BS(dat);
 
   LOG_INFO("Type: %d \n", obj->type)

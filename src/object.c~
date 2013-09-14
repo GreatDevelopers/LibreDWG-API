@@ -312,8 +312,8 @@ dwg_decode_add_object(Dwg_Data *dwg, Bit_Chain *dat, uint32_t address)
               }
 
             obj->supertype = DWG_SUPERTYPE_UNKNOWN;
-            obj->tio.unknown = (unsigned char*)malloc(obj->size);
-            memcpy(obj->tio.unknown, &dat->chain[object_address], obj->size);
+            obj->as.unknown = (unsigned char*)malloc(obj->size);
+            memcpy(obj->as.unknown, &dat->chain[object_address], obj->size);
           }
     } 
 

@@ -119,6 +119,8 @@
 
 #define HANDLE_VECTOR(name, sizefield, code) HANDLE_VECTOR_N(name, FIELD_VALUE(sizefield), code)
 
+#define FIELD_VECTOR_TV(name, size)
+
 #define FIELD_XDATA(name, size)
 
 #define REACTORS(code)\
@@ -149,6 +151,8 @@
 
 #define REPEAT3(times, name, type) \
   for (rcount3=0; rcount3<_obj->times; rcount3++)
+
+#define SEEK_TO_HANDLES // Empty
 
 #define COMMON_ENTITY_HANDLE_DATA     // Empty
 

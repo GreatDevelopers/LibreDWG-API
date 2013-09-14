@@ -143,7 +143,7 @@ dwg_decode_data(Bit_Chain * dat, Dwg_Data * dwg)
 
 /** Decode DWG entity */
 int
-dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
+dwg_decode_entity(Bit_Chain *dat, Dwg_Object_Entity *ent)
 {
   unsigned int i;
   unsigned int size;
@@ -151,7 +151,7 @@ dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
 
   SINCE(R_2000)
     {
-      ent->bitsize = bit_read_RL(dat);
+      dat->handles_address += bit_read_RL(dat);
     }
 
   error = bit_read_H(dat, &(ent->object->handle));
@@ -160,7 +160,6 @@ dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
       LOG_ERROR("dwg_decode_entity: \t Error in object handle! "
                 "Current Bit_Chain address: 0x%0x \n",
                 (unsigned int) dat->byte)
-      ent->bitsize = 0;
       ent->extended_size = 0;
       ent->picture_exists = 0;
       ent->num_handles = 0;
@@ -176,7 +175,6 @@ dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
           LOG_ERROR("dwg_decode_entity: Absurd! Extended object "
                     "data size: %lu. Object: %lu (handle).\n",
                     (long unsigned int) size, ent->object->handle.value)
-          ent->bitsize = 0;
           ent->extended_size = 0;
           ent->picture_exists = 0;
           ent->num_handles = 0;
@@ -222,7 +220,7 @@ dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
 
   VERSIONS(R_13,R_14)
     {
-      ent->bitsize = bit_read_RL(dat);
+      dat->handles_address += bit_read_RL(dat);
     }
 
   ent->entity_mode = bit_read_BB(dat);
@@ -266,7 +264,7 @@ dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
                   c3 = bit_read_RC(dat);
                   c4 = bit_read_RC(dat);
               
-                  name = bit_read_TV(dat);
+                  name = bit_read_T(dat);
                 }
             
               if (flags & 0x4000)
@@ -284,7 +282,7 @@ dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
         }
     }
   OTHER_VERSIONS
-    bit_read_CMC(dat, &ent->color);
+    bit_read_CMC(dat, &ent->color, NULL);
 
   ent->linetype_scale = bit_read_BD(dat);
 
@@ -320,7 +318,7 @@ dwg_decode_object(Bit_Chain * dat, Dwg_Object_Object * ord)
 
   SINCE(R_2000)
     {
-      ord->bitsize = bit_read_RL(dat);
+      dat->handles_address += bit_read_RL(dat);
     }
 
   error = bit_read_H(dat, &ord->object->handle);
@@ -328,7 +326,6 @@ dwg_decode_object(Bit_Chain * dat, Dwg_Object_Object * ord)
     {
       LOG_ERROR("\t Error in object handle! Bit_Chain current address: "
                 "0x%0x \n", (unsigned int) dat->byte)
-      ord->bitsize = 0;
       ord->extended_size = 0;
       ord->num_handles = 0;
       return -1;
@@ -342,7 +339,6 @@ dwg_decode_object(Bit_Chain * dat, Dwg_Object_Object * ord)
           LOG_ERROR("dwg_decode_object: Absurd! Extended object data "
                     "size: %lu. Object: %lu (handle).\n",
                     (long unsigned int) size, ord->object->handle.value)
-          ord->bitsize = 0;
           ord->extended_size = 0;
           ord->num_handles = 0;
           return 0;
@@ -367,7 +363,7 @@ dwg_decode_object(Bit_Chain * dat, Dwg_Object_Object * ord)
 
   VERSIONS(R_13,R_14)
     {
-      ord->bitsize = bit_read_RL(dat);
+      dat->handles_address += bit_read_RL(dat);
     }
 
   ord->num_reactors = bit_read_BL(dat);
@@ -496,6 +492,8 @@ dwg_decode_common_entity_handle_data(Bit_Chain * dat, Dwg_Object * obj)
   ent = obj->as.entity;
   _obj = ent;
 
+  SEEK_TO_HANDLES
+  
   #include "common_entity_handle_data.spec"
 
 }
@@ -549,7 +547,7 @@ get_base_value_type(short gc)
               if (gc <= 429) return VT_INT32;
               if (gc <= 439) return VT_STRING;
             }
-          else            // 330-389
+          else            // 300-389
             {
               if (gc <= 309) return VT_STRING;
               if (gc <= 319) return VT_BINARY;

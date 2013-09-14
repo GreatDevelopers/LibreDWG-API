@@ -770,6 +770,68 @@ read_file_header(Bit_Chain *dat, r2007_file_header *file_header)
   free(pedata);
 }
 
+Bit_Chain *
+string_stream_init(Bit_Chain *sstream, Bit_Chain *dat,
+                   unsigned long int bitpos, int check_present_bit)
+{
+  int strsize, hisize;
+  
+  uint64_t mem_byte = dat->byte;
+  uint8_t  mem_bit  = dat->bit;
+  
+  if (check_present_bit)
+    {      
+      dat->byte = ((bitpos-8) >> 3);
+      dat->bit  = ((bitpos-8) & 7);
+
+      if (bit_read_RC(dat) == 1)
+        {
+          bitpos -= 17;
+
+          dat->byte = (bitpos >> 3);
+          dat->bit  = (bitpos & 7);
+        }
+      else
+      {
+        // no string stream present
+        dat->byte = mem_byte;
+        dat->bit  = mem_bit;
+        return dat;
+      }
+    }
+  else
+    {
+      bitpos   += 0x8F;  // 8 * 16 + 15
+      dat->byte = (bitpos >> 3);
+      dat->bit  = (bitpos & 7);
+    }
+  strsize = bit_read_RS(dat);
+
+  if (strsize & 0x8000)
+    {
+      strsize &= 0x7FFF;   //~0x8000;
+      bitpos  -= 16;
+
+      dat->byte = (bitpos >> 3);
+      dat->bit  = (bitpos & 7);
+
+      hisize  = bit_read_RS(dat);
+      strsize |= (hisize << 15);          
+    }
+  bitpos -= strsize;  
+
+  sstream->byte    = bitpos >> 3;
+  sstream->bit     = bitpos & 7;
+  sstream->chain   = dat->chain;
+  sstream->size    = dat->size;
+  sstream->version = dat->version;
+
+  dat->byte = mem_byte;
+  dat->bit  = mem_bit;
+
+  return sstream;
+}
+
 int
 read_r2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg)
 {
@@ -798,109 +860,19 @@ read_r2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg)
                                        file_header.sections_map_correction);
     }
 
-  // Handles Section
-     read_R18_R21_section_handles(dat, dwg);
- 
   // Classes Section
-     read_2007_section_classes(dat, dwg);
-  
-  // Header Section 
-     read_r2007_section_header(dat, dwg);
+  read_R2007_section_classes(dat, dwg, sections_map, pages_map);
+   
+  // Header Section
+  read_R2007_section_header(dat, dwg, sections_map, pages_map);
+   
+  // Handles section
+  read_R2007_section_handles(dat, dwg, sections_map, pages_map);
   
   pages_destroy(pages_map);
   sections_destroy(sections_map);   
 
   return 0;
-}
-
-/** R2007 Class Section */
-void
-read_2007_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
-{
-  uint32_t size, max_num, num_objects, dwg_version, maint_version, unknown;
-  char c;
-  Bit_Chain sec_dat;
-
-  if (read_2004_compressed_section(dat, dwg, &sec_dat, 
-      SECTION_CLASSES) != 0)
-    return;
-
-  if (bit_search_sentinel(&sec_dat, 
-      dwg_sentinel(DWG_SENTINEL_CLASS_BEGIN)))
-    {
-      size = bit_read_RL(&sec_dat);     // size of class data area
-      max_num = bit_read_BS(&sec_dat);  // Maxiumum class number
-      c = bit_read_RC(&sec_dat);        // 0x00
-      c = bit_read_RC(&sec_dat);        // 0x00
-      c = bit_read_B(&sec_dat);         // 1
-
-      dwg->dwg_ot_layout = 0;
-      dwg->num_classes = 0;
-
-      do
-        {
-          uint8_t idc;
-
-          idc = dwg->num_classes;
-
-          if (idc == 0)
-            dwg->dwg_class = (Dwg_Class *) malloc(sizeof (Dwg_Class));
-          else
-            dwg->dwg_class = (Dwg_Class *) realloc(dwg->dwg_class,
-                             (idc + 1) * sizeof (Dwg_Class));
-
-          dwg->dwg_class[idc].number  = bit_read_BS(&sec_dat);
-          dwg->dwg_class[idc].version = bit_read_BS(&sec_dat);
-          dwg->dwg_class[idc].appname = bit_read_TV(&sec_dat);
-          dwg->dwg_class[idc].cppname = bit_read_TV(&sec_dat);
-          dwg->dwg_class[idc].dxfname = bit_read_TV(&sec_dat);
-          dwg->dwg_class[idc].wasazombie = bit_read_B(&sec_dat);
-          dwg->dwg_class[idc].item_class_id = bit_read_BS(&sec_dat);
-
-          num_objects   = bit_read_BL(&sec_dat);  // DXF 91
-          dwg_version   = bit_read_BS(&sec_dat);  // Dwg Version
-          maint_version = bit_read_BS(&sec_dat);  // Maintenance release version.
-          unknown       = bit_read_BL(&sec_dat);  // Unknown (normally 0L)
-          unknown       = bit_read_BL(&sec_dat);  // Unknown (normally 0L)
-
-          LOG_TRACE("\n")
-          LOG_TRACE("Number: %d \n",           dwg->dwg_class[idc].number)
-          LOG_TRACE("Version: %x \n",          dwg->dwg_class[idc].version)
-          LOG_TRACE("Application name: %s \n", dwg->dwg_class[idc].appname)
-          LOG_TRACE("C++ class name: %s \n",   dwg->dwg_class[idc].cppname)
-          LOG_TRACE("DXF record name: %s \n",  dwg->dwg_class[idc].dxfname)
-
-          if (strcmp((const char *)dwg->dwg_class[idc].dxfname,
-              "LAYOUT") == 0)
-            dwg->dwg_ot_layout = dwg->dwg_class[idc].number;
-
-          dwg->num_classes++;
-        } while (sec_dat.byte < (size - 1));
-    }
-
-  /* Check CRC on
-  uint32_t pvz, ckr, ckr2;
-  
-  sec_dat.byte = dwg->header.section[1].address + dwg->header.section[1].size
-                 - 18;
-  sec_dat.bit = 0;
- 
-  ckr  = bit_read_RL(dat);
-  ckr2 = bit_ckr32(0xc0c1, dat->chain + dwg->header.section[1].address + 16,
-                   dwg->header.section[1].size - 34);
- 
-  if (ckr != ckr2)
-    {
-      printf("Section %d crc todo ckr:%x ckr2:%x \n\n",
-              dwg->header.section[1].number, ckr, ckr2);
-      return -1;
-    }
- 
-  sec_dat.byte += 16;
-  pvz = bit_read_RL(dat); // Unknown bitlong inter class and object
-  LOG_TRACE("Address: %lu / Content: 0x%#x \n", sec_dat.byte - 4, pvz)*/
-  LOG_INFO("Number of classes read: %u\n", dwg->num_classes)
-  free(sec_dat.chain);
 }
 
 /** Decode DWG R2007 */
@@ -1007,9 +979,6 @@ decode_R2007(Bit_Chain* dat, Dwg_Data * dwg)
 
   LOG_TRACE("\n\n")
 
-  /////////////////////////////////////////
-  // incomplete implementation!
-  /////////////////////////////////////////
   resolve_objectref_vector(dwg);
 
   LOG_ERROR("Decoding of DWG version R2007 header is not fully "

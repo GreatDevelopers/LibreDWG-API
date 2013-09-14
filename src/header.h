@@ -39,12 +39,16 @@
 #include "print.h"
 
 void
-dwg_decode_header_variables(Bit_Chain *dat, Dwg_Data *dwg);
+dwg_decode_header_variables(Bit_Chain *dat, Dwg_Data *dwg, Bit_Chain *sstream);
 
 void
 read_R13_R15_section_header(Bit_Chain *dat, Dwg_Data *dwg);
 
 void
-read_R18_R18_section_header(Bit_Chain *dat, Dwg_Data *dwg);
+read_R2004_section_header(Bit_Chain *dat, Dwg_Data *dwg);
+
+void
+read_R2007_section_header(Bit_Chain *dat, Dwg_Data *dwg,
+                          r2007_section *sections_map, r2007_page *pages_map);
 
 #endif

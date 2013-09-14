@@ -141,116 +141,9 @@ dwg_decode_data(Bit_Chain * dat, Dwg_Data * dwg)
   return -1;
 }
 
-/** Decode DWG R2007 */
-int
-decode_R2007(Bit_Chain* dat, Dwg_Data * dwg)
-{
-  int i;
-  unsigned long int preview_address, security_type, unknown_long,
-      dwg_property_address, vba_proj_address, app_info_address;
-  unsigned char sig, DwgVer, MaintReleaseVer;
-
-  /* 5 bytes of 0x00 */
-  dat->byte = 0x06;
-  LOG_TRACE("5 bytes of 0x00: ")
-  for (i = 0; i < 5; i++)
-    {
-      sig = bit_read_RC(dat);
-      if (loglevel)
-        LOG_TRACE("0x%02X ", sig)
-    }
-  LOG_TRACE("\n")
-
-  /* Unknown */
-  dat->byte = 0x0B;
-  sig = bit_read_RC(dat);
-  LOG_TRACE("Unknown: 0x%02X\n", sig)
-
-  /* Byte 0x00, 0x01, or 0x03 */
-  dat->byte = 0x0C;
-  sig = bit_read_RC(dat);
-  LOG_TRACE("Byte 0x00, 0x01, or 0x03: 0x%02X\n", sig)
-
-  /* Preview Address */
-  dat->byte = 0x0D;
-  preview_address = bit_read_RL(dat);
-  LOG_TRACE("Preview Address: 0x%08X\n", (unsigned int) preview_address)
-
-  /* DwgVer */
-  dat->byte = 0x11;
-  DwgVer = bit_read_RC(dat);
-  LOG_INFO("DwgVer: %u\n", DwgVer)
-
-  /* MaintReleaseVer */
-  dat->byte = 0x12;
-  MaintReleaseVer = bit_read_RC(dat);
-  LOG_INFO("MaintRelease: %u\n", MaintReleaseVer)
-
-  /* Codepage */
-  dat->byte = 0x13;
-  dwg->header.codepage = bit_read_RS(dat);
-  LOG_TRACE("Codepage: %u\n", dwg->header.codepage)
-
-  /* Unknown */
-  dat->byte = 0x15;
-  LOG_TRACE("Unknown: ")
-  for (i = 0; i < 3; i++)
-    {
-      sig = bit_read_RC(dat);
-      LOG_TRACE("0x%02X ", sig)
-    }
-  LOG_TRACE("\n")
-
-  /* SecurityType */
-  dat->byte = 0x18;
-  security_type = bit_read_RL(dat);
-  LOG_TRACE("SecurityType: 0x%08X\n", (unsigned int) security_type)
-
-  /* Unknown long */
-  dat->byte = 0x1C;
-  unknown_long = bit_read_RL(dat);
-  LOG_TRACE("Unknown long: 0x%08X\n", (unsigned int) unknown_long)
-
-  /* DWG Property Addr */
-  dat->byte = 0x20;
-  dwg_property_address = bit_read_RL(dat);
-  LOG_TRACE("DWG Property Addr: 0x%08X\n",
-        (unsigned int) dwg_property_address)
-
-  /* VBA Project Addr */
-  dat->byte = 0x24;
-  vba_proj_address = bit_read_RL(dat);
-  LOG_TRACE("VBA Project Addr: 0x%08X\n",
-        (unsigned int) vba_proj_address)
-
-  /* 0x00000080 */
-  dat->byte = 0x28;
-  unknown_long = bit_read_RL(dat);
-  LOG_TRACE("0x00000080: 0x%08X\n", (unsigned int) unknown_long)
-
-  /* Application Info Address */
-  dat->byte = 0x2C;
-  app_info_address = bit_read_RL(dat);
-  LOG_TRACE("Application Info Address: 0x%08X\n",
-        (unsigned int) app_info_address)
-
-  read_r2007_meta_data(dat, dwg);
-  
-  LOG_TRACE("\n\n")
-
-  /////////////////////////////////////////
-  // incomplete implementation!
-  /////////////////////////////////////////
-  resolve_objectref_vector(dwg);
-
-  LOG_ERROR("Decoding of DWG version R2007 header is not fully "
-            "implemented yet. we are going to try\n")
-  return 0;
-}
-
 /** Decode DWG entity */
 int
-dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
+dwg_decode_entity(Bit_Chain *dat, Dwg_Object_Entity *ent)
 {
   unsigned int i;
   unsigned int size;
@@ -258,7 +151,7 @@ dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
 
   SINCE(R_2000)
     {
-      ent->bitsize = bit_read_RL(dat);
+      dat->handles_address += bit_read_RL(dat);
     }
 
   error = bit_read_H(dat, &(ent->object->handle));
@@ -267,7 +160,6 @@ dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
       LOG_ERROR("dwg_decode_entity: \t Error in object handle! "
                 "Current Bit_Chain address: 0x%0x \n",
                 (unsigned int) dat->byte)
-      ent->bitsize = 0;
       ent->extended_size = 0;
       ent->picture_exists = 0;
       ent->num_handles = 0;
@@ -283,7 +175,6 @@ dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
           LOG_ERROR("dwg_decode_entity: Absurd! Extended object "
                     "data size: %lu. Object: %lu (handle).\n",
                     (long unsigned int) size, ent->object->handle.value)
-          ent->bitsize = 0;
           ent->extended_size = 0;
           ent->picture_exists = 0;
           ent->num_handles = 0;
@@ -329,7 +220,7 @@ dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
 
   VERSIONS(R_13,R_14)
     {
-      ent->bitsize = bit_read_RL(dat);
+      dat->handles_address += bit_read_RL(dat);
     }
 
   ent->entity_mode = bit_read_BB(dat);
@@ -373,7 +264,7 @@ dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
                   c3 = bit_read_RC(dat);
                   c4 = bit_read_RC(dat);
               
-                  name = bit_read_TV(dat);
+                  name = bit_read_T(dat);
                 }
             
               if (flags & 0x4000)
@@ -391,7 +282,7 @@ dwg_decode_entity(Bit_Chain * dat, Dwg_Object_Entity * ent)
         }
     }
   OTHER_VERSIONS
-    bit_read_CMC(dat, &ent->color);
+    bit_read_CMC(dat, &ent->color, NULL);
 
   ent->linetype_scale = bit_read_BD(dat);
 
@@ -427,7 +318,7 @@ dwg_decode_object(Bit_Chain * dat, Dwg_Object_Object * ord)
 
   SINCE(R_2000)
     {
-      ord->bitsize = bit_read_RL(dat);
+      dat->handles_address += bit_read_RL(dat);
     }
 
   error = bit_read_H(dat, &ord->object->handle);
@@ -435,7 +326,6 @@ dwg_decode_object(Bit_Chain * dat, Dwg_Object_Object * ord)
     {
       LOG_ERROR("\t Error in object handle! Bit_Chain current address: "
                 "0x%0x \n", (unsigned int) dat->byte)
-      ord->bitsize = 0;
       ord->extended_size = 0;
       ord->num_handles = 0;
       return -1;
@@ -449,7 +339,6 @@ dwg_decode_object(Bit_Chain * dat, Dwg_Object_Object * ord)
           LOG_ERROR("dwg_decode_object: Absurd! Extended object data "
                     "size: %lu. Object: %lu (handle).\n",
                     (long unsigned int) size, ord->object->handle.value)
-          ord->bitsize = 0;
           ord->extended_size = 0;
           ord->num_handles = 0;
           return 0;
@@ -474,7 +363,7 @@ dwg_decode_object(Bit_Chain * dat, Dwg_Object_Object * ord)
 
   VERSIONS(R_13,R_14)
     {
-      ord->bitsize = bit_read_RL(dat);
+      dat->handles_address += bit_read_RL(dat);
     }
 
   ord->num_reactors = bit_read_BL(dat);
@@ -603,6 +492,8 @@ dwg_decode_common_entity_handle_data(Bit_Chain * dat, Dwg_Object * obj)
   ent = obj->as.entity;
   _obj = ent;
 
+  SEEK_TO_HANDLES
+  
   #include "common_entity_handle_data.spec"
 
 }
