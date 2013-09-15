@@ -20,19 +20,20 @@
 lib_LTLIBRARIES = libredwg.la
 
 libredwg_la_SOURCES = \
-	dwg.c \
-	common.c \
-	bits.c \
-        classes.c \
-	decode.c \
-        decode_r13_r15.c \
-        decode_r2004.c \
-        decode_r2007.c \
-	encode.c \
-        handle.c \
-        header.c \
-        object.c \
-        print.c \
+	bits.c             \
+	classes.c          \
+	common.c           \
+        compress_decompress.c \
+	decode.c           \
+        decode_r13_r15.c   \
+        decode_r2004.c     \
+        decode_r2007.c     \
+        dwg.c              \
+	encode.c           \
+        handle.c           \
+        header.c           \
+        object.c           \
+        print.c            \
         resolve_pointers.c \
         section_locate.c
 
@@ -49,6 +50,7 @@ EXTRA_DIST = \
 	common.h                       \
 	bits.h                         \
         classes.h                      \
+        compress_decompress.h          \
 	decode.h                       \
         decode_r13_r15.h               \
         decode_r2004.h                 \
