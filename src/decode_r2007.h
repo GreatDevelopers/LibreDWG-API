@@ -115,24 +115,6 @@ typedef struct _r2007_section
   struct _r2007_section *next;
 } r2007_section;
 
-char* 
-copy_bytes_2(char *dst, char *src);
-
-char* 
-copy_bytes_3(char *dst, char *src);
-
-char* 
-copy_bytes_16(char *dst, char *src);
-
-void 
-copy_bytes(char *dst, uint32_t length, uint32_t offset);
-
-void
-copy_compressed_bytes(char *dst, char *src, int length);
-
-int 
-decompress_r2007(char *dst, int dst_size, char *src, int src_size);
-
 r2007_section*
 get_section(r2007_section *sections_map, int64_t hashcode);
 
@@ -155,12 +137,8 @@ Bit_Chain *
 string_stream_init(Bit_Chain *sstream, Bit_Chain *dat, 
                    unsigned long int bitpos, int check_present_bit);
 
-static uint32_t
-read_literal_length(unsigned char **src, unsigned char opcode);
-
-void 
-read_instructions(unsigned char **src, unsigned char *opcode, uint32_t *offset,
-                  uint32_t *length);
+DWGCHAR*
+bfr_read_string(char **src);
 
 int
 read_data_page(Bit_Chain *dat, unsigned char *decomp, int64_t page_size, 
@@ -190,8 +168,5 @@ read_sections_map(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
 
 void
 bfr_read(void *dst, char **src, size_t size);
-
-DWGCHAR*
-bfr_read_string(char **src);
 
 #endif

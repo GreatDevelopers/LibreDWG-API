@@ -38,18 +38,26 @@
 #include "dwg.h"
 #include "print.h"
 
+/* Encrypted Section Header */
+typedef union _encrypted_section_header
+{
+  uint32_t long_data[8];
+  unsigned char char_data[32];
+  struct
+  {
+    int32_t tag;
+    int32_t section_type;
+    int32_t data_size;
+    int32_t section_size;
+    int32_t start_offset;
+    int32_t unknown;
+    int32_t checksum_1;
+    int32_t checksum_2;
+  } fields;
+} encrypted_section_header;
+
 int
 decode_R2004(Bit_Chain* dat, Dwg_Data * dwg);
-
-int
-read_long_compression_offset(Bit_Chain* dat);
-
-int
-read_two_byte_offset(Bit_Chain* dat, int* lit_length);
-
-int
-decompress_R2004_section(Bit_Chain* dat, char *decomp,
-                         uint32_t comp_data_size);
 
 Dwg_Section*
 find_section(Dwg_Data *dwg, uint32_t index);
@@ -60,9 +68,5 @@ page_checksum (int32_t seed, unsigned char *data, int32_t size);
 void
 read_R2004_section_info(Bit_Chain *dat, Dwg_Data *dwg, uint32_t comp_data_size,
                         uint32_t decomp_data_size);
-
-int
-read_2004_compressed_section(Bit_Chain* dat, Dwg_Data *dwg, Bit_Chain *sec_dat,
-                             uint32_t section_type);
 
 #endif

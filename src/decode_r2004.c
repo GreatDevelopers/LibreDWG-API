@@ -33,180 +33,6 @@ extern unsigned int loglevel;
 
 #define DWG_LOGLEVEL loglevel
 
-/* Forward Declaration
- */
-int
-read_literal_length(Bit_Chain* dat, unsigned char *opcode);
-
-/* Encrypted Section Header */
-typedef union _encrypted_section_header
-{
-  uint32_t long_data[8];
-  unsigned char char_data[32];
-  struct
-  {
-    int32_t tag;
-    int32_t section_type;
-    int32_t data_size;
-    int32_t section_size;
-    int32_t start_offset;
-    int32_t unknown;
-    int32_t checksum_1;
-    int32_t checksum_2;
-  } fields;
-} encrypted_section_header;
-
-/** R2004 Literal Length */
-int
-read_literal_length(Bit_Chain* dat, unsigned char *opcode)
-{
-  int total = 0;
-  unsigned char byte = bit_read_RC(dat);
-
-  *opcode = 0x00;
-
-  if (byte >= 0x01 && byte <= 0x0F)
-    return byte + 3;
-  else if (byte == 0)
-    {
-      total = 0x0F;
-      while ((byte = bit_read_RC(dat)) == 0x00)
-        {
-          total += 0xFF;
-        }
-      return total + byte + 3;
-    }
-  else if (byte & 0xF0)
-    *opcode = byte;
-
-  return 0;
-}
-
-/** R2004 Long Compression Offset */
-int
-read_long_compression_offset(Bit_Chain* dat)
-{
-  int total = 0;
-  unsigned char byte = bit_read_RC(dat);
-  if (byte == 0)
-    {
-      total = 0xFF;
-      while ((byte = bit_read_RC(dat)) == 0x00)
-        total += 0xFF;
-	}
-  return total + byte;
-}
-
-/** R2004 Two Byte Offset */
-int
-read_two_byte_offset(Bit_Chain *dat, int *lit_length)
-{
-  int offset;
-  unsigned char firstByte = bit_read_RC(dat);
-  unsigned char secondByte = bit_read_RC(dat);
-  offset = (firstByte >> 2) | (secondByte << 6);
-  *lit_length = (firstByte & 0x03);
-  return offset;
-}
-
-/** Decompresses a system section of a 2004 DWG flie */
-int
-decompress_R2004_section(Bit_Chain *dat, char *decomp,
-                         uint32_t comp_data_size)
-{
-  int lit_length, i;
-  int comp_offset, comp_bytes;
-  unsigned char opcode1 = 0, opcode2;
-  int32_t start_byte = dat->byte;
-  char *src, *dst = decomp;
-
-  // length of the first sequence of uncompressed or literal data.
-  lit_length = read_literal_length(dat, &opcode1);
-
-  for (i = 0; i < lit_length; ++i)
-    *dst++ = bit_read_RC(dat);
-
-  opcode1 = 0x00;
-  while (dat->byte - start_byte < comp_data_size)
-    {
-      if (opcode1 == 0x00)
-        opcode1 = bit_read_RC(dat);
-
-      if (opcode1 >= 0x40)
-        {
-          comp_bytes = ((opcode1 & 0xF0) >> 4) - 1;
-          opcode2 = bit_read_RC(dat);
-          comp_offset = (opcode2 << 2) | ((opcode1 & 0x0C) >> 2);
-
-          if (opcode1 & 0x03)
-            {
-              lit_length = (opcode1 & 0x03);
-              opcode1  = 0x00;
-            }
-          else
-            lit_length = read_literal_length(dat, &opcode1);
-        }
-      else if (opcode1 >= 0x21 && opcode1 <= 0x3F)
-        {
-          comp_bytes  = opcode1 - 0x1E;
-          comp_offset = read_two_byte_offset(dat, &lit_length);
-
-          if (lit_length != 0)
-            opcode1 = 0x00;
-          else
-            lit_length = read_literal_length(dat, &opcode1);
-        }
-      else if (opcode1 == 0x20)
-        {
-          comp_bytes  = read_long_compression_offset(dat) + 0x21;
-          comp_offset = read_two_byte_offset(dat, &lit_length);
-
-          if (lit_length != 0)
-            opcode1 = 0x00;
-          else
-            lit_length = read_literal_length(dat, &opcode1);
-        }
-      else if (opcode1 >= 0x12 && opcode1 <= 0x1F)
-        {
-          comp_bytes  = (opcode1 & 0x0F) + 2;
-          comp_offset = read_two_byte_offset(dat, &lit_length) + 0x3FFF;
-
-          if (lit_length != 0)
-            opcode1 = 0x00;
-          else
-            lit_length = read_literal_length(dat, &opcode1);
-        }
-      else if (opcode1 == 0x10)
-        {
-          comp_bytes  = read_long_compression_offset(dat) + 9;
-          comp_offset = read_two_byte_offset(dat, &lit_length) + 0x3FFF;
-
-          if (lit_length != 0)
-            opcode1 = 0x00;
-          else
-            lit_length = read_literal_length(dat, &opcode1);
-        }
-      else if (opcode1 == 0x11)
-          break;     // Terminates the input stream, everything is ok!
-      else
-          return 1;  // error in input stream
-
-      // LOG_TRACE("got compressed data %d\n",comp_bytes)
-      // copy "compressed data"
-      src = dst - comp_offset - 1;
-      assert(src > decomp);
-      for (i = 0; i < comp_bytes; ++i)
-        *dst++ = *src++;
-
-      // copy "literal data"
-      // LOG_TRACE("got literal data %d\n",lit_length)
-      for (i = 0; i < lit_length; ++i)
-        *dst++ = bit_read_RC(dat);
-    }
-
-  return 0;  // Success
-}
-
 Dwg_Section*
 find_section(Dwg_Data *dwg, uint32_t index)
 {
@@ -346,75 +172,16 @@ read_R2004_section_info(Bit_Chain* dat, Dwg_Data *dwg,
   free(decomp);
 }
 
-/** Compresses a system section of a 2004 DWG flie */
-int
-read_2004_compressed_section(Bit_Chain* dat, Dwg_Data *dwg,
-                            Bit_Chain* sec_dat,
-                            uint32_t section_type)
-{
-  int32_t address, sec_mask, max_decomp_size;
-  Dwg_Section_Info *info = 0;
-  encrypted_section_header es;
-  char *decomp;
-  int i, j;
-
-  for (i = 0; i < dwg->header.num_descriptions && info == 0; ++i)
-    if (dwg->header.section_info[i].type == section_type)
-      info = &dwg->header.section_info[i];
-
-  if (info == 0)
-    return 1;   // Failed to find section
-
-  max_decomp_size = info->num_sections * info->max_decomp_size;
-
-  decomp = (char *) malloc(max_decomp_size * sizeof(char));
-
-  if (decomp == 0)
-    return 2;   // No memory
-
-  for (i = 0; i < info->num_sections; ++i)
-    {
-      address = info->sections[i]->address;
-      dat->byte = address;
-
-      for (j = 0; j < 0x20; j++)
-        es.char_data[j] = bit_read_RC(dat);
-
-      sec_mask = 0x4164536b ^ address;
-
-      for (j = 0; j < 8; ++j)
-        es.long_data[j] ^= sec_mask;
-
-  LOG_INFO("\n=== Section (Class) ===\n")
-  LOG_INFO("Section Tag (should be 0x4163043b): %x \n",
-           (unsigned int) es.fields.tag)
-  LOG_INFO("Section Type: %x \n",
-          (unsigned int) es.fields.section_type)
-  // this is the number of bytes that is read in decompress_R2004_section (+ 2bytes)
-  LOG_INFO("Data size: %x\n", (unsigned int) es.fields.data_size)   
-  LOG_INFO("Comp data size: %x\n", (unsigned int) es.fields.section_size)
-  LOG_INFO("StartOffset: %x \n", (unsigned int) es.fields.start_offset)
-  LOG_INFO("Unknown: %x \n", (unsigned int) es.fields.unknown);
-  LOG_INFO("Checksum1: %x \n", (unsigned int) es.fields.checksum_1)
-  LOG_INFO("Checksum2: %x \n\n", (unsigned int) es.fields.checksum_2)
-
-  decompress_R2004_section(dat, &decomp[i * info->max_decomp_size],
-                           es.fields.data_size);
-    }
-
-  sec_dat->bit     = 0;
-  sec_dat->byte    = 0;
-  sec_dat->chain   = (unsigned char *)decomp;
-  sec_dat->size    = max_decomp_size;
-  sec_dat->version = dat->version;
-
-  return 0;
-}
 
 /** Decode R2004 version */
 int
-decode_R2004(Bit_Chain* dat, Dwg_Data * dwg)
+decode_R2004(Bit_Chain *dat, Dwg_Data *dwg)
 {
+    int i;
+  int32_t preview_address, security_type, unknown_long, dwg_property_address,
+          vba_proj_address;
+  unsigned char ver_string, sig, dwg_ver, maint_release_ver, acad_maint_ver;
+
   /* Encrypted Data */
   union
   {
@@ -465,13 +232,7 @@ decode_R2004(Bit_Chain* dat, Dwg_Data * dwg)
 
   system_section ss;
   int rseed = 1;
-
   Dwg_Section *section;
-
-  int i;
-  int32_t preview_address, security_type, unknown_long, dwg_property_address,
-          vba_proj_address;
-  unsigned char ver_string, sig, dwg_ver, maint_release_ver, acad_maint_ver;
  
   /* Version string */
   dat->byte = 0x00;
