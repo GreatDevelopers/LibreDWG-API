@@ -51,12 +51,12 @@ int
 read_two_byte_offset(Bit_Chain *dat, int *lit_length);
 
 int
-decompress_R2004_section(Bit_Chain *dat, char *decomp, 
+decompress_R2004_section(Bit_Chain *dat, char *decomp,
                          uint32_t comp_data_size);
 
 int
 read_R2004_compressed_section(Bit_Chain *dat, Dwg_Data *dwg, Bit_Chain *sec_dat,
-                             uint32_t section_type);
+                              uint32_t section_type);
 
 uint32_t
 read_R2007_literal_length(unsigned char **src, unsigned char opcode);

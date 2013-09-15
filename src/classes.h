@@ -44,7 +44,7 @@ void
 read_R2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg);
 
 void
-read_R2007_section_classes(Bit_Chain *dat, Dwg_Data *dwg, 
+read_R2007_section_classes(Bit_Chain *dat, Dwg_Data *dwg,
                            r2007_section *sections_map, r2007_page *pages_map);
 
 #endif

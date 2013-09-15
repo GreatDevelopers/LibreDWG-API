@@ -36,7 +36,7 @@ decode_rs(const char *src, int block_count, int data_size)
   const char *src_base = src;
   char *dst_base, *dst;  
   
-  dst_base = dst = (char*)malloc(block_count * data_size);
+  dst_base = dst = (char*) malloc(block_count * data_size);
   
   for (i = 0; i < block_count; ++i)
     {      
@@ -114,19 +114,22 @@ read_data_page(Bit_Chain *dat, unsigned char *decomp, int64_t page_size,
   
   for (i = 0; i < page_size; i++)
     rsdata[i] = bit_read_RC(dat);  
+
   pedata = decode_rs(rsdata, block_count, 0xFB);
   
   if (size_comp < size_uncomp)
     decompress_r2007((char*)decomp, size_uncomp, pedata, size_comp);
   else
     memcpy(decomp, pedata, size_uncomp);
+
   free(pedata);
   return 0;
 }
 
 int
-read_data_section(Bit_Chain *sec_dat, Bit_Chain *dat, r2007_section *sections_map, 
-                  r2007_page *pages_map, int64_t hashcode)
+read_data_section(Bit_Chain *sec_dat, Bit_Chain *dat,
+                  r2007_section *sections_map, r2007_page *pages_map,
+                  int64_t hashcode)
 {
   r2007_section *section;
   r2007_page *page;
@@ -138,6 +141,7 @@ read_data_section(Bit_Chain *sec_dat, Bit_Chain *dat, r2007_section *sections_ma
 
   if (section == NULL)
     return 1;        // Failed to find section
+
   max_decomp_size = section->data_size;
   decomp = (unsigned char *)malloc(max_decomp_size * sizeof(char));
 
@@ -147,6 +151,7 @@ read_data_section(Bit_Chain *sec_dat, Bit_Chain *dat, r2007_section *sections_ma
   for (i = 0; i < (int)section->num_pages; i++)
     {
       page = get_page(pages_map, section->pages[i]->id);
+
       if (page == NULL)
         {
           free(decomp);
@@ -183,7 +188,7 @@ bfr_read(void *dst, char **src, size_t size)
 DWGCHAR*
 bfr_read_string(char **src)
 {
-  uint16_t *ptr = (uint16_t*)*src;  
+  uint16_t *ptr  = (uint16_t*)*src;  
   int32_t length = 0, wsize;
   DWGCHAR *str, *str_base;
   int i;
@@ -194,8 +199,8 @@ bfr_read_string(char **src)
       length++;
     }
   wsize = length * sizeof(DWGCHAR) + sizeof(DWGCHAR);
-  str = str_base = (DWGCHAR*) malloc(wsize);
-  ptr = (uint16_t*)*src;
+  str   = str_base = (DWGCHAR*) malloc(wsize);
+  ptr   = (uint16_t*)*src;
 
   for (i = 0; i < length; i++)
     {
@@ -212,14 +217,14 @@ read_pages_map(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
 {
   char *data, *ptr, *ptr_end;  
   r2007_page *page, *pages = 0, *last_page = 0;
-  int64_t offset = 0x480;   //dat->byte;
-  int64_t index;
+  int64_t index, offset = 0x480;   //dat->byte;
   
   data = read_system_page(dat, size_comp, size_uncomp, correction);
   
   if (data == NULL)
     return NULL;  
-  ptr = data;
+
+  ptr     = data;
   ptr_end = data + size_uncomp;
   LOG_TRACE("\n System Section (Pages Map) \n")
   
@@ -237,12 +242,15 @@ read_pages_map(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
       page->size   = bfr_read_int64(ptr);
       page->id     = bfr_read_int64(ptr);
       page->offset = offset;
+
       offset += page->size;
-      index = page->id > 0 ? page->id : -page->id;
+      index  = page->id > 0 ? page->id : -page->id;
+
       LOG_TRACE("\n Page \n")
       LOG_TRACE("size:   0x%jd\n", page->size)
       LOG_TRACE("id:     0x%jd\n", page->id)
       LOG_TRACE("offset: 0x%jd\n", page->offset)
+
       page->next = 0;      
     
       if (pages == 0)
@@ -259,7 +267,7 @@ read_pages_map(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
 
 /* Lookup a page in the page map. The page is identified by its id.
  */
-r2007_page*
+r2007_page *
 get_page(r2007_page *pages_map, int64_t id)
 {
   r2007_page *page = pages_map;
@@ -268,6 +276,7 @@ get_page(r2007_page *pages_map, int64_t id)
     {
       if (page->id == id)
         break;
+
       page = page->next;
     }
   return page;
@@ -320,6 +329,7 @@ read_file_header(Bit_Chain *dat, r2007_file_header *file_header)
 
   for (i = 0; i < 0x3d8; i++)
     data[i] = bit_read_RC(dat);
+
   pedata = decode_rs(data, 3, 239);
   seqence_crc = *((int64_t*)pedata);
   seqence_key = *((int64_t*)&pedata[8]);
@@ -330,6 +340,7 @@ read_file_header(Bit_Chain *dat, r2007_file_header *file_header)
     decompress_r2007((char*)file_header, 0x110, &pedata[32], compr_len);
   else
     memcpy(file_header, &pedata[32], sizeof(r2007_file_header));
+
   free(pedata);
 }
 
@@ -350,7 +361,6 @@ string_stream_init(Bit_Chain *sstream, Bit_Chain *dat,
       if (bit_read_RC(dat) == 1)
         {
           bitpos -= 17;
-
           dat->byte = (bitpos >> 3);
           dat->bit  = (bitpos & 7);
         }
@@ -391,7 +401,6 @@ string_stream_init(Bit_Chain *sstream, Bit_Chain *dat,
 
   dat->byte = mem_byte;
   dat->bit  = mem_bit;
-
   return sstream;
 }
 
@@ -434,16 +443,15 @@ read_r2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg)
   
   pages_destroy(pages_map);
   sections_destroy(sections_map);   
-
   return 0;
 }
 
 /** Decode DWG R2007 */
 int
-decode_R2007(Bit_Chain* dat, Dwg_Data * dwg)
+decode_R2007(Bit_Chain *dat, Dwg_Data *dwg)
 {
   int i;
-  uint8_t ver_string, sig, dwg_ver, maint_release_ver, acad_maint_ver;
+  uint8_t  ver_string, sig, dwg_ver, maint_release_ver, acad_maint_ver;
   uint32_t preview_address, security_type, unknown_long, summary_info_address,
            vba_proj_address, app_info_address;
 
@@ -463,6 +471,7 @@ decode_R2007(Bit_Chain* dat, Dwg_Data * dwg)
   for (i = 0; i < 5; i++)
     {
       sig = bit_read_RC(dat);
+
       if (loglevel)
         LOG_TRACE("0x%02X", sig)
     }
@@ -471,32 +480,32 @@ decode_R2007(Bit_Chain* dat, Dwg_Data * dwg)
   /* Maintenance release version */
   dat->byte = 0x0B;
   maint_release_ver = bit_read_RC(dat);
-  LOG_TRACE("Maintenance release version: 0x%02X\n", maint_release_ver)
+  LOG_TRACE("Maintenance release version: 0x%02X \n", maint_release_ver)
 
   /* Byte 0x00, 0x01, or 0x03 */
   dat->byte = 0x0C;
   sig = bit_read_RC(dat);
-  LOG_TRACE("Byte 0x00, 0x01, or 0x03: 0x%02X\n", sig)
+  LOG_TRACE("Byte 0x00, 0x01, or 0x03: 0x%02X \n", sig)
 
   /* Preview Address */
   dat->byte = 0x0D;
   preview_address = bit_read_RL(dat);
-  LOG_TRACE("Preview Address: 0x%08X\n", preview_address)
+  LOG_TRACE("Preview Address: 0x%08X \n", preview_address)
 
   /* Dwg Version */
   dat->byte = 0x11;
   dwg_ver = bit_read_RC(dat);
-  LOG_INFO("Dwg Version: %u\n", dwg_ver)
+  LOG_INFO("Dwg Version: %u \n", dwg_ver)
 
   /* Acad maintenance version */
   dat->byte = 0x12;
   acad_maint_ver = bit_read_RC(dat);
-  LOG_INFO("AcadMaintRelease: %u\n", acad_maint_ver)
+  LOG_INFO("AcadMaintRelease: %u \n", acad_maint_ver)
 
   /* Codepage */
   dat->byte = 0x13;
   dwg->header.codepage = bit_read_RS(dat);
-  LOG_TRACE("Codepage: %u\n", dwg->header.codepage)
+  LOG_TRACE("Codepage: %u \n", dwg->header.codepage)
 
   /* Unknown */
   dat->byte = 0x15;
@@ -511,32 +520,32 @@ decode_R2007(Bit_Chain* dat, Dwg_Data * dwg)
   /* SecurityType */
   dat->byte = 0x18;
   security_type = bit_read_RL(dat);
-  LOG_TRACE("SecurityType: 0x%08X\n", security_type)
+  LOG_TRACE("SecurityType: 0x%08X \n", security_type)
 
   /* Unknown long */
   dat->byte = 0x1C;
   unknown_long = bit_read_RL(dat);
-  LOG_TRACE("Unknown long: 0x%08X\n", unknown_long)
+  LOG_TRACE("Unknown long: 0x%08X \n", unknown_long)
 
   /* Summary info Addr */
   dat->byte = 0x20;
   summary_info_address = bit_read_RL(dat);
-  LOG_TRACE("Summary info Addr: 0x%08X\n", summary_info_address)
+  LOG_TRACE("Summary info Addr: 0x%08X \n", summary_info_address)
 
   /* VBA Project Addr */
   dat->byte = 0x24;
   vba_proj_address = bit_read_RL(dat);
-  LOG_TRACE("VBA Project Addr: 0x%08X\n", vba_proj_address)
+  LOG_TRACE("VBA Project Addr: 0x%08X \n", vba_proj_address)
 
   /* 0x00000080 */
   dat->byte = 0x28;
   unknown_long = bit_read_RL(dat);
-  LOG_TRACE("0x00000080: 0x%08X\n", unknown_long)
+  LOG_TRACE("0x00000080: 0x%08X \n", unknown_long)
 
   /* Application Info Address */
   dat->byte = 0x2C;
   app_info_address = bit_read_RL(dat);
-  LOG_TRACE("Application Info Address: 0x%08X\n", app_info_address)
+  LOG_TRACE("Application Info Address: 0x%08X \n", app_info_address)
 
   read_r2007_meta_data(dat, dwg);
 
@@ -544,8 +553,7 @@ decode_R2007(Bit_Chain* dat, Dwg_Data * dwg)
 
   resolve_objectref_vector(dwg);
 
-  LOG_ERROR("Decoding of DWG version R2007 header is not fully "
-            "implemented yet. we are going to try\n")
+  LOG_ERROR("Decoding of DWG version R2007 header is not fully implemented "
+            "yet. we are going to try\n")
   return 0;
 }
-

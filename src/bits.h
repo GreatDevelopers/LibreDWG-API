@@ -20,8 +20,7 @@
  *     \copyright  GNU General Public License (version 3 or later)
  */
 
-/**
- * The position of bits within bytes is numerically ordered as depicted below:
+/* The position of bits within bytes is numerically ordered as depicted below:
  *
  * position: 01234567 01234567 01234567 ...
  * bits    : 76543210 76543210 76543210 ...
@@ -98,7 +97,7 @@ bit_read_RD(Bit_Chain *bit_datenaro);
 void
 bit_write_RD(Bit_Chain *bit_datenaro, double value);
 
-/* Functions for manipulating compacted data
+/* Functions for manipulating compacted data 
  */
 BITCODE_BS
 bit_read_BS(Bit_Chain *bit_datenaro);
@@ -140,8 +139,7 @@ BITCODE_DD
 bit_read_DD(Bit_Chain *bit_datenaro, double antauxdifinajxo);
 
 void
-bit_write_DD(Bit_Chain *bit_datenaro, double value,
-             double antauxdifinajxo);
+bit_write_DD(Bit_Chain *bit_datenaro, double value, double antauxdifinajxo);
 
 BITCODE_BT
 bit_read_BT(Bit_Chain *bit_datenaro);

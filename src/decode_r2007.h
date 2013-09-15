@@ -116,7 +116,7 @@ typedef struct _r2007_section
 } r2007_section;
 
 
-r2007_page*
+r2007_page *
 get_page(r2007_page *pages_map, int64_t id);
 
 void
@@ -150,14 +150,14 @@ read_data_section(Bit_Chain *sec_dat, Bit_Chain *dat,
 void 
 read_file_header(Bit_Chain *dat, r2007_file_header *file_header);
 
-char*
+char *
 decode_rs(const char *src, int block_count, int data_size);
 
-r2007_page*
+r2007_page *
 read_pages_map(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
                int64_t correction);
 
-char*
+char *
 read_system_page(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
                  int64_t repeat_count);
 

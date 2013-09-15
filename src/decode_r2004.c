@@ -33,12 +33,14 @@ extern unsigned int loglevel;
 
 #define DWG_LOGLEVEL loglevel
 
-Dwg_Section*
+Dwg_Section *
 find_section(Dwg_Data *dwg, uint32_t index)
 {
   int i;
+
   if (dwg->header.section == 0 || index == 0)
     return 0;
+
   for (i = 0; i < dwg->header.num_sections; ++i)
     {
       if (dwg->header.section[i].number == index)
@@ -54,6 +56,7 @@ page_checksum (int32_t seed, unsigned char *data, int32_t size)
   //seed = 0;
   int32_t sum1, sum2, opcode, chunksize;
   int i = 0;
+
   sum1 = seed & 0xffff;
   sum2 = seed >> 0x10;
   opcode = 0x15b0; 
@@ -72,7 +75,6 @@ page_checksum (int32_t seed, unsigned char *data, int32_t size)
            sum1 += *data++;
            sum2 += sum1;
          }
-      
       sum1 %= 0xFFF1;
       sum2 %= 0xFFF1;
     }
@@ -82,24 +84,24 @@ page_checksum (int32_t seed, unsigned char *data, int32_t size)
 
 /** Read R2004 Section Info (data map) */
 void
-read_R2004_section_info(Bit_Chain* dat, Dwg_Data *dwg,
-                        uint32_t comp_data_size,
+read_R2004_section_info(Bit_Chain* dat, Dwg_Data *dwg, uint32_t comp_data_size,
                         uint32_t decomp_data_size)
 {
   char *decomp, *ptr;
   int data_size, i, j, section_number, start_offset, unknown;
 
   decomp = (char *)malloc(decomp_data_size * sizeof(char));
+
   if (decomp == 0)
     return;   // No memory
 
   decompress_R2004_section(dat, decomp, comp_data_size);
-
   memcpy(&dwg->header.num_descriptions, decomp, 4);
-  dwg->header.section_info = (Dwg_Section_Info*)
-    malloc(sizeof(Dwg_Section_Info) * dwg->header.num_descriptions);
 
-  LOG_TRACE("\n#### 2004 Section Info fields ####\n")
+  dwg->header.section_info = (Dwg_Section_Info*)malloc(sizeof(Dwg_Section_Info)
+                              * dwg->header.num_descriptions);
+
+  LOG_TRACE("\n 2004 Section Info fields \n")
   LOG_TRACE("NumDescriptions: %d\n", *((int*)decomp))
   LOG_TRACE("0x02:            %x\n", *((int*)decomp + 1))
   LOG_TRACE("0x00007400:      %x\n", *((int*)decomp + 2))
@@ -107,6 +109,7 @@ read_R2004_section_info(Bit_Chain* dat, Dwg_Data *dwg,
   LOG_TRACE("Unknown:         %x\n", *((int*)decomp + 4))
 
   ptr = decomp + 20;
+
   for (i = 0; i < dwg->header.num_descriptions; ++i)
     {
       dwg->header.section_info[i].size            = *((int*)ptr);
@@ -117,31 +120,37 @@ read_R2004_section_info(Bit_Chain* dat, Dwg_Data *dwg,
       dwg->header.section_info[i].compressed      = *((int*)ptr + 5);
       dwg->header.section_info[i].type            = *((int*)ptr + 6);
       dwg->header.section_info[i].encrypted       = *((int*)ptr + 7);
+
       ptr += 32;
       memcpy(dwg->header.section_info[i].name, ptr, 64);
       ptr += 64;
 
-      LOG_TRACE("\nSection Info description fields\n")
-      LOG_TRACE("Size: %d", (int) dwg->header.section_info[i].size)
-      LOG_TRACE("Unknown: %d\n", (int) dwg->header.section_info[i].unknown1)
-      LOG_TRACE("Number of sections:  %d\n",
+      LOG_TRACE("\n Section Info description fields \n")
+      LOG_TRACE("Size: %d \n",
+                (int) dwg->header.section_info[i].size)
+      LOG_TRACE("Unknown: %d \n",
+                (int) dwg->header.section_info[i].unknown1)
+      LOG_TRACE("Number of sections: %d \n",
                 (int) dwg->header.section_info[i].num_sections)
-      LOG_TRACE("Max decompressed size: %d\n",
+      LOG_TRACE("Max decompressed size: %d \n",
                 (int) dwg->header.section_info[i].max_decomp_size)
-      LOG_TRACE("Unknown: %d\n", (int) dwg->header.section_info[i].unknown2)
-      LOG_TRACE("Compressed (0x02): %x\n",
+      LOG_TRACE("Unknown: %d \n",
+                (int) dwg->header.section_info[i].unknown2)
+      LOG_TRACE("Compressed (0x02): %x \n",
                 (unsigned int) dwg->header.section_info[i].compressed)
-      LOG_TRACE("Section Type: %d\n", (int) dwg->header.section_info[i].type)
-      LOG_TRACE("Encrypted: %d\n", (int) dwg->header.section_info[i].encrypted)
-      LOG_TRACE("Section Name: %s\n\n", dwg->header.section_info[i].name)
+      LOG_TRACE("Section Type: %d \n",
+                (int) dwg->header.section_info[i].type)
+      LOG_TRACE("Encrypted: %d \n",
+                (int) dwg->header.section_info[i].encrypted)
+      LOG_TRACE("Section Name: %s \n\n", dwg->header.section_info[i].name)
 
       dwg->header.section_info[i].sections = (Dwg_Section**) malloc
                                       (dwg->header.section_info[i].num_sections
-                                             * sizeof(Dwg_Section*));
+                                       * sizeof(Dwg_Section*));
 
       if (dwg->header.section_info[i].num_sections < 10000)
 	{
-	  LOG_INFO("Section count %ld in area %d\n", 
+	  LOG_INFO("Section count %ld in area %d \n", 
                    dwg->header.section_info[i].num_sections, i)
 
 	  for (j = 0; j < dwg->header.section_info[i].num_sections; j++)
@@ -164,20 +173,18 @@ read_R2004_section_info(Bit_Chain* dat, Dwg_Data *dwg,
 	}  // sanity check
       else
 	{
-	  LOG_ERROR("section count %ld in area %d too high! skipping\n",
+	  LOG_ERROR("section count %ld in area %d too high! skipping \n",
                     dwg->header.section_info[i].num_sections, i)
 	}
     }
-
   free(decomp);
 }
-
 
 /** Decode R2004 version */
 int
 decode_R2004(Bit_Chain *dat, Dwg_Data *dwg)
 {
-    int i;
+  int i;
   int32_t preview_address, security_type, unknown_long, dwg_property_address,
           vba_proj_address;
   unsigned char ver_string, sig, dwg_ver, maint_release_ver, acad_maint_ver;
@@ -222,7 +229,7 @@ decode_R2004(Bit_Chain *dat, Dwg_Data *dwg)
     unsigned char data[0x14];
     struct
     {
-      int32_t section_type;   //0x4163043b
+      int32_t section_type;     //0x4163043b
       int32_t decomp_data_size;
       int32_t comp_data_size;
       int32_t compression_type;
@@ -240,7 +247,7 @@ decode_R2004(Bit_Chain *dat, Dwg_Data *dwg)
   for (i = 0; i < 6; i++)
     {
       ver_string = bit_read_RC(dat);
-      LOG_INFO( "0x%02X", ver_string)
+      LOG_INFO("0x%02X", ver_string)
     }
   LOG_INFO("\n")
 
@@ -250,39 +257,39 @@ decode_R2004(Bit_Chain *dat, Dwg_Data *dwg)
   for (i = 0; i < 4; i++)
     {
       sig = bit_read_RC(dat);
-      LOG_INFO( "0x%02X ", sig)
+      LOG_INFO("0x%02X ", sig)
     }
   LOG_INFO("\n")
 
   /* Maintenance release version */
   dat->byte = 0x0B;
   maint_release_ver = bit_read_RC(dat);
-  LOG_INFO( "Maintenanace release version: 0x%02X\n", maint_release_ver)
+  LOG_INFO("Maintenanace release version: 0x%02X \n", maint_release_ver)
 
   /* Byte 0x00, 0x01, or 0x03 */
   dat->byte = 0x0C;
   sig = bit_read_RC(dat);
-  LOG_INFO("Byte 0x00, 0x01, or 0x03: 0x%02X\n", sig)
+  LOG_INFO("Byte 0x00, 0x01, or 0x03: 0x%02X \n", sig)
 
   /* Preview Address */
   dat->byte = 0x0D;
   preview_address = bit_read_RL(dat);
-  LOG_INFO("Preview Address: 0x%08X\n", (unsigned int) preview_address)
+  LOG_INFO("Preview Address: 0x%08X \n", (unsigned int) preview_address)
 
   /* DwgVer */
   dat->byte = 0x11;
-  dwg_ver = bit_read_RC(dat);
+  dwg_ver   = bit_read_RC(dat);
   LOG_INFO("DwgVer: %u\n", dwg_ver)
 
   /* MaintReleaseVer */
   dat->byte = 0x12;
   acad_maint_ver = bit_read_RC(dat);
-  LOG_INFO("MaintRelease: %u\n", acad_maint_ver)
+  LOG_INFO("MaintRelease: %u \n", acad_maint_ver)
 
   /* Codepage */
   dat->byte = 0x13;
   dwg->header.codepage = bit_read_RS(dat);
-  LOG_INFO("Codepage: %u\n", dwg->header.codepage)
+  LOG_INFO("Codepage: %u \n", dwg->header.codepage)
 
   /* 3 0x00 bytes */
   dat->byte = 0x15;
@@ -290,34 +297,34 @@ decode_R2004(Bit_Chain *dat, Dwg_Data *dwg)
   for (i = 0; i < 3; i++)
     {
       sig = bit_read_RC(dat);
-      LOG_INFO("0x%02X ", sig)
+      LOG_INFO("0x%02X", sig)
     }
   LOG_INFO("\n")
 
   /* SecurityType */
   dat->byte = 0x18;
   security_type = bit_read_RL(dat);
-  LOG_INFO("Security Type: 0x%08X\n", (unsigned int) security_type)
+  LOG_INFO("Security Type: 0x%08X \n", (unsigned int) security_type)
 
   /* Unknown long */
   dat->byte = 0x1C;
   unknown_long = bit_read_RL(dat);
-  LOG_INFO("Unknown long: 0x%08X\n", (unsigned int) unknown_long)
+  LOG_INFO("Unknown long: 0x%08X \n", (unsigned int) unknown_long)
 
   /* Summary Info Addr */
   dat->byte = 0x20;
   dwg_property_address = bit_read_RL(dat);
-  LOG_INFO("Summary Info Addr: 0x%08X\n", (unsigned int) dwg_property_address)
+  LOG_INFO("Summary Info Addr: 0x%08X \n", (unsigned int) dwg_property_address)
 
   /* VBA Project Addr */
   dat->byte = 0x24;
   vba_proj_address = bit_read_RL(dat);
-  LOG_INFO("VBA Project Addr: 0x%08X\n", (unsigned int) vba_proj_address)
+  LOG_INFO("VBA Project Addr: 0x%08X \n", (unsigned int) vba_proj_address)
 
   /* 0x00000080 */
   dat->byte = 0x28;
   unknown_long = bit_read_RL(dat);
-  LOG_INFO("0x00000080: 0x%08X\n", (unsigned int) unknown_long)
+  LOG_INFO("0x00000080: 0x%08X \n", (unsigned int) unknown_long)
 
   /* 0x00 bytes (length = 0x54 bytes) */
   dat->byte = 0x2C;
@@ -336,7 +343,6 @@ decode_R2004(Bit_Chain *dat, Dwg_Data *dwg)
       rseed += 0x269ec3;
       _2004_header_data.encrypted_data[i] = bit_read_RC(dat) ^ (rseed >> 0x10);
     }
-
   if (loglevel)
     {
       LOG_TRACE("\n 2004 File Header Data fields \n")
@@ -400,8 +406,8 @@ decode_R2004(Bit_Chain *dat, Dwg_Data *dwg)
 
   /* Section Map */
   dat->byte = _2004_header_data.fields.section_map_address + 0x100;
-
   LOG_TRACE("\n\n Raw system section bytes: \n");
+
   for (i = 0; i < 0x14; i++)
     {
       ss.data[i] = bit_read_RC(dat);
@@ -435,6 +441,7 @@ decode_R2004(Bit_Chain *dat, Dwg_Data *dwg)
     {
       dat->byte = section->address;
       LOG_TRACE("\n Raw system section bytes: \n")
+
       for (i = 0; i < 0x14; i++)
         {
           ss.data[i] = bit_read_RC(dat);
@@ -455,7 +462,6 @@ decode_R2004(Bit_Chain *dat, Dwg_Data *dwg)
        read_R2004_section_info(dat, dwg, ss.fields.comp_data_size,
                                ss.fields.decomp_data_size);
     }
-
   read_2004_section_classes(dat, dwg);
   read_2004_section_header(dat, dwg);
   read_2004_section_handles(dat, dwg);
@@ -470,10 +476,8 @@ decode_R2004(Bit_Chain *dat, Dwg_Data *dwg)
       free(dwg->header.section_info);
       dwg->header.num_descriptions = 0;
     }
-
   resolve_objectref_vector(dwg);
-
-  LOG_ERROR(
-	  "Decoding of DWG version R2004 header is not fully implemented yet. We are going to try\n")
+  LOG_ERROR("Decoding of DWG version R2004 header is not fully implemented "
+            " yet. We are going to try \n")
   return 0;
 }
