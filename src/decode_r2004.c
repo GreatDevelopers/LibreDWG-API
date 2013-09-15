@@ -80,7 +80,7 @@ page_checksum (int32_t seed, unsigned char *data, int32_t size)
    return (sum2 << 0x10) | (sum1 & 0xffff);
 }
 
-/** Read R2004 Section Info */
+/** Read R2004 Section Info (data map) */
 void
 read_R2004_section_info(Bit_Chain* dat, Dwg_Data *dwg,
                         uint32_t comp_data_size,

@@ -57,13 +57,13 @@ typedef union _encrypted_section_header
 } encrypted_section_header;
 
 int
-decode_R2004(Bit_Chain* dat, Dwg_Data * dwg);
+decode_R2004(Bit_Chain *dat, Dwg_Data *dwg);
 
 Dwg_Section*
 find_section(Dwg_Data *dwg, uint32_t index);
 
 int32_t
-page_checksum (int32_t seed, unsigned char *data, int32_t size);
+page_checksum(int32_t seed, unsigned char *data, int32_t size);
 
 void
 read_R2004_section_info(Bit_Chain *dat, Dwg_Data *dwg, uint32_t comp_data_size,

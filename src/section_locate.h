@@ -45,4 +45,11 @@ void
 read_R2004_section_map(Bit_Chain *dat, Dwg_Data *dwg, uint32_t comp_data_size,
                        uint32_t decomp_data_size);
 
+r2007_section*
+get_section(r2007_section *sections_map, int64_t hashcode);
+
+r2007_section*
+read_sections_map(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
+                  int64_t correction);
+
 #endif

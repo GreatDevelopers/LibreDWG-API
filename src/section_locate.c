@@ -150,3 +150,83 @@ read_R2004_section_map(Bit_Chain *dat, Dwg_Data *dwg, uint32_t comp_data_size,
 
   free(decomp);
 }
+
+r2007_section*
+read_sections_map(Bit_Chain* dat, int64_t size_comp, int64_t size_uncomp,
+                  int64_t correction)
+{
+  char *data, *ptr, *ptr_end;
+  r2007_section *section, *sections = 0, *last_section = 0;
+  int i;
+  
+  data = read_system_page(dat, size_comp, size_uncomp, correction);
+  ptr = data;
+  ptr_end = data + size_uncomp;
+  LOG_TRACE("\n=== System Section (Section Map) ===\n")
+  
+  while (ptr < ptr_end)
+    {
+      section = (r2007_section*) malloc(sizeof(r2007_section));
+      bfr_read(section, &ptr, 64);
+      LOG_TRACE("\n Section \n")
+      LOG_TRACE("data size:   %jd\n", section->data_size)
+      LOG_TRACE("max size:    %jd\n", section->max_size)
+      LOG_TRACE("encryption:  %jd\n", section->encrypted)
+      LOG_TRACE("hashcode:    %jd\n", section->hashcode)
+      LOG_TRACE("name length: %jd\n", section->name_length)
+      LOG_TRACE("unknown:     %jd\n", section->unknown)
+      LOG_TRACE("encoding:    %jd\n", section->encoded)
+      LOG_TRACE("num pages:   %jd\n", section->num_pages)      
+      section->next  = 0;
+      section->pages = 0;
+    
+      if (sections == 0)
+        sections = last_section = section;
+      else
+        {
+          last_section->next = section;
+          last_section = section;
+        } 
+    
+      if (ptr >= ptr_end)
+        break;
+    
+      // Section Name
+      section->name = bfr_read_string(&ptr);
+      LOG_TRACE("Section name:  %ls\n", (DWGCHAR*)section->name)      
+      section->pages = (r2007_section_page**) malloc((size_t)section->num_pages
+                        * sizeof(r2007_section_page*));
+    
+      for (i = 0; i < section->num_pages; i++)
+        {
+          section->pages[i] = (r2007_section_page*)
+                               malloc(sizeof(r2007_section_page));
+          bfr_read(section->pages[i], &ptr, 56);
+          LOG_TRACE("\n Page \n")
+          LOG_TRACE(" offset:      %jd\n", section->pages[i]->offset);
+          LOG_TRACE(" size:        %jd\n", section->pages[i]->size);
+          LOG_TRACE(" id:          %jd\n", section->pages[i]->id);
+          LOG_TRACE(" uncomp_size: %jd\n", section->pages[i]->uncomp_size);
+          LOG_TRACE(" comp_size:   %jd\n", section->pages[i]->comp_size);
+          LOG_TRACE(" checksum:    %jd\n", section->pages[i]->checksum);
+          LOG_TRACE(" crc:         %jd\n", section->pages[i]->crc);
+        }
+    }
+  free(data);
+  return sections;
+}
+/* Lookup a section in the section map. The section is identified by its hashcode.
+ */
+r2007_section*
+get_section(r2007_section *sections_map, int64_t hashcode)
+{
+  r2007_section *section = sections_map;
+  
+  while (section != NULL)
+    {
+      if (section->hashcode == hashcode)
+        break;
+      section = section->next;
+    }
+  return section;
+}

@@ -115,8 +115,6 @@ typedef struct _r2007_section
   struct _r2007_section *next;
 } r2007_section;
 
-r2007_section*
-get_section(r2007_section *sections_map, int64_t hashcode);
 
 r2007_page*
 get_page(r2007_page *pages_map, int64_t id);
@@ -162,9 +160,6 @@ read_pages_map(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
 char*
 read_system_page(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
                  int64_t repeat_count);
-r2007_section*
-read_sections_map(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
-                  int64_t correction);
 
 void
 bfr_read(void *dst, char **src, size_t size);
