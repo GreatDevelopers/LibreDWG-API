@@ -21,9 +21,10 @@
  *     \copyright  GNU General Public License (version 3 or later)
  */
 
+#include "compress_decompress.h"
 #include "decode.h"
 #include "header.h"
-#include "decode_r2004.h"
+#include "decode_r2007.h"
 #include "logging.h"
 
 void
@@ -36,7 +37,7 @@ dwg_decode_header_variables(Bit_Chain *dat, Dwg_Data *dwg, Bit_Chain *sstream)
 }
 
 void
-dwg_decode_2007_header_handles(Bit_Chain *dat, Dwg_Data *dwg)
+dwg_decode_R2007_header_handles(Bit_Chain *dat, Dwg_Data *dwg)
 {
   Dwg_Header_Variables* _obj = &dwg->header_vars;
   Dwg_Object* obj=0;
@@ -123,7 +124,8 @@ read_R13_R15_section_header(Bit_Chain *dat, Dwg_Data *dwg)
   /* Check CRC on */
   dat->byte = dwg->header.section[0].address + dwg->header.section[0].size
                - 18;
-  dat->bit = 0;
+  dat->bit  = 0;
+
   ckr  = bit_read_RS(dat);
   ckr2 = bit_ckr8(0xc0c1, dat->chain + dwg->header.section[0].address
                   + 16, dwg->header.section[0].size - 34);
@@ -142,7 +144,7 @@ read_R2004_section_header(Bit_Chain *dat, Dwg_Data *dwg)
 {
   Bit_Chain sec_dat;
 
-  if (read_2004_compressed_section(dat, dwg, &sec_dat, SECTION_HEADER) != 0)
+  if (read_R2004_compressed_section(dat, dwg, &sec_dat, SECTION_HEADER) != 0)
     return;
 
   if (bit_search_sentinel(&sec_dat, dwg_sentinel(DWG_SENTINEL_VARIABLE_BEGIN)))
@@ -196,7 +198,7 @@ read_R2007_section_header(Bit_Chain *dat, Dwg_Data *dwg,
 
       string_stream_init(&sstream, &sec_dat, bitsize, 0);
       dwg_decode_header_variables(&sec_dat, dwg, &sstream);
-      dwg_decode_2007_header_handles(&sstream, dwg);
+      dwg_decode_R2007_header_handles(&sstream, dwg);
       bit_search_sentinel(&sec_dat, dwg_sentinel(DWG_SENTINEL_VARIABLE_END));
     }
   free(sec_dat.chain);

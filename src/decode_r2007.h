@@ -129,13 +129,13 @@ int
 decode_R2007(Bit_Chain *dat, Dwg_Data *dwg);
 
 int
-read_r2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg);
+read_R2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg);
 
 Bit_Chain *
 string_stream_init(Bit_Chain *sstream, Bit_Chain *dat, 
                    unsigned long int bitpos, int check_present_bit);
 
-DWGCHAR*
+DWGCHAR *
 bfr_read_string(char **src);
 
 int

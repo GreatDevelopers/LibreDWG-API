@@ -18,6 +18,20 @@
  *     \copyright  GNU General Public License (version 3 or later)
  */
 
+#include "config.h"
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <assert.h>
+#include <stdint.h>
+#include <sys/types.h>
+
+#include "common.h"
+#include "bits.h"
+#include "dwg.h"
+#include "print.h"
+
 #ifndef _DWG_COMP_DECOMP_H_
 #define _DWG_COMP_DECOMP_H_
 
@@ -64,6 +78,9 @@ read_R2007_literal_length(unsigned char **src, unsigned char opcode);
 void 
 read_instructions(unsigned char **src, unsigned char *opcode, uint32_t *offset,
                   uint32_t *length);
+
+void 
+copy_bytes(char *dst, uint32_t length, uint32_t offset);
 
 void
 copy_compressed_bytes(char *dst, char *src, int length);

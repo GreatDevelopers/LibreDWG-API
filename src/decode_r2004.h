@@ -59,7 +59,7 @@ typedef union _encrypted_section_header
 int
 decode_R2004(Bit_Chain *dat, Dwg_Data *dwg);
 
-Dwg_Section*
+Dwg_Section *
 find_section(Dwg_Data *dwg, uint32_t index);
 
 int32_t

@@ -18,25 +18,27 @@
  *     \copyright  GNU General Public License (version 3 or later)
  */
 
+#include "classes.h"
+#include "compress_decompress.h"
 #include "decode_r2007.h"
-#include "decode_r2004.h"
 #include "handle.h"
 #include "header.h"
 #include "logging.h"
+#include "section_locate.h"
 #include "resolve_pointers.h"
 
 unsigned int loglevel;
 
 #define DWG_LOGLEVEL loglevel
 
-char*
+char *
 decode_rs(const char *src, int block_count, int data_size)
 {
   int i, j;
   const char *src_base = src;
   char *dst_base, *dst;  
   
-  dst_base = dst = (char*) malloc(block_count * data_size);
+  dst_base = dst = (char*) malloc(block_count *data_size);
   
   for (i = 0; i < block_count; ++i)
     {      
@@ -50,7 +52,7 @@ decode_rs(const char *src, int block_count, int data_size)
   return (dst_base);
 }
 
-char*
+char *
 read_system_page(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
                  int64_t repeat_count)
 {
@@ -86,7 +88,7 @@ read_system_page(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
   pedata = decode_rs(rsdata, block_count, 239);
   
   if (size_comp < size_uncomp)
-    decompress_r2007(data, size_uncomp, pedata, size_comp);
+    decompress_R2007(data, size_uncomp, pedata, size_comp);
   else
     memcpy(data, pedata, size_uncomp);
   
@@ -118,7 +120,7 @@ read_data_page(Bit_Chain *dat, unsigned char *decomp, int64_t page_size,
   pedata = decode_rs(rsdata, block_count, 0xFB);
   
   if (size_comp < size_uncomp)
-    decompress_r2007((char*)decomp, size_uncomp, pedata, size_comp);
+    decompress_R2007((char*)decomp, size_uncomp, pedata, size_comp);
   else
     memcpy(decomp, pedata, size_uncomp);
 
@@ -185,7 +187,7 @@ bfr_read(void *dst, char **src, size_t size)
   *src += size;
 }
 
-DWGCHAR*
+DWGCHAR *
 bfr_read_string(char **src)
 {
   uint16_t *ptr  = (uint16_t*)*src;  
@@ -211,7 +213,7 @@ bfr_read_string(char **src)
   return str_base;
 }
 
-r2007_page*
+r2007_page *
 read_pages_map(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
                int64_t correction)
 {
@@ -337,7 +339,7 @@ read_file_header(Bit_Chain *dat, r2007_file_header *file_header)
   compr_len   = *((int32_t*)&pedata[24]);
   
   if (compr_len > 0)
-    decompress_r2007((char*)file_header, 0x110, &pedata[32], compr_len);
+    decompress_R2007((char*)file_header, 0x110, &pedata[32], compr_len);
   else
     memcpy(file_header, &pedata[32], sizeof(r2007_file_header));
 
@@ -405,7 +407,7 @@ string_stream_init(Bit_Chain *sstream, Bit_Chain *dat,
 }
 
 int
-read_r2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg)
+read_R2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg)
 {
   r2007_file_header file_header;
   r2007_page *pages_map, *page;
@@ -547,7 +549,7 @@ decode_R2007(Bit_Chain *dat, Dwg_Data *dwg)
   app_info_address = bit_read_RL(dat);
   LOG_TRACE("Application Info Address: 0x%08X \n", app_info_address)
 
-  read_r2007_meta_data(dat, dwg);
+  read_R2007_meta_data(dat, dwg);
 
   LOG_TRACE("\n\n")
 

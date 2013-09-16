@@ -18,6 +18,7 @@
  *     \copyright  GNU General Public License (version 3 or later)
  */
 
+#include "compress_decompress.h"
 
 /** R2004 Literal Length */
 int
@@ -514,7 +515,7 @@ copy_compressed_bytes(char *dst, char *src, int length)
 
 /** R2007 Decompression */
 int 
-decompress_r2007(char *dst, int dst_size, char *src, int src_size)
+decompress_R2007(char *dst, int dst_size, char *src, int src_size)
 {
   uint32_t length = 0, offset = 0;
 

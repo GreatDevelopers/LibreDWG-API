@@ -21,11 +21,11 @@
  *     \copyright  GNU General Public License (version 3 or later)
  */
 
+#include "compress_decompress.h"
 #include "handle.h"
 #include "object.h"
-#include "decode_r2004.h"
+#include "decode_r2007.h"
 #include "logging.h"
-
 
 /** Read R13-R15 Object-map Section */
 void
@@ -175,10 +175,10 @@ read_R2004_section_handles(Bit_Chain *dat, Dwg_Data *dwg)
   Bit_Chain hdl_dat;
   Bit_Chain obj_dat;
 
-  if (read_2004_compressed_section(dat, dwg, &obj_dat, SECTION_DBOBJECTS) != 0)
+  if (read_R2004_compressed_section(dat, dwg, &obj_dat, SECTION_DBOBJECTS) != 0)
     return;
 
-  if (read_2004_compressed_section(dat, dwg, &hdl_dat, SECTION_HANDLES) != 0)
+  if (read_R2004_compressed_section(dat, dwg, &hdl_dat, SECTION_HANDLES) != 0)
     {
       free(obj_dat.chain);
       return;

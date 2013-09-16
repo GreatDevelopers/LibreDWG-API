@@ -23,6 +23,7 @@
 
 #include "decode_r2004.h"
 #include "classes.h"
+#include "compress_decompress.h"
 #include "handle.h"
 #include "header.h"
 #include "logging.h"
@@ -51,7 +52,7 @@ find_section(Dwg_Data *dwg, uint32_t index)
 
 /** Section page checksum */
 int32_t
-page_checksum (int32_t seed, unsigned char *data, int32_t size)
+page_checksum(int32_t seed, unsigned char *data, int32_t size)
 {
   //seed = 0;
   int32_t sum1, sum2, opcode, chunksize;
@@ -84,7 +85,7 @@ page_checksum (int32_t seed, unsigned char *data, int32_t size)
 
 /** Read R2004 Section Info (data map) */
 void
-read_R2004_section_info(Bit_Chain* dat, Dwg_Data *dwg, uint32_t comp_data_size,
+read_R2004_section_info(Bit_Chain *dat, Dwg_Data *dwg, uint32_t comp_data_size,
                         uint32_t decomp_data_size)
 {
   char *decomp, *ptr;

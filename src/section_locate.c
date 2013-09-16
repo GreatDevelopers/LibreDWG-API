@@ -21,8 +21,9 @@
  *     \copyright  GNU General Public License (version 3 or later)
  */
 
+#include "compress_decompress.h"
 #include "section_locate.h"
-#include "decode_r2004.h"
+#include "decode_r2007.h"
 #include "logging.h"
 
 /** Read R13-R15 Object Map */
@@ -213,6 +214,7 @@ read_sections_map(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
   free(data);
   return sections;
 }
+
 /* Lookup a section in the section map. The section is identified by its hashcode.
  */
 r2007_section*

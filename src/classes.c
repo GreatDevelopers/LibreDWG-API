@@ -22,7 +22,8 @@
  */
 
 #include "classes.h"
-#include "decode_r2004.h"
+#include "compress_decompress.h"
+#include "decode_r2007.h"
 #include "logging.h"
 
 /** R13_R15 Class Section */
@@ -32,7 +33,7 @@ read_R13_R15_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
   uint8_t ckr, ckr2, i;
   uint32_t size, lasta, pvz;
 
-  LOG_INFO("\nCLASS: %8X \n",     (unsigned int)dwg->header.section[1].address)
+  LOG_INFO("\nCLASS: %8X     \n", (unsigned int)dwg->header.section[1].address)
   LOG_INFO("CLASS (end): %8X \n", (unsigned int)(dwg->header.section[1].address
                                    + dwg->header.section[1].size))
 
@@ -112,7 +113,7 @@ read_R2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
   char c;
   uint32_t dwg_version, maint_version, max_num, num_objects, size, unknown;
 
-  if (read_2004_compressed_section(dat, dwg, &sec_dat, SECTION_CLASSES) != 0)
+  if (read_R2004_compressed_section(dat, dwg, &sec_dat, SECTION_CLASSES) != 0)
     return;
 
   if (bit_search_sentinel(&sec_dat, dwg_sentinel(DWG_SENTINEL_CLASS_BEGIN)))

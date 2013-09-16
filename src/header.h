@@ -42,6 +42,9 @@ void
 dwg_decode_header_variables(Bit_Chain *dat, Dwg_Data *dwg, Bit_Chain *sstream);
 
 void
+dwg_decode_2007_header_handles(Bit_Chain *dat, Dwg_Data *dwg);
+
+void
 read_R13_R15_section_header(Bit_Chain *dat, Dwg_Data *dwg);
 
 void
