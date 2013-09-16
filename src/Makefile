@@ -98,9 +98,10 @@ am__uninstall_files_from_dir = { \
 am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(includedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libredwg_la_LIBADD =
-am_libredwg_la_OBJECTS = dwg.lo common.lo bits.lo classes.lo decode.lo \
-	decode_r13_r15.lo decode_r2004.lo decode_r2007.lo encode.lo \
-	handle.lo header.lo object.lo print.lo resolve_pointers.lo \
+am_libredwg_la_OBJECTS = bits.lo classes.lo common.lo \
+	compress_decompress.lo decode.lo decode_r13_r15.lo \
+	decode_r2004.lo decode_r2007.lo dwg.lo encode.lo handle.lo \
+	header.lo object.lo print.lo resolve_pointers.lo \
 	section_locate.lo
 libredwg_la_OBJECTS = $(am_libredwg_la_OBJECTS)
 libredwg_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
@@ -162,7 +163,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-ISODATE = 2013-09-14
+ISODATE = 2013-09-16
 LD = /usr/bin/ld -m elf_x86_64
 LDFLAGS = 
 LIBOBJS = 
@@ -264,19 +265,20 @@ top_builddir = ..
 top_srcdir = ..
 lib_LTLIBRARIES = libredwg.la
 libredwg_la_SOURCES = \
-	dwg.c \
-	common.c \
-	bits.c \
-        classes.c \
-	decode.c \
-        decode_r13_r15.c \
-        decode_r2004.c \
-        decode_r2007.c \
-	encode.c \
-        handle.c \
-        header.c \
-        object.c \
-        print.c \
+	bits.c             \
+	classes.c          \
+	common.c           \
+        compress_decompress.c \
+	decode.c           \
+        decode_r13_r15.c   \
+        decode_r2004.c     \
+        decode_r2007.c     \
+        dwg.c              \
+	encode.c           \
+        handle.c           \
+        header.c           \
+        object.c           \
+        print.c            \
         resolve_pointers.c \
         section_locate.c
 
@@ -292,6 +294,7 @@ EXTRA_DIST = \
 	common.h                       \
 	bits.h                         \
         classes.h                      \
+        compress_decompress.h          \
 	decode.h                       \
         decode_r13_r15.h               \
         decode_r2004.h                 \
@@ -399,6 +402,7 @@ distclean-compile:
 include ./$(DEPDIR)/bits.Plo
 include ./$(DEPDIR)/classes.Plo
 include ./$(DEPDIR)/common.Plo
+include ./$(DEPDIR)/compress_decompress.Plo
 include ./$(DEPDIR)/decode.Plo
 include ./$(DEPDIR)/decode_r13_r15.Plo
 include ./$(DEPDIR)/decode_r2004.Plo

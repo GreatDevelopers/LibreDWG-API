@@ -19,6 +19,8 @@
  */
 
 #include "compress_decompress.h"
+#include "decode_r2004.h"
+#include "logging.h"
 
 /** R2004 Literal Length */
 int

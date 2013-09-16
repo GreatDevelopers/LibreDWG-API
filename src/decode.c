@@ -237,9 +237,10 @@ dwg_decode_entity(Bit_Chain *dat, Dwg_Object_Entity *ent)
 
   SINCE(R_2004)
     {
-      char color_mode = 0;
+      char color_mode = 0, color;
       unsigned char index;
       unsigned int flags;
+      int transparency;
     
       if (ent->nolinks == 0)
         {        
@@ -266,11 +267,11 @@ dwg_decode_entity(Bit_Chain *dat, Dwg_Object_Entity *ent)
                 flags = flags;   // has AcDbColor reference (handle)
             
               if (flags & 0x2000)
-                  int transparency = bit_read_BL(dat);
+                  transparency = bit_read_BL(dat);
             }
         }
       else
-          char color = bit_read_B(dat);
+          color = bit_read_B(dat);
     }
   OTHER_VERSIONS
     bit_read_CMC(dat, &ent->color, NULL);

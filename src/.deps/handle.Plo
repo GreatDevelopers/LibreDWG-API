@@ -1,4 +1,4 @@
-handle.lo: handle.c handle.h config.h \
+handle.lo: handle.c compress_decompress.h config.h \
  /usr/lib/gcc/x86_64-linux-gnu/4.7/include/stdbool.h /usr/include/stdio.h \
  /usr/include/features.h /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/predefs.h \
@@ -34,10 +34,10 @@ handle.lo: handle.c handle.h config.h \
  /usr/include/x86_64-linux-gnu/bits/string2.h \
  /usr/include/x86_64-linux-gnu/bits/string3.h /usr/include/assert.h \
  /usr/lib/gcc/x86_64-linux-gnu/4.7/include/stdint.h /usr/include/stdint.h \
- /usr/include/x86_64-linux-gnu/bits/wchar.h common.h bits.h dwg.h \
- object.h print.h decode_r2004.h logging.h
+ /usr/include/x86_64-linux-gnu/bits/wchar.h common.h bits.h dwg.h print.h \
+ handle.h decode_r2007.h object.h logging.h
 
-handle.h:
+compress_decompress.h:
 
 config.h:
 
@@ -143,10 +143,12 @@ bits.h:
 
 dwg.h:
 
-object.h:
-
 print.h:
 
-decode_r2004.h:
+handle.h:
+
+decode_r2007.h:
+
+object.h:
 
 logging.h:

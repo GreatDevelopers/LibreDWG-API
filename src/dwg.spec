@@ -2005,7 +2005,6 @@ DWG_OBJECT(LTYPE);
   XDICOBJHANDLE(3);
   FIELD_HANDLE(null_handle, 5);
   HANDLE_VECTOR(shapefiles, num_dashes, 5);
-}
 
 DWG_OBJECT_END
 
@@ -2976,7 +2975,6 @@ DWG_ENTITY(OLE2FRAME);
 
 DWG_ENTITY_END
 
-
 //pg.149
 DWG_OBJECT(PROXY);
 
@@ -2988,7 +2986,7 @@ DWG_OBJECT(PROXY);
     }
 
   //TODO: figure out how to deal with the arbitrary size vector databits
-    described on the spec
+   // described on the spec
 
 DWG_OBJECT_END
 

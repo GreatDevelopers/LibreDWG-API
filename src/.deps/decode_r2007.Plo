@@ -1,4 +1,4 @@
-decode_r2007.lo: decode_r2007.c decode_r2007.h config.h \
+decode_r2007.lo: decode_r2007.c classes.h config.h \
  /usr/lib/gcc/x86_64-linux-gnu/4.7/include/stdbool.h /usr/include/stdio.h \
  /usr/include/features.h /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/predefs.h \
@@ -34,10 +34,11 @@ decode_r2007.lo: decode_r2007.c decode_r2007.h config.h \
  /usr/include/x86_64-linux-gnu/bits/string2.h \
  /usr/include/x86_64-linux-gnu/bits/string3.h /usr/include/assert.h \
  /usr/lib/gcc/x86_64-linux-gnu/4.7/include/stdint.h /usr/include/stdint.h \
- /usr/include/x86_64-linux-gnu/bits/wchar.h common.h bits.h dwg.h print.h \
- decode_r2004.h handle.h header.h logging.h resolve_pointers.h
+ /usr/include/x86_64-linux-gnu/bits/wchar.h common.h bits.h dwg.h \
+ decode_r2007.h print.h compress_decompress.h handle.h header.h logging.h \
+ section_locate.h resolve_pointers.h
 
-decode_r2007.h:
+classes.h:
 
 config.h:
 
@@ -143,14 +144,18 @@ bits.h:
 
 dwg.h:
 
+decode_r2007.h:
+
 print.h:
 
-decode_r2004.h:
+compress_decompress.h:
 
 handle.h:
 
 header.h:
 
 logging.h:
+
+section_locate.h:
 
 resolve_pointers.h:

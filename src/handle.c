@@ -24,7 +24,6 @@
 #include "compress_decompress.h"
 #include "handle.h"
 #include "object.h"
-#include "decode_r2007.h"
 #include "logging.h"
 
 /** Read R13-R15 Object-map Section */

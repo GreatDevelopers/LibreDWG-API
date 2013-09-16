@@ -36,7 +36,7 @@
 #include "common.h"
 #include "bits.h"
 #include "dwg.h"
-#include "print.h"
+#include "decode_r2007.h"
 
 void
 dwg_decode_header_variables(Bit_Chain *dat, Dwg_Data *dwg, Bit_Chain *sstream);
