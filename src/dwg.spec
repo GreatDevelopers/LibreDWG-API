@@ -292,7 +292,7 @@ DWG_ENTITY(ATTDEF);
           FIELD(width_factor, RD);
         }
 
-      FIELD(default_value, TV);
+      FIELD_TV(default_value);
 
       if (!(FIELD_VALUE(dataflags) & 0x20))
         {

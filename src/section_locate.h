@@ -36,7 +36,7 @@
 #include "common.h"
 #include "bits.h"
 #include "dwg.h"
-#include "print.h"
+#include "decode_r2007.h"
 
 void
 read_R13_R15_section_locate(Bit_Chain *dat, Dwg_Data *dwg);
