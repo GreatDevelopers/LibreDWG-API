@@ -42,11 +42,11 @@ dwg_decode_add_object(Dwg_Data *dwg, Bit_Chain *dat, uint32_t address)
 
   /* Keep the previous address */
   previous_address = dat->byte;
-  previous_bit = dat->bit;
+  previous_bit     = dat->bit;
 
   /* Use the indicated address for the object */
   dat->byte = address;
-  dat->bit = 0;
+  dat->bit  = 0;
 
   /* Reserve memory space for objects */
   if (dwg->num_objects == 0)
@@ -62,13 +62,13 @@ dwg_decode_add_object(Dwg_Data *dwg, Bit_Chain *dat, uint32_t address)
   obj->index = dwg->num_objects;
   dwg->num_objects++;
 
-  obj->handle.code = 0;
-  obj->handle.size = 0;
+  obj->handle.code  = 0;
+  obj->handle.size  = 0;
   obj->handle.value = 0;
 
   obj->parent = dwg;
-  obj->size = bit_read_MS(dat);
-  object_address = dat->byte;
+  obj->size   = bit_read_MS(dat);
+  object_address  = dat->byte;
   ktl_lastaddress = dat->byte + obj->size; // calculate the size
 
   // Pre calculate address of handles section in bits.
@@ -311,11 +311,10 @@ dwg_decode_add_object(Dwg_Data *dwg, Bit_Chain *dat, uint32_t address)
 
             if (!bit_read_H(dat, &obj->handle))
               {
-                LOG_INFO("Object handle: %x.%x.%lx \n", 
-                         obj->handle.code, obj->handle.size, obj->handle.value)
+                LOG_INFO("Object handle: %x.%x.%lx \n", obj->handle.code,
+                         obj->handle.size, obj->handle.value)
               }
-
-            obj->supertype = DWG_SUPERTYPE_UNKNOWN;
+            obj->supertype  = DWG_SUPERTYPE_UNKNOWN;
             obj->as.unknown = (unsigned char*)malloc(obj->size);
             memcpy(obj->as.unknown, &dat->chain[object_address], obj->size);
           }
@@ -332,7 +331,7 @@ dwg_decode_add_object(Dwg_Data *dwg, Bit_Chain *dat, uint32_t address)
 
   /* Register the previous addresses for return */
   dat->byte = previous_address;
-  dat->bit = previous_bit;
+  dat->bit  = previous_bit;
 }
 
 /* OBJECTS */
@@ -353,106 +352,125 @@ dwg_decode_variable_type(Dwg_Data *dwg, Bit_Chain *dat, Dwg_Object *obj)
       dwg_decode_DICTIONARYVAR(dat, obj);
       return 1;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "ACDBDICTIONARYWDFLT"))
     {
       dwg_decode_DICTIONARYWDLFT(dat, obj);
       return 1;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "HATCH"))
     {
       dwg_decode_HATCH(dat, obj);
       return 1;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "IDBUFFER"))
     {
       dwg_decode_IDBUFFER(dat, obj);
       return 1;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "IMAGE"))
     {
       dwg_decode_IMAGE(dat, obj);
       return 1;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "IMAGEDEF"))
     {
       dwg_decode_IMAGEDEF(dat, obj);
       return 1;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "IMAGEDEF_REACTOR"))
     {
       dwg_decode_IMAGEDEFREACTOR(dat, obj);
       return 1;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "LAYER_INDEX"))
     {
       dwg_decode_LAYER_INDEX(dat, obj);
       return 1;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "LAYOUT"))
     {
       dwg_decode_LAYOUT(dat, obj);
       return 1;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "LWPLINE"))
     {
       dwg_decode_LWPLINE(dat, obj);
       return 1;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "OLE2FRAME"))
     {
       dwg_decode_OLE2FRAME(dat, obj);
       return 1;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "ACDBPLACEHOLDER"))
     {
       dwg_decode_PLACEHOLDER(dat, obj);
       return 1;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "RASTERVARIABLES"))
     {
       dwg_decode_RASTERVARIABLES(dat, obj);
       return 1;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "SORTENTSTABLE"))
     {
       dwg_decode_SORTENTSTABLE(dat, obj);
       return 1;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "SPATIAL_FILTER"))
     {
       dwg_decode_SPATIAL_FILTER(dat, obj);
       return 1;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "SPATIAL_INDEX"))
     {
       dwg_decode_SPATIAL_INDEX(dat, obj);
       return 1;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "VBA_PROJECT"))
     {
       //TODO: dwg_decode_VBA_PROJECT(dat, obj);
       return 0;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "WIPEOUTVARIABLE"))
     {
       //TODO: dwg_decode_WIPEOUTVARIABLE(dat, obj);
       return 0;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "XRECORD"))
     {
       dwg_decode_XRECORD(dat, obj);
       return 1;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "DIMASSOC"))
     {
       //TODO: dwg_decode_DIMASSOC(dat, obj);
       return 0;
     }
+
   if (!strcmp((const char *)dwg->dwg_class[i].dxfname, "MATERIAL"))
     {
       //TODO: dwg_decode_MATERIAL(dat, obj);
       return 0;
     }
-
   return 0;
 }

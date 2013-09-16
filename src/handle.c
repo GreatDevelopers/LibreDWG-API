@@ -31,17 +31,18 @@
 void
 read_R13_R15_section_object_map(Bit_Chain *dat, Dwg_Data *dwg)
 {
-  uint8_t section_size = 0, ckr, ckr2, antckr;
   unsigned char sgdc[2];
+  uint8_t section_size = 0, ckr, ckr2, antckr;
   uint32_t size, maplasta, duabyte, object_begin, object_end;
 
   dat->byte = dwg->header.section[2].address;
-  dat->bit = 0;
+  dat->bit  = 0;
 
   maplasta = dat->byte + dwg->header.section[2].size;  // 4
   dwg->num_objects = 0;
   object_begin = dat->size;
-  object_end = 0;
+  object_end   = 0;
+
   do
     {
       uint32_t last_address, last_handle, previous_address = 0;
@@ -57,19 +58,17 @@ read_R13_R15_section_object_map(Bit_Chain *dat, Dwg_Data *dwg)
           LOG_ERROR("Object-map section size greater than 2035!\n")
           return -1;
         }
-
       last_handle = 0;
       last_address = 0;
 
       while (dat->byte - duabyte < section_size)
         {
           uint32_t kobj;
-          int32_t pvztkt;
-          int32_t pvzadr;
+          int32_t pvztkt, pvzadr;
 
           previous_address = dat->byte;
           pvztkt = bit_read_MC(dat);
-          last_handle += pvztkt;
+          last_handle  += pvztkt;
           pvzadr = bit_read_MC(dat);
           last_address += pvzadr;
           // LOG_TRACE("Idc: %li\t", dwg->num_objects)
@@ -104,27 +103,24 @@ read_R13_R15_section_object_map(Bit_Chain *dat, Dwg_Data *dwg)
           dat->byte += 1;
           dat->bit = 0;
         }
-
       sgdc[0] = bit_read_RC(dat);
       sgdc[1] = bit_read_RC(dat);
       ckr = (sgdc[0] << 8) | sgdc[1];
-
       ckr2 = bit_ckr8(0xc0c1, dat->chain + duabyte, section_size);
 
       if (ckr != ckr2)
         {
-          printf("section %d crc todo ckr:%x ckr2:%x \n",
-                  dwg->header.section[2].number, ckr, ckr2);
+          printf("Section %d crc todo ckr:%x ckr2:%x \n",
+                 dwg->header.section[2].number, ckr, ckr2);
           return -1;
         }
-
       if (dat->byte >= maplasta)
         break;
     }
   while (section_size > 2);
 
-  LOG_INFO("Num objects: %lu \n", dwg->num_objects)
-  LOG_INFO("\n Object Data: %8X \n", (unsigned int) object_begin)
+  LOG_INFO("Num objects: %lu \n   ", dwg->num_objects)
+  LOG_INFO("\nObject Data: %8X \n", (unsigned int) object_begin)
   dat->byte = object_end;
   object_begin = bit_read_MS(dat);
 
@@ -133,28 +129,34 @@ read_R13_R15_section_object_map(Bit_Chain *dat, Dwg_Data *dwg)
 
   /*
    dat->byte = dwg->header.section[2].address - 2;
-   antckr = bit_read_CRC (dat);// Unknown bitdouble inter object data and objectmap
+   // Unknown bitdouble inter object data and objectmap
+   antckr = bit_read_CRC (dat); 
    LOG_TRACE("Address: %08X / Content: 0x%04X", dat->byte - 2, antckr)
 
    // check CRC-on
    antckr = 0xC0C1;
+
    do
    {
-   duabyte = dat->byte;
-   sgdc[0] = bit_read_RC (dat);
-   sgdc[1] = bit_read_RC (dat);
-   section_size = (sgdc[0] << 8) | sgdc[1];
-   section_size -= 2;
-   dat->byte += section_size;
-   ckr = bit_read_CRC (dat);
-   dat->byte -= 2;
-   bit_write_CRC (dat, duabyte, antckr);
-   dat->byte -= 2;
-   ckr2 = bit_read_CRC (dat);
-   if (loglevel) fprintf (stderr, "Read: %X\nCreated: %X\t SEMO: %X\n", ckr, ckr2, antckr);
-   //antckr = ckr;
-   } while (section_size > 0);
-   */
+     duabyte = dat->byte;
+     sgdc[0] = bit_read_RC(dat);
+     sgdc[1] = bit_read_RC(dat);
+     section_size  = (sgdc[0] << 8) | sgdc[1];
+     section_size -= 2;
+     dat->byte += section_size;
+     ckr = bit_read_CRC(dat);
+     dat->byte -= 2;
+     bit_write_CRC (dat, duabyte, antckr);
+     dat->byte -= 2;
+     ckr2 = bit_read_CRC(dat);
+
+     if (loglevel)
+       fprintf (stderr, "Read: %X\nCreated: %X\t SEMO: %X\n", ckr, ckr2, antckr);
+   
+    //antckr = ckr;
+  } 
+  while (section_size > 0);
+  */
 
   LOG_INFO("\n Object Map: %8X \n",
            (unsigned int) dwg->header.section[2].address)
@@ -181,7 +183,6 @@ read_R2004_section_handles(Bit_Chain *dat, Dwg_Data *dwg)
       free(obj_dat.chain);
       return;
     }
-
   maplasta = hdl_dat.byte + hdl_dat.size;
   dwg->num_objects = 0;
 
@@ -193,7 +194,6 @@ read_R2004_section_handles(Bit_Chain *dat, Dwg_Data *dwg)
       sgdc[0] = bit_read_RC(&hdl_dat);
       sgdc[1] = bit_read_RC(&hdl_dat);
       section_size = (sgdc[0] << 8) | sgdc[1];
-
       LOG_TRACE("section_size: %u \n", section_size);
 
       if (section_size > 2034)
@@ -201,6 +201,7 @@ read_R2004_section_handles(Bit_Chain *dat, Dwg_Data *dwg)
 
       last_handle = 0;
       last_offset = 0;
+
       while (hdl_dat.byte - duabyte < section_size)
         {
           int32_t pvztkt, pvzadr;
@@ -215,7 +216,6 @@ read_R2004_section_handles(Bit_Chain *dat, Dwg_Data *dwg)
 
           dwg_decode_add_object(dwg, &obj_dat, last_offset);
         }
-
       if (hdl_dat.byte == previous_address)
         break;
 
@@ -225,13 +225,12 @@ read_R2004_section_handles(Bit_Chain *dat, Dwg_Data *dwg)
            hdl_dat.byte += 2;
            hdl_dat.bit = 0;
         }
-
       uint32_t ckr, ckr2;
     
       sgdc[0] = bit_read_RC(&hdl_dat);
       sgdc[1] = bit_read_RC(&hdl_dat);
       
-      ckr = (sgdc[0] << 8) | sgdc[1];
+      ckr  = (sgdc[0] << 8) | sgdc[1];
       ckr2 = bit_ckr32(0xc0c1, &hdl_dat.chain + duabyte, section_size);
  
       if (ckr != ckr2)
@@ -239,35 +238,32 @@ read_R2004_section_handles(Bit_Chain *dat, Dwg_Data *dwg)
           printf("Section Handle obj %d CRC todo ckr: %x ckr2: %x \n \n",
                   dwg->header.section[2].number, ckr, ckr2);
          return -1;
-         }
-
+        }
       if (hdl_dat.byte >= maplasta)
         break;
     }
   while (section_size > 2);
-
   LOG_TRACE("\n Num objects: %lu \n", dwg->num_objects);
-
   free(hdl_dat.chain);
   free(obj_dat.chain);
 }
 
 /** R2007 Handles Section */
 void
-read_R2007_section_handles(Bit_Chain* dat, Dwg_Data *dwg,
+read_R2007_section_handles(Bit_Chain *dat, Dwg_Data *dwg,
                            r2007_section *sections_map, r2007_page *pages_map)
 {
   unsigned int section_size = 0;
   unsigned char sgdc[2];
-  long unsigned int duabyte;
-  long unsigned int maplasta;
-  Bit_Chain hdl_dat;
-  Bit_Chain obj_dat;
+  long unsigned int duabyte, maplasta;
+  Bit_Chain hdl_dat, obj_dat;
   
-  if (read_data_section(&obj_dat, dat, sections_map, pages_map, 0x674c05a9) != 0)
+  if (read_data_section(&obj_dat, dat, sections_map, pages_map, 0x674c05a9)
+      != 0)
     return;  
   
-  if (read_data_section(&hdl_dat, dat, sections_map, pages_map, 0x3f6e0450) != 0)
+  if (read_data_section(&hdl_dat, dat, sections_map, pages_map, 0x3f6e0450)
+      != 0)
     {
       free(obj_dat.chain);
       return;
@@ -277,18 +273,17 @@ read_R2007_section_handles(Bit_Chain* dat, Dwg_Data *dwg,
   
   do
     {
-      long unsigned int last_offset;
-      long unsigned int last_handle;
-      long unsigned int previous_address = 0;
+      long unsigned int last_offset, last_handle, previous_address = 0;
     
       duabyte = hdl_dat.byte;
       sgdc[0] = bit_read_RC(&hdl_dat);
       sgdc[1] = bit_read_RC(&hdl_dat);
       section_size = (sgdc[0] << 8) | sgdc[1];
-      LOG_TRACE("section_size: %u\n", section_size);
+      LOG_TRACE("section_size: %u \n", section_size);
     
       if (section_size > 2034)
         LOG_INFO("Error: Object-map section size greater than 2034!\n");
+
       last_handle = 0;
       last_offset = 0;
 
@@ -307,21 +302,16 @@ read_R2007_section_handles(Bit_Chain* dat, Dwg_Data *dwg,
       
           dwg_decode_add_object(dwg, &obj_dat, last_offset);
         }
-    
       if (hdl_dat.byte == previous_address)
         break;
+
       hdl_dat.byte += 2; // CRC
     
       if (hdl_dat.byte >= maplasta)
         break;
     }
   while (section_size > 2);
-  LOG_TRACE("\nNum objects: %lu\n", dwg->num_objects);
-
+  LOG_TRACE("\nNum objects: %lu \n", dwg->num_objects);
   free(hdl_dat.chain);
   free(obj_dat.chain);
 }
-
-
-
-

@@ -80,7 +80,7 @@ read_R2004_section_map(Bit_Chain *dat, Dwg_Data *dwg, uint32_t comp_data_size,
   int section_address, bytes_remaining, i;
 
   dwg->header.num_sections = 0;
-  dwg->header.section = 0;
+  dwg->header.section      = 0;
 
   // allocate memory to hold decompressed data
   decomp = (char *) malloc(decomp_data_size * sizeof (char));
@@ -106,16 +106,16 @@ read_R2004_section_map(Bit_Chain *dat, Dwg_Data *dwg, uint32_t comp_data_size,
                              sizeof (Dwg_Section) 
                              * (dwg->header.num_sections+1));
 
-    dwg->header.section[i].number = *((int*) ptr);
-    dwg->header.section[i].size = *((int*) ptr + 1);
+    dwg->header.section[i].number  = *((int*) ptr);
+    dwg->header.section[i].size    = *((int*) ptr + 1);
     dwg->header.section[i].address = section_address;
     section_address += dwg->header.section[i].size;
     bytes_remaining -= 8;
     ptr += 8;
 
     LOG_TRACE("SectionNumber: %d \n", dwg->header.section[i].number)
-    LOG_TRACE("SectionSize: %x \n", dwg->header.section[i].size)
-    LOG_TRACE("SectionAddr: %x \n", dwg->header.section[i].address)
+    LOG_TRACE("SectionSize: %x \n  ", dwg->header.section[i].size)
+    LOG_TRACE("SectionAddr: %x \n  ", dwg->header.section[i].address)
 
     if (dwg->header.section[i].number < 0)
       {
@@ -127,11 +127,10 @@ read_R2004_section_map(Bit_Chain *dat, Dwg_Data *dwg, uint32_t comp_data_size,
         ptr += 16;
 
         LOG_TRACE("Parent: %d \n", (int)dwg->header.section[i].parent)
-        LOG_TRACE("Left: %d \n",   (int)dwg->header.section[i].left)
-        LOG_TRACE("Right: %d \n",  (int)dwg->header.section[i].right)
-        LOG_TRACE("0x00: %d \n",   (int)dwg->header.section[i].x00)
+        LOG_TRACE("Left: %d \n  ", (int)dwg->header.section[i].left)
+        LOG_TRACE("Right: %d \n ", (int)dwg->header.section[i].right)
+        LOG_TRACE("0x00: %d \n"  , (int)dwg->header.section[i].x00)
       }
-
     dwg->header.num_sections++;
     i++;
   }
@@ -147,12 +146,11 @@ read_R2004_section_map(Bit_Chain *dat, Dwg_Data *dwg, uint32_t comp_data_size,
       printf("Header CRC todo ckr: %x ckr2: %x \n\n", ckr, ckr2);
       return 1;
     }
-
   free(decomp);
 }
 
 r2007_section*
-read_sections_map(Bit_Chain* dat, int64_t size_comp, int64_t size_uncomp,
+read_sections_map(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
                   int64_t correction)
 {
   char *data, *ptr, *ptr_end;
@@ -160,9 +158,9 @@ read_sections_map(Bit_Chain* dat, int64_t size_comp, int64_t size_uncomp,
   int i;
   
   data = read_system_page(dat, size_comp, size_uncomp, correction);
-  ptr = data;
+  ptr  = data;
   ptr_end = data + size_uncomp;
-  LOG_TRACE("\n=== System Section (Section Map) ===\n")
+  LOG_TRACE("\n System Section (Section Map) \n")
   
   while (ptr < ptr_end)
     {
@@ -187,20 +185,20 @@ read_sections_map(Bit_Chain* dat, int64_t size_comp, int64_t size_uncomp,
           last_section->next = section;
           last_section = section;
         } 
-    
       if (ptr >= ptr_end)
         break;
     
       // Section Name
       section->name = bfr_read_string(&ptr);
-      LOG_TRACE("Section name:  %ls\n", (DWGCHAR*)section->name)      
-      section->pages = (r2007_section_page**) malloc((size_t)section->num_pages
+      LOG_TRACE("Section name:  %ls \n", (DWGCHAR*) section->name)      
+      section->pages = (r2007_section_page**) malloc((size_t) section->num_pages
                         * sizeof(r2007_section_page*));
     
       for (i = 0; i < section->num_pages; i++)
         {
           section->pages[i] = (r2007_section_page*)
                                malloc(sizeof(r2007_section_page));
+
           bfr_read(section->pages[i], &ptr, 56);
           LOG_TRACE("\n Page \n")
           LOG_TRACE(" offset:      %jd\n", section->pages[i]->offset);

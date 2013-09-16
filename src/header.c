@@ -90,7 +90,6 @@ dwg_decode_2007_header_handles(Bit_Chain *dat, Dwg_Data *dwg)
     {
       FIELD_HANDLE (CPSNID, ANYCODE);
     }
-		
   FIELD_HANDLE (BLOCK_RECORD_PAPER_SPACE, ANYCODE); 
   FIELD_HANDLE (BLOCK_RECORD_MODEL_SPACE, ANYCODE);
   FIELD_HANDLE (LTYPE_BYLAYER, ANYCODE);
@@ -105,8 +104,8 @@ dwg_decode_2007_header_handles(Bit_Chain *dat, Dwg_Data *dwg)
 void
 read_R13_R15_section_header(Bit_Chain *dat, Dwg_Data *dwg)
 {
-  uint32_t pvz;
   uint8_t ckr, ckr2;
+  uint32_t pvz;
 
   LOG_INFO("\n Header Variables: %8X \n",
            (unsigned int) dwg->header.section[0].address)
@@ -131,7 +130,7 @@ read_R13_R15_section_header(Bit_Chain *dat, Dwg_Data *dwg)
 
   if (ckr != ckr2)
     {
-      printf("section %d crc todo ckr:%x ckr2:%x \n",
+      printf("Section %d crc todo ckr:%x ckr2:%x \n",
              dwg->header.section[0].number, ckr, ckr2);
       return -1;
     }
@@ -143,16 +142,13 @@ read_R2004_section_header(Bit_Chain *dat, Dwg_Data *dwg)
 {
   Bit_Chain sec_dat;
 
-  if (read_2004_compressed_section(dat, dwg, &sec_dat, 
-                                   SECTION_HEADER) != 0)
+  if (read_2004_compressed_section(dat, dwg, &sec_dat, SECTION_HEADER) != 0)
     return;
 
-  if (bit_search_sentinel(&sec_dat, 
-      dwg_sentinel(DWG_SENTINEL_VARIABLE_BEGIN)))
+  if (bit_search_sentinel(&sec_dat, dwg_sentinel(DWG_SENTINEL_VARIABLE_BEGIN)))
     {
       uint32_t size = bit_read_RL(&sec_dat);
       LOG_TRACE("Length: %x \n", size);
-      
       dwg_decode_header_variables(&sec_dat, dwg, NULL);
     }
 
@@ -161,7 +157,7 @@ read_R2004_section_header(Bit_Chain *dat, Dwg_Data *dwg)
   
   sec_dat.byte = dwg->header.section[0].address + dwg->header.section[0].size
                  - 18;
-  sec_dat.bit = 0;
+  sec_dat.bit  = 0;
  
   ckr  = bit_read_RL(&sec_dat);
   ckr2 = bit_ckr32(0xc0c1, &sec_dat.chain + dwg->header.section[0].address
@@ -183,20 +179,21 @@ read_R2007_section_header(Bit_Chain *dat, Dwg_Data *dwg,
 {
   Bit_Chain sec_dat;
   
-  if (read_data_section(&sec_dat, dat, sections_map, pages_map, 0x32b803d9) != 0)
+  if (read_data_section(&sec_dat, dat, sections_map, pages_map, 0x32b803d9)
+      != 0)
     return;  
 
   if (bit_search_sentinel(&sec_dat, dwg_sentinel(DWG_SENTINEL_VARIABLE_BEGIN)))
     {
       Bit_Chain sstream;
-      unsigned long int length;
-      unsigned long int bitsize;
+      unsigned long int length, bitsize;
 
       length = bit_read_RL(&sec_dat);
-      LOG_TRACE("Length: %ld\n", length);
+      LOG_TRACE("Length: %ld \n", length);
 
       bitsize = bit_read_RL(&sec_dat);
-      LOG_TRACE("Offset: %ld\n", bitsize); 
+      LOG_TRACE("Offset: %ld \n", bitsize); 
+
       string_stream_init(&sstream, &sec_dat, bitsize, 0);
       dwg_decode_header_variables(&sec_dat, dwg, &sstream);
       dwg_decode_2007_header_handles(&sstream, dwg);
@@ -204,5 +201,3 @@ read_R2007_section_header(Bit_Chain *dat, Dwg_Data *dwg,
     }
   free(sec_dat.chain);
 }
-
-

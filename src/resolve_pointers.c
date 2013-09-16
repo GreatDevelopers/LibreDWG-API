@@ -68,6 +68,7 @@ dwg_resolve_handle(Dwg_Data *dwg, uint32_t absref)
 {
   // FIXME: find a faster algorithm
   uint32_t i;
+
   for (i = 0; i < dwg->num_objects; i++)
     {
       if (dwg->object[i].handle.value == absref)

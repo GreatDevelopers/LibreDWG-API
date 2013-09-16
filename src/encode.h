@@ -39,12 +39,12 @@ void
 dwg_encode_header_variables(Bit_Chain *dat, Dwg_Data *dwg);
 
 void
-dwg_encode_handleref(Bit_Chain *dat, Dwg_Object *obj,
-                     Dwg_Data *dwg, Dwg_Object_Ref *ref);
+dwg_encode_handleref(Bit_Chain *dat, Dwg_Object *obj, Dwg_Data *dwg,
+                     Dwg_Object_Ref *ref);
 
 void 
-dwg_encode_handleref_with_code(Bit_Chain *dat, Dwg_Object *obj,
-                               Dwg_Data *dwg, Dwg_Object_Ref *ref, int code);
+dwg_encode_handleref_with_code(Bit_Chain *dat, Dwg_Object *obj, Dwg_Data *dwg,
+                               Dwg_Object_Ref *ref, int code);
 
 void
 dwg_encode_add_object(Dwg_Object *obj, Bit_Chain *dat,
