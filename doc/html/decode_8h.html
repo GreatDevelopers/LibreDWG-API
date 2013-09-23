@@ -155,12 +155,14 @@ Macros</h2></td></tr>
 <tr class="memitem:a2e3aa5296ec8c7310480a5b10dbab347"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e3aa5296ec8c7310480a5b10dbab347"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_MS</b>(name)&#160;&#160;&#160;FIELD(name, MS);</td></tr>
 <tr class="separator:a2e3aa5296ec8c7310480a5b10dbab347"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8f084bc9e8cb26a478424891479705b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab8f084bc9e8cb26a478424891479705b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_TV</b>(name)&#160;&#160;&#160;FIELD(name, TV);</td></tr>
+<tr class="memitem:ab7b1e91a2d4caf378690bf2d3a27ab46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab7b1e91a2d4caf378690bf2d3a27ab46"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_T</b>(name)&#160;&#160;&#160;FIELD(name, T);</td></tr>
+<tr class="separator:ab7b1e91a2d4caf378690bf2d3a27ab46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54b7e36ec62c16fafc784b097ba4032e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a54b7e36ec62c16fafc784b097ba4032e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_TU</b>(name)&#160;&#160;&#160;FIELD(name, TU);</td></tr>
+<tr class="separator:a54b7e36ec62c16fafc784b097ba4032e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8f084bc9e8cb26a478424891479705b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_TV</b>(name)</td></tr>
 <tr class="separator:ab8f084bc9e8cb26a478424891479705b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a183459311864a4c3d8e0e02681f414a8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a183459311864a4c3d8e0e02681f414a8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_T</b>&#160;&#160;&#160;FIELD_TV /*TODO: implement version dependant string fields */</td></tr>
-<tr class="separator:a183459311864a4c3d8e0e02681f414a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74b9fbfbdd40aa4d48135361156653dc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74b9fbfbdd40aa4d48135361156653dc"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_BT</b>(name)&#160;&#160;&#160;FIELD(name, BT);</td></tr>
 <tr class="separator:a74b9fbfbdd40aa4d48135361156653dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -198,6 +200,8 @@ Macros</h2></td></tr>
 <tr class="memitem:a4984c85f1665f145ea0802ffe911caf6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4984c85f1665f145ea0802ffe911caf6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_VECTOR</b>(name, type, size)&#160;&#160;&#160;FIELD_VECTOR_N(name, type, _obj-&gt;size)</td></tr>
 <tr class="separator:a4984c85f1665f145ea0802ffe911caf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab674b0f089c56cf7770caed316ba1895"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_VECTOR_TV</b>(name, size)</td></tr>
+<tr class="separator:ab674b0f089c56cf7770caed316ba1895"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac340e8d8bd564fc063de5c9cf7606f7c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_2RD_VECTOR</b>(name, size)</td></tr>
 <tr class="separator:ac340e8d8bd564fc063de5c9cf7606f7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad397c65302b3dd7105cae0b4472316cc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_2DD_VECTOR</b>(name, size)</td></tr>
@@ -228,6 +232,8 @@ Macros</h2></td></tr>
 <tr class="separator:ad57f42b6bc2a6976c8eda7cff33bcb42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25430167db754fb3fe8322e151d89d8d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>REPEAT3</b>(times, name, type)</td></tr>
 <tr class="separator:a25430167db754fb3fe8322e151d89d8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a697104b52824b3ca648114f80f57501c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>SEEK_TO_HANDLES</b></td></tr>
+<tr class="separator:a697104b52824b3ca648114f80f57501c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5baf253c6ef55a7bdfd6761e22930415"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5baf253c6ef55a7bdfd6761e22930415"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>COMMON_ENTITY_HANDLE_DATA</b>&#160;&#160;&#160;<a class="el" href="decode_8h.html#a93f8782729bdc9d5b13e20f845f3d401">dwg_decode_common_entity_handle_data</a>(dat, obj)</td></tr>
 <tr class="separator:a5baf253c6ef55a7bdfd6761e22930415"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -289,24 +295,30 @@ modified by Till Heuschmann </dd></dl>
 <b>Value:</b><div class="fragment"><div class="line">void \</div>
 <div class="line"> dwg_decode_##token (<a class="code" href="struct__bit__chain.html">Bit_Chain</a> * dat, <a class="code" href="struct__dwg__object.html" title="General object struct.">Dwg_Object</a> * obj)\</div>
 <div class="line">{\</div>
-<div class="line">  int vcount, rcount, rcount2, rcount3;\</div>
+<div class="line">  int vcount, rcount, rcount2, rcount3;<a class="code" href="struct__bit__chain.html">\</a></div>
+<div class="line"><a class="code" href="struct__bit__chain.html">  Bit_Chain</a> string_stream;<a class="code" href="struct__bit__chain.html">\</a></div>
+<div class="line"><a class="code" href="struct__bit__chain.html">  Bit_Chain</a> *sstream = &amp;string_stream;\</div>
 <div class="line">  Dwg_Entity_##token *ent, *_obj;<a class="code" href="struct__dwg__struct.html" title="Main DWG struct.">\</a></div>
 <div class="line"><a class="code" href="struct__dwg__struct.html" title="Main DWG struct.">  Dwg_Data</a>* dwg = obj-&gt;parent;\</div>
 <div class="line">  LOG_INFO(<span class="stringliteral">&quot;Entity &quot;</span> #token <span class="stringliteral">&quot;:\n&quot;</span>)\</div>
 <div class="line">  dwg-&gt;num_entities++;\</div>
 <div class="line">  obj-&gt;supertype = DWG_SUPERTYPE_ENTITY;\</div>
-<div class="line">  obj-&gt;tio.entity = (<a class="code" href="struct__dwg__object__entity.html" title="Structure for common entity attributes.">Dwg_Object_Entity</a>*)malloc (<span class="keyword">sizeof</span> (<a class="code" href="struct__dwg__object__entity.html" title="Structure for common entity attributes.">Dwg_Object_Entity</a>));    \</div>
-<div class="line">  obj-&gt;tio.entity-&gt;tio.token = (Dwg_Entity_##token *)calloc (<span class="keyword">sizeof</span> (Dwg_Entity_##token), 1); \</div>
-<div class="line">  ent = obj-&gt;tio.entity-&gt;tio.token;\</div>
+<div class="line">  obj-&gt;as.entity = (<a class="code" href="struct__dwg__object__entity.html" title="Structure for common entity attributes.">Dwg_Object_Entity</a>*)malloc (<span class="keyword">sizeof</span> (<a class="code" href="struct__dwg__object__entity.html" title="Structure for common entity attributes.">Dwg_Object_Entity</a>)); \</div>
+<div class="line">  obj-&gt;as.entity-&gt;as.token = (Dwg_Entity_##token *)calloc (<span class="keyword">sizeof</span> (Dwg_Entity_##token), 1); \</div>
+<div class="line">  ent = obj-&gt;as.entity-&gt;as.token;\</div>
 <div class="line">  _obj=ent;\</div>
-<div class="line">  obj-&gt;tio.entity-&gt;object = obj;\</div>
-<div class="line">  if (<a class="code" href="decode_8c.html#a4bcaf8a27d7d4fcc562403dba399a4f6">dwg_decode_entity</a> (dat, obj-&gt;tio.entity)) return;\</div>
-<div class="line">  LOG_INFO(&quot;Entity handle: %d.%d.%lu\n&quot;,\</div>
+<div class="line">  obj-&gt;as.entity-&gt;object = obj;\</div>
+<div class="line">  if (<a class="code" href="decode_8c.html#a4bcaf8a27d7d4fcc562403dba399a4f6">dwg_decode_entity</a> (dat, obj-&gt;as.entity)) return;\</div>
+<div class="line">  LOG_INFO(&quot;Entity handle: %x.%x.%lx\n&quot;,\</div>
 <div class="line">    obj-&gt;handle.code,\</div>
 <div class="line">    obj-&gt;handle.size,\</div>
-<div class="line">    obj-&gt;handle.value)</div>
+<div class="line">    obj-&gt;handle.value)\</div>
+<div class="line">  SINCE(R_2007)\</div>
+<div class="line">  {\</div>
+<div class="line">    sstream = string_stream_init(&amp;string_stream, dat, dat-&gt;handles_address, 1);\</div>
+<div class="line">  }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00205">205</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00228">228</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -324,22 +336,28 @@ modified by Till Heuschmann </dd></dl>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">void</span>  dwg_decode_ ## token (<a class="code" href="struct__bit__chain.html">Bit_Chain</a> * dat, <a class="code" href="struct__dwg__object.html" title="General object struct.">Dwg_Object</a> * obj) {\</div>
-<div class="line">  int vcount, rcount, rcount2, rcount3;\</div>
+<div class="line">  int vcount, rcount, rcount2, rcount3;<a class="code" href="struct__bit__chain.html">\</a></div>
+<div class="line"><a class="code" href="struct__bit__chain.html">  Bit_Chain</a> string_stream;<a class="code" href="struct__bit__chain.html">\</a></div>
+<div class="line"><a class="code" href="struct__bit__chain.html">  Bit_Chain</a> *sstream = &amp;string_stream;\</div>
 <div class="line">  Dwg_Object_##token *_obj;<a class="code" href="struct__dwg__struct.html" title="Main DWG struct.">\</a></div>
 <div class="line"><a class="code" href="struct__dwg__struct.html" title="Main DWG struct.">  Dwg_Data</a>* dwg = obj-&gt;parent;\</div>
 <div class="line">  LOG_INFO(<span class="stringliteral">&quot;Object &quot;</span> #token <span class="stringliteral">&quot;:\n&quot;</span>)\</div>
 <div class="line">  obj-&gt;supertype = DWG_SUPERTYPE_OBJECT;\</div>
-<div class="line">  obj-&gt;tio.object = (<a class="code" href="struct__dwg__object__object.html" title="Structure for ordinary object attributes.">Dwg_Object_Object</a>*)malloc (<span class="keyword">sizeof</span> (<a class="code" href="struct__dwg__object__object.html" title="Structure for ordinary object attributes.">Dwg_Object_Object</a>));    \</div>
-<div class="line">  obj-&gt;tio.object-&gt;tio.token = (Dwg_Object_##token * ) calloc (<span class="keyword">sizeof</span> (Dwg_Object_##token), 1); \</div>
-<div class="line">  obj-&gt;tio.object-&gt;object = obj;\</div>
-<div class="line">  if (<a class="code" href="decode_8c.html#a8e60622a02ae0d1ce47ddabb6a892655">dwg_decode_object</a> (dat, obj-&gt;tio.object)) return;\</div>
-<div class="line">  _obj = obj-&gt;tio.<span class="keywordtype">object</span>-&gt;tio.token;\</div>
-<div class="line">  LOG_INFO(&quot;Object handle: %d.%d.%lu\n&quot;,\</div>
+<div class="line">  obj-&gt;as.object = (<a class="code" href="struct__dwg__object__object.html" title="Structure for ordinary object attributes.">Dwg_Object_Object</a>*)malloc (<span class="keyword">sizeof</span> (<a class="code" href="struct__dwg__object__object.html" title="Structure for ordinary object attributes.">Dwg_Object_Object</a>)); \</div>
+<div class="line">  obj-&gt;as.object-&gt;as.token = (Dwg_Object_##token * ) calloc (<span class="keyword">sizeof</span> (Dwg_Object_##token), 1); \</div>
+<div class="line">  obj-&gt;as.object-&gt;object = obj;\</div>
+<div class="line">  if (<a class="code" href="decode_8c.html#a8e60622a02ae0d1ce47ddabb6a892655">dwg_decode_object</a> (dat, obj-&gt;as.object)) return;\</div>
+<div class="line">  _obj = obj-&gt;as.<span class="keywordtype">object</span>-&gt;as.token;\</div>
+<div class="line">  LOG_INFO(&quot;Object handle: %x.%x.%lx\n&quot;,\</div>
 <div class="line">    obj-&gt;handle.code,\</div>
 <div class="line">    obj-&gt;handle.size,\</div>
-<div class="line">    obj-&gt;handle.value)</div>
+<div class="line">    obj-&gt;handle.value)\</div>
+<div class="line">  SINCE(R_2007)\</div>
+<div class="line">  {\</div>
+<div class="line">    sstream = string_stream_init(&amp;string_stream, dat, dat-&gt;handles_address, 1);\</div>
+<div class="line">  }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00228">228</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00257">257</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -356,13 +374,13 @@ modified by Till Heuschmann </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">FIELD_VALUE(reactors) = (BITCODE_H*) malloc(<span class="keyword">sizeof</span>(BITCODE_H) * obj-&gt;tio.entity-&gt;num_reactors);\</div>
-<div class="line">  for (vcount=0; vcount&lt;obj-&gt;tio.entity-&gt;num_reactors; vcount++)\</div>
+<b>Value:</b><div class="fragment"><div class="line">FIELD_VALUE(reactors) = (BITCODE_H*) malloc(<span class="keyword">sizeof</span>(BITCODE_H) * obj-&gt;as.entity-&gt;num_reactors);\</div>
+<div class="line">  for (vcount=0; vcount&lt;obj-&gt;as.entity-&gt;num_reactors; vcount++)\</div>
 <div class="line">    {\</div>
 <div class="line">      FIELD_HANDLE(reactors[vcount], code);\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00151">151</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00167">167</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -381,7 +399,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">SINCE(R_2004)\</div>
 <div class="line">    {\</div>
-<div class="line">      if (!obj-&gt;tio.entity-&gt;xdic_missing_flag)\</div>
+<div class="line">      if (!obj-&gt;as.entity-&gt;xdic_missing_flag)\</div>
 <div class="line">        {\</div>
 <div class="line">          FIELD_HANDLE(xdicobjhandle, code);\</div>
 <div class="line">        }\</div>
@@ -391,7 +409,7 @@ modified by Till Heuschmann </dd></dl>
 <div class="line">      FIELD_HANDLE(xdicobjhandle, code);\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00171">171</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00187">187</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -455,7 +473,7 @@ modified by Till Heuschmann </dd></dl>
 <div class="line">      FIELD_2DD(name[vcount], FIELD_VALUE(name[vcount - 1].x), FIELD_VALUE(name[vcount - 1].y));\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00117">117</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00133">133</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -488,7 +506,7 @@ modified by Till Heuschmann </dd></dl>
 <div class="line">      FIELD_2RD(name[vcount]);\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00110">110</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00126">126</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -521,7 +539,7 @@ modified by Till Heuschmann </dd></dl>
 <div class="line">      FIELD_3DPOINT(name[vcount]);\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00125">125</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00141">141</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -538,10 +556,10 @@ modified by Till Heuschmann </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="bits_8c.html#a8785229f62158ea15f08412efeffc0e6">bit_read_CMC</a>(dat, &amp;_obj-&gt;name);\</div>
+<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="bits_8c.html#ab72633d122ea563c24facaa5c87a99bc">bit_read_CMC</a>(dat, &amp;_obj-&gt;name, sstream);\</div>
 <div class="line">    LOG_TRACE(#name <span class="stringliteral">&quot;: index %d\n&quot;</span>, _obj-&gt;name.index)</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00090">90</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00095">95</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -586,6 +604,26 @@ modified by Till Heuschmann </dd></dl>
 
 </div>
 </div>
+<a class="anchor" id="ab8f084bc9e8cb26a478424891479705b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FIELD_TV</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">name</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">_obj-&gt;name = <a class="code" href="bits_8c.html#afbfead81b14afb8bee5c9ba67cb59c1e">bit_read_TV</a>(dat, sstream);\</div>
+<div class="line">  LOG_TRACE(#name <span class="stringliteral">&quot;:\t\t&quot;</span> FORMAT_TV <span class="stringliteral">&quot;\n&quot;</span>, _obj-&gt;name)</div>
+</div><!-- fragment -->
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00080">80</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a02eedab60f4b7a01efa8b4a36ce3769b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -625,7 +663,44 @@ modified by Till Heuschmann </dd></dl>
 <div class="line">        }\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00097">97</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00102">102</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab674b0f089c56cf7770caed316ba1895"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FIELD_VECTOR_TV</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">name, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">size&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">if</span> (_obj-&gt;size &gt; 0)\</div>
+<div class="line">    {\</div>
+<div class="line">      _obj-&gt;name = (BITCODE_TV*) malloc(_obj-&gt;size * <span class="keyword">sizeof</span>(BITCODE_TV));\</div>
+<div class="line">      for (vcount=0; vcount&lt; _obj-&gt;size; vcount++)\</div>
+<div class="line">        {\</div>
+<div class="line">          _obj-&gt;name[vcount] = <a class="code" href="bits_8c.html#afbfead81b14afb8bee5c9ba67cb59c1e">bit_read_TV</a>(dat, sstream);\</div>
+<div class="line">          LOG_TRACE(#name <span class="stringliteral">&quot;[%d]: &quot;</span> FORMAT_TV <span class="stringliteral">&quot;\n&quot;</span>, vcount, _obj-&gt;name[vcount])\</div>
+<div class="line">        }\</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00115">115</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -664,7 +739,7 @@ modified by Till Heuschmann </dd></dl>
 <div class="line">      FIELD_HANDLE(name[vcount], code);\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00132">132</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00148">148</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -681,13 +756,13 @@ modified by Till Heuschmann </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">FIELD_VALUE(reactors) = (BITCODE_H*) malloc(<span class="keyword">sizeof</span>(BITCODE_H) * obj-&gt;tio.object-&gt;num_reactors);\</div>
-<div class="line">  for (vcount=0; vcount&lt;obj-&gt;tio.object-&gt;num_reactors; vcount++)\</div>
+<b>Value:</b><div class="fragment"><div class="line">FIELD_VALUE(reactors) = (BITCODE_H*) malloc(<span class="keyword">sizeof</span>(BITCODE_H) * obj-&gt;as.object-&gt;num_reactors);\</div>
+<div class="line">  for (vcount=0; vcount&lt;obj-&gt;as.object-&gt;num_reactors; vcount++)\</div>
 <div class="line">    {\</div>
 <div class="line">      FIELD_HANDLE(reactors[vcount], code);\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00144">144</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00160">160</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -723,7 +798,7 @@ modified by Till Heuschmann </dd></dl>
 <b>Value:</b><div class="fragment"><div class="line">_obj-&gt;name = (type *) malloc(_obj-&gt;times * <span class="keyword">sizeof</span>(type));\</div>
 <div class="line">  for (rcount=0; rcount&lt;_obj-&gt;times; rcount++)</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00188">188</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00204">204</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -759,7 +834,7 @@ modified by Till Heuschmann </dd></dl>
 <b>Value:</b><div class="fragment"><div class="line">_obj-&gt;name = (type *) malloc(_obj-&gt;times * <span class="keyword">sizeof</span>(type));\</div>
 <div class="line">  for (rcount2=0; rcount2&lt;_obj-&gt;times; rcount2++)</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00192">192</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00208">208</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -795,7 +870,7 @@ modified by Till Heuschmann </dd></dl>
 <b>Value:</b><div class="fragment"><div class="line">_obj-&gt;name = (type *) malloc(_obj-&gt;times * <span class="keyword">sizeof</span>(type));\</div>
 <div class="line">  for (rcount3=0; rcount3&lt;_obj-&gt;times; rcount3++)</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00196">196</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00212">212</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -831,7 +906,26 @@ modified by Till Heuschmann </dd></dl>
 <b>Value:</b><div class="fragment"><div class="line">_obj-&gt;name = (type *) malloc(times * <span class="keyword">sizeof</span>(type));\</div>
 <div class="line">  for (rcount=0; rcount&lt;times; rcount++)</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00184">184</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00200">200</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a697104b52824b3ca648114f80f57501c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SEEK_TO_HANDLES</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">SINCE(R_2007) \</div>
+<div class="line">    { \</div>
+<div class="line">      dat-&gt;byte = (dat-&gt;handles_address &gt;&gt; 3); \</div>
+<div class="line">      dat-&gt;bit  = (dat-&gt;handles_address &amp; 7); \</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00218">218</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -850,7 +944,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">SINCE(R_2004)\</div>
 <div class="line">    {\</div>
-<div class="line">      if (!obj-&gt;tio.object-&gt;xdic_missing_flag)\</div>
+<div class="line">      if (!obj-&gt;as.object-&gt;xdic_missing_flag)\</div>
 <div class="line">        {\</div>
 <div class="line">          FIELD_HANDLE(xdicobjhandle, code);\</div>
 <div class="line">        }\</div>
@@ -860,7 +954,7 @@ modified by Till Heuschmann </dd></dl>
 <div class="line">      FIELD_HANDLE(xdicobjhandle, code);\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="decode_8h_source.html#l00158">158</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
+<p>Definition at line <a class="el" href="decode_8h_source.html#l00174">174</a> of file <a class="el" href="decode_8h_source.html">decode.h</a>.</p>
 
 </div>
 </div>
@@ -890,7 +984,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Decode entity data </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00593">593</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00468">468</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -919,7 +1013,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Decode DWG file </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00047">47</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00048">48</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -948,7 +1042,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Decode DWG entity </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00252">252</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00143">143</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -983,7 +1077,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Decode handleref of object </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00491">491</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00368">368</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -1024,7 +1118,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Decode handleref through handle code </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00565">565</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00440">440</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -1053,7 +1147,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Decode DWG Object </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00421">421</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00302">302</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -1082,14 +1176,14 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>DEcode Xdata </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00712">712</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00587">587</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 31 2013 11:47:21 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 20 2013 22:26:54 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

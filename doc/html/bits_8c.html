@@ -94,12 +94,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>Low level read and write functions.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;config.h&quot;</code><br/>
+<div class="textblock"><code>#include &lt;ctype.h&gt;</code><br/>
 <code>#include &lt;stdio.h&gt;</code><br/>
 <code>#include &lt;stdlib.h&gt;</code><br/>
 <code>#include &lt;string.h&gt;</code><br/>
-<code>#include &lt;ctype.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="bits_8h_source.html">bits.h</a>&quot;</code><br/>
+<code>#include &quot;config.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="logging_8h_source.html">logging.h</a>&quot;</code><br/>
 </div>
 <p><a href="bits_8c_source.html">Go to the source code of this file.</a></p>
@@ -183,16 +183,23 @@ Functions</h2></td></tr>
 <tr class="separator:aca075204d69633aec26326e27d4dddcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d71fd04f8a40b9b0467cb2a3caf0ce0"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8c.html#a4d71fd04f8a40b9b0467cb2a3caf0ce0">bit_write_CRC</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, long unsigned int start_address, unsigned int seed)</td></tr>
 <tr class="separator:a4d71fd04f8a40b9b0467cb2a3caf0ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03d5b97dd0162513450395b2b3c772ea"><td class="memItemLeft" align="right" valign="top">BITCODE_TV&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8c.html#a03d5b97dd0162513450395b2b3c772ea">bit_read_TV</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat)</td></tr>
-<tr class="separator:a03d5b97dd0162513450395b2b3c772ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2846d45695ed99f09da2a31a6973dceb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8c.html#a2846d45695ed99f09da2a31a6973dceb">bit_write_TV</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, unsigned char *chain)</td></tr>
+<tr class="memitem:a4e1bcd9f8ea72dd017810989f15ac3ed"><td class="memItemLeft" align="right" valign="top">BITCODE_T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8c.html#a4e1bcd9f8ea72dd017810989f15ac3ed">bit_read_T</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat)</td></tr>
+<tr class="separator:a4e1bcd9f8ea72dd017810989f15ac3ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5d93e773562a6f3854518530decfef7"><td class="memItemLeft" align="right" valign="top">BITCODE_TU&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8c.html#af5d93e773562a6f3854518530decfef7">bit_read_TU</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat)</td></tr>
+<tr class="separator:af5d93e773562a6f3854518530decfef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbfead81b14afb8bee5c9ba67cb59c1e"><td class="memItemLeft" align="right" valign="top">BITCODE_TV&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8c.html#afbfead81b14afb8bee5c9ba67cb59c1e">bit_read_TV</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat_string)</td></tr>
+<tr class="separator:afbfead81b14afb8bee5c9ba67cb59c1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1510db27917cc854b78df3c6e7be644"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8c.html#ac1510db27917cc854b78df3c6e7be644">bit_write_T</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, unsigned char *chain)</td></tr>
+<tr class="separator:ac1510db27917cc854b78df3c6e7be644"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2846d45695ed99f09da2a31a6973dceb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2846d45695ed99f09da2a31a6973dceb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>bit_write_TV</b> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, unsigned char *chain)</td></tr>
 <tr class="separator:a2846d45695ed99f09da2a31a6973dceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb8907cdcf5a08b873ab6a4c0aa7856c"><td class="memItemLeft" align="right" valign="top">long unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8c.html#adb8907cdcf5a08b873ab6a4c0aa7856c">bit_read_L</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat)</td></tr>
 <tr class="separator:adb8907cdcf5a08b873ab6a4c0aa7856c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68dc1056c791cf9ed946ea1ac6de04fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8c.html#a68dc1056c791cf9ed946ea1ac6de04fd">bit_write_L</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, long unsigned int value)</td></tr>
 <tr class="separator:a68dc1056c791cf9ed946ea1ac6de04fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8785229f62158ea15f08412efeffc0e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8c.html#a8785229f62158ea15f08412efeffc0e6">bit_read_CMC</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__color.html">Dwg_Color</a> *color)</td></tr>
-<tr class="separator:a8785229f62158ea15f08412efeffc0e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab72633d122ea563c24facaa5c87a99bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8c.html#ab72633d122ea563c24facaa5c87a99bc">bit_read_CMC</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__color.html">Dwg_Color</a> *color, <a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat_string)</td></tr>
+<tr class="separator:ab72633d122ea563c24facaa5c87a99bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b4861a9bac268cb2985c53f9f8ee142"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8c.html#a2b4861a9bac268cb2985c53f9f8ee142">bit_write_CMC</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__color.html">Dwg_Color</a> *color)</td></tr>
 <tr class="separator:a2b4861a9bac268cb2985c53f9f8ee142"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f9e41a55222ed926e77f95815964c9e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8c.html#a9f9e41a55222ed926e77f95815964c9e">bit_search_sentinel</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, unsigned char sentinel[16])</td></tr>
@@ -210,6 +217,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>bit_chain_alloc</b> (
 <tr class="separator:a364df3e51a65461c72e59dc0a407125b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ed0510dcde7d259d3f8bab58bd64315"><td class="memItemLeft" align="right" valign="top">unsigned long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8c.html#a9ed0510dcde7d259d3f8bab58bd64315">bit_ckr32</a> (unsigned int seed, unsigned char *adr, unsigned int n)</td></tr>
 <tr class="separator:a9ed0510dcde7d259d3f8bab58bd64315"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac66eb4708cf2e85932c64293f711207"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8c.html#aac66eb4708cf2e85932c64293f711207">calculate_normal_crc</a> (unsigned char data, unsigned long int crc)</td></tr>
+<tr class="separator:aac66eb4708cf2e85932c64293f711207"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31cbed8c963922c61b3668cbd35d7b37"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bits_8c.html#a31cbed8c963922c61b3668cbd35d7b37">calculate_mirror_crc</a> (unsigned char data, unsigned long int crc)</td></tr>
+<tr class="separator:a31cbed8c963922c61b3668cbd35d7b37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Low level read and write functions. </p>
@@ -236,7 +247,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Allocates memory space for bit_chain </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00952">952</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l01025">1025</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -299,9 +310,9 @@ modified by James Mike Dupont </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Read and check CRC-number. </p>
+<p>Read and check CRC-number </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00770">770</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00778">778</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -336,7 +347,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>32-bit CRC </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l01075">1075</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l01152">1152</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -371,7 +382,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>8-bit CRC </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l01026">1026</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l01105">1105</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -400,7 +411,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Chain exploration </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00999">999</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l01076">1076</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -429,7 +440,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Print </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00973">973</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l01046">1046</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -467,7 +478,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Read 1 bit </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00051">51</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00052">52</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -505,7 +516,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Read 1 bitdouble (compacted data) </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00381">381</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00388">388</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -546,7 +557,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Read bit-extrusion </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00551">551</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00566">566</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -565,7 +576,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Read 1 bitlong (compacted data) </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00335">335</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00342">342</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -584,7 +595,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Read 1 bitshort (compacted data) </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00287">287</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00296">296</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -603,11 +614,11 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Read bit-thickness </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00666">666</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00679">679</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a8785229f62158ea15f08412efeffc0e6"></a>
+<a class="anchor" id="ab72633d122ea563c24facaa5c87a99bc"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -621,7 +632,13 @@ modified by James Mike Dupont </dd></dl>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="struct__dwg__color.html">Dwg_Color</a> *&#160;</td>
-          <td class="paramname"><em>color</em>&#160;</td>
+          <td class="paramname"><em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
+          <td class="paramname"><em>dat_string</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -632,7 +649,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Read color </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00886">886</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00945">945</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -651,7 +668,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Only read CRK-numbers, without checking, only in order to go to the next byte, while jumping contingent non-used bits </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00748">748</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00760">760</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -680,7 +697,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Read bit-double with default </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00585">585</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00599">599</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -709,7 +726,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Read handle-references </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00691">691</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00704">704</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -728,7 +745,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Read 1 bitlong according to normal order </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00859">859</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00919">919</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -747,7 +764,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Read 1 modular char (max 4 bytes) </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00426">426</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00433">433</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -766,7 +783,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Read 1 modular short (max 2 words) </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00501">501</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00511">511</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -785,7 +802,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Read 1 byte (raw char) </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00161">161</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00172">172</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -804,7 +821,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Read 1 raw double (8 bytes) </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00257">257</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00266">266</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -823,7 +840,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Read 1 raw long (2 words) </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00236">236</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00245">245</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -842,16 +859,16 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Read 1 word (raw short) </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00215">215</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00224">224</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a03d5b97dd0162513450395b2b3c772ea"></a>
+<a class="anchor" id="a4e1bcd9f8ea72dd017810989f15ac3ed"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">BITCODE_TV bit_read_TV </td>
+          <td class="memname">BITCODE_T bit_read_T </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
           <td class="paramname"><em>dat</em></td><td>)</td>
@@ -859,9 +876,57 @@ modified by James Mike Dupont </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Read simple text. After usage, the allocated memory must be properly freed. </p>
+<p>Read simple text. After usage, the allocated memory must be properly freed </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00823">823</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00827">827</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af5d93e773562a6f3854518530decfef7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BITCODE_TU bit_read_TU </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
+          <td class="paramname"><em>dat</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Read unicode text. After usage, the allocated memory must be properly freed </p>
+
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00851">851</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afbfead81b14afb8bee5c9ba67cb59c1e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BITCODE_TV bit_read_TV </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
+          <td class="paramname"><em>dat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
+          <td class="paramname"><em>dat_string</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Read variable text </p>
+
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00889">889</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -888,9 +953,9 @@ modified by James Mike Dupont </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Search for a sentinel; if found, positions "dat-&gt;byte" immediately after it. </p>
+<p>Search for a sentinel; if found, positions "dat-&gt;byte" immediately after it </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00920">920</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00993">993</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -919,7 +984,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Write 1 nibble </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00145">145</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00157">157</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -1006,7 +1071,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Write 1 bitdouble (compacted data) </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00411">411</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00418">418</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -1045,9 +1110,9 @@ modified by James Mike Dupont </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Write bit-extrusionn. </p>
+<p>Write bit-extrusion </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00570">570</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00584">584</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -1076,7 +1141,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Write 1 bitlong (compacted data) </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00363">363</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00370">370</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -1103,9 +1168,9 @@ modified by James Mike Dupont </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Write 1 bitshort (compacted data). </p>
+<p>Write 1 bitshort (compacted data) </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00314">314</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00322">322</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -1134,7 +1199,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Write bit-thickness </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00678">678</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00691">691</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -1163,7 +1228,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Write color </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00902">902</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00973">973</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -1198,7 +1263,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Create and write CRC-number </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00798">798</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00804">804</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -1233,7 +1298,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Write bit-double with default </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00621">621</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00635">635</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -1262,7 +1327,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Write handle-references </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00718">718</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00731">731</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -1291,7 +1356,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Write 1 bitlong according to normal order </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00873">873</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00932">932</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -1320,7 +1385,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Write 1 modular char (max 4 bytes) </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00459">459</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00467">467</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -1349,7 +1414,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Write 1 modular short (max 2 words) </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00526">526</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00539">539</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -1378,7 +1443,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Write 1 byte (raw char) </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00185">185</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00195">195</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -1407,7 +1472,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Write 1 raw double (8 bytes) </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00273">273</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00282">282</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -1436,7 +1501,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Write 1 raw long (2 words) </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00248">248</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00257">257</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -1465,7 +1530,7 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Write 1 word (raw short) </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00227">227</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00236">236</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
@@ -1494,16 +1559,16 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Write Sentinal </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00943">943</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l01016">1016</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a2846d45695ed99f09da2a31a6973dceb"></a>
+<a class="anchor" id="ac1510db27917cc854b78df3c6e7be644"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void bit_write_TV </td>
+          <td class="memname">void bit_write_T </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
           <td class="paramname"><em>dat</em>, </td>
@@ -1523,14 +1588,72 @@ modified by James Mike Dupont </dd></dl>
 </div><div class="memdoc">
 <p>Write simple text </p>
 
-<p>Definition at line <a class="el" href="bits_8c_source.html#l00846">846</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+<p>Definition at line <a class="el" href="bits_8c_source.html#l00900">900</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a31cbed8c963922c61b3668cbd35d7b37"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int calculate_mirror_crc </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long int&#160;</td>
+          <td class="paramname"><em>crc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>64-bit Mirror CRC for 1-byte </p>
+
+<p>Definition at line <a class="el" href="bits_8c_source.html#l01308">1308</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aac66eb4708cf2e85932c64293f711207"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int calculate_normal_crc </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long int&#160;</td>
+          <td class="paramname"><em>crc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>64-bit Normal CRC for 1-byte </p>
+
+<p>Definition at line <a class="el" href="bits_8c_source.html#l01212">1212</a> of file <a class="el" href="bits_8c_source.html">bits.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 31 2013 11:47:21 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 20 2013 22:26:54 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

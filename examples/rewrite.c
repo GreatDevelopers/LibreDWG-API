@@ -10,81 +10,69 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * Rewrite.c: load a DWG file and rewrite it
- * written by Anderson Pierre Cardoso
+/**
+ *     \file       rewrite.c
+ *     \brief      Load a DWG file and rewrite it
+ *     \author     written by Anderson Pierre Cardoso
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 #include <stdio.h>
+#include <string.h>
 #include <dwg.h>
+
 #include "suffix.c"
 #include "../src/common.h"
-#include <string.h>
-
 
 int
 main (int argc, char *argv[])
 {
  // check entry
- if (argc <= 2 || strcmp(argv[1],argv[2]) == 0 )
+ if (argc <= 2 || strcmp(argv[1], argv[2]) == 0 )
    {
-    printf("\n\nUsage: \t ./rewrite <dwg_input_file>.dwg <dwg_output_file>.dwg \n \t  Do not subscribe the input file! Avoid subscribe the output file either (it will probably cause an error!\n\n");
+    printf("\n\nUsage: \t ./rewrite <dwg_input_file>.dwg <dwg_output_file>.dwg"
+           " \n \t  Do not subscribe the input file! Avoid subscribe the"
+           " output file either (it will probably cause an error!\n\n");
     return 1;
   }
-  
-  
   int error;
   Dwg_Data dwg_struct;
-  char* filename_in = argv[1];
-  char* filename_out = argv[2];
-  /*
-   * some very simple testing
-   */
 
-  // reads the file
-  printf("\n ===== \n Reading original file \n =====\n");
+  char* filename_in  = argv[1];
+  char* filename_out = argv[2];
+  
+  // some very simple testing
+  /* reads the file */
+  printf("\n \n Reading original file \n\n");
   error = dwg_read_file(filename_in, &dwg_struct);
 
   if (error)
-    {
-      printf("\nREAD ERROR!\n\n");
-    }
+    printf("\n READ ERROR! \n\n");
   else
-    {
-      printf("\nREAD SUCCESS!\n\n");
-    }
+    printf("\n READ SUCCESS! \n\n");
 
-  // rewrite it
-  printf("\n ===== \n Writing new file \n =====\n");
+  /* rewrite it */
+  printf("\n \n Writing new file \n \n");
   error = dwg_write_file(filename_out, &dwg_struct);
 
   if (error)
-    {
-      printf("\nWRITE ERROR!\n\n");
-    }
+    printf("\n WRITE ERROR! \n\n");
   else
-    {
-      printf("\nWRITE SUCCESS!\n\n");
-    }
+    printf("\n WRITE SUCCESS! \n\n");
   
   dwg_free(&dwg_struct);
 
-  // try to read again
-  printf("\n ===== \n Reading created file \n =====\n");
+  /* try to read again */
+  printf("\n \n Reading created file \n \n");
   error = dwg_read_file(filename_out, &dwg_struct);
 
   if (error)
-    {
-      printf("\nre-READ ERROR!\n\n");
-    }
+    printf("\n Re-READ ERROR! \n\n");
   else
-    {
-      printf("\nre-READ SUCCESS!\n\n");
-    }
+    printf("\n Re-READ SUCCESS! \n\n");
 
-
-  /* This value is the return value for `main',
-     so clamp it to either 0 or 1.  */
+  /* This value is the return value for `main', so clamp it to either 0 or 1 */
   return error ? 1 : 0;
  // dwg_free(&dwg);
  

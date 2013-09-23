@@ -219,6 +219,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a4984c85f1665f145ea0802ffe911caf6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4984c85f1665f145ea0802ffe911caf6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_VECTOR</b>(name, type, size)&#160;&#160;&#160;FIELD_VECTOR_N(name, type, _obj-&gt;size)</td></tr>
 <tr class="separator:a4984c85f1665f145ea0802ffe911caf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab674b0f089c56cf7770caed316ba1895"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab674b0f089c56cf7770caed316ba1895"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_VECTOR_TV</b>(name, size)&#160;&#160;&#160;FIELD_VECTOR_N(name, T, _obj-&gt;size)</td></tr>
+<tr class="separator:ab674b0f089c56cf7770caed316ba1895"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38bd986526836edc930f8fff86a61788"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38bd986526836edc930f8fff86a61788"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_HANDLE</b>(name, handle_code)&#160;&#160;&#160;<a class="el" href="bits_8h.html#ad6467d707c9c4fc21fa2ae57a3c35670">bit_write_H</a>(dat, &amp;_obj-&gt;name-&gt;handleref)</td></tr>
 <tr class="separator:a38bd986526836edc930f8fff86a61788"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -230,6 +233,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a7fbbd2ee796503d97182fac43ee55cc6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7fbbd2ee796503d97182fac43ee55cc6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_XDATA</b>(name, size)</td></tr>
 <tr class="separator:a7fbbd2ee796503d97182fac43ee55cc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a697104b52824b3ca648114f80f57501c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a697104b52824b3ca648114f80f57501c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SEEK_TO_HANDLES</b></td></tr>
+<tr class="separator:a697104b52824b3ca648114f80f57501c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5baf253c6ef55a7bdfd6761e22930415"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5baf253c6ef55a7bdfd6761e22930415"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>COMMON_ENTITY_HANDLE_DATA</b>&#160;&#160;&#160;dwg_encode_common_entity_handle_data(dat, obj);</td></tr>
 <tr class="separator:a5baf253c6ef55a7bdfd6761e22930415"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -315,10 +321,10 @@ modified by Anderson Pierre Cardoso </dd></dl>
 <div class="line">{\</div>
 <div class="line">  int vcount, rcount, rcount2, rcount3;<a class="code" href="struct__dwg__struct.html" title="Main DWG struct.">\</a></div>
 <div class="line"><a class="code" href="struct__dwg__struct.html" title="Main DWG struct.">  Dwg_Data</a>* dwg = obj-&gt;parent;\</div>
-<div class="line">  Dwg_Entity_##token * _obj = obj-&gt;tio.entity-&gt;tio.token;\</div>
+<div class="line">  Dwg_Entity_##token * _obj = obj-&gt;as.entity-&gt;as.token;\</div>
 <div class="line">  LOG_INFO(<span class="stringliteral">&quot;Entity &quot;</span> #token <span class="stringliteral">&quot;:\n&quot;</span>)\</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="encode_8c_source.html#l00201">201</a> of file <a class="el" href="encode_8c_source.html">encode.c</a>.</p>
+<p>Definition at line <a class="el" href="encode_8c_source.html#l00205">205</a> of file <a class="el" href="encode_8c_source.html">encode.c</a>.</p>
 
 </div>
 </div>
@@ -339,10 +345,10 @@ modified by Anderson Pierre Cardoso </dd></dl>
 <div class="line">{\</div>
 <div class="line">  int vcount, rcount, rcount2, rcount3;<a class="code" href="struct__dwg__struct.html" title="Main DWG struct.">\</a></div>
 <div class="line"><a class="code" href="struct__dwg__struct.html" title="Main DWG struct.">  Dwg_Data</a>* dwg = obj-&gt;parent; \</div>
-<div class="line">  Dwg_Object_##token * _obj = obj-&gt;tio.object-&gt;tio.token; \</div>
+<div class="line">  Dwg_Object_##token * _obj = obj-&gt;as.object-&gt;as.token; \</div>
 <div class="line">  LOG_INFO(<span class="stringliteral">&quot;Entity &quot;</span> #token <span class="stringliteral">&quot;:\n&quot;</span>)\</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="encode_8c_source.html#l00211">211</a> of file <a class="el" href="encode_8c_source.html">encode.c</a>.</p>
+<p>Definition at line <a class="el" href="encode_8c_source.html#l00215">215</a> of file <a class="el" href="encode_8c_source.html">encode.c</a>.</p>
 
 </div>
 </div>
@@ -359,13 +365,13 @@ modified by Anderson Pierre Cardoso </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">FIELD_VALUE(reactors) = (BITCODE_H*) malloc(<span class="keyword">sizeof</span>(BITCODE_H) * obj-&gt;tio.entity-&gt;num_reactors);\</div>
-<div class="line">  for (vcount=0; vcount&lt;obj-&gt;tio.entity-&gt;num_reactors; vcount++)\</div>
+<b>Value:</b><div class="fragment"><div class="line">FIELD_VALUE(reactors) = (BITCODE_H*) malloc(<span class="keyword">sizeof</span>(BITCODE_H) * obj-&gt;as.entity-&gt;num_reactors);\</div>
+<div class="line">  for (vcount=0; vcount&lt;obj-&gt;as.entity-&gt;num_reactors; vcount++)\</div>
 <div class="line">    {\</div>
 <div class="line">      FIELD_HANDLE(reactors[vcount], code);\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="encode_8c_source.html#l00221">221</a> of file <a class="el" href="encode_8c_source.html">encode.c</a>.</p>
+<p>Definition at line <a class="el" href="encode_8c_source.html#l00225">225</a> of file <a class="el" href="encode_8c_source.html">encode.c</a>.</p>
 
 </div>
 </div>
@@ -384,7 +390,7 @@ modified by Anderson Pierre Cardoso </dd></dl>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">SINCE(R_2004)\</div>
 <div class="line">    {\</div>
-<div class="line">      if (!obj-&gt;tio.entity-&gt;xdic_missing_flag)\</div>
+<div class="line">      if (!obj-&gt;as.entity-&gt;xdic_missing_flag)\</div>
 <div class="line">        {\</div>
 <div class="line">          FIELD_HANDLE(xdicobjhandle, code);\</div>
 <div class="line">        }\</div>
@@ -628,7 +634,7 @@ modified by Anderson Pierre Cardoso </dd></dl>
 <div class="line">      FIELD_HANDLE(name[vcount], code);\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="encode_8c_source.html#l00174">174</a> of file <a class="el" href="encode_8c_source.html">encode.c</a>.</p>
+<p>Definition at line <a class="el" href="encode_8c_source.html#l00176">176</a> of file <a class="el" href="encode_8c_source.html">encode.c</a>.</p>
 
 </div>
 </div>
@@ -645,7 +651,7 @@ modified by Anderson Pierre Cardoso </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">for</span> (vcount=0; vcount&lt;obj-&gt;tio.object-&gt;num_reactors; vcount++)\</div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">for</span> (vcount=0; vcount&lt;obj-&gt;as.object-&gt;num_reactors; vcount++)\</div>
 <div class="line">    {\</div>
 <div class="line">      FIELD_HANDLE(reactors[vcount], code);\</div>
 <div class="line">    }</div>
@@ -669,7 +675,7 @@ modified by Anderson Pierre Cardoso </dd></dl>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">SINCE(R_2004)\</div>
 <div class="line">    {\</div>
-<div class="line">      if (!obj-&gt;tio.object-&gt;xdic_missing_flag)\</div>
+<div class="line">      if (!obj-&gt;as.object-&gt;xdic_missing_flag)\</div>
 <div class="line">        FIELD_HANDLE(xdicobjhandle, code);\</div>
 <div class="line">    }\</div>
 <div class="line">  PRIOR_VERSIONS\</div>
@@ -713,7 +719,7 @@ modified by Anderson Pierre Cardoso </dd></dl>
 </div><div class="memdoc">
 <p>dwg_encode_variable_type(dwg, dat, obj)) </p>
 
-<p>Definition at line <a class="el" href="encode_8c_source.html#l00683">683</a> of file <a class="el" href="encode_8c_source.html">encode.c</a>.</p>
+<p>Definition at line <a class="el" href="encode_8c_source.html#l00705">705</a> of file <a class="el" href="encode_8c_source.html">encode.c</a>.</p>
 
 </div>
 </div>
@@ -742,14 +748,14 @@ modified by Anderson Pierre Cardoso </dd></dl>
 </div><div class="memdoc">
 <p>Encode DWG file </p>
 
-<p>Definition at line <a class="el" href="encode_8c_source.html#l00239">239</a> of file <a class="el" href="encode_8c_source.html">encode.c</a>.</p>
+<p>Definition at line <a class="el" href="encode_8c_source.html#l00243">243</a> of file <a class="el" href="encode_8c_source.html">encode.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 31 2013 11:47:21 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 20 2013 22:26:54 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

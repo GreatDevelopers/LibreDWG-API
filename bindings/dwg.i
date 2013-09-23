@@ -11,9 +11,12 @@
 /*****************************************************************************/
 
 /*
- * dwg.i: SWIG interface file
- * written by Rodrigo Rodrigues da Silva
- * ideas contributed by James Michael DuPont
+ *     \file       dwg.i
+ *     \brief      SWIG interface file
+ *     \author     written by Rodrigo Rodrigues da Silva
+ *     \author     ideas contributed by James Michael DuPont
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 %module libredwg

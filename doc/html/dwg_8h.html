@@ -498,6 +498,18 @@ Macros</h2></td></tr>
 <tr class="memitem:ae5e1fee6b8aeca25be1322eb9b6409fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae5e1fee6b8aeca25be1322eb9b6409fe"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>FORMAT_BL</b>&#160;&#160;&#160;&quot;%lu&quot;</td></tr>
 <tr class="separator:ae5e1fee6b8aeca25be1322eb9b6409fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5beec02b379306df8688643cc5ef832c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5beec02b379306df8688643cc5ef832c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BITCODE_T</b>&#160;&#160;&#160;unsigned char *</td></tr>
+<tr class="separator:a5beec02b379306df8688643cc5ef832c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae769001ab85e2f314343b0e5b6a97d85"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae769001ab85e2f314343b0e5b6a97d85"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FORMAT_T</b>&#160;&#160;&#160;&quot;\&quot;%s\&quot;&quot;</td></tr>
+<tr class="separator:ae769001ab85e2f314343b0e5b6a97d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58fb66cac787c8bcd8a68c5bde559910"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58fb66cac787c8bcd8a68c5bde559910"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BITCODE_TU</b>&#160;&#160;&#160;DWGCHAR *</td></tr>
+<tr class="separator:a58fb66cac787c8bcd8a68c5bde559910"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7cdcbb92cf057729c28fa9c0e253b92"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac7cdcbb92cf057729c28fa9c0e253b92"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FORMAT_TU</b>&#160;&#160;&#160;&quot;\&quot;%ls\&quot;&quot;</td></tr>
+<tr class="separator:ac7cdcbb92cf057729c28fa9c0e253b92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a7e040c6e36ca039b03608679ecaf7c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a7e040c6e36ca039b03608679ecaf7c"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>BITCODE_TV</b>&#160;&#160;&#160;unsigned char *</td></tr>
 <tr class="separator:a2a7e040c6e36ca039b03608679ecaf7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -537,11 +549,8 @@ Macros</h2></td></tr>
 <tr class="memitem:a538033d7bae50f991199e157fa163ab1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a538033d7bae50f991199e157fa163ab1"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>FORMAT_4BITS</b>&#160;&#160;&#160;&quot;%1x&quot;</td></tr>
 <tr class="separator:a538033d7bae50f991199e157fa163ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5beec02b379306df8688643cc5ef832c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5beec02b379306df8688643cc5ef832c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>BITCODE_T</b>&#160;&#160;&#160;BITCODE_TV</td></tr>
-<tr class="separator:a5beec02b379306df8688643cc5ef832c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ec964e6f90c91511344b72b613310ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ec964e6f90c91511344b72b613310ae"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DWGCHAR</b>&#160;&#160;&#160;wchar_t</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DWGCHAR</b>&#160;&#160;&#160;unsigned short</td></tr>
 <tr class="separator:a3ec964e6f90c91511344b72b613310ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d23a9bc9a02453876b244dc6706f6a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1d23a9bc9a02453876b244dc6706f6a6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>BITCODE_2RD</b>&#160;&#160;&#160;<a class="el" href="struct__dwg__bitecode__2rd.html">Dwg_Bitcode_2RD</a></td></tr>
@@ -1061,43 +1070,48 @@ Enumerations</h2></td></tr>
 <br/>
 &#160;&#160;<b>DWG_TYPE_XLINE</b> = 0x29, 
 <b>DWG_TYPE_DICTIONARY</b> = 0x2a, 
+<b>DWG_TYPE_OLEFRAME</b> = 0x2b, 
 <b>DWG_TYPE_MTEXT</b> = 0x2c, 
-<b>DWG_TYPE_LEADER</b> = 0x2d, 
 <br/>
-&#160;&#160;<b>DWG_TYPE_TOLERANCE</b> = 0x2e, 
+&#160;&#160;<b>DWG_TYPE_LEADER</b> = 0x2d, 
+<b>DWG_TYPE_TOLERANCE</b> = 0x2e, 
 <b>DWG_TYPE_MLINE</b> = 0x2f, 
 <b>DWG_TYPE_BLOCK_CONTROL</b> = 0x30, 
-<b>DWG_TYPE_BLOCK_HEADER</b> = 0x31, 
 <br/>
-&#160;&#160;<b>DWG_TYPE_LAYER_CONTROL</b> = 0x32, 
+&#160;&#160;<b>DWG_TYPE_BLOCK_HEADER</b> = 0x31, 
+<b>DWG_TYPE_LAYER_CONTROL</b> = 0x32, 
 <b>DWG_TYPE_LAYER</b> = 0x33, 
 <b>DWG_TYPE_SHAPEFILE_CONTROL</b> = 0x34, 
-<b>DWG_TYPE_SHAPEFILE</b> = 0x35, 
 <br/>
-&#160;&#160;<b>DWG_TYPE_LTYPE_CONTROL</b> = 0x38, 
+&#160;&#160;<b>DWG_TYPE_SHAPEFILE</b> = 0x35, 
+<b>DWG_TYPE_LTYPE_CONTROL</b> = 0x38, 
 <b>DWG_TYPE_LTYPE</b> = 0x39, 
 <b>DWG_TYPE_VIEW_CONTROL</b> = 0x3c, 
-<b>DWG_TYPE_VIEW</b> = 0x3d, 
 <br/>
-&#160;&#160;<b>DWG_TYPE_UCS_CONTROL</b> = 0x3e, 
+&#160;&#160;<b>DWG_TYPE_VIEW</b> = 0x3d, 
+<b>DWG_TYPE_UCS_CONTROL</b> = 0x3e, 
 <b>DWG_TYPE_UCS</b> = 0x3f, 
 <b>DWG_TYPE_VPORT_CONTROL</b> = 0x40, 
-<b>DWG_TYPE_VPORT</b> = 0x41, 
 <br/>
-&#160;&#160;<b>DWG_TYPE_APPID_CONTROL</b> = 0x42, 
+&#160;&#160;<b>DWG_TYPE_VPORT</b> = 0x41, 
+<b>DWG_TYPE_APPID_CONTROL</b> = 0x42, 
 <b>DWG_TYPE_APPID</b> = 0x43, 
 <b>DWG_TYPE_DIMSTYLE_CONTROL</b> = 0x44, 
-<b>DWG_TYPE_DIMSTYLE</b> = 0x45, 
 <br/>
-&#160;&#160;<b>DWG_TYPE_VP_ENT_HDR_CONTROL</b> = 0x46, 
+&#160;&#160;<b>DWG_TYPE_DIMSTYLE</b> = 0x45, 
+<b>DWG_TYPE_VP_ENT_HDR_CONTROL</b> = 0x46, 
 <b>DWG_TYPE_VP_ENT_HDR</b> = 0x47, 
 <b>DWG_TYPE_GROUP</b> = 0x48, 
-<b>DWG_TYPE_MLINESTYLE</b> = 0x49, 
 <br/>
-&#160;&#160;<b>DWG_TYPE_LWPLINE</b> = 0x4d, 
-<b>DWG_TYPE_HATCH</b> = 0x4e, 
+&#160;&#160;<b>DWG_TYPE_MLINESTYLE</b> = 0x49, 
+<b>DWG_TYPE_OLE2FRAME</b> = 0x4a, 
+<b>DWG_TYPE_LONG_TRANSACTION</b> = 0x4c, 
+<b>DWG_TYPE_LWPLINE</b> = 0x4d, 
+<br/>
+&#160;&#160;<b>DWG_TYPE_HATCH</b> = 0x4e, 
 <b>DWG_TYPE_XRECORD</b> = 0x4f, 
 <b>DWG_TYPE_PLACEHOLDER</b> = 0x50, 
+<b>DWG_TYPE_VBA_PROJECT</b> = 0x51, 
 <br/>
 &#160;&#160;<b>DWG_TYPE_LAYOUT</b> = 0x52
 <br/>
@@ -1245,7 +1259,7 @@ modified by Till Heuschmann </dd></dl>
 <div class="line">    BITCODE_B flip_arrow2;</div>
 </div><!-- fragment --><p>Macro for common DIMENSION declaration </p>
 
-<p>Definition at line <a class="el" href="dwg_8h_source.html#l00883">883</a> of file <a class="el" href="dwg_8h_source.html">dwg.h</a>.</p>
+<p>Definition at line <a class="el" href="dwg_8h_source.html#l00890">890</a> of file <a class="el" href="dwg_8h_source.html">dwg.h</a>.</p>
 
 </div>
 </div>
@@ -1261,7 +1275,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Struct for BODY (39) </p>
 
-<p>Definition at line <a class="el" href="dwg_8h_source.html#l01299">1299</a> of file <a class="el" href="dwg_8h_source.html">dwg.h</a>.</p>
+<p>Definition at line <a class="el" href="dwg_8h_source.html#l01313">1313</a> of file <a class="el" href="dwg_8h_source.html">dwg.h</a>.</p>
 
 </div>
 </div>
@@ -1276,7 +1290,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Struct for REGION (37) </p>
 
-<p>Definition at line <a class="el" href="dwg_8h_source.html#l01296">1296</a> of file <a class="el" href="dwg_8h_source.html">dwg.h</a>.</p>
+<p>Definition at line <a class="el" href="dwg_8h_source.html#l01310">1310</a> of file <a class="el" href="dwg_8h_source.html">dwg.h</a>.</p>
 
 </div>
 </div>
@@ -1291,7 +1305,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Struct for UNUSED (0) </p>
 
-<p>Definition at line <a class="el" href="dwg_8h_source.html#l00613">613</a> of file <a class="el" href="dwg_8h_source.html">dwg.h</a>.</p>
+<p>Definition at line <a class="el" href="dwg_8h_source.html#l00620">620</a> of file <a class="el" href="dwg_8h_source.html">dwg.h</a>.</p>
 
 </div>
 </div>
@@ -1306,7 +1320,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Struct for VERTEX_MESH (12) - same as VERTEX_3D </p>
 
-<p>Definition at line <a class="el" href="dwg_8h_source.html#l00792">792</a> of file <a class="el" href="dwg_8h_source.html">dwg.h</a>.</p>
+<p>Definition at line <a class="el" href="dwg_8h_source.html#l00799">799</a> of file <a class="el" href="dwg_8h_source.html">dwg.h</a>.</p>
 
 </div>
 </div>
@@ -1321,7 +1335,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Struct for VERTEX_PFACE (13) - same as VERTEX_3D </p>
 
-<p>Definition at line <a class="el" href="dwg_8h_source.html#l00795">795</a> of file <a class="el" href="dwg_8h_source.html">dwg.h</a>.</p>
+<p>Definition at line <a class="el" href="dwg_8h_source.html#l00802">802</a> of file <a class="el" href="dwg_8h_source.html">dwg.h</a>.</p>
 
 </div>
 </div>
@@ -1336,14 +1350,14 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Struct for XLINE (41) </p>
 
-<p>Definition at line <a class="el" href="dwg_8h_source.html#l01312">1312</a> of file <a class="el" href="dwg_8h_source.html">dwg.h</a>.</p>
+<p>Definition at line <a class="el" href="dwg_8h_source.html#l01326">1326</a> of file <a class="el" href="dwg_8h_source.html">dwg.h</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 31 2013 11:47:21 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 20 2013 22:26:54 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

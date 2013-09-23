@@ -54,7 +54,7 @@ find_section(Dwg_Data *dwg, uint32_t index)
 int32_t
 page_checksum(int32_t seed, unsigned char *data, int32_t size)
 {
-  //seed = 0;
+  // seed = 0;
   int32_t sum1, sum2, opcode, chunksize;
   int i = 0;
 
@@ -463,9 +463,15 @@ decode_R2004(Bit_Chain *dat, Dwg_Data *dwg)
        read_R2004_section_info(dat, dwg, ss.fields.comp_data_size,
                                ss.fields.decomp_data_size);
     }
-  read_2004_section_classes(dat, dwg);
-  read_2004_section_header(dat, dwg);
-  read_2004_section_handles(dat, dwg);
+
+  /* Classes */
+  read_R2004_section_classes(dat, dwg);
+  
+  /* Header variables */
+  read_R2004_section_header(dat, dwg);
+
+  /* Handles */
+  read_R2004_section_handles(dat, dwg);
 
   /* Clean up */
   if (dwg->header.section_info != 0)

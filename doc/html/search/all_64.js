@@ -8,9 +8,11 @@ var searchData=
   ['decode_5fr2004',['decode_R2004',['../decode__r2004_8c.html#a908d2d8d20cb499bb605506b5ea2159a',1,'decode_R2004(Bit_Chain *dat, Dwg_Data *dwg):&#160;decode_r2004.c'],['../decode__r2004_8h.html#a908d2d8d20cb499bb605506b5ea2159a',1,'decode_R2004(Bit_Chain *dat, Dwg_Data *dwg):&#160;decode_r2004.c']]],
   ['decode_5fr2004_2ec',['decode_r2004.c',['../decode__r2004_8c.html',1,'']]],
   ['decode_5fr2004_2eh',['decode_r2004.h',['../decode__r2004_8h.html',1,'']]],
-  ['decode_5fr2007',['decode_R2007',['../decode_8c.html#a147acad33243577181ad27028bbac840',1,'decode.c']]],
+  ['decode_5fr2007',['decode_R2007',['../decode__r2007_8c.html#a147acad33243577181ad27028bbac840',1,'decode_R2007(Bit_Chain *dat, Dwg_Data *dwg):&#160;decode_r2007.c'],['../decode__r2007_8h.html#a147acad33243577181ad27028bbac840',1,'decode_R2007(Bit_Chain *dat, Dwg_Data *dwg):&#160;decode_r2007.c']]],
   ['decode_5fr2007_2ec',['decode_r2007.c',['../decode__r2007_8c.html',1,'']]],
-  ['decompress_5fr2004_5fsection',['decompress_R2004_section',['../decode__r2004_8c.html#a04e73bdd31f6182d453df185f56f3d00',1,'decompress_R2004_section(Bit_Chain *dat, char *decomp, uint32_t comp_data_size):&#160;decode_r2004.c'],['../decode__r2004_8h.html#a04e73bdd31f6182d453df185f56f3d00',1,'decompress_R2004_section(Bit_Chain *dat, char *decomp, uint32_t comp_data_size):&#160;decode_r2004.c']]],
+  ['decode_5fr2007_2eh',['decode_r2007.h',['../decode__r2007_8h.html',1,'']]],
+  ['decompress_5fr2004_5fsection',['decompress_R2004_section',['../compress__decompress_8c.html#a04e73bdd31f6182d453df185f56f3d00',1,'decompress_R2004_section(Bit_Chain *dat, char *decomp, uint32_t comp_data_size):&#160;compress_decompress.c'],['../compress__decompress_8h.html#a04e73bdd31f6182d453df185f56f3d00',1,'decompress_R2004_section(Bit_Chain *dat, char *decomp, uint32_t comp_data_size):&#160;compress_decompress.c']]],
+  ['decompress_5fr2007',['decompress_R2007',['../compress__decompress_8c.html#a690d69e34cddb4608019293562bf8cd0',1,'decompress_R2007(char *dst, int dst_size, char *src, int src_size):&#160;compress_decompress.c'],['../compress__decompress_8h.html#a690d69e34cddb4608019293562bf8cd0',1,'decompress_R2007(char *dst, int dst_size, char *src, int src_size):&#160;compress_decompress.c']]],
   ['dimension_5fcommon',['DIMENSION_COMMON',['../dwg_8h.html#a334d626d7e4a0a1af39036446dfa82c4',1,'dwg.h']]],
   ['dwg_2ec',['dwg.c',['../dwg_8c.html',1,'']]],
   ['dwg_2eh',['dwg.h',['../dwg_8h.html',1,'']]],
@@ -58,6 +60,6 @@ var searchData=
   ['dwg_5fobject_5ftype',['DWG_OBJECT_TYPE',['../dwg_8h.html#a1f41fe32bd60bd375cf799ae17c07805',1,'dwg.h']]],
   ['dwg_5fresolve_5fhandle',['dwg_resolve_handle',['../resolve__pointers_8c.html#a43fbb2c0817bbcf7de0775ddb48c6cc8',1,'dwg_resolve_handle(Dwg_Data *dwg, uint32_t absref):&#160;resolve_pointers.c'],['../resolve__pointers_8h.html#a55c1a4009291d03ea7c362544ce74edf',1,'dwg_resolve_handle(Dwg_Data *dwg, uint32_t handle):&#160;resolve_pointers.c']]],
   ['dwg_5fsection_5finfo',['Dwg_Section_Info',['../structDwg__Section__Info.html',1,'']]],
-  ['dwg_5fsentinel',['Dwg_Sentinel',['../common_8h.html#a5c1f5490eef024ce285534cd1af4158c',1,'Dwg_Sentinel():&#160;common.h'],['../common_8h.html#a995043abc2264d6d61cff5d9a86f152b',1,'DWG_SENTINEL():&#160;common.h'],['../common_8c.html#a0047a08c783e6c7c05a925a8af730074',1,'dwg_sentinel(Dwg_Sentinel s):&#160;common.c'],['../common_8h.html#a466f98cdcae6b0befa055b51dd74d022',1,'dwg_sentinel(Dwg_Sentinel sentinel):&#160;common.c']]],
+  ['dwg_5fsentinel',['dwg_sentinel',['../common_8c.html#a0047a08c783e6c7c05a925a8af730074',1,'dwg_sentinel(Dwg_Sentinel s):&#160;common.c'],['../common_8h.html#a466f98cdcae6b0befa055b51dd74d022',1,'dwg_sentinel(Dwg_Sentinel sentinel):&#160;common.c'],['../common_8h.html#a995043abc2264d6d61cff5d9a86f152b',1,'DWG_SENTINEL():&#160;common.h'],['../common_8h.html#a5c1f5490eef024ce285534cd1af4158c',1,'Dwg_Sentinel():&#160;common.h']]],
   ['dwg_5fversion_5ftype',['Dwg_Version_Type',['../common_8h.html#aaf5c360464a2dd7c1d2c983debaacee7',1,'Dwg_Version_Type():&#160;common.h'],['../common_8h.html#ac480c19329e6ad9074396d253bf92f7e',1,'DWG_VERSION_TYPE():&#160;common.h']]]
 ];

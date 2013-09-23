@@ -10,9 +10,12 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * suffix.c: avoid hardcoded input/output filenames
- * written by Thien-Thi Nguyen
+/**
+ *     \file       suffix.c
+ *     \brief      Avoid hardcoded input/output filenames
+ *     \author     written by Thien-Thi Nguyen
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 #include <stdio.h>
@@ -53,5 +56,3 @@ suffix (const char *filename, const char *ext)
         }                                       \
     }                                           \
   while (0)
-
-/* suffix.c ends here */

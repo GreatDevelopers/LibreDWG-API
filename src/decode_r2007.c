@@ -52,6 +52,7 @@ decode_rs(const char *src, int block_count, int data_size)
   return (dst_base);
 }
 
+/** Read System Section Page */
 char *
 read_system_page(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
                  int64_t repeat_count)
@@ -96,6 +97,7 @@ read_system_page(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
   return data;
 }
 
+/** Read Data Section Page */
 int
 read_data_page(Bit_Chain *dat, unsigned char *decomp, int64_t page_size,
                int64_t size_comp, int64_t size_uncomp)
@@ -213,6 +215,7 @@ bfr_read_string(char **src)
   return str_base;
 }
 
+/** Read Page Map */
 r2007_page *
 read_pages_map(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
                int64_t correction)
@@ -267,8 +270,7 @@ read_pages_map(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
   return pages;
 }
 
-/* Lookup a page in the page map. The page is identified by its id.
- */
+/** Lookup a page in the page map */
 r2007_page *
 get_page(r2007_page *pages_map, int64_t id)
 {
@@ -284,6 +286,7 @@ get_page(r2007_page *pages_map, int64_t id)
   return page;
 }
 
+/** Destroy Pages */
 void
 pages_destroy(r2007_page *page)
 {
@@ -297,6 +300,7 @@ pages_destroy(r2007_page *page)
     }
 }
 
+/** Destroy Sections */
 void
 sections_destroy(r2007_section *section)
 {
@@ -319,6 +323,7 @@ sections_destroy(r2007_section *section)
     }
 }
 
+/** Read File Header */
 void 
 read_file_header(Bit_Chain *dat, r2007_file_header *file_header)
 {
@@ -406,6 +411,7 @@ string_stream_init(Bit_Chain *sstream, Bit_Chain *dat,
   return sstream;
 }
 
+/** Read Meta Data */
 int
 read_R2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg)
 {
@@ -416,14 +422,14 @@ read_R2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg)
   loglevel = 9;
   read_file_header(dat, &file_header);
   
-  // Pages Map
+  /* Pages Map */
   dat->byte += 0x28;    // overread check data
   dat->byte += file_header.pages_map_offset;
   pages_map = read_pages_map(dat, file_header.pages_map_size_comp,
                              file_header.pages_map_size_uncomp,
                              file_header.pages_map_correction); 
   
-  // Sections Map
+  /* Sections Map */
   page = get_page(pages_map, file_header.sections_map_id);
   
   if (page != NULL)
@@ -434,21 +440,22 @@ read_R2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg)
                                        file_header.sections_map_correction);
     }
 
-  // Classes Section
+  /* Classes */
   read_R2007_section_classes(dat, dwg, sections_map, pages_map);
    
-  // Header Section
+  /* Header */
   read_R2007_section_header(dat, dwg, sections_map, pages_map);
    
-  // Handles section
+  /* Handles */
   read_R2007_section_handles(dat, dwg, sections_map, pages_map);
   
+  /* Destroy sections and pages */
   pages_destroy(pages_map);
   sections_destroy(sections_map);   
   return 0;
 }
 
-/** Decode DWG R2007 */
+/** Decode R2007 version */
 int
 decode_R2007(Bit_Chain *dat, Dwg_Data *dwg)
 {
@@ -549,6 +556,7 @@ decode_R2007(Bit_Chain *dat, Dwg_Data *dwg)
   app_info_address = bit_read_RL(dat);
   LOG_TRACE("Application Info Address: 0x%08X \n", app_info_address)
 
+  /* Meta Data */
   read_R2007_meta_data(dat, dwg);
 
   LOG_TRACE("\n\n")

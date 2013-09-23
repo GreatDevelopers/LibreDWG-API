@@ -99,6 +99,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="logging_8h_source.html">logging.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="decode__r13__r15_8h_source.html">decode_r13_r15.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="decode__r2004_8h_source.html">decode_r2004.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="decode__r2007_8h_source.html">decode_r2007.h</a>&quot;</code><br/>
 <code>#include &quot;common_entity_handle_data.spec&quot;</code><br/>
 </div>
 <p><a href="decode_8c_source.html">Go to the source code of this file.</a></p>
@@ -133,8 +134,6 @@ Enumerations</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:ade78c981d47b683c0d77e63b2d4bdabd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#ade78c981d47b683c0d77e63b2d4bdabd">dwg_decode_data</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
 <tr class="separator:ade78c981d47b683c0d77e63b2d4bdabd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a147acad33243577181ad27028bbac840"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#a147acad33243577181ad27028bbac840">decode_R2007</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
-<tr class="separator:a147acad33243577181ad27028bbac840"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bcaf8a27d7d4fcc562403dba399a4f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#a4bcaf8a27d7d4fcc562403dba399a4f6">dwg_decode_entity</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object__entity.html">Dwg_Object_Entity</a> *ent)</td></tr>
 <tr class="separator:a4bcaf8a27d7d4fcc562403dba399a4f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e60622a02ae0d1ce47ddabb6a892655"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decode_8c.html#a8e60622a02ae0d1ce47ddabb6a892655">dwg_decode_object</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__object__object.html">Dwg_Object_Object</a> *ord)</td></tr>
@@ -165,35 +164,6 @@ modified by Till Heuschmann </dd></dl>
 
 <p>Definition in file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a147acad33243577181ad27028bbac840"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int decode_R2007 </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
-          <td class="paramname"><em>dat</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *&#160;</td>
-          <td class="paramname"><em>dwg</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Decode DWG R2007 </p>
-
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00145">145</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a93f8782729bdc9d5b13e20f845f3d401"></a>
 <div class="memitem">
 <div class="memproto">
@@ -219,7 +189,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Decode entity data </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00593">593</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00468">468</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -248,7 +218,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Decode DWG file </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00047">47</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00048">48</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -277,7 +247,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Decode DWG entity </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00252">252</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00143">143</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -312,7 +282,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Decode handleref of object </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00491">491</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00368">368</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -353,7 +323,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Decode handleref through handle code </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00565">565</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00440">440</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -382,7 +352,7 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Decode DWG Object </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00421">421</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00302">302</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
@@ -411,14 +381,14 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>DEcode Xdata </p>
 
-<p>Definition at line <a class="el" href="decode_8c_source.html#l00712">712</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
+<p>Definition at line <a class="el" href="decode_8c_source.html#l00587">587</a> of file <a class="el" href="decode_8c_source.html">decode.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 31 2013 11:47:21 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 20 2013 22:26:54 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

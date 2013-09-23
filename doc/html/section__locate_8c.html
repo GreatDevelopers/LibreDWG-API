@@ -93,8 +93,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>Section locating functions.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="section__locate_8h_source.html">section_locate.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="decode__r2004_8h_source.html">decode_r2004.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="compress__decompress_8h_source.html">compress_decompress.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="section__locate_8h_source.html">section_locate.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="logging_8h_source.html">logging.h</a>&quot;</code><br/>
 </div>
 <p><a href="section__locate_8c_source.html">Go to the source code of this file.</a></p>
@@ -105,6 +105,12 @@ Functions</h2></td></tr>
 <tr class="separator:ab0729d2da981c4d81d09fdf2e28f9370"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23811e58cc4855c41185f7621950ed08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="section__locate_8c.html#a23811e58cc4855c41185f7621950ed08">read_R2004_section_map</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, uint32_t comp_data_size, uint32_t decomp_data_size)</td></tr>
 <tr class="separator:a23811e58cc4855c41185f7621950ed08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed6b08ce7f00fd26a697d12a18202e63"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed6b08ce7f00fd26a697d12a18202e63"></a>
+<a class="el" href="struct__r2007__section.html">r2007_section</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>read_sections_map</b> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, int64_t size_comp, int64_t size_uncomp, int64_t correction)</td></tr>
+<tr class="separator:aed6b08ce7f00fd26a697d12a18202e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85711901f1143645e2eba41a0897abdb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a85711901f1143645e2eba41a0897abdb"></a>
+<a class="el" href="struct__r2007__section.html">r2007_section</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get_section</b> (<a class="el" href="struct__r2007__section.html">r2007_section</a> *sections_map, int64_t hashcode)</td></tr>
+<tr class="separator:a85711901f1143645e2eba41a0897abdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Section locating functions. </p>
@@ -193,7 +199,7 @@ modified by Till Heuschmann </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 31 2013 11:47:21 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 20 2013 22:26:54 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

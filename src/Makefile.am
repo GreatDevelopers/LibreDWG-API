@@ -2,6 +2,10 @@
 ##
 ## Copyright (C) 2010 Free Software Foundation, Inc.
 ##
+## Makefile.am
+##
+## Copyright (C) 2010 Free Software Foundation, Inc.
+##
 ## This file is part of LibreDWG.
 ##
 ## LibreDWG is free software: you can redistribute it and/or modify it
@@ -19,22 +23,22 @@
 
 lib_LTLIBRARIES = libredwg.la
 
-libredwg_la_SOURCES = \
-	bits.c             \
-	classes.c          \
-	common.c           \
+libredwg_la_SOURCES =         \
+	bits.c                \
+	classes.c             \
+	common.c              \
         compress_decompress.c \
-	decode.c           \
-        decode_r13_r15.c   \
-        decode_r2004.c     \
-        decode_r2007.c     \
-        dwg.c              \
-	encode.c           \
-        handle.c           \
-        header.c           \
-        object.c           \
-        print.c            \
-        resolve_pointers.c \
+	decode.c              \
+        decode_r13_r15.c      \
+        decode_r2004.c        \
+        decode_r2007.c        \
+        dwg.c                 \
+	encode.c              \
+        handle.c              \
+        header.c              \
+        object.c              \
+        print.c               \
+        resolve_pointers.c    \
         section_locate.c
 
 libredwg_la_LDFLAGS = \

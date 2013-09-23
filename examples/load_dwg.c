@@ -11,14 +11,18 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * load_dwg.c: load a DWG, get lines, text and circles
- * written by Felipe Castro
- * modified by Felipe Corrêa da Silva Sances
- * modified by Thien-Thi Nguyen
+/**
+ *     \file       load_dwg.c
+ *     \brief      Load a DWG, get lines, text and circles
+ *     \author     written by Felipe Castro
+ *     \author     modified by Felipe Corrêa da Silva Sances
+ *     \author     modified by Thien-Thi Nguyen
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 #include <dwg.h>
+
 #include "suffix.c"
 
 void
@@ -48,6 +52,7 @@ load_dwg(char *filename)
 
   dwg.num_objects = 0;
   success = dwg_read_file(filename, &dwg);
+
   for (i = 0; i < dwg.num_objects; i++)
     {
       Dwg_Entity_LINE *line;
@@ -56,18 +61,18 @@ load_dwg(char *filename)
 
       switch (dwg.object[i].type)
         {
-      case DWG_TYPE_LINE:
-        line = dwg.object[i].as.entity->as.LINE;
-        add_line(line->start.x, line->end.x, line->start.y, line->end.y);
-        break;
-      case DWG_TYPE_CIRCLE:
-        circle = dwg.object[i].as.entity->as.CIRCLE;
-        add_circle(circle->center.x, circle->center.y, circle->radius);
-        break;
-      case DWG_TYPE_TEXT:
-        text = dwg.object[i].as.entity->as.TEXT;
-        add_text(text->insertion_pt.x, text->insertion_pt.y, text->text_value);
-        break;
+          case DWG_TYPE_LINE:
+            line = dwg.object[i].as.entity->as.LINE;
+            add_line(line->start.x, line->end.x, line->start.y, line->end.y);
+            break;
+          case DWG_TYPE_CIRCLE:
+            circle = dwg.object[i].as.entity->as.CIRCLE;
+            add_circle(circle->center.x, circle->center.y, circle->radius);
+            break;
+          case DWG_TYPE_TEXT:
+            text = dwg.object[i].as.entity->as.TEXT;
+            add_text(text->insertion_pt.x, text->insertion_pt.y, text->text_value);
+            break;
         }
     }
   dwg_free(&dwg);

@@ -124,14 +124,15 @@ read_R2004_compressed_section(Bit_Chain *dat, Dwg_Data *dwg,
            (unsigned int) es.fields.tag)
   LOG_INFO("Section Type: %x \n", (unsigned int) es.fields.section_type)
 
-  // this is the number of bytes that is read in decompress_R2004_section (+ 2bytes)
+  /* this is the number of bytes that is read in decompress_R2004_section
+     (+ 2bytes) */
 
-  LOG_INFO("Data size: %x\n",      (unsigned int) es.fields.data_size)   
+  LOG_INFO("Data size:      %x\n", (unsigned int) es.fields.data_size)   
   LOG_INFO("Comp data size: %x\n", (unsigned int) es.fields.section_size)
-  LOG_INFO("StartOffset: %x \n",   (unsigned int) es.fields.start_offset)
-  LOG_INFO("Unknown: %x \n",       (unsigned int) es.fields.unknown);
-  LOG_INFO("Checksum1: %x \n",     (unsigned int) es.fields.checksum_1)
-  LOG_INFO("Checksum2: %x \n\n",   (unsigned int) es.fields.checksum_2)
+  LOG_INFO("StartOffset:   %x \n", (unsigned int) es.fields.start_offset)
+  LOG_INFO("Unknown:       %x \n", (unsigned int) es.fields.unknown);
+  LOG_INFO("Checksum1:     %x \n", (unsigned int) es.fields.checksum_1)
+  LOG_INFO("Checksum2:   %x \n\n", (unsigned int) es.fields.checksum_2)
 
   decompress_R2004_section(dat, &decomp[i * info->max_decomp_size],
                            es.fields.data_size);
@@ -153,7 +154,7 @@ decompress_R2004_section(Bit_Chain *dat, char *decomp, uint32_t comp_data_size)
   int comp_bytes, comp_offset,  i, lit_length;
   int32_t start_byte = dat->byte;
   
-  // length of the first sequence of uncompressed or literal data.
+  /* length of the first sequence of uncompressed or literal data */
   lit_length = read_R2004_literal_length(dat, &opcode1);
 
   for (i = 0; i < lit_length; ++i)

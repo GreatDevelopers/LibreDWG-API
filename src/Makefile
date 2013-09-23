@@ -163,7 +163,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-ISODATE = 2013-09-16
+ISODATE = 2013-09-20
 LD = /usr/bin/ld -m elf_x86_64
 LDFLAGS = 
 LIBOBJS = 
@@ -265,21 +265,21 @@ top_builddir = ..
 top_srcdir = ..
 lib_LTLIBRARIES = libredwg.la
 libredwg_la_SOURCES = \
-	bits.c             \
-	classes.c          \
-	common.c           \
+	bits.c                \
+	classes.c             \
+	common.c              \
         compress_decompress.c \
-	decode.c           \
-        decode_r13_r15.c   \
-        decode_r2004.c     \
-        decode_r2007.c     \
-        dwg.c              \
-	encode.c           \
-        handle.c           \
-        header.c           \
-        object.c           \
-        print.c            \
-        resolve_pointers.c \
+	decode.c              \
+        decode_r13_r15.c      \
+        decode_r2004.c        \
+        decode_r2007.c        \
+        dwg.c                 \
+	encode.c              \
+        handle.c              \
+        header.c              \
+        object.c              \
+        print.c               \
+        resolve_pointers.c    \
         section_locate.c
 
 libredwg_la_LDFLAGS = \

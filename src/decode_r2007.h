@@ -13,7 +13,7 @@
 /**
  *     \file       decode_r2007.h
  *     \brief      R2007 decode function prototypes
- *     \author     written by Avneet Kaur
+ *     \author     written by
  *     \version    
  *     \copyright  GNU General Public License (version 3 or later)
  */

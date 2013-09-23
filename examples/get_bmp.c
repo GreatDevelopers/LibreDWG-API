@@ -11,29 +11,32 @@
 /*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /*****************************************************************************/
 
-/*
- * get_bmp.c: get the bmp thumbnail in a dwg file
- * written by Felipe Castro
- * modified by Felipe Corrêa da Silva Sances
- * modified by Thien-Thi Nguyen
+/**
+ *     \file       get_bmp.c
+ *     \brief      Get the bmp thumbnail in a dwg file
+ *     \author     written by Felipe Castro
+ *     \author     modified by Felipe Corrêa da Silva Sances
+ *     \author     modified by Thien-Thi Nguyen
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
  */
 
 #include <stdio.h>
 #include <string.h>
 #include <dwg.h>
+
 #include "suffix.c"
 
 int
 get_bmp(char *filename)
 {
-  char *outfile;
-  char *data;
+  char *data, *outfile;
   int success;
-  long size;
-  long tmp;
+  long size, tmp;
   FILE *fh;
   size_t retval;
   Dwg_Data dwg;
+
   struct _BITMAP_HEADER
   {
     char magic[2];
@@ -44,6 +47,7 @@ get_bmp(char *filename)
 
   /* Read dwg data */
   success = dwg_read_file(filename, &dwg);
+
   if (success != 0)
     {
       puts("Unable to read sample file");
@@ -64,22 +68,22 @@ get_bmp(char *filename)
       puts("No thumb data in dwg file");
       return -3;
     }
+  outfile = suffix(filename, "bmp");
+  fh = fopen(outfile, "w");
 
-  outfile = suffix (filename, "bmp");
-  fh = fopen (outfile, "w");
   if (!fh)
     {
-      printf ("Unable to write file '%s'\n", outfile);
-      free (outfile);
+      printf("Unable to write file '%s'\n", outfile);
+      free(outfile);
       return -4;
     }
 
   /* Write bmp file header */
-  bmp_h.magic[0] = 'B';
-  bmp_h.magic[1] = 'M';
+  bmp_h.magic[0]  = 'B';
+  bmp_h.magic[1]  = 'M';
   bmp_h.file_size = 14 + size; // file header + DIB data
-  bmp_h.reserved = 0;
-  bmp_h.offset = 14 + 40 + 4 * 256; // file header + DIB header + color table
+  bmp_h.reserved  = 0;
+  bmp_h.offset    = 14 + 40 + 4 * 256; //file header + DIB header + color table
   retval = fwrite(&bmp_h.magic[0], 2, sizeof(char), fh);
   retval = fwrite(&bmp_h.file_size, 3, sizeof(long), fh);
 
@@ -87,16 +91,15 @@ get_bmp(char *filename)
   retval = fwrite(data, 1, size, fh);
   fclose(fh);
 
-  printf ("Success! See the file '%s'\n", outfile);
-  free (outfile);
+  printf("Success! See the file '%s'\n", outfile);
+  free(outfile);
   return success;
 }
 
 int
 main (int argc, char *argv[])
 {
-  REQUIRE_INPUT_FILE_ARG (argc);
-  get_bmp (argv[1]);
+  REQUIRE_INPUT_FILE_ARG(argc);
+  get_bmp(argv[1]);
   return 0;
 }
-

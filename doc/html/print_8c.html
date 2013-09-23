@@ -214,6 +214,9 @@ Macros</h2></td></tr>
 <tr class="memitem:ae4790cc836e6be8d278b7649c7591c6e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae4790cc836e6be8d278b7649c7591c6e"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>HANDLE_VECTOR</b>(name, sizefield, code)&#160;&#160;&#160;HANDLE_VECTOR_N(name, FIELD_VALUE(sizefield), code)</td></tr>
 <tr class="separator:ae4790cc836e6be8d278b7649c7591c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab674b0f089c56cf7770caed316ba1895"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab674b0f089c56cf7770caed316ba1895"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_VECTOR_TV</b>(name, size)</td></tr>
+<tr class="separator:ab674b0f089c56cf7770caed316ba1895"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fbbd2ee796503d97182fac43ee55cc6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7fbbd2ee796503d97182fac43ee55cc6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>FIELD_XDATA</b>(name, size)</td></tr>
 <tr class="separator:a7fbbd2ee796503d97182fac43ee55cc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -233,6 +236,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a25430167db754fb3fe8322e151d89d8d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a25430167db754fb3fe8322e151d89d8d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>REPEAT3</b>(times, name, type)&#160;&#160;&#160;for (rcount3=0; rcount3&lt;_obj-&gt;times; rcount3++)</td></tr>
 <tr class="separator:a25430167db754fb3fe8322e151d89d8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a697104b52824b3ca648114f80f57501c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a697104b52824b3ca648114f80f57501c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SEEK_TO_HANDLES</b></td></tr>
+<tr class="separator:a697104b52824b3ca648114f80f57501c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5baf253c6ef55a7bdfd6761e22930415"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5baf253c6ef55a7bdfd6761e22930415"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>COMMON_ENTITY_HANDLE_DATA</b></td></tr>
 <tr class="separator:a5baf253c6ef55a7bdfd6761e22930415"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -280,14 +286,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>dwg_print_object</b> 
 <div class="line">  int vcount, rcount, rcount2, rcount3;\</div>
 <div class="line">  Dwg_Entity_##token *ent, *_obj;\</div>
 <div class="line">  LOG_INFO(<span class="stringliteral">&quot;Entity &quot;</span> #token <span class="stringliteral">&quot;:\n&quot;</span>)\</div>
-<div class="line">  ent = obj-&gt;tio.entity-&gt;tio.token;\</div>
+<div class="line">  ent = obj-&gt;as.entity-&gt;as.token;\</div>
 <div class="line">  _obj=ent;\</div>
 <div class="line">  LOG_INFO(<span class="stringliteral">&quot;Entity handle: %d.%d.%lu\n&quot;</span>,\</div>
 <div class="line">    obj-&gt;handle.code,\</div>
 <div class="line">    obj-&gt;handle.size,\</div>
 <div class="line">    obj-&gt;handle.value)</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="print_8c_source.html#l00155">155</a> of file <a class="el" href="print_8c_source.html">print.c</a>.</p>
+<p>Definition at line <a class="el" href="print_8c_source.html#l00159">159</a> of file <a class="el" href="print_8c_source.html">print.c</a>.</p>
 
 </div>
 </div>
@@ -310,13 +316,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>dwg_print_object</b> 
 <div class="line">  int vcount, rcount, rcount2, rcount3;\</div>
 <div class="line">  Dwg_Object_##token *_obj;\</div>
 <div class="line">  LOG_INFO(<span class="stringliteral">&quot;Object &quot;</span> #token <span class="stringliteral">&quot;:\n&quot;</span>)\</div>
-<div class="line">  _obj = obj-&gt;tio.object-&gt;tio.token;\</div>
+<div class="line">  _obj = obj-&gt;as.object-&gt;as.token;\</div>
 <div class="line">  LOG_INFO(<span class="stringliteral">&quot;Object handle: %d.%d.%lu\n&quot;</span>,\</div>
 <div class="line">    obj-&gt;handle.code,\</div>
 <div class="line">    obj-&gt;handle.size,\</div>
 <div class="line">    obj-&gt;handle.value)</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="print_8c_source.html#l00171">171</a> of file <a class="el" href="print_8c_source.html">print.c</a>.</p>
+<p>Definition at line <a class="el" href="print_8c_source.html#l00175">175</a> of file <a class="el" href="print_8c_source.html">print.c</a>.</p>
 
 </div>
 </div>
@@ -542,12 +548,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>dwg_print_object</b> 
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">for</span> (vcount=0; vcount&lt;obj-&gt;tio.object-&gt;num_reactors; vcount++)\</div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">for</span> (vcount=0; vcount&lt;obj-&gt;as.object-&gt;num_reactors; vcount++)\</div>
 <div class="line">    {\</div>
 <div class="line">      FIELD_HANDLE(reactors[vcount], code);\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="print_8c_source.html#l00124">124</a> of file <a class="el" href="print_8c_source.html">print.c</a>.</p>
+<p>Definition at line <a class="el" href="print_8c_source.html#l00126">126</a> of file <a class="el" href="print_8c_source.html">print.c</a>.</p>
 
 </div>
 </div>
@@ -566,7 +572,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>dwg_print_object</b> 
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">SINCE(R_2004)\</div>
 <div class="line">    {\</div>
-<div class="line">      if (!obj-&gt;tio.object-&gt;xdic_missing_flag)\</div>
+<div class="line">      if (!obj-&gt;as.object-&gt;xdic_missing_flag)\</div>
 <div class="line">        FIELD_HANDLE(xdicobjhandle, code);\</div>
 <div class="line">    }\</div>
 <div class="line">  PRIOR_VERSIONS\</div>
@@ -574,14 +580,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>dwg_print_object</b> 
 <div class="line">      FIELD_HANDLE(xdicobjhandle, code);\</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="print_8c_source.html#l00130">130</a> of file <a class="el" href="print_8c_source.html">print.c</a>.</p>
+<p>Definition at line <a class="el" href="print_8c_source.html#l00132">132</a> of file <a class="el" href="print_8c_source.html">print.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 31 2013 11:47:21 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 20 2013 22:26:54 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

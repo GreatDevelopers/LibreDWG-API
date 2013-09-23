@@ -115,7 +115,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="common_8h.html" title="Common general functions and macro.">common.h</a>&quot;</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="bits_8h.html" title="Low level read and write function prototypes.">bits.h</a>&quot;</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dwg_8h.html" title="Main include file.">dwg.h</a>&quot;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="print_8h.html" title="Print helper function prototypes.">print.h</a>&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="decode__r2007_8h.html" title="R2007 decode function prototypes.">decode_r2007.h</a>&quot;</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<a class="code" href="section__locate_8c.html#ab0729d2da981c4d81d09fdf2e28f9370">read_R13_R15_section_locate</a>(<a class="code" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="code" href="struct__dwg__struct.html" title="Main DWG struct.">Dwg_Data</a> *dwg);</div>
@@ -124,11 +124,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<a class="code" href="section__locate_8c.html#a23811e58cc4855c41185f7621950ed08">read_R2004_section_map</a>(<a class="code" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="code" href="struct__dwg__struct.html" title="Main DWG struct.">Dwg_Data</a> *dwg, uint32_t comp_data_size,</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                       uint32_t decomp_data_size);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<a class="code" href="struct__r2007__section.html">r2007_section</a>*</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;get_section(<a class="code" href="struct__r2007__section.html">r2007_section</a> *sections_map, int64_t hashcode);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<a class="code" href="struct__r2007__section.html">r2007_section</a>*</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;read_sections_map(<a class="code" href="struct__bit__chain.html">Bit_Chain</a> *dat, int64_t size_comp, int64_t size_uncomp,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                  int64_t correction);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 31 2013 11:47:21 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 20 2013 22:26:54 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

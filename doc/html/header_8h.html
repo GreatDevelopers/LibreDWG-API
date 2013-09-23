@@ -104,19 +104,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="common_8h_source.html">common.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="bits_8h_source.html">bits.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="dwg_8h_source.html">dwg.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="print_8h_source.html">print.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="decode__r2007_8h_source.html">decode_r2007.h</a>&quot;</code><br/>
 </div>
 <p><a href="header_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a59b1de47b37f3e4a4f3e67b50148994d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a59b1de47b37f3e4a4f3e67b50148994d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>dwg_decode_header_variables</b> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
-<tr class="separator:a59b1de47b37f3e4a4f3e67b50148994d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa07ec404fbb3921a2154c04319dedbc6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa07ec404fbb3921a2154c04319dedbc6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>dwg_decode_header_variables</b> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, <a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *sstream)</td></tr>
+<tr class="separator:aa07ec404fbb3921a2154c04319dedbc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57adbd7168fc0d35c9c577baac23714a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57adbd7168fc0d35c9c577baac23714a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>dwg_decode_2007_header_handles</b> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
+<tr class="separator:a57adbd7168fc0d35c9c577baac23714a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef4d625282c986ddf074863e6a24b799"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#aef4d625282c986ddf074863e6a24b799">read_R13_R15_section_header</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
 <tr class="separator:aef4d625282c986ddf074863e6a24b799"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a416dbdc34c4731d1f9341dcda7a5fa4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a416dbdc34c4731d1f9341dcda7a5fa4a">read_2004_section_header</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
-<tr class="separator:a416dbdc34c4731d1f9341dcda7a5fa4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b17d748306a63d5742e9191da602ba3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a1b17d748306a63d5742e9191da602ba3">read_R2004_section_header</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg)</td></tr>
+<tr class="separator:a1b17d748306a63d5742e9191da602ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbc84c685055bd1401bd16be4e9e9f08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#acbc84c685055bd1401bd16be4e9e9f08">read_R2007_section_header</a> (<a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *dat, <a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *dwg, <a class="el" href="struct__r2007__section.html">r2007_section</a> *sections_map, <a class="el" href="struct__r2007__page.html">r2007_page</a> *pages_map)</td></tr>
+<tr class="separator:acbc84c685055bd1401bd16be4e9e9f08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header section function prototypes. </p>
@@ -132,35 +137,6 @@ modified by Till Heuschmann </dd></dl>
 
 <p>Definition in file <a class="el" href="header_8h_source.html">header.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a416dbdc34c4731d1f9341dcda7a5fa4a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void read_2004_section_header </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
-          <td class="paramname"><em>dat</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *&#160;</td>
-          <td class="paramname"><em>dwg</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>R2004 Header Section </p>
-
-<p>Definition at line <a class="el" href="header_8c_source.html#l00076">76</a> of file <a class="el" href="header_8c_source.html">header.c</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="aef4d625282c986ddf074863e6a24b799"></a>
 <div class="memitem">
 <div class="memproto">
@@ -186,14 +162,84 @@ modified by Till Heuschmann </dd></dl>
 </div><div class="memdoc">
 <p>Read R13-R15 Header Section </p>
 
-<p>Definition at line <a class="el" href="header_8c_source.html#l00040">40</a> of file <a class="el" href="header_8c_source.html">header.c</a>.</p>
+<p>Definition at line <a class="el" href="header_8c_source.html#l00105">105</a> of file <a class="el" href="header_8c_source.html">header.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1b17d748306a63d5742e9191da602ba3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void read_R2004_section_header </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
+          <td class="paramname"><em>dat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *&#160;</td>
+          <td class="paramname"><em>dwg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>R2004 Header Section </p>
+
+<p>Definition at line <a class="el" href="header_8c_source.html#l00142">142</a> of file <a class="el" href="header_8c_source.html">header.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acbc84c685055bd1401bd16be4e9e9f08"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void read_R2007_section_header </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="bits_8h.html#a5a74cf28ff1a7d4cb89409a6ac415b43">Bit_Chain</a> *&#160;</td>
+          <td class="paramname"><em>dat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct__dwg__struct.html">Dwg_Data</a> *&#160;</td>
+          <td class="paramname"><em>dwg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct__r2007__section.html">r2007_section</a> *&#160;</td>
+          <td class="paramname"><em>sections_map</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct__r2007__page.html">r2007_page</a> *&#160;</td>
+          <td class="paramname"><em>pages_map</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>R2007 Header Section </p>
+
+<p>Definition at line <a class="el" href="header_8c_source.html#l00178">178</a> of file <a class="el" href="header_8c_source.html">header.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 31 2013 11:47:21 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 20 2013 22:26:54 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

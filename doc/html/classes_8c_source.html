@@ -101,178 +101,236 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">/*****************************************************************************/</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="classes_8h.html" title="Class section function prototypes.">classes.h</a>&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="decode__r2004_8h.html" title="R2004 decode function prototypes.">decode_r2004.h</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="compress__decompress_8h.html" title="R18-R21 Compression and Decompression function prototypes.">compress_decompress.h</a>&quot;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="logging_8h.html" title="Logging macros.">logging.h</a>&quot;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">void</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="classes_8h.html#a65845854ff377a2b0d13085a9a945f52">   30</a></span>&#160;<a class="code" href="classes_8c.html#a65845854ff377a2b0d13085a9a945f52">read_R13_R15_section_classes</a>(<a class="code" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="code" href="struct__dwg__struct.html" title="Main DWG struct.">Dwg_Data</a> *dwg)</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  uint32_t size, lasta, pvz;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  uint8_t ckr, ckr2, i;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  uint8_t ckr, ckr2, i;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  uint32_t size, lasta, pvz;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  LOG_INFO(<span class="stringliteral">&quot;\n CLASS: %8X\n&quot;</span>, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) dwg-&gt;header.section[1].address)</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  LOG_INFO(<span class="stringliteral">&quot; CLASS (end): %8X\n&quot;</span>, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)(dwg-&gt;header.section[1].address</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;           + dwg-&gt;header.section[1].size))</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  LOG_INFO(<span class="stringliteral">&quot;\nCLASS: %8X     \n&quot;</span>, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)dwg-&gt;header.section[1].address)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  LOG_INFO(<span class="stringliteral">&quot;CLASS (end): %8X \n&quot;</span>, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)(dwg-&gt;header.section[1].address</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                   + dwg-&gt;header.section[1].size))</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  dat-&gt;byte = dwg-&gt;header.section[1].address + 16;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  dat-&gt;bit = 0;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  size = <a class="code" href="bits_8c.html#aff017ae6e9346e585cb3f1004122e49f">bit_read_RL</a>(dat);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  dat-&gt;bit  = 0;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  size  = <a class="code" href="bits_8c.html#aff017ae6e9346e585cb3f1004122e49f">bit_read_RL</a>(dat);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  lasta = dat-&gt;byte + size;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  LOG_TRACE(<span class="stringliteral">&quot; Length: %x\n&quot;</span>, size);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  LOG_TRACE(<span class="stringliteral">&quot;Length: %x \n&quot;</span>, size);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="comment">//read the classes</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  dwg-&gt;dwg_ot_layout = 0;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  dwg-&gt;num_classes = 0;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  i = 0;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordflow">do</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idc;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      idc = dwg-&gt;num_classes;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <span class="keywordflow">if</span> (idc == 0)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        dwg-&gt;dwg_class = (<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a> *) malloc(<span class="keyword">sizeof</span> (<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a>));</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        dwg-&gt;dwg_class = (<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a> *) realloc(dwg-&gt;dwg_class, (idc + 1)</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                          * <span class="keyword">sizeof</span>(<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a>));</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      dwg-&gt;dwg_class[idc].number = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(dat);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      dwg-&gt;dwg_class[idc].version = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(dat);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      dwg-&gt;dwg_class[idc].appname = <a class="code" href="bits_8c.html#a03d5b97dd0162513450395b2b3c772ea">bit_read_TV</a>(dat);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      dwg-&gt;dwg_class[idc].cppname = <a class="code" href="bits_8c.html#a03d5b97dd0162513450395b2b3c772ea">bit_read_TV</a>(dat);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      dwg-&gt;dwg_class[idc].dxfname = <a class="code" href="bits_8c.html#a03d5b97dd0162513450395b2b3c772ea">bit_read_TV</a>(dat);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      dwg-&gt;dwg_class[idc].wasazombie = <a class="code" href="bits_8c.html#a1115019ee20759e77a2c7c2ee20b8990">bit_read_B</a>(dat);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      dwg-&gt;dwg_class[idc].item_class_id = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(dat);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="keywordflow">if</span> (strcmp((<span class="keyword">const</span> <span class="keywordtype">char</span> *)dwg-&gt;dwg_class[idc].dxfname, <span class="stringliteral">&quot;LAYOUT&quot;</span>) == 0)</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        dwg-&gt;dwg_ot_layout = dwg-&gt;dwg_class[idc].number;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      dwg-&gt;num_classes++;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="comment">/*</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">       * if (dwg-&gt;num_classes &gt; 100)</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">       * {</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">       *   fprintf(stderr, &quot;number of classes is greater than 100. TODO:</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">       *                   Why should we stop here?\n&quot;);</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">       *   break; //TODO: Why?!</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">       * }</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">       */</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordflow">while</span> (dat-&gt;byte &lt; (lasta - 1));</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="comment">// Check CRC-on</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  dat-&gt;byte = dwg-&gt;header.section[1].address</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;              + dwg-&gt;header.section[1].size - 18;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  dat-&gt;bit = 0;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  ckr = <a class="code" href="bits_8c.html#ae424ded8778b283205a27e4dbaaa45e0">bit_read_RS</a>(dat);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  ckr2 = <a class="code" href="bits_8c.html#a364df3e51a65461c72e59dc0a407125b">bit_ckr8</a>(0xc0c1, dat-&gt;chain + dwg-&gt;header.section[1].address</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                  + 16, dwg-&gt;header.section[1].size - 34);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordflow">if</span> (ckr != ckr2)</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      printf(<span class="stringliteral">&quot;section %d crc todo ckr: %x ckr2:%x \n&quot;</span>,</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;              dwg-&gt;header.section[1].number, ckr, ckr2);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  dat-&gt;byte += 16;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  pvz = <a class="code" href="bits_8c.html#aff017ae6e9346e585cb3f1004122e49f">bit_read_RL</a>(dat); <span class="comment">// Unknown bitlong inter class and object</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  LOG_TRACE(<span class="stringliteral">&quot;Address: %lu / Content: 0x%#x \n&quot;</span>, dat-&gt;byte - 4, pvz)</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  LOG_INFO(<span class="stringliteral">&quot;Number of classes read: %u \n&quot;</span>, dwg-&gt;num_classes)</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno"><a class="code" href="classes_8h.html#abb2b4789d3cb37c92953c391598413de">  108</a></span>&#160;<a class="code" href="classes_8c.html#abb2b4789d3cb37c92953c391598413de">read_2004_section_classes</a>(<a class="code" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="code" href="struct__dwg__struct.html" title="Main DWG struct.">Dwg_Data</a> *dwg)</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;{</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  uint32_t size, max_num, num_objects, dwg_version, maint_version, unknown;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keywordtype">char</span> c;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <a class="code" href="struct__bit__chain.html">Bit_Chain</a> sec_dat;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="decode__r2004_8c.html#acf52e39d99e11c6ab1be9e56a2e046fe">read_2004_compressed_section</a>(dat, dwg, &amp;sec_dat, </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      SECTION_CLASSES) != 0)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">do</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idc;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      idc = dwg-&gt;num_classes;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <span class="keywordflow">if</span> (idc == 0)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        dwg-&gt;dwg_class = (<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a> *) malloc(<span class="keyword">sizeof</span> (<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a>));</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        dwg-&gt;dwg_class = (<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a> *) realloc(dwg-&gt;dwg_class, (idc + 1)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                          * <span class="keyword">sizeof</span>(<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a>));</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      dwg-&gt;dwg_class[idc].number        = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(dat);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      dwg-&gt;dwg_class[idc].version       = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(dat);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      dwg-&gt;dwg_class[idc].appname       = <a class="code" href="bits_8c.html#a4e1bcd9f8ea72dd017810989f15ac3ed">bit_read_T</a>(dat);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      dwg-&gt;dwg_class[idc].cppname       = <a class="code" href="bits_8c.html#a4e1bcd9f8ea72dd017810989f15ac3ed">bit_read_T</a>(dat);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      dwg-&gt;dwg_class[idc].dxfname       = <a class="code" href="bits_8c.html#a4e1bcd9f8ea72dd017810989f15ac3ed">bit_read_T</a>(dat);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      dwg-&gt;dwg_class[idc].wasazombie    = <a class="code" href="bits_8c.html#a1115019ee20759e77a2c7c2ee20b8990">bit_read_B</a>(dat);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      dwg-&gt;dwg_class[idc].item_class_id = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(dat);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <span class="keywordflow">if</span> (strcmp((<span class="keyword">const</span> <span class="keywordtype">char</span> *)dwg-&gt;dwg_class[idc].dxfname, <span class="stringliteral">&quot;LAYOUT&quot;</span>) == 0)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        dwg-&gt;dwg_ot_layout = dwg-&gt;dwg_class[idc].number;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      dwg-&gt;num_classes++;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <span class="comment">/*</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">       * if (dwg-&gt;num_classes &gt; 100)</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">       * {</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">       *   fprintf(stderr, &quot;number of classes is greater than 100. TODO:</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">       *                   Why should we stop here?\n&quot;);</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">       *   break; //TODO: Why?!</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">       * }</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">       */</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordflow">while</span> (dat-&gt;byte &lt; (lasta - 1));</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="comment">// Check CRC-on</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  dat-&gt;byte = dwg-&gt;header.section[1].address + dwg-&gt;header.section[1].size</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;              - 18;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  dat-&gt;bit  = 0;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  ckr  = <a class="code" href="bits_8c.html#ae424ded8778b283205a27e4dbaaa45e0">bit_read_RS</a>(dat);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  ckr2 = <a class="code" href="bits_8c.html#a364df3e51a65461c72e59dc0a407125b">bit_ckr8</a>(0xc0c1, dat-&gt;chain + dwg-&gt;header.section[1].address + 16,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                  dwg-&gt;header.section[1].size - 34);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordflow">if</span> (ckr != ckr2)</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      printf(<span class="stringliteral">&quot;Section %d crc todo ckr: %x ckr2:%x \n&quot;</span>,</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;              dwg-&gt;header.section[1].number, ckr, ckr2);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  dat-&gt;byte += 16;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  pvz = <a class="code" href="bits_8c.html#aff017ae6e9346e585cb3f1004122e49f">bit_read_RL</a>(dat); <span class="comment">// Unknown bitlong inter class and object</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  LOG_TRACE(<span class="stringliteral">&quot;Address: %lu / Content: 0x%#x \n&quot;</span>, dat-&gt;byte - 4, pvz)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  LOG_INFO(<span class="stringliteral">&quot;Number of classes read: %u \n&quot;</span>, dwg-&gt;num_classes)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="code" href="classes_8h.html#a0c24fece1eaa36b494c81460ecbfb45e">  109</a></span>&#160;<a class="code" href="classes_8c.html#a0c24fece1eaa36b494c81460ecbfb45e">read_R2004_section_classes</a>(<a class="code" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="code" href="struct__dwg__struct.html" title="Main DWG struct.">Dwg_Data</a> *dwg)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;{</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <a class="code" href="struct__bit__chain.html">Bit_Chain</a> sec_dat;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordtype">char</span> c;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  uint32_t dwg_version, maint_version, max_num, num_objects, size, unknown;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="compress__decompress_8c.html#a5c4878abbd20684503800cd9390065a2">read_R2004_compressed_section</a>(dat, dwg, &amp;sec_dat, SECTION_CLASSES) != 0)</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="bits_8c.html#a9f9e41a55222ed926e77f95815964c9e">bit_search_sentinel</a>(&amp;sec_dat, </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      <a class="code" href="common_8c.html#a0047a08c783e6c7c05a925a8af730074">dwg_sentinel</a>(DWG_SENTINEL_CLASS_BEGIN)))</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      size = <a class="code" href="bits_8c.html#aff017ae6e9346e585cb3f1004122e49f">bit_read_RL</a>(&amp;sec_dat);     <span class="comment">// size of class data area</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      max_num = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(&amp;sec_dat);  <span class="comment">// Maxiumum class number</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      c = <a class="code" href="bits_8c.html#a2167868f3326d6273560114a102ff8b1">bit_read_RC</a>(&amp;sec_dat);        <span class="comment">// 0x00</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      c = <a class="code" href="bits_8c.html#a2167868f3326d6273560114a102ff8b1">bit_read_RC</a>(&amp;sec_dat);        <span class="comment">// 0x00</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      c = <a class="code" href="bits_8c.html#a1115019ee20759e77a2c7c2ee20b8990">bit_read_B</a>(&amp;sec_dat);         <span class="comment">// 1</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      dwg-&gt;dwg_ot_layout = 0;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      dwg-&gt;num_classes = 0;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      <span class="keywordflow">do</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        {</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;          uint8_t idc;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="bits_8c.html#a9f9e41a55222ed926e77f95815964c9e">bit_search_sentinel</a>(&amp;sec_dat, <a class="code" href="common_8c.html#a0047a08c783e6c7c05a925a8af730074">dwg_sentinel</a>(DWG_SENTINEL_CLASS_BEGIN)))</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      size    = <a class="code" href="bits_8c.html#aff017ae6e9346e585cb3f1004122e49f">bit_read_RL</a>(&amp;sec_dat);     <span class="comment">// size of class data area</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      max_num = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(&amp;sec_dat);  <span class="comment">// Maxiumum class number</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      c       = <a class="code" href="bits_8c.html#a2167868f3326d6273560114a102ff8b1">bit_read_RC</a>(&amp;sec_dat);        <span class="comment">// 0x00</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      c       = <a class="code" href="bits_8c.html#a2167868f3326d6273560114a102ff8b1">bit_read_RC</a>(&amp;sec_dat);        <span class="comment">// 0x00</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      c       = <a class="code" href="bits_8c.html#a1115019ee20759e77a2c7c2ee20b8990">bit_read_B</a>(&amp;sec_dat);         <span class="comment">// 1</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      dwg-&gt;dwg_ot_layout = 0;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      dwg-&gt;num_classes   = 0;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      <span class="keywordflow">do</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;          uint8_t idc;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;          idc = dwg-&gt;num_classes;</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;          idc = dwg-&gt;num_classes;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;          <span class="keywordflow">if</span> (idc == 0)</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            dwg-&gt;dwg_class = (<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a> *) malloc(<span class="keyword">sizeof</span> (<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a>));</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;          <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            dwg-&gt;dwg_class = (<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a> *) realloc(dwg-&gt;dwg_class,</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                             (idc + 1) * <span class="keyword">sizeof</span> (<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a>));</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;          dwg-&gt;dwg_class[idc].number  = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(&amp;sec_dat);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;          dwg-&gt;dwg_class[idc].version = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(&amp;sec_dat);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;          dwg-&gt;dwg_class[idc].appname = <a class="code" href="bits_8c.html#a03d5b97dd0162513450395b2b3c772ea">bit_read_TV</a>(&amp;sec_dat);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;          dwg-&gt;dwg_class[idc].cppname = <a class="code" href="bits_8c.html#a03d5b97dd0162513450395b2b3c772ea">bit_read_TV</a>(&amp;sec_dat);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;          dwg-&gt;dwg_class[idc].dxfname = <a class="code" href="bits_8c.html#a03d5b97dd0162513450395b2b3c772ea">bit_read_TV</a>(&amp;sec_dat);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;          dwg-&gt;dwg_class[idc].wasazombie = <a class="code" href="bits_8c.html#a1115019ee20759e77a2c7c2ee20b8990">bit_read_B</a>(&amp;sec_dat);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;          dwg-&gt;dwg_class[idc].item_class_id = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(&amp;sec_dat);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;          num_objects   = <a class="code" href="bits_8c.html#a094244f3f45266b10d0e7d74fc0e2d3d">bit_read_BL</a>(&amp;sec_dat);  <span class="comment">// DXF 91</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;          dwg_version   = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(&amp;sec_dat);  <span class="comment">// Dwg Version</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;          maint_version = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(&amp;sec_dat);  <span class="comment">// Maintenance release version.</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;          unknown       = <a class="code" href="bits_8c.html#a094244f3f45266b10d0e7d74fc0e2d3d">bit_read_BL</a>(&amp;sec_dat);  <span class="comment">// Unknown (normally 0L)</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;          unknown       = <a class="code" href="bits_8c.html#a094244f3f45266b10d0e7d74fc0e2d3d">bit_read_BL</a>(&amp;sec_dat);  <span class="comment">// Unknown (normally 0L)</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;          LOG_TRACE(<span class="stringliteral">&quot;\n&quot;</span>)</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;          LOG_TRACE(<span class="stringliteral">&quot;Number: %d \n&quot;</span>,           dwg-&gt;dwg_class[idc].number)</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;          LOG_TRACE(<span class="stringliteral">&quot;Version: %x \n&quot;</span>,          dwg-&gt;dwg_class[idc].version)</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;          LOG_TRACE(<span class="stringliteral">&quot;Application name: %s \n&quot;</span>, dwg-&gt;dwg_class[idc].appname)</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;          LOG_TRACE(<span class="stringliteral">&quot;C++ class name: %s \n&quot;</span>,   dwg-&gt;dwg_class[idc].cppname)</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;          LOG_TRACE(<span class="stringliteral">&quot;DXF record name: %s \n&quot;</span>,  dwg-&gt;dwg_class[idc].dxfname)</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;          <span class="keywordflow">if</span> (strcmp((<span class="keyword">const</span> <span class="keywordtype">char</span> *)dwg-&gt;dwg_class[idc].dxfname,</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;              <span class="stringliteral">&quot;LAYOUT&quot;</span>) == 0)</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            dwg-&gt;dwg_ot_layout = dwg-&gt;dwg_class[idc].number;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;          dwg-&gt;num_classes++;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        } <span class="keywordflow">while</span> (sec_dat.byte &lt; (size - 1));</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    }</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  <span class="comment">/* Check CRC on */</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  uint32_t pvz, ckr, ckr2;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  sec_dat.byte = dwg-&gt;header.section[1].address + dwg-&gt;header.section[1].size</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                 - 18;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  sec_dat.bit = 0;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  ckr  = <a class="code" href="bits_8c.html#aff017ae6e9346e585cb3f1004122e49f">bit_read_RL</a>(dat);</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  ckr2 = <a class="code" href="bits_8c.html#a9ed0510dcde7d259d3f8bab58bd64315">bit_ckr32</a>(0xc0c1, dat-&gt;chain + dwg-&gt;header.section[1].address + 16,</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                   dwg-&gt;header.section[1].size - 34);</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  <span class="keywordflow">if</span> (ckr != ckr2)</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    {</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;      printf(<span class="stringliteral">&quot;Section %d crc todo ckr:%x ckr2:%x \n\n&quot;</span>,</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;              dwg-&gt;header.section[1].number, ckr, ckr2);</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;      <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    }</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  sec_dat.byte += 16;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  pvz = <a class="code" href="bits_8c.html#aff017ae6e9346e585cb3f1004122e49f">bit_read_RL</a>(dat); <span class="comment">// Unknown bitlong inter class and object</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  LOG_TRACE(<span class="stringliteral">&quot;Address: %lu / Content: 0x%#x \n&quot;</span>, sec_dat.byte - 4, pvz)</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  LOG_INFO(<span class="stringliteral">&quot;Number of classes read: %u\n&quot;</span>, dwg-&gt;num_classes)</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  free(sec_dat.chain);</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;}</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;          <span class="keywordflow">if</span> (idc == 0)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            dwg-&gt;dwg_class = (<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a> *) malloc(<span class="keyword">sizeof</span> (<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a>));</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;          <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            dwg-&gt;dwg_class = (<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a> *) realloc(dwg-&gt;dwg_class,</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                             (idc + 1) * <span class="keyword">sizeof</span> (<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a>));</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;          dwg-&gt;dwg_class[idc].number        = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(&amp;sec_dat);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;          dwg-&gt;dwg_class[idc].version       = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(&amp;sec_dat);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;          dwg-&gt;dwg_class[idc].appname       = <a class="code" href="bits_8c.html#a4e1bcd9f8ea72dd017810989f15ac3ed">bit_read_T</a>(&amp;sec_dat);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;          dwg-&gt;dwg_class[idc].cppname       = <a class="code" href="bits_8c.html#a4e1bcd9f8ea72dd017810989f15ac3ed">bit_read_T</a>(&amp;sec_dat);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;          dwg-&gt;dwg_class[idc].dxfname       = <a class="code" href="bits_8c.html#a4e1bcd9f8ea72dd017810989f15ac3ed">bit_read_T</a>(&amp;sec_dat);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;          dwg-&gt;dwg_class[idc].wasazombie    = <a class="code" href="bits_8c.html#a1115019ee20759e77a2c7c2ee20b8990">bit_read_B</a>(&amp;sec_dat);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;          dwg-&gt;dwg_class[idc].item_class_id = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(&amp;sec_dat);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;          num_objects   = <a class="code" href="bits_8c.html#a094244f3f45266b10d0e7d74fc0e2d3d">bit_read_BL</a>(&amp;sec_dat);  <span class="comment">// DXF 91</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;          dwg_version   = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(&amp;sec_dat);  <span class="comment">// Dwg Version</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;          maint_version = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(&amp;sec_dat);  <span class="comment">// Maintenance release version.</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;          unknown       = <a class="code" href="bits_8c.html#a094244f3f45266b10d0e7d74fc0e2d3d">bit_read_BL</a>(&amp;sec_dat);  <span class="comment">// Unknown (normally 0L)</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;          unknown       = <a class="code" href="bits_8c.html#a094244f3f45266b10d0e7d74fc0e2d3d">bit_read_BL</a>(&amp;sec_dat);  <span class="comment">// Unknown (normally 0L)</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;          LOG_TRACE(<span class="stringliteral">&quot;\n&quot;</span>)</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;          LOG_TRACE(<span class="stringliteral">&quot;Number: %d \n&quot;</span>,           dwg-&gt;dwg_class[idc].number)</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;          LOG_TRACE(<span class="stringliteral">&quot;Version: %x \n&quot;</span>,          dwg-&gt;dwg_class[idc].version)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;          LOG_TRACE(<span class="stringliteral">&quot;Application name: %s \n&quot;</span>, dwg-&gt;dwg_class[idc].appname)</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;          LOG_TRACE(<span class="stringliteral">&quot;C++ class name: %s \n&quot;</span>,   dwg-&gt;dwg_class[idc].cppname)</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;          LOG_TRACE(<span class="stringliteral">&quot;DXF record name: %s \n&quot;</span>,  dwg-&gt;dwg_class[idc].dxfname)</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;          <span class="keywordflow">if</span> (strcmp((<span class="keyword">const</span> <span class="keywordtype">char</span> *)dwg-&gt;dwg_class[idc].dxfname, <span class="stringliteral">&quot;LAYOUT&quot;</span>) == 0)</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            dwg-&gt;dwg_ot_layout = dwg-&gt;dwg_class[idc].number;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;          dwg-&gt;num_classes++;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;      <span class="keywordflow">while</span> (sec_dat.byte &lt; (size - 1));</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <span class="comment">/* Check CRC on */</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  uint32_t pvz, ckr, ckr2;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  sec_dat.byte = dwg-&gt;header.section[1].address + dwg-&gt;header.section[1].size</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                 - 18;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  sec_dat.bit  = 0;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  ckr  = <a class="code" href="bits_8c.html#aff017ae6e9346e585cb3f1004122e49f">bit_read_RL</a>(dat);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  ckr2 = <a class="code" href="bits_8c.html#a9ed0510dcde7d259d3f8bab58bd64315">bit_ckr32</a>(0xc0c1, dat-&gt;chain + dwg-&gt;header.section[1].address + 16,</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                   dwg-&gt;header.section[1].size - 34);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <span class="keywordflow">if</span> (ckr != ckr2)</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;      printf(<span class="stringliteral">&quot;Section %d crc todo ckr:%x ckr2:%x \n\n&quot;</span>,</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;              dwg-&gt;header.section[1].number, ckr, ckr2);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    }</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  sec_dat.byte += 16;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  pvz = <a class="code" href="bits_8c.html#aff017ae6e9346e585cb3f1004122e49f">bit_read_RL</a>(dat); <span class="comment">// Unknown bitlong inter class and object</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  LOG_TRACE(<span class="stringliteral">&quot;Address: %lu / Content: 0x%#x \n&quot;</span>, sec_dat.byte - 4, pvz)</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  LOG_INFO(<span class="stringliteral">&quot;Number of classes read: %u\n&quot;</span>, dwg-&gt;num_classes)</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  free(sec_dat.chain);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;}</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="code" href="classes_8h.html#a471c5c9030a062c0b41fbb49c0a50c96">  195</a></span>&#160;<a class="code" href="classes_8c.html#a471c5c9030a062c0b41fbb49c0a50c96">read_R2007_section_classes</a>(<a class="code" href="struct__bit__chain.html">Bit_Chain</a> *dat, <a class="code" href="struct__dwg__struct.html" title="Main DWG struct.">Dwg_Data</a> *dwg, </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                           <a class="code" href="struct__r2007__section.html">r2007_section</a> *sections_map, <a class="code" href="struct__r2007__page.html">r2007_page</a> *pages_map)</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;{</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <a class="code" href="struct__bit__chain.html">Bit_Chain</a> sec_dat;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <span class="keywordflow">if</span> (read_data_section(&amp;sec_dat, dat, sections_map, pages_map, 0x3f54045f) != 0)</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordflow">return</span>;  </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  dwg-&gt;dwg_ot_layout = 0;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  dwg-&gt;num_classes   = 0;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="bits_8c.html#a9f9e41a55222ed926e77f95815964c9e">bit_search_sentinel</a>(&amp;sec_dat, <a class="code" href="common_8c.html#a0047a08c783e6c7c05a925a8af730074">dwg_sentinel</a>(DWG_SENTINEL_CLASS_BEGIN)))</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    {</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;      <a class="code" href="struct__bit__chain.html">Bit_Chain</a> sstream;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;      <span class="keywordtype">char</span> unknown;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;      uint32_t dwg_version, maint_version, max_num, num_bits, num_objects,</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;               size, unknown1, unknown2;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;      size     = <a class="code" href="bits_8c.html#aff017ae6e9346e585cb3f1004122e49f">bit_read_RL</a>(&amp;sec_dat);  <span class="comment">// size of class data area</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;      num_bits = <a class="code" href="bits_8c.html#aff017ae6e9346e585cb3f1004122e49f">bit_read_RL</a>(&amp;sec_dat);  <span class="comment">// size in bits</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;      max_num  = <a class="code" href="bits_8c.html#a094244f3f45266b10d0e7d74fc0e2d3d">bit_read_BL</a>(&amp;sec_dat);  <span class="comment">// Maxiumum class number</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;      unknown  = <a class="code" href="bits_8c.html#a1115019ee20759e77a2c7c2ee20b8990">bit_read_B</a>(&amp;sec_dat);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;      string_stream_init(&amp;sstream, &amp;sec_dat, num_bits, 0);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;      <span class="keywordflow">do</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;          <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idc;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;          idc = dwg-&gt;num_classes;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;          <span class="keywordflow">if</span> (idc == 0)</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            dwg-&gt;dwg_class = (<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a> *) malloc(<span class="keyword">sizeof</span>(<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a>));</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;          <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            dwg-&gt;dwg_class = (<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a> *) realloc(dwg-&gt;dwg_class, (idc + 1)</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                              * <span class="keyword">sizeof</span>(<a class="code" href="struct__dwg__class.html" title="Struct for classes.">Dwg_Class</a>));</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;          dwg-&gt;dwg_class[idc].number        = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(&amp;sec_dat);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;          dwg-&gt;dwg_class[idc].version       = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(&amp;sec_dat);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;          dwg-&gt;dwg_class[idc].wasazombie    = <a class="code" href="bits_8c.html#a1115019ee20759e77a2c7c2ee20b8990">bit_read_B</a>(&amp;sec_dat);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;          dwg-&gt;dwg_class[idc].item_class_id = <a class="code" href="bits_8c.html#a22bb100e1977385db62ab5ece8387cae">bit_read_BS</a>(&amp;sec_dat);  <span class="comment">// 0x1F2 or 0x1F3</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;          dwg-&gt;dwg_class[idc].appname       = (<span class="keywordtype">char</span>*)<a class="code" href="bits_8c.html#af5d93e773562a6f3854518530decfef7">bit_read_TU</a>(&amp;sstream);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;          dwg-&gt;dwg_class[idc].cppname       = (<span class="keywordtype">char</span>*)<a class="code" href="bits_8c.html#af5d93e773562a6f3854518530decfef7">bit_read_TU</a>(&amp;sstream);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;          dwg-&gt;dwg_class[idc].dxfname       = (<span class="keywordtype">char</span>*)<a class="code" href="bits_8c.html#af5d93e773562a6f3854518530decfef7">bit_read_TU</a>(&amp;sstream);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        </div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;          num_objects   = <a class="code" href="bits_8c.html#a094244f3f45266b10d0e7d74fc0e2d3d">bit_read_BL</a>(&amp;sec_dat);  <span class="comment">// DXF 91</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;          dwg_version   = <a class="code" href="bits_8c.html#a094244f3f45266b10d0e7d74fc0e2d3d">bit_read_BL</a>(&amp;sec_dat);  <span class="comment">// Dwg Version</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;          maint_version = <a class="code" href="bits_8c.html#a094244f3f45266b10d0e7d74fc0e2d3d">bit_read_BL</a>(&amp;sec_dat);  <span class="comment">// Maintenance release version</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;          unknown1      = <a class="code" href="bits_8c.html#a094244f3f45266b10d0e7d74fc0e2d3d">bit_read_BL</a>(&amp;sec_dat);  <span class="comment">// Unknown (normally 0L)</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;          unknown2      = <a class="code" href="bits_8c.html#a094244f3f45266b10d0e7d74fc0e2d3d">bit_read_BL</a>(&amp;sec_dat);  <span class="comment">// Unknown (normally 0L)</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;          dwg-&gt;num_classes++;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;          <span class="keywordflow">if</span> (dwg-&gt;dwg_class[idc].number == max_num)</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        } </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;      <span class="keywordflow">while</span> (sec_dat.byte &lt; (size - 1));</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  free(sec_dat.chain);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 31 2013 11:47:21 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 20 2013 22:26:54 for LibreDWG by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>
