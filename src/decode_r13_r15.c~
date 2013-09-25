@@ -90,7 +90,7 @@ read_section_second_header(Bit_Chain *dat, Dwg_Data *dwg)
 {
   if (bit_search_sentinel(dat, dwg_sentinel(DWG_SENTINEL_SECOND_HEADER_BEGIN)))
     {
-      long unsigned int pvz, pvzadr;
+      long unsigned int ckr, ckr2, pvz, pvzadr;
       unsigned char sig, sig2;
       unsigned int i, j;
 
@@ -125,7 +125,7 @@ read_section_second_header(Bit_Chain *dat, Dwg_Data *dwg)
           LOG_TRACE(" %c", sig ? '1' : '0')
         }
 
-      //LOG_TRACE(stderr, "Chain?: ")
+      LOG_TRACE(stderr, "Chain?: ")
       for (i = 0; i < 6; i++)
         {
           dwg->second_header.unknown[i] = bit_read_RC(dat);
@@ -140,10 +140,12 @@ read_section_second_header(Bit_Chain *dat, Dwg_Data *dwg)
       for (i = 0; i < 6; i++)
         {
           sig = bit_read_RC(dat);
-          //if (loglevel) fprintf (stderr, "[%u]\n", sig);
+          if (loglevel) 
+            fprintf (stderr, "[%u]\n", sig);
 
           pvz = bit_read_BL(dat);
-          //if (loglevel) fprintf (stderr, " Address: %8X\n", pvz);
+          if (loglevel) 
+            fprintf (stderr, " Address: %8X\n", pvz);
 
           pvz = bit_read_BL(dat);
           if (loglevel) 
@@ -151,29 +153,38 @@ read_section_second_header(Bit_Chain *dat, Dwg_Data *dwg)
         }
       bit_read_BS(dat);
 
-      //if (loglevel) fprintf (stderr, "\n14 --------------");
+      if (loglevel) 
+        fprintf (stderr, "\n14 --------------");
+
       for (i = 0; i < 14; i++)
         {
           sig2 = bit_read_RC(dat);
           dwg->second_header.handlerik[i].size = sig2;
-          //if (loglevel) fprintf (stderr, "\nSize: %u\n", sig2);
+
+          if (loglevel) 
+            fprintf (stderr, "\nSize: %u\n", sig2);
 
           sig = bit_read_RC(dat);
-          //if (loglevel) fprintf (stderr, "\t[%u]\n", sig);
-          //if (loglevel) fprintf (stderr, "\tChain:");
+          if (loglevel) 
+            fprintf (stderr, "\t[%u]\n", sig);
+
+          if (loglevel) 
+            fprintf (stderr, "\tChain:");
 
           for (j = 0; j < sig2; j++)
             {
               sig = bit_read_RC(dat);
               dwg->second_header.handlerik[i].chain[j] = sig;
-              //if (loglevel) fprintf (stderr, " %02X", sig);
+
+              if (loglevel) 
+                fprintf (stderr, " %02X", sig);
             }
         }
       // Check CRC-on
-      //ckr = bit_read_CRC(dat);
+      ckr = bit_read_CRC(dat);
 
-      /*
-       puts ("");
+      
+       //puts("");
        for (i = 0; i != 0xFFFF; i++)
        {
          dat->byte -= 2;
@@ -192,7 +203,7 @@ read_section_second_header(Bit_Chain *dat, Dwg_Data *dwg)
          fprintf (stderr, " Garbage 1: %08X\n", bit_read_RL (dat));
          fprintf (stderr, " Garbage 2: %08X\n", bit_read_RL (dat));
        }
-       */
+       
 
       if (bit_search_sentinel(dat,
           dwg_sentinel(DWG_SENTINEL_SECOND_HEADER_END)))

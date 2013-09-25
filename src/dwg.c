@@ -36,7 +36,6 @@
 int
 dwg_read_file(char *filename, Dwg_Data *dwg_data)
 {
-  int sign;
   FILE *fp;
   struct stat attrib;
   size_t size;
@@ -297,17 +296,21 @@ dwg_get_layers(Dwg_Data *dwg)
   return layers;
 }
 
+/*
 long unsigned int
 dwg_get_object_count(Dwg_Data *dwg)
 {
   return dwg->num_objects;
 }
+*/
 
+/*
 long unsigned int
 dwg_get_object_object_count(Dwg_Data *dwg)
 {
   return dwg->num_objects - dwg->num_entities;
 }
+*/
 
 long unsigned int
 dwg_get_entity_count(Dwg_Data *dwg)

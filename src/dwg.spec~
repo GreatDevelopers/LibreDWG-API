@@ -292,7 +292,7 @@ DWG_ENTITY(ATTDEF);
           FIELD(width_factor, RD);
         }
 
-      FIELD(default_value, TV);
+      FIELD_TV(default_value);
 
       if (!(FIELD_VALUE(dataflags) & 0x20))
         {
@@ -1301,7 +1301,6 @@ void decode_3dsolid(Bit_Chain *dat, Dwg_Object *obj, Dwg_Entity_3DSOLID *_obj)
 {
   Dwg_Data *dwg = obj->parent;
   int vcount, rcount, rcount2, index;
-  int i=0, j=0, total_size = 0, num_blocks = 0;
 
   FIELD_B(acis_empty);
   
@@ -1312,6 +1311,8 @@ void decode_3dsolid(Bit_Chain *dat, Dwg_Object *obj, Dwg_Entity_3DSOLID *_obj)
 
       if (FIELD_VALUE(version)==1)
         {
+          int i = 0, total_size = 0, num_blocks = 0;
+
           do
             {
               FIELD_VALUE(sat_data)   = (BITCODE_RC**) 
@@ -2005,7 +2006,6 @@ DWG_OBJECT(LTYPE);
   XDICOBJHANDLE(3);
   FIELD_HANDLE(null_handle, 5);
   HANDLE_VECTOR(shapefiles, num_dashes, 5);
-}
 
 DWG_OBJECT_END
 
@@ -2976,7 +2976,6 @@ DWG_ENTITY(OLE2FRAME);
 
 DWG_ENTITY_END
 
-
 //pg.149
 DWG_OBJECT(PROXY);
 
@@ -2988,7 +2987,7 @@ DWG_OBJECT(PROXY);
     }
 
   //TODO: figure out how to deal with the arbitrary size vector databits
-    described on the spec
+   // described on the spec
 
 DWG_OBJECT_END
 

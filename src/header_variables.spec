@@ -207,11 +207,11 @@
  
   VERSION(R_2007)
     {
-      unsigned long c1,c2,c3;
-      c1 = bit_read_RC(dat);  // 2
-      c2 = bit_read_RC(dat);  // 1
-      c3 = bit_read_RC(dat);  // 56
-      c1=c1;
+      //unsigned long c1,c2,c3;
+      //c1 = bit_read_RC(dat);  // 2
+      //c2 = bit_read_RC(dat);  // 1
+      //c3 = bit_read_RC(dat);  // 56
+      //c1=c1;
     }
   
   PRE(R_2007)

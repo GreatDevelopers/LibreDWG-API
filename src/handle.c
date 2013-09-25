@@ -26,13 +26,17 @@
 #include "object.h"
 #include "logging.h"
 
+extern unsigned int loglevel;
+
+#define DWG_LOGLEVEL loglevel
+
 /** Read R13-R15 Object-map Section */
 void
 read_R13_R15_section_object_map(Bit_Chain *dat, Dwg_Data *dwg)
 {
   unsigned char sgdc[2];
   uint8_t section_size = 0, ckr, ckr2, antckr;
-  uint32_t size, maplasta, duabyte, object_begin, object_end;
+  uint32_t maplasta, duabyte, object_begin, object_end;
 
   dat->byte = dwg->header.section[2].address;
   dat->bit  = 0;
@@ -50,7 +54,7 @@ read_R13_R15_section_object_map(Bit_Chain *dat, Dwg_Data *dwg)
       sgdc[0] = bit_read_RC(dat);
       sgdc[1] = bit_read_RC(dat);
       section_size = (sgdc[0] << 8) | sgdc[1];
-      //LOG_TRACE("section_size: %u \n", section_size)
+      LOG_TRACE("section_size: %u \n", section_size)
  
       if (section_size > 2035)
         {
@@ -70,15 +74,14 @@ read_R13_R15_section_object_map(Bit_Chain *dat, Dwg_Data *dwg)
           last_handle  += pvztkt;
           pvzadr = bit_read_MC(dat);
           last_address += pvzadr;
-          // LOG_TRACE("Idc: %li\t", dwg->num_objects)
-          // LOG_TRACE("Handle: %li\tAddress: %li", pvztkt, pvzadr)
-          //}
+          LOG_TRACE("Idc: %li\t", dwg->num_objects)
+          LOG_TRACE("Handle: %li\tAddress: %li", pvztkt, pvzadr)
 
           if (dat->byte == previous_address)
             break;
 
-          // if (dat->byte - duabyte >= seksize)
-          // break;
+          //if (dat->byte - duabyte >= seksize)
+            //break;
 
           if (object_end < last_address)
             object_end = last_address;
@@ -86,7 +89,7 @@ read_R13_R15_section_object_map(Bit_Chain *dat, Dwg_Data *dwg)
           if (object_begin > last_address)
             object_begin = last_address;
 
-          kobj = dwg->num_objects;
+          //kobj = dwg->num_objects;
           dwg_decode_add_object(dwg, dat, last_address);
 
           // if (dwg->num_objects > kobj)
@@ -126,7 +129,7 @@ read_R13_R15_section_object_map(Bit_Chain *dat, Dwg_Data *dwg)
   LOG_INFO(" Object Data (end): %8X \n",
            (unsigned int) (object_end + object_begin + 2))
 
-  /*
+  
    dat->byte = dwg->header.section[2].address - 2;
    // Unknown bitdouble inter object data and objectmap
    antckr = bit_read_CRC (dat); 
@@ -150,12 +153,13 @@ read_R13_R15_section_object_map(Bit_Chain *dat, Dwg_Data *dwg)
      ckr2 = bit_read_CRC(dat);
 
      if (loglevel)
-       fprintf (stderr, "Read: %X\nCreated: %X\t SEMO: %X\n", ckr, ckr2, antckr);
+       fprintf (stderr, "Read: %X \n Created: %X\t SEMO: %X \n", ckr, ckr2,
+                antckr);
    
     //antckr = ckr;
   } 
   while (section_size > 0);
-  */
+  
 
   LOG_INFO("\n Object Map: %8X \n",
            (unsigned int) dwg->header.section[2].address)

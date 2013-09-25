@@ -40,11 +40,11 @@ dwg_decode_R2007_header_handles(Bit_Chain *dat, Dwg_Data *dwg)
 {
   Dwg_Header_Variables* _obj = &dwg->header_vars;
   Dwg_Object* obj=0;
-  char c1, c2, c3;
+  /*char c1, c2, c3;
  
   c1 = bit_read_B(dat);
   c2 = bit_read_RC(dat);
-  c3 = bit_read_RC(dat); 
+  c3 = bit_read_RC(dat); */
 
   //FIELD_HANDLE (HANDSEED, ANYCODE);
   FIELD_HANDLE (CLAYER, ANYCODE);

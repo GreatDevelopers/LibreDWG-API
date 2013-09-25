@@ -1059,12 +1059,10 @@ dwg_encode_common_entity_handle_data(Bit_Chain *dat, Dwg_Object *obj)
 {
   //XXX: not sure about this
   //setup required to use macros
-  Dwg_Object_Entity *ent, *_obj;
-  Dwg_Data *dwg = obj->parent;
-  int i;
-  long unsigned int vcount;
-  ent = obj->as.entity;
-  _obj = ent;
+  //Dwg_Object_Entity *ent, *_obj;
+  //Dwg_Data *dwg = obj->parent;
+  //ent = obj->as.entity;
+  //_obj = ent;
 
   //#include "common_entity_handle_data.spec"
 }

@@ -109,6 +109,7 @@ read_R2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
 {
   Bit_Chain sec_dat;
   //uint32_t dwg_version, maint_version, max_num, num_objects, size, unknown;
+  uint32_t size;
 
   if (read_R2004_compressed_section(dat, dwg, &sec_dat, SECTION_CLASSES) != 0)
     return;

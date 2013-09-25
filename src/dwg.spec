@@ -1301,7 +1301,6 @@ void decode_3dsolid(Bit_Chain *dat, Dwg_Object *obj, Dwg_Entity_3DSOLID *_obj)
 {
   Dwg_Data *dwg = obj->parent;
   int vcount, rcount, rcount2, index;
-  int i=0, j=0, total_size = 0, num_blocks = 0;
 
   FIELD_B(acis_empty);
   
@@ -1312,6 +1311,8 @@ void decode_3dsolid(Bit_Chain *dat, Dwg_Object *obj, Dwg_Entity_3DSOLID *_obj)
 
       if (FIELD_VALUE(version)==1)
         {
+          int i = 0, total_size = 0, num_blocks = 0;
+
           do
             {
               FIELD_VALUE(sat_data)   = (BITCODE_RC**) 
@@ -1334,6 +1335,8 @@ void decode_3dsolid(Bit_Chain *dat, Dwg_Object *obj, Dwg_Entity_3DSOLID *_obj)
 
           for (i = 0; i < num_blocks; i++)
             {
+              int j = 0;
+
               for (j = 0; j < FIELD_VALUE(block_size[i]); j++)
                 {
                   if (FIELD_VALUE(sat_data[i][j] <= 32))

@@ -222,8 +222,9 @@ read_pages_map(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
 {
   char *data, *ptr, *ptr_end;  
   r2007_page *page, *pages = 0, *last_page = 0;
-  int64_t index, offset = 0x480;   //dat->byte;
-  
+  int64_t offset = 0x480;   //dat->byte;
+  //int64_t index;
+
   data = read_system_page(dat, size_comp, size_uncomp, correction);
   
   if (data == NULL)
@@ -249,7 +250,7 @@ read_pages_map(Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
       page->offset = offset;
 
       offset += page->size;
-      index  = page->id > 0 ? page->id : -page->id;
+      //index  = page->id > 0 ? page->id : -page->id;
 
       LOG_TRACE("\n Page \n")
       LOG_TRACE("size:   0x%jd\n", page->size)
@@ -328,7 +329,7 @@ void
 read_file_header(Bit_Chain *dat, r2007_file_header *file_header)
 {
   char *pedata, data[0x3d8];
-  int64_t seqence_crc, seqence_key, compr_crc;
+  //int64_t seqence_crc, seqence_key, compr_crc;
   int32_t compr_len;
   int i;
   
@@ -338,9 +339,9 @@ read_file_header(Bit_Chain *dat, r2007_file_header *file_header)
     data[i] = bit_read_RC(dat);
 
   pedata = decode_rs(data, 3, 239);
-  seqence_crc = *((int64_t*)pedata);
-  seqence_key = *((int64_t*)&pedata[8]);
-  compr_crc   = *((int64_t*)&pedata[16]);
+  //seqence_crc = *((int64_t*)pedata);
+  //seqence_key = *((int64_t*)&pedata[8]);
+  //compr_crc   = *((int64_t*)&pedata[16]);
   compr_len   = *((int32_t*)&pedata[24]);
   
   if (compr_len > 0)
@@ -355,7 +356,7 @@ Bit_Chain *
 string_stream_init(Bit_Chain *sstream, Bit_Chain *dat,
                    unsigned long int bitpos, int check_present_bit)
 {
-  int strsize, hisize;
+  int strsize;
   
   uint64_t mem_byte = dat->byte;
   uint8_t  mem_bit  = dat->bit;
@@ -389,6 +390,7 @@ string_stream_init(Bit_Chain *sstream, Bit_Chain *dat,
 
   if (strsize & 0x8000)
     {
+      int hisize;
       strsize &= 0x7FFF;   //~0x8000;
       bitpos  -= 16;
 

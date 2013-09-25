@@ -204,7 +204,7 @@ read_R2007_section_classes(Bit_Chain *dat, Dwg_Data *dwg,
   if (bit_search_sentinel(&sec_dat, dwg_sentinel(DWG_SENTINEL_CLASS_BEGIN)))
     {
       Bit_Chain sstream;
-      char unknown;
+      //char unknown;
       //uint32_t dwg_version, maint_version, num_objects, unknown1, unknown2;
       uint32_t max_num, num_bits, size;
 
