@@ -237,41 +237,52 @@ dwg_decode_entity(Bit_Chain *dat, Dwg_Object_Entity *ent)
 
   SINCE(R_2004)
     {
-      char color_mode = 0, color;
-      unsigned char index;
-      unsigned int flags;
-      int transparency;
-    
       if (ent->nolinks == 0)
-        {        
+        {
+          char color_mode = 0;
+  
           color_mode = bit_read_B(dat);
         
           if (color_mode == 1)
-            index = bit_read_RC(dat);  // color index
+            {
+              //unsigned char index;
+
+              //index = bit_read_RC(dat);  // color index
+            }
           else
             {              
+              unsigned int flags;
+
               flags = bit_read_RS(dat);
             
               if (flags & 0x8000)
                 {
-                  unsigned char c1, c2, c3, c4;
+                  /*unsigned char c1, c2, c3, c4;
                   char *name=0;
               
                   c1 = bit_read_RC(dat);  // rgb color
                   c2 = bit_read_RC(dat);
                   c3 = bit_read_RC(dat);
                   c4 = bit_read_RC(dat);
-                  name = bit_read_T(dat);
+                  name = bit_read_T(dat);*/
                 }
               if (flags & 0x4000)
                 flags = flags;   // has AcDbColor reference (handle)
             
               if (flags & 0x2000)
-                  transparency = bit_read_BL(dat);
+                {
+                  //int transparency;
+
+                  //transparency = bit_read_BL(dat);
+                }
             }
         }
       else
-          color = bit_read_B(dat);
+        {
+          //char color;
+
+          //color = bit_read_B(dat);
+        }
     }
   OTHER_VERSIONS
     bit_read_CMC(dat, &ent->color, NULL);
@@ -468,7 +479,6 @@ void
 dwg_decode_common_entity_handle_data(Bit_Chain *dat, Dwg_Object *obj)
 {
   //XXX setup required to use macros
-  int i;
   long unsigned int vcount;
   Dwg_Object_Entity *ent, *_obj;
 
@@ -586,8 +596,6 @@ get_base_value_type(short gc)
 Dwg_Resbuf*
 dwg_decode_xdata(Bit_Chain *dat, int size)
 {
-  char group_code, hdl[8];
-  unsigned char codepage;
   Dwg_Resbuf *rbuf, *root=0, *curr=0;
   long unsigned int end_address;
   int i, length;
@@ -609,8 +617,11 @@ dwg_decode_xdata(Bit_Chain *dat, int size)
           length = bit_read_RS(dat);
 
           if (dat->version <= R_2004)
-            codepage = bit_read_RC(dat);
-
+            {
+              //unsigned char codepage;
+              
+              //codepage = bit_read_RC(dat);
+            }
           if (length > 0)
             {
               if (dat->version >= R_2007)

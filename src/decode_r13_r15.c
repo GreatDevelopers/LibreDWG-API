@@ -29,6 +29,9 @@
 #include "resolve_pointers.h"
 #include "section_locate.h"
 
+extern unsigned int loglevel;
+
+#define DWG_LOGLEVEL loglevel
 
 /** Read Unknown Section */
 void
@@ -87,7 +90,7 @@ read_section_second_header(Bit_Chain *dat, Dwg_Data *dwg)
 {
   if (bit_search_sentinel(dat, dwg_sentinel(DWG_SENTINEL_SECOND_HEADER_BEGIN)))
     {
-      long unsigned int ckr, pvz, pvzadr;
+      long unsigned int pvz, pvzadr;
       unsigned char sig, sig2;
       unsigned int i, j;
 
@@ -95,45 +98,45 @@ read_section_second_header(Bit_Chain *dat, Dwg_Data *dwg)
       
       pvzadr = dat->byte;
       pvz    = bit_read_RL(dat);
-      //LOG_TRACE("Size: %lu\n", pvz)
+      LOG_TRACE("Size: %lu\n", pvz)
 
       pvz = bit_read_BL(dat);
-      //LOG_TRACE("Begin address: %8X\n", pvz)
+      LOG_TRACE("Begin address: %8X\n", pvz)
      
 
-      //LOG_TRACE("AC1015?: ")
+      LOG_TRACE("AC1015?: ")
       for (i = 0; i < 6; i++)
         {
           sig = bit_read_RC(dat);
-          //LOG_TRACE("%c", sig >= ' ' && sig < 128 ? sig : '.')
+          LOG_TRACE("%c", sig >= ' ' && sig < 128 ? sig : '.')
         }
 
-      //LOG_TRACE("Null?:")
+      LOG_TRACE("Null?:")
       for (i = 0; i < 5; i++) // 6 if is older...
         {
           sig = bit_read_RC(dat);
-          //LOG_TRACE(" 0x%02X", sig)
+          LOG_TRACE(" 0x%02X", sig)
         }
 
-      //LOG_TRACE"4 null bits?: ")
+      LOG_TRACE("4 null bits?: ")
       for (i = 0; i < 4; i++)
         {
           sig = bit_read_B(dat);
-          //LOG_TRACE(" %c", sig ? '1' : '0')
+          LOG_TRACE(" %c", sig ? '1' : '0')
         }
 
-      //LOG_TRACE(stderr, "Chain?: ")
+      LOG_TRACE(stderr, "Chain?: ")
       for (i = 0; i < 6; i++)
         {
           dwg->second_header.unknown[i] = bit_read_RC(dat);
-          //LOG_TRACE(" 0x%02X", dwg->second_header.unknown[i])
+          LOG_TRACE(" 0x%02X", dwg->second_header.unknown[i])
         }
       if (dwg->second_header.unknown[3] != 0x78 || 
           dwg->second_header.unknown[5] != 0x06)
         sig = bit_read_RC(dat); /* To compensate in the event of a contingent
                                  * additional zero not read previously */
 
-      //puts("");
+      puts("");
       for (i = 0; i < 6; i++)
         {
           sig = bit_read_RC(dat);
@@ -143,7 +146,8 @@ read_section_second_header(Bit_Chain *dat, Dwg_Data *dwg)
           //if (loglevel) fprintf (stderr, " Address: %8X\n", pvz);
 
           pvz = bit_read_BL(dat);
-          //if (loglevel) fprintf (stderr, "  Size: %8X\n", pvz);
+          if (loglevel) 
+            fprintf (stderr, "  Size: %8X\n", pvz);
         }
       bit_read_BS(dat);
 
@@ -166,7 +170,7 @@ read_section_second_header(Bit_Chain *dat, Dwg_Data *dwg)
             }
         }
       // Check CRC-on
-      ckr = bit_read_CRC(dat);
+      //ckr = bit_read_CRC(dat);
 
       /*
        puts ("");

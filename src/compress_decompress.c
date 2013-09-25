@@ -26,7 +26,6 @@
 int
 read_R2004_literal_length(Bit_Chain *dat, unsigned char *opcode)
 {
-  int total = 0;
   unsigned char byte = bit_read_RC(dat);
 
   *opcode = 0x00;
@@ -35,6 +34,7 @@ read_R2004_literal_length(Bit_Chain *dat, unsigned char *opcode)
     return byte + 3;
   else if (byte == 0)
     {
+      int total = 0;
       total = 0x0F;
 
       while ((byte = bit_read_RC(dat)) == 0x00)

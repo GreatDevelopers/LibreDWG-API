@@ -29,7 +29,7 @@
 void
 read_R13_R15_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
 {
-  uint8_t ckr, ckr2, i;
+  uint8_t ckr, ckr2;
   uint32_t size, lasta, pvz;
 
   LOG_INFO("\nCLASS: %8X     \n", (unsigned int)dwg->header.section[1].address)
@@ -45,7 +45,6 @@ read_R13_R15_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
   //read the classes
   dwg->dwg_ot_layout = 0;
   dwg->num_classes = 0;
-  i = 0;
 
   do
     {
@@ -54,7 +53,7 @@ read_R13_R15_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
       idc = dwg->num_classes;
 
       if (idc == 0)
-        dwg->dwg_class = (Dwg_Class *) malloc(sizeof (Dwg_Class));
+        dwg->dwg_class = (Dwg_Class *) malloc(sizeof(Dwg_Class));
       else
         dwg->dwg_class = (Dwg_Class *) realloc(dwg->dwg_class, (idc + 1)
                           * sizeof(Dwg_Class));
@@ -109,33 +108,35 @@ void
 read_R2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
 {
   Bit_Chain sec_dat;
-  char c;
-  uint32_t dwg_version, maint_version, max_num, num_objects, size, unknown;
+  //uint32_t dwg_version, maint_version, max_num, num_objects, size, unknown;
+  uint32_t size;
 
   if (read_R2004_compressed_section(dat, dwg, &sec_dat, SECTION_CLASSES) != 0)
     return;
 
   if (bit_search_sentinel(&sec_dat, dwg_sentinel(DWG_SENTINEL_CLASS_BEGIN)))
     {
+      //char c;
+
       size    = bit_read_RL(&sec_dat);     // size of class data area
-      max_num = bit_read_BS(&sec_dat);  // Maxiumum class number
-      c       = bit_read_RC(&sec_dat);        // 0x00
-      c       = bit_read_RC(&sec_dat);        // 0x00
-      c       = bit_read_B(&sec_dat);         // 1
+      //max_num = bit_read_BS(&sec_dat);  // Maxiumum class number
+      //c       = bit_read_RC(&sec_dat);        // 0x00
+      //c       = bit_read_RC(&sec_dat);        // 0x00
+      //c       = bit_read_B(&sec_dat);         // 1
       dwg->dwg_ot_layout = 0;
       dwg->num_classes   = 0;
 
       do
         {
-          uint8_t idc;
+          unsigned int idc;
 
           idc = dwg->num_classes;
 
           if (idc == 0)
             dwg->dwg_class = (Dwg_Class *) malloc(sizeof (Dwg_Class));
           else
-            dwg->dwg_class = (Dwg_Class *) realloc(dwg->dwg_class,
-                             (idc + 1) * sizeof (Dwg_Class));
+            dwg->dwg_class = (Dwg_Class *) realloc(dwg->dwg_class, (idc + 1)
+                              * sizeof (Dwg_Class));
 
           dwg->dwg_class[idc].number        = bit_read_BS(&sec_dat);
           dwg->dwg_class[idc].version       = bit_read_BS(&sec_dat);
@@ -145,11 +146,11 @@ read_R2004_section_classes(Bit_Chain *dat, Dwg_Data *dwg)
           dwg->dwg_class[idc].wasazombie    = bit_read_B(&sec_dat);
           dwg->dwg_class[idc].item_class_id = bit_read_BS(&sec_dat);
 
-          num_objects   = bit_read_BL(&sec_dat);  // DXF 91
-          dwg_version   = bit_read_BS(&sec_dat);  // Dwg Version
-          maint_version = bit_read_BS(&sec_dat);  // Maintenance release version.
-          unknown       = bit_read_BL(&sec_dat);  // Unknown (normally 0L)
-          unknown       = bit_read_BL(&sec_dat);  // Unknown (normally 0L)
+          //num_objects   = bit_read_BL(&sec_dat);  // DXF 91
+          //dwg_version   = bit_read_BS(&sec_dat);  // Dwg Version
+          //maint_version = bit_read_BS(&sec_dat);  // Maintenance release version.
+          //unknown       = bit_read_BL(&sec_dat);  // Unknown (normally 0L)
+          //unknown       = bit_read_BL(&sec_dat);  // Unknown (normally 0L)
 
           LOG_TRACE("\n")
           LOG_TRACE("Number: %d \n",           dwg->dwg_class[idc].number)
@@ -200,21 +201,21 @@ read_R2007_section_classes(Bit_Chain *dat, Dwg_Data *dwg,
   if (read_data_section(&sec_dat, dat, sections_map, pages_map, 0x3f54045f) != 0)
     return;  
 
-  dwg->dwg_ot_layout = 0;
-  dwg->num_classes   = 0;
-
   if (bit_search_sentinel(&sec_dat, dwg_sentinel(DWG_SENTINEL_CLASS_BEGIN)))
     {
       Bit_Chain sstream;
       char unknown;
-      uint32_t dwg_version, maint_version, max_num, num_bits, num_objects,
-               size, unknown1, unknown2;
-    
+      //uint32_t dwg_version, maint_version, num_objects, unknown1, unknown2;
+      uint32_t max_num, num_bits, size;
+
       size     = bit_read_RL(&sec_dat);  // size of class data area
       num_bits = bit_read_RL(&sec_dat);  // size in bits
       max_num  = bit_read_BL(&sec_dat);  // Maxiumum class number
-      unknown  = bit_read_B(&sec_dat);
+      //unknown  = bit_read_B(&sec_dat);
+
       string_stream_init(&sstream, &sec_dat, num_bits, 0);
+      dwg->dwg_ot_layout = 0;
+      dwg->num_classes   = 0;
     
       do
         {
@@ -236,11 +237,11 @@ read_R2007_section_classes(Bit_Chain *dat, Dwg_Data *dwg,
           dwg->dwg_class[idc].cppname       = (char*)bit_read_TU(&sstream);
           dwg->dwg_class[idc].dxfname       = (char*)bit_read_TU(&sstream);
         
-          num_objects   = bit_read_BL(&sec_dat);  // DXF 91
-          dwg_version   = bit_read_BL(&sec_dat);  // Dwg Version
-          maint_version = bit_read_BL(&sec_dat);  // Maintenance release version
-          unknown1      = bit_read_BL(&sec_dat);  // Unknown (normally 0L)
-          unknown2      = bit_read_BL(&sec_dat);  // Unknown (normally 0L)
+          //num_objects   = bit_read_BL(&sec_dat);  // DXF 91
+          //dwg_version   = bit_read_BL(&sec_dat);  // Dwg Version
+          //maint_version = bit_read_BL(&sec_dat);  // Maintenance release version
+          //unknown1      = bit_read_BL(&sec_dat);  // Unknown (normally 0L)
+          //unknown2      = bit_read_BL(&sec_dat);  // Unknown (normally 0L)
 
           dwg->num_classes++;
         

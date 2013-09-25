@@ -447,7 +447,7 @@ read_R2007_meta_data(Bit_Chain *dat, Dwg_Data *dwg)
   read_R2007_section_header(dat, dwg, sections_map, pages_map);
    
   /* Handles */
-  read_R2007_section_handles(dat, dwg, sections_map, pages_map);
+  //read_R2007_section_handles(dat, dwg, sections_map, pages_map);
   
   /* Destroy sections and pages */
   pages_destroy(pages_map);

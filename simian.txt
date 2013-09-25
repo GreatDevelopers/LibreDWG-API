@@ -1,0 +1,50 @@
+Similarity Analyser 2.3.33 - http://www.harukizaemon.com/simian
+Copyright (c) 2003-2011 Simon Harris.  All rights reserved.
+Simian is not free unless used solely for non-commercial or evaluation purposes.
+{failOnDuplication=true, ignoreCharacterCase=true, ignoreCurlyBraces=true, ignoreIdentifierCase=true, ignoreModifiers=true, ignoreStringCase=true, threshold=6}
+Found 6 duplicate lines in the following files:
+ Between lines 72 and 77 in /home/avneet/refactoring/src/print.c
+ Between lines 85 and 91 in /home/avneet/refactoring/src/encode.c
+Found 7 duplicate lines in the following files:
+ Between lines 58 and 70 in /home/avneet/refactoring/src/decode.c
+ Between lines 259 and 270 in /home/avneet/refactoring/src/encode.c
+Found 7 duplicate lines in the following files:
+ Between lines 246 and 256 in /home/avneet/refactoring/src/decode_r2004.c
+ Between lines 468 and 478 in /home/avneet/refactoring/src/decode_r2007.c
+Found 8 duplicate lines in the following files:
+ Between lines 219 and 229 in /home/avneet/refactoring/src/classes.c
+ Between lines 128 and 138 in /home/avneet/refactoring/src/classes.c
+ Between lines 50 and 60 in /home/avneet/refactoring/src/classes.c
+Found 8 duplicate lines in the following files:
+ Between lines 294 and 305 in /home/avneet/refactoring/src/handle.c
+ Between lines 208 and 219 in /home/avneet/refactoring/src/handle.c
+Found 8 duplicate lines in the following files:
+ Between lines 399 and 413 in /home/avneet/refactoring/src/encode.c
+ Between lines 357 and 371 in /home/avneet/refactoring/src/encode.c
+Found 8 duplicate lines in the following files:
+ Between lines 143 and 153 in /home/avneet/refactoring/src/print.c
+ Between lines 191 and 201 in /home/avneet/refactoring/src/encode.c
+Found 9 duplicate lines in the following files:
+ Between lines 419 and 427 in /home/avneet/refactoring/src/decode_r2004.c
+ Between lines 453 and 461 in /home/avneet/refactoring/src/decode_r2004.c
+Found 10 duplicate lines in the following files:
+ Between lines 219 and 232 in /home/avneet/refactoring/src/classes.c
+ Between lines 128 and 141 in /home/avneet/refactoring/src/classes.c
+Found 10 duplicate lines in the following files:
+ Between lines 277 and 289 in /home/avneet/refactoring/src/handle.c
+ Between lines 192 and 204 in /home/avneet/refactoring/src/handle.c
+Found 11 duplicate lines in the following files:
+ Between lines 949 and 977 in /home/avneet/refactoring/src/encode.c
+ Between lines 305 and 334 in /home/avneet/refactoring/src/object.c
+Found 13 duplicate lines in the following files:
+ Between lines 102 and 118 in /home/avneet/refactoring/src/encode.c
+ Between lines 95 and 111 in /home/avneet/refactoring/src/print.c
+Found 13 duplicate lines in the following files:
+ Between lines 121 and 135 in /home/avneet/refactoring/src/encode.c
+ Between lines 126 and 140 in /home/avneet/refactoring/src/print.c
+Found 14 duplicate lines in the following files:
+ Between lines 51 and 64 in /home/avneet/refactoring/src/print.c
+ Between lines 69 and 82 in /home/avneet/refactoring/src/encode.c
+Found 256 duplicate lines in 27 blocks in 8 files
+Processed a total of 5026 significant (8430 raw) lines in 24 files
+Processing time: 0.349sec

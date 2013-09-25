@@ -103,7 +103,7 @@ bit_read_BB(Bit_Chain *dat)
 void
 bit_write_BB(Bit_Chain *dat, unsigned char value)
 {
-  unsigned char byte, mask;
+  unsigned char byte;
 
   if (dat->byte >= dat->size - 1)
     bit_chain_alloc(dat);
@@ -112,6 +112,8 @@ bit_write_BB(Bit_Chain *dat, unsigned char value)
 
   if (dat->bit < 7)
     {
+      unsigned char mask;
+
       mask = 0xc0 >> dat->bit;
       dat->chain[dat->byte] = (byte & ~mask) | (value << (6 - dat->bit));
     }
@@ -194,8 +196,6 @@ bit_read_RC(Bit_Chain *dat)
 void
 bit_write_RC(Bit_Chain *dat, unsigned char value)
 {
-  unsigned char byte, remainder;
-
   if (dat->byte >= dat->size - 1)
     bit_chain_alloc(dat);
 
@@ -205,6 +205,8 @@ bit_write_RC(Bit_Chain *dat, unsigned char value)
     }
   else
     {
+      unsigned char byte, remainder;
+
       byte = dat->chain[dat->byte];
       remainder = byte & (0xff << (8 - dat->bit));
       dat->chain[dat->byte] = remainder | (value >> dat->bit);
@@ -388,7 +390,6 @@ BITCODE_BD
 bit_read_BD(Bit_Chain *dat)
 {
   double result;
-  long int *res;
   unsigned char two_bit_code;
   
   two_bit_code = bit_read_BB(dat);
@@ -404,6 +405,8 @@ bit_read_BD(Bit_Chain *dat)
     return (0.0);
   else /* if (two_bit_code == 3) */
     {
+      long int *res;
+
       LOG_ERROR("bit_read_BD: unexpected 2-bit code: '11'")
       /* create a Not-A-Number (NaN) */
       res = (long int *) &result;
@@ -634,13 +637,13 @@ bit_read_DD(Bit_Chain *dat, double default_value)
 void
 bit_write_DD(Bit_Chain *dat, double value, double default_value)
 {
-  unsigned char *uchar_value;
-  unsigned int *uint_default, *uint_value;
-
   if (value == default_value)
     bit_write_BB(dat, 0);
   else
     {
+      unsigned char *uchar_value;
+      unsigned int *uint_default, *uint_value;
+
       uchar_value  = (unsigned char *) &value;
       uint_value   = (unsigned int *) &value;
       uint_default = (unsigned int *) &default_value;
@@ -730,7 +733,7 @@ bit_read_H(Bit_Chain *dat, Dwg_Handle *handle)
 void
 bit_write_H(Bit_Chain *dat, Dwg_Handle *handle)
 {
-  int i, j;
+  int i;
   unsigned char code_counter, *val;
 
   if (handle->value == 0)
@@ -1045,7 +1048,7 @@ bit_chain_alloc(Bit_Chain *dat)
 void
 bit_print(Bit_Chain *dat, long unsigned int size)
 {
-  long unsigned int i, j, k;
+  long unsigned int i, j;
   unsigned char sig;
 
   printf("--------------------------------------------------------");
@@ -1075,7 +1078,7 @@ bit_print(Bit_Chain *dat, long unsigned int size)
 void
 bit_explore_chain(Bit_Chain *dat, long unsigned int size)
 {
-  long unsigned int i, j, k;
+  long unsigned int i, k;
   unsigned char sig;
 
   if (size > dat->size)

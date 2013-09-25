@@ -1,16 +1,62 @@
-[src/bits.c:278]: (warning) Casting between integer* and double* which have an incompatible binary data representation.
-[src/bits.c:412]: (portability) Casting from double* to integer* is not portable due to different binary data representations on different platforms.
-[src/bits.c:648]: (portability) Casting from double* to integer* is not portable due to different binary data representations on different platforms.
-[src/bits.c:649]: (portability) Casting from double* to integer* is not portable due to different binary data representations on different platforms.
-[src/bits.c:166]: (style) Variable 'remainder1' is assigned a value that is never used.
-[src/bits.c:167]: (style) Variable 'remainder2' is assigned a value that is never used.
-[src/classes.c:207]: (style) Unused variable: unknown
-[src/decode.c:466]: (warning) %d in format string (no. 1) requires a signed integer given in the argument list.
-[src/decode.c:270]: (warning) Redundant assignment of 'flags' to itself.
-[src/decode_r13_r15.c:100] -> [src/decode_r13_r15.c:103]: (performance) Variable 'pvz' is reassigned a value before the old one has been used.
-[src/decode_r13_r15.c:145] -> [src/decode_r13_r15.c:148]: (performance) Variable 'pvz' is reassigned a value before the old one has been used.
-[src/decode_r13_r15.c:93]: (style) Unused variable: ckr
-[src/decode_r13_r15.c:99]: (style) Variable 'pvzadr' is assigned a value that is never used.
+[src/bits.c:276]: (warning) Casting between integer* and double* which have an incompatible binary data representation.
+[src/bits.c:409]: (portability) Casting from double* to integer* is not portable due to different binary data representations on different platforms.
+[src/bits.c:645]: (portability) Casting from double* to integer* is not portable due to different binary data representations on different platforms.
+[src/bits.c:646]: (portability) Casting from double* to integer* is not portable due to different binary data representations on different platforms.
+[src/bits.c:106]: (style) The scope of the variable 'mask' can be reduced.
+[src/bits.c:197]: (style) The scope of the variable 'byte' can be reduced.
+[src/bits.c:197]: (style) The scope of the variable 'remainder' can be reduced.
+[src/bits.c:391]: (style) The scope of the variable 'res' can be reduced.
+[src/bits.c:637]: (style) The scope of the variable 'uchar_value' can be reduced.
+[src/bits.c:638]: (style) The scope of the variable 'uint_default' can be reduced.
+[src/bits.c:638]: (style) The scope of the variable 'uint_value' can be reduced.
+[src/bits.c:164]: (style) Variable 'remainder1' is assigned a value that is never used.
+[src/bits.c:165]: (style) Variable 'remainder2' is assigned a value that is never used.
+[src/bits.c:733]: (style) Unused variable: j
+[src/bits.c:1048]: (style) Unused variable: k
+[src/bits.c:1078]: (style) Unused variable: j
+[src/classes.c:122] -> [src/classes.c:123]: (performance) Variable 'c' is reassigned a value before the old one has been used.
+[src/classes.c:123] -> [src/classes.c:124]: (performance) Variable 'c' is reassigned a value before the old one has been used.
+[src/classes.c:151] -> [src/classes.c:152]: (performance) Variable 'unknown' is reassigned a value before the old one has been used.
+[src/classes.c:112]: (style) The scope of the variable 'c' can be reduced.
+[src/classes.c:48]: (style) Variable 'i' is assigned a value that is never used.
+[src/classes.c:124]: (style) Variable 'c' is assigned a value that is never used.
+[src/classes.c:149]: (style) Variable 'dwg_version' is assigned a value that is never used.
+[src/classes.c:150]: (style) Variable 'maint_version' is assigned a value that is never used.
+[src/classes.c:121]: (style) Variable 'max_num' is assigned a value that is never used.
+[src/classes.c:148]: (style) Variable 'num_objects' is assigned a value that is never used.
+[src/classes.c:152]: (style) Variable 'unknown' is assigned a value that is never used.
+[src/classes.c:216]: (style) Variable 'unknown' is assigned a value that is never used.
+[src/classes.c:240]: (style) Variable 'dwg_version' is assigned a value that is never used.
+[src/classes.c:241]: (style) Variable 'maint_version' is assigned a value that is never used.
+[src/classes.c:239]: (style) Variable 'num_objects' is assigned a value that is never used.
+[src/classes.c:242]: (style) Variable 'unknown1' is assigned a value that is never used.
+[src/classes.c:243]: (style) Variable 'unknown2' is assigned a value that is never used.
+[src/compress_decompress.c:29]: (style) The scope of the variable 'total' can be reduced.
+[src/decode.c:455]: (warning) %d in format string (no. 1) requires a signed integer given in the argument list.
+[src/decode.c:267]: (warning) Redundant assignment of 'flags' to itself.
+[src/decode.c:240]: (style) The scope of the variable 'color_mode' can be reduced.
+[src/decode.c:240]: (style) The scope of the variable 'color' can be reduced.
+[src/decode.c:241]: (style) The scope of the variable 'index' can be reduced.
+[src/decode.c:242]: (style) The scope of the variable 'flags' can be reduced.
+[src/decode.c:243]: (style) The scope of the variable 'transparency' can be reduced.
+[src/decode.c:590]: (style) The scope of the variable 'codepage' can be reduced.
+[src/decode.c:274]: (style) Variable 'color' is assigned a value that is never used.
+[src/decode.c:250]: (style) Variable 'index' is assigned a value that is never used.
+[src/decode.c:270]: (style) Variable 'transparency' is assigned a value that is never used.
+[src/decode.c:260]: (style) Variable 'c1' is assigned a value that is never used.
+[src/decode.c:261]: (style) Variable 'c2' is assigned a value that is never used.
+[src/decode.c:262]: (style) Variable 'c3' is assigned a value that is never used.
+[src/decode.c:263]: (style) Variable 'c4' is assigned a value that is never used.
+[src/decode.c:264]: (style) Variable 'name' is assigned a value that is never used.
+[src/decode.c:471]: (style) Unused variable: i
+[src/decode.c:589]: (style) Unused variable: group_code
+[src/decode.c:589]: (style) Unused variable: hdl
+[src/decode.c:612]: (style) Variable 'codepage' is assigned a value that is never used.
+[src/decode_r13_r15.c:97] -> [src/decode_r13_r15.c:100]: (performance) Variable 'pvz' is reassigned a value before the old one has been used.
+[src/decode_r13_r15.c:142] -> [src/decode_r13_r15.c:145]: (performance) Variable 'pvz' is reassigned a value before the old one has been used.
+[src/decode_r13_r15.c:169]: (style) Variable 'ckr' is assigned a value that is never used.
+[src/decode_r13_r15.c:145]: (style) Variable 'pvz' is assigned a value that is never used.
+[src/decode_r13_r15.c:96]: (style) Variable 'pvzadr' is assigned a value that is never used.
 [src/decode_r2007.c:358]: (style) The scope of the variable 'hisize' can be reduced.
 [src/decode_r2007.c:252]: (style) Variable 'index' is assigned a value that is never used.
 [src/decode_r2007.c:341]: (style) Variable 'seqence_crc' is assigned a value that is never used.

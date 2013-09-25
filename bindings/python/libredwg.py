@@ -7041,8 +7041,6 @@ class Dwg_Object_Entity(_object):
     __swig_setmethods__["material"] = _libredwg.Dwg_Object_Entity_material_set
     __swig_getmethods__["material"] = _libredwg.Dwg_Object_Entity_material_get
     if _newclass:material = _swig_property(_libredwg.Dwg_Object_Entity_material_get, _libredwg.Dwg_Object_Entity_material_set)
-    __swig_getmethods__["as"] = _libredwg.Dwg_Object_Entity_as_get
-    if _newclass:as = _swig_property(_libredwg.Dwg_Object_Entity_as_get)
     def __init__(self): 
         this = _libredwg.new_Dwg_Object_Entity()
         try: self.this.append(this)
@@ -7250,8 +7248,6 @@ class Dwg_Object_Object(_object):
     __swig_setmethods__["handleref"] = _libredwg.Dwg_Object_Object_handleref_set
     __swig_getmethods__["handleref"] = _libredwg.Dwg_Object_Object_handleref_get
     if _newclass:handleref = _swig_property(_libredwg.Dwg_Object_Object_handleref_get, _libredwg.Dwg_Object_Object_handleref_set)
-    __swig_getmethods__["as"] = _libredwg.Dwg_Object_Object_as_get
-    if _newclass:as = _swig_property(_libredwg.Dwg_Object_Object_as_get)
     def __init__(self): 
         this = _libredwg.new_Dwg_Object_Object()
         try: self.this.append(this)
@@ -7420,8 +7416,6 @@ class Dwg_Object(_object):
     __swig_setmethods__["parent"] = _libredwg.Dwg_Object_parent_set
     __swig_getmethods__["parent"] = _libredwg.Dwg_Object_parent_get
     if _newclass:parent = _swig_property(_libredwg.Dwg_Object_parent_get, _libredwg.Dwg_Object_parent_set)
-    __swig_getmethods__["as"] = _libredwg.Dwg_Object_as_get
-    if _newclass:as = _swig_property(_libredwg.Dwg_Object_as_get)
     def __init__(self): 
         this = _libredwg.new_Dwg_Object()
         try: self.this.append(this)

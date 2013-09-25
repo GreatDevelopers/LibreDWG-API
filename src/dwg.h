@@ -2775,6 +2775,7 @@ typedef struct _dwg_object_entity
   BITCODE_H   ltype;
   BITCODE_H   plotstyle;
   BITCODE_H   material;
+
 } Dwg_Object_Entity;
 
 /**
