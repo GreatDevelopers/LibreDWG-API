@@ -32,7 +32,7 @@ Dwg_Entity_##token ** \
   int x=0,counts=0; \
   Dwg_Object * obj; \
   Dwg_Object_BLOCK_HEADER *hdr; \
-  hdr = ref->obj->tio.object->tio.BLOCK_HEADER; \
+  hdr = ref->obj->as.object->as.BLOCK_HEADER; \
   obj = get_first_owned_object(ref->obj, hdr); \
     while(obj) \
       { \
@@ -49,7 +49,7 @@ Dwg_Entity_##token ** \
      { \
        if(obj->type==DWG_TYPE_##token) \
         { \
-          ret_##token[x] = obj->tio.entity->tio.token; \
+          ret_##token[x] = obj->as.entity->as.token; \
           x++; \
         } \
       obj = get_next_owned_object(ref->obj, obj, hdr); \
@@ -65,7 +65,7 @@ dwg_object_to_##token(Dwg_Object *obj) \
   Dwg_Entity_##token *ret_obj; \
     if(obj != 0 && obj->type == DWG_TYPE_##token) \
       { \
-        ret_obj = obj->tio.entity->tio.token; \
+        ret_obj = obj->as.entity->as.token; \
       } \
   return ret_obj; \
 }
@@ -77,7 +77,7 @@ dwg_object_to_##token(Dwg_Object *obj) \
   Dwg_Object_##token *ret_obj; \
     if(obj != 0 && obj->type == DWG_TYPE_##token) \
       { \
-        ret_obj = obj->tio.object->tio.token; \
+        ret_obj = obj->as.object->as.token; \
       } \
   return ret_obj; \
 }

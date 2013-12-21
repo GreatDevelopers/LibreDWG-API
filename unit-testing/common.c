@@ -91,7 +91,7 @@ void output_BLOCK_HEADER(dwg_object_ref* ref)
      still unclear whether or not the condition is valid.)  */
   if (!dwg_object_to_object(obj, &error))
     {
-      fprintf(stderr, "Found null ref->obj->tio.object\n");
+      fprintf(stderr, "Found null ref->obj->as.object\n");
       return;
     }
 

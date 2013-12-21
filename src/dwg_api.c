@@ -17243,7 +17243,7 @@ dwg_block_header_get_block_control(dwg_obj_block_header* block_header,
   if (block_header != 0)
     {
       *error = 0;
-      return block_header->block_control_handle->obj->tio.object->tio.BLOCK_CONTROL;
+      return block_header->block_control_handle->obj->as.object->as.BLOCK_CONTROL;
     }
   else
     *error = 1;
@@ -17366,7 +17366,7 @@ dwg_get_block_header(dwg_data *dwg, int *error)
       }
     if (DWG_TYPE_BLOCK_HEADER == obj->type )
       {
-        blk = obj->tio.object->tio.BLOCK_HEADER;
+        blk = obj->as.object->as.BLOCK_HEADER;
       }
   return blk;
 }
@@ -17420,7 +17420,7 @@ dwg_object_to_object(dwg_object *obj, int *error)
   if(obj != 0)
     {
       *error = 0;
-      return obj->tio.object;
+      return obj->as.object;
     }
   else
     *error = 1;    
@@ -17434,11 +17434,11 @@ dwg_object_to_object(dwg_object *obj, int *error)
 dwg_obj_ent *
 dwg_object_to_entity(dwg_object *obj, int *error)
 {
-  return obj->tio.entity;
+  return obj->as.entity;
   if(obj != 0)
     {
       *error = 0;
-      return obj->tio.entity;
+      return obj->as.entity;
     }
   else
     *error = 1;    
