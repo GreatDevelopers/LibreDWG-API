@@ -7,19 +7,22 @@
 /*  General Public License as published by the Free Software Foundation,     */
 /*  either version 3 of the License, or (at your option) any later version.  */
 /*  You should have received a copy of the GNU General Public License        */
-/*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
-/*****************************************************************************/
+/**
+ *     \file       common.c
+ *     \brief      Common data arrays
+ *     \author     written by Felipe Castro
+ *     \author     modified by Felipe Corrêa da Silva Sances
+ *     \author     modified by Rodrigo Rodrigues da Silva
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
 
-/*
- * common.c: common data arrays
- * written by Felipe Castro
- * modified by Felipe Corrêa da Silva Sances
- * modified by Rodrigo Rodrigues da Silva
  */
 
 #include "config.h"
 #include "common.h"
 #include "stdio.h"
+
+/** DWG sentinel */
 
 unsigned char *
 dwg_sentinel(Dwg_Sentinel s)
@@ -49,6 +52,8 @@ dwg_sentinel(Dwg_Sentinel s)
 }
 
 /* TODO: update with new codes */
+/** DWG version codes */
+
 char version_codes[8][7] =
   { "------", "AC1012", "AC1014", "AC1015", "AC1018", "AC1021", "AC1024", "------" };
 

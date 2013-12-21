@@ -1,0 +1,5 @@
+[src/classes.c:122] -> [src/classes.c:123]: (performance) Variable 'c' is reassigned a value before the old one has been used.
+[src/classes.c:123] -> [src/classes.c:124]: (performance) Variable 'c' is reassigned a value before the old one has been used.
+[src/classes.c:151] -> [src/classes.c:152]: (performance) Variable 'unknown' is reassigned a value before the old one has been used.
+[src/decode_r13_r15.c:97] -> [src/decode_r13_r15.c:100]: (performance) Variable 'pvz' is reassigned a value before the old one has been used.
+[src/decode_r13_r15.c:142] -> [src/decode_r13_r15.c:145]: (performance) Variable 'pvz' is reassigned a value before the old one has been used.

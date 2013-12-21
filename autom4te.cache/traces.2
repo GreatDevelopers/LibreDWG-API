@@ -1,0 +1,82 @@
+m4trace:/usr/share/aclocal/argz.m4:12: -1- AC_DEFUN([gl_FUNC_ARGZ], [gl_PREREQ_ARGZ
+
+AC_CHECK_HEADERS([argz.h], [], [], [AC_INCLUDES_DEFAULT])
+
+AC_CHECK_TYPES([error_t],
+  [],
+  [AC_DEFINE([error_t], [int],
+   [Define to a type to use for `error_t' if it is not otherwise available.])
+   AC_DEFINE([__error_t_defined], [1], [Define so that glibc/gnulib argp.h
+    does not typedef error_t.])],
+  [#if defined(HAVE_ARGZ_H)
+   ERROR!
+   You probably have to install the development version of the Python package
+   for your distribution.  The exact name of this package varies among them.
+  ============================================================================
+	   ])
+	  PYTHON_VERSION=""
+	fi
+
+	#
+	# all done!
+	#
+])
+m4trace:m4/ax_swig_python.m4:57: -1- AU_DEFUN([SWIG_PYTHON], [m4_if($#, 0, [AX_SWIG_PYTHON], [AX_SWIG_PYTHON($@)])])
+m4trace:m4/ax_swig_python.m4:57: -1- AC_DEFUN([SWIG_PYTHON], [AC_DIAGNOSE([obsolete], [The macro `SWIG_PYTHON' is obsolete.
+You should run autoupdate.])dnl
+m4_if($#, 0, [AX_SWIG_PYTHON], [AX_SWIG_PYTHON($@)])])
+m4trace:m4/ax_swig_python.m4:58: -1- AC_DEFUN([AX_SWIG_PYTHON], [
+        AC_REQUIRE([AX_PKG_SWIG])
+        AC_REQUIRE([AX_PYTHON_DEVEL])
+        test "x$1" != "xno" || swig_shadow=" -noproxy"
+        AC_SUBST([AX_SWIG_PYTHON_OPT],[-python$swig_shadow])
+        AC_SUBST([AX_SWIG_PYTHON_CPPFLAGS],[$PYTHON_CPPFLAGS])
+])
+m4trace:m4/libtool.m4:69: -1- AC_DEFUN([LT_INIT], [AC_PREREQ([2.58])dnl We use AC_INCLUDES_DEFAULT
+AC_REQUIRE([AC_CONFIG_AUX_DIR_DEFAULT])dnl
+AC_BEFORE([$0], [LT_LANG])dnl
+AC_BEFORE([$0], [LT_OUTPUT])dnl
+AC_BEFORE([$0], [LTDL_INIT])dnl
+m4_require([_LT_CHECK_BUILDDIR])dnl
+
+dnl Autoconf doesn't catch unexpanded LT_ macros by default:
+m4_pattern_forbid([^_?LT_[A-Z_]+$])dnl
+m4_pattern_allow([^(_LT_EOF|LT_DLGLOBAL|LT_DLLAZY_OR_NOW|LT_MULTI_MODULE)$])dnl
+dnl aclocal doesn't pull ltoptions.m4, ltsugar.m4, or ltversion.m4
+dnl unless we require an AC_DEFUNed macro:
+AC_REQUIRE([LTOPTIONS_VERSION])dnl
+AC_REQUIRE([LTSUGAR_VERSION])dnl
+AC_REQUIRE([LTVERSION_VERSION])dnl
+AC_REQUIRE([LTOBSOLETE_VERSION])dnl
+m4_require([_LT_PROG_LTMAIN])dnl
+
+_LT_SHELL_INIT([SHELL=${CONFIG_SHELL-/bin/sh}])
+
+dnl Parse OPTIONS
+_LT_SET_OPTIONS([$0], [$1])
+
+# This can be used to rebuild libtool when needed
+LIBTOOL_DEPS="$ltmain"
+
+# Always use our own libtool.
+LIBTOOL='$(SHELL) $(top_builddir)/libtool'
+AC_SUBST(LIBTOOL)dnl
+
+_LT_SETUP
+
+# Only expand once:
+m4_define([LT_INIT])
+])
+m4trace:m4/libtool.m4:107: -1- AU_DEFUN([AC_PROG_LIBTOOL], [m4_if($#, 0, [LT_INIT], [LT_INIT($@)])])
+m4trace:m4/libtool.m4:107: -1- AC_DEFUN([AC_PROG_LIBTOOL], [AC_DIAGNOSE([obsolete], [The macro `AC_PROG_LIBTOOL' is obsolete.
+You should run autoupdate.])dnl
+m4_if($#, 0, [LT_INIT], [LT_INIT($@)])])
+m4trace:m4/libtool.m4:108: -1- AU_DEFUN([AM_PROG_LIBTOOL], [m4_if($#, 0, [LT_INIT], [LT_INIT($@)])])
+m4trace:m4/libtool.m4:108: -1- AC_DEFUN([AM_PROG_LIBTOOL], [AC_DIAGNOSE([obsolete], [The macro `AM_PROG_LIBTOOL' is obsolete.
+You should run autoupdate.])dnl
+m4_if($#, 0, [LT_INIT], [LT_INIT($@)])])
+m4trace:m4/libtool.m4:609: -1- AC_DEFUN([LT_OUTPUT], [: ${CONFIG_LT=./config.lt}
+AC_MSG_NOTICE([creating $CONFIG_LT])
+_LT_GENERATED_FILE_INIT(["$CONFIG_LT"],
+[# Run this file to recreate a libtool stub with the current configuration.])
+

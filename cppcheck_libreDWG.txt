@@ -1,0 +1,489 @@
+[src/bits.c:276]: (warning) Casting between integer* and double* which have an incompatible binary data representation.
+[src/bits.c:409]: (portability) Casting from double* to integer* is not portable due to different binary data representations on different platforms.
+[src/bits.c:645]: (portability) Casting from double* to integer* is not portable due to different binary data representations on different platforms.
+[src/bits.c:646]: (portability) Casting from double* to integer* is not portable due to different binary data representations on different platforms.
+[src/bits.c:106]: (style) The scope of the variable 'mask' can be reduced.
+[src/bits.c:197]: (style) The scope of the variable 'byte' can be reduced.
+[src/bits.c:197]: (style) The scope of the variable 'remainder' can be reduced.
+[src/bits.c:391]: (style) The scope of the variable 'res' can be reduced.
+[src/bits.c:637]: (style) The scope of the variable 'uchar_value' can be reduced.
+[src/bits.c:638]: (style) The scope of the variable 'uint_default' can be reduced.
+[src/bits.c:638]: (style) The scope of the variable 'uint_value' can be reduced.
+[src/bits.c:164]: (style) Variable 'remainder1' is assigned a value that is never used.
+[src/bits.c:165]: (style) Variable 'remainder2' is assigned a value that is never used.
+[src/bits.c:733]: (style) Unused variable: j
+[src/bits.c:1048]: (style) Unused variable: k
+[src/bits.c:1078]: (style) Unused variable: j
+[src/classes.c:122] -> [src/classes.c:123]: (performance) Variable 'c' is reassigned a value before the old one has been used.
+[src/classes.c:123] -> [src/classes.c:124]: (performance) Variable 'c' is reassigned a value before the old one has been used.
+[src/classes.c:151] -> [src/classes.c:152]: (performance) Variable 'unknown' is reassigned a value before the old one has been used.
+[src/classes.c:112]: (style) The scope of the variable 'c' can be reduced.
+[src/classes.c:48]: (style) Variable 'i' is assigned a value that is never used.
+[src/classes.c:124]: (style) Variable 'c' is assigned a value that is never used.
+[src/classes.c:149]: (style) Variable 'dwg_version' is assigned a value that is never used.
+[src/classes.c:150]: (style) Variable 'maint_version' is assigned a value that is never used.
+[src/classes.c:121]: (style) Variable 'max_num' is assigned a value that is never used.
+[src/classes.c:148]: (style) Variable 'num_objects' is assigned a value that is never used.
+[src/classes.c:152]: (style) Variable 'unknown' is assigned a value that is never used.
+[src/classes.c:216]: (style) Variable 'unknown' is assigned a value that is never used.
+[src/classes.c:240]: (style) Variable 'dwg_version' is assigned a value that is never used.
+[src/classes.c:241]: (style) Variable 'maint_version' is assigned a value that is never used.
+[src/classes.c:239]: (style) Variable 'num_objects' is assigned a value that is never used.
+[src/classes.c:242]: (style) Variable 'unknown1' is assigned a value that is never used.
+[src/classes.c:243]: (style) Variable 'unknown2' is assigned a value that is never used.
+[src/compress_decompress.c:29]: (style) The scope of the variable 'total' can be reduced.
+[src/decode.c:455]: (warning) %d in format string (no. 1) requires a signed integer given in the argument list.
+[src/decode.c:267]: (warning) Redundant assignment of 'flags' to itself.
+[src/decode.c:240]: (style) The scope of the variable 'color_mode' can be reduced.
+[src/decode.c:240]: (style) The scope of the variable 'color' can be reduced.
+[src/decode.c:241]: (style) The scope of the variable 'index' can be reduced.
+[src/decode.c:242]: (style) The scope of the variable 'flags' can be reduced.
+[src/decode.c:243]: (style) The scope of the variable 'transparency' can be reduced.
+[src/decode.c:590]: (style) The scope of the variable 'codepage' can be reduced.
+[src/decode.c:274]: (style) Variable 'color' is assigned a value that is never used.
+[src/decode.c:250]: (style) Variable 'index' is assigned a value that is never used.
+[src/decode.c:270]: (style) Variable 'transparency' is assigned a value that is never used.
+[src/decode.c:260]: (style) Variable 'c1' is assigned a value that is never used.
+[src/decode.c:261]: (style) Variable 'c2' is assigned a value that is never used.
+[src/decode.c:262]: (style) Variable 'c3' is assigned a value that is never used.
+[src/decode.c:263]: (style) Variable 'c4' is assigned a value that is never used.
+[src/decode.c:264]: (style) Variable 'name' is assigned a value that is never used.
+[src/decode.c:471]: (style) Unused variable: i
+[src/decode.c:589]: (style) Unused variable: group_code
+[src/decode.c:589]: (style) Unused variable: hdl
+[src/decode.c:612]: (style) Variable 'codepage' is assigned a value that is never used.
+[src/decode_r13_r15.c:97] -> [src/decode_r13_r15.c:100]: (performance) Variable 'pvz' is reassigned a value before the old one has been used.
+[src/decode_r13_r15.c:142] -> [src/decode_r13_r15.c:145]: (performance) Variable 'pvz' is reassigned a value before the old one has been used.
+[src/decode_r13_r15.c:169]: (style) Variable 'ckr' is assigned a value that is never used.
+[src/decode_r13_r15.c:145]: (style) Variable 'pvz' is assigned a value that is never used.
+[src/decode_r13_r15.c:96]: (style) Variable 'pvzadr' is assigned a value that is never used.
+[src/decode_r2007.c:358]: (style) The scope of the variable 'hisize' can be reduced.
+[src/decode_r2007.c:252]: (style) Variable 'index' is assigned a value that is never used.
+[src/decode_r2007.c:341]: (style) Variable 'seqence_crc' is assigned a value that is never used.
+[src/decode_r2007.c:342]: (style) Variable 'seqence_key' is assigned a value that is never used.
+[src/decode_r2007.c:343]: (style) Variable 'compr_crc' is assigned a value that is never used.
+[src/dwg.c:183]: (warning) %i in format string (no. 1) requires a signed integer given in the argument list.
+[src/dwg.c:39]: (style) Unused variable: sign
+[src/header_variables.spec:214]: (warning) Redundant assignment of 'c1' to itself.
+[src/dwg.spec:354]: (style) The scope of the variable 'vcount' can be reduced.
+[src/dwg.spec:472]: (style) The scope of the variable 'vcount' can be reduced.
+[src/dwg.spec:673]: (style) The scope of the variable 'vcount' can be reduced.
+[src/dwg.spec:706]: (style) The scope of the variable 'vcount' can be reduced.
+[src/dwg.spec:1027]: (style) The scope of the variable 'vcount' can be reduced.
+[src/dwg.spec:1055]: (style) The scope of the variable 'vcount' can be reduced.
+[src/dwg.spec:2727]: (style) The scope of the variable 'rcount' can be reduced.
+[src/dwg.spec:2957]: (style) The scope of the variable 'vcount' can be reduced.
+[src/dwg.spec:2995]: (style) The scope of the variable 'vcount' can be reduced.
+[src/dwg.spec:3769]: (style) The scope of the variable 'vcount' can be reduced.
+[src/dwg.spec:50]: (style) Unused variable: vcount
+[src/dwg.spec:50]: (style) Unused variable: rcount
+[src/dwg.spec:50]: (style) Unused variable: rcount2
+[src/dwg.spec:50]: (style) Unused variable: rcount3
+[src/dwg.spec:50]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:50]: (style) Variable '_obj' is assigned a value that is never used.
+[src/dwg.spec:57]: (style) Unused variable: vcount
+[src/dwg.spec:57]: (style) Unused variable: rcount
+[src/dwg.spec:57]: (style) Unused variable: rcount2
+[src/dwg.spec:57]: (style) Unused variable: rcount3
+[src/dwg.spec:57]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:141]: (style) Unused variable: vcount
+[src/dwg.spec:141]: (style) Unused variable: rcount
+[src/dwg.spec:141]: (style) Unused variable: rcount2
+[src/dwg.spec:141]: (style) Unused variable: rcount3
+[src/dwg.spec:141]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:235]: (style) Unused variable: vcount
+[src/dwg.spec:235]: (style) Unused variable: rcount
+[src/dwg.spec:235]: (style) Unused variable: rcount2
+[src/dwg.spec:235]: (style) Unused variable: rcount3
+[src/dwg.spec:235]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:331]: (style) Unused variable: vcount
+[src/dwg.spec:331]: (style) Unused variable: rcount
+[src/dwg.spec:331]: (style) Unused variable: rcount2
+[src/dwg.spec:331]: (style) Unused variable: rcount3
+[src/dwg.spec:331]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:340]: (style) Unused variable: vcount
+[src/dwg.spec:340]: (style) Unused variable: rcount
+[src/dwg.spec:340]: (style) Unused variable: rcount2
+[src/dwg.spec:340]: (style) Unused variable: rcount3
+[src/dwg.spec:340]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:340]: (style) Variable '_obj' is assigned a value that is never used.
+[src/dwg.spec:347]: (style) Unused variable: vcount
+[src/dwg.spec:347]: (style) Unused variable: rcount
+[src/dwg.spec:347]: (style) Unused variable: rcount2
+[src/dwg.spec:347]: (style) Unused variable: rcount3
+[src/dwg.spec:347]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:347]: (style) Variable '_obj' is assigned a value that is never used.
+[src/dwg.spec:354]: (style) Unused variable: rcount
+[src/dwg.spec:354]: (style) Unused variable: rcount2
+[src/dwg.spec:354]: (style) Unused variable: rcount3
+[src/dwg.spec:354]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:472]: (style) Unused variable: rcount
+[src/dwg.spec:472]: (style) Unused variable: rcount2
+[src/dwg.spec:472]: (style) Unused variable: rcount3
+[src/dwg.spec:472]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:583]: (style) Unused variable: vcount
+[src/dwg.spec:583]: (style) Unused variable: rcount
+[src/dwg.spec:583]: (style) Unused variable: rcount2
+[src/dwg.spec:583]: (style) Unused variable: rcount3
+[src/dwg.spec:583]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:631]: (style) Unused variable: vcount
+[src/dwg.spec:631]: (style) Unused variable: rcount
+[src/dwg.spec:631]: (style) Unused variable: rcount2
+[src/dwg.spec:631]: (style) Unused variable: rcount3
+[src/dwg.spec:631]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:641]: (style) Unused variable: vcount
+[src/dwg.spec:641]: (style) Unused variable: rcount
+[src/dwg.spec:641]: (style) Unused variable: rcount2
+[src/dwg.spec:641]: (style) Unused variable: rcount3
+[src/dwg.spec:641]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:651]: (style) Unused variable: vcount
+[src/dwg.spec:651]: (style) Unused variable: rcount
+[src/dwg.spec:651]: (style) Unused variable: rcount2
+[src/dwg.spec:651]: (style) Unused variable: rcount3
+[src/dwg.spec:651]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:661]: (style) Unused variable: vcount
+[src/dwg.spec:661]: (style) Unused variable: rcount
+[src/dwg.spec:661]: (style) Unused variable: rcount2
+[src/dwg.spec:661]: (style) Unused variable: rcount3
+[src/dwg.spec:661]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:673]: (style) Unused variable: rcount
+[src/dwg.spec:673]: (style) Unused variable: rcount2
+[src/dwg.spec:673]: (style) Unused variable: rcount3
+[src/dwg.spec:673]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:706]: (style) Unused variable: rcount
+[src/dwg.spec:706]: (style) Unused variable: rcount2
+[src/dwg.spec:706]: (style) Unused variable: rcount3
+[src/dwg.spec:706]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:734]: (style) Unused variable: vcount
+[src/dwg.spec:734]: (style) Unused variable: rcount
+[src/dwg.spec:734]: (style) Unused variable: rcount2
+[src/dwg.spec:734]: (style) Unused variable: rcount3
+[src/dwg.spec:734]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:748]: (style) Unused variable: vcount
+[src/dwg.spec:748]: (style) Unused variable: rcount
+[src/dwg.spec:748]: (style) Unused variable: rcount2
+[src/dwg.spec:748]: (style) Unused variable: rcount3
+[src/dwg.spec:748]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:760]: (style) Unused variable: vcount
+[src/dwg.spec:760]: (style) Unused variable: rcount
+[src/dwg.spec:760]: (style) Unused variable: rcount2
+[src/dwg.spec:760]: (style) Unused variable: rcount3
+[src/dwg.spec:760]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:842]: (style) Unused variable: vcount
+[src/dwg.spec:842]: (style) Unused variable: rcount
+[src/dwg.spec:842]: (style) Unused variable: rcount2
+[src/dwg.spec:842]: (style) Unused variable: rcount3
+[src/dwg.spec:842]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:858]: (style) Unused variable: vcount
+[src/dwg.spec:858]: (style) Unused variable: rcount
+[src/dwg.spec:858]: (style) Unused variable: rcount2
+[src/dwg.spec:858]: (style) Unused variable: rcount3
+[src/dwg.spec:858]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:875]: (style) Unused variable: vcount
+[src/dwg.spec:875]: (style) Unused variable: rcount
+[src/dwg.spec:875]: (style) Unused variable: rcount2
+[src/dwg.spec:875]: (style) Unused variable: rcount3
+[src/dwg.spec:875]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:891]: (style) Unused variable: vcount
+[src/dwg.spec:891]: (style) Unused variable: rcount
+[src/dwg.spec:891]: (style) Unused variable: rcount2
+[src/dwg.spec:891]: (style) Unused variable: rcount3
+[src/dwg.spec:891]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:907]: (style) Unused variable: vcount
+[src/dwg.spec:907]: (style) Unused variable: rcount
+[src/dwg.spec:907]: (style) Unused variable: rcount2
+[src/dwg.spec:907]: (style) Unused variable: rcount3
+[src/dwg.spec:907]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:924]: (style) Unused variable: vcount
+[src/dwg.spec:924]: (style) Unused variable: rcount
+[src/dwg.spec:924]: (style) Unused variable: rcount2
+[src/dwg.spec:924]: (style) Unused variable: rcount3
+[src/dwg.spec:924]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:939]: (style) Unused variable: vcount
+[src/dwg.spec:939]: (style) Unused variable: rcount
+[src/dwg.spec:939]: (style) Unused variable: rcount2
+[src/dwg.spec:939]: (style) Unused variable: rcount3
+[src/dwg.spec:939]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:954]: (style) Unused variable: vcount
+[src/dwg.spec:954]: (style) Unused variable: rcount
+[src/dwg.spec:954]: (style) Unused variable: rcount2
+[src/dwg.spec:954]: (style) Unused variable: rcount3
+[src/dwg.spec:954]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:968]: (style) Unused variable: vcount
+[src/dwg.spec:968]: (style) Unused variable: rcount
+[src/dwg.spec:968]: (style) Unused variable: rcount2
+[src/dwg.spec:968]: (style) Unused variable: rcount3
+[src/dwg.spec:968]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1027]: (style) Unused variable: rcount
+[src/dwg.spec:1027]: (style) Unused variable: rcount2
+[src/dwg.spec:1027]: (style) Unused variable: rcount3
+[src/dwg.spec:1027]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1055]: (style) Unused variable: rcount
+[src/dwg.spec:1055]: (style) Unused variable: rcount2
+[src/dwg.spec:1055]: (style) Unused variable: rcount3
+[src/dwg.spec:1055]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1087]: (style) Unused variable: vcount
+[src/dwg.spec:1087]: (style) Unused variable: rcount
+[src/dwg.spec:1087]: (style) Unused variable: rcount2
+[src/dwg.spec:1087]: (style) Unused variable: rcount3
+[src/dwg.spec:1087]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1102]: (style) Unused variable: vcount
+[src/dwg.spec:1102]: (style) Unused variable: rcount
+[src/dwg.spec:1102]: (style) Unused variable: rcount2
+[src/dwg.spec:1102]: (style) Unused variable: rcount3
+[src/dwg.spec:1102]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1117]: (style) Unused variable: vcount
+[src/dwg.spec:1117]: (style) Unused variable: rcount
+[src/dwg.spec:1117]: (style) Unused variable: rcount2
+[src/dwg.spec:1117]: (style) Unused variable: rcount3
+[src/dwg.spec:1117]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1134]: (style) Unused variable: vcount
+[src/dwg.spec:1134]: (style) Unused variable: rcount
+[src/dwg.spec:1134]: (style) Unused variable: rcount2
+[src/dwg.spec:1134]: (style) Unused variable: rcount3
+[src/dwg.spec:1134]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1196]: (style) Unused variable: vcount
+[src/dwg.spec:1196]: (style) Unused variable: rcount
+[src/dwg.spec:1196]: (style) Unused variable: rcount2
+[src/dwg.spec:1196]: (style) Unused variable: rcount3
+[src/dwg.spec:1196]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1210]: (style) Unused variable: vcount
+[src/dwg.spec:1210]: (style) Unused variable: rcount2
+[src/dwg.spec:1210]: (style) Unused variable: rcount3
+[src/dwg.spec:1210]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1449]: (style) Unused variable: vcount
+[src/dwg.spec:1449]: (style) Unused variable: rcount
+[src/dwg.spec:1449]: (style) Unused variable: rcount2
+[src/dwg.spec:1449]: (style) Unused variable: rcount3
+[src/dwg.spec:1449]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1463]: (style) Unused variable: vcount
+[src/dwg.spec:1463]: (style) Unused variable: rcount
+[src/dwg.spec:1463]: (style) Unused variable: rcount2
+[src/dwg.spec:1463]: (style) Unused variable: rcount3
+[src/dwg.spec:1463]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1477]: (style) Unused variable: vcount
+[src/dwg.spec:1477]: (style) Unused variable: rcount
+[src/dwg.spec:1477]: (style) Unused variable: rcount2
+[src/dwg.spec:1477]: (style) Unused variable: rcount3
+[src/dwg.spec:1477]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1491]: (style) Unused variable: vcount
+[src/dwg.spec:1491]: (style) Unused variable: rcount
+[src/dwg.spec:1491]: (style) Unused variable: rcount2
+[src/dwg.spec:1491]: (style) Unused variable: rcount3
+[src/dwg.spec:1491]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1501]: (style) Unused variable: vcount
+[src/dwg.spec:1501]: (style) Unused variable: rcount
+[src/dwg.spec:1501]: (style) Unused variable: rcount2
+[src/dwg.spec:1501]: (style) Unused variable: rcount3
+[src/dwg.spec:1501]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1511]: (style) Unused variable: rcount
+[src/dwg.spec:1511]: (style) Unused variable: rcount2
+[src/dwg.spec:1511]: (style) Unused variable: rcount3
+[src/dwg.spec:1511]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1544]: (style) Unused variable: rcount
+[src/dwg.spec:1544]: (style) Unused variable: rcount2
+[src/dwg.spec:1544]: (style) Unused variable: rcount3
+[src/dwg.spec:1544]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1576]: (style) Unused variable: vcount
+[src/dwg.spec:1576]: (style) Unused variable: rcount
+[src/dwg.spec:1576]: (style) Unused variable: rcount2
+[src/dwg.spec:1576]: (style) Unused variable: rcount3
+[src/dwg.spec:1576]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1615]: (style) Unused variable: rcount
+[src/dwg.spec:1615]: (style) Unused variable: rcount2
+[src/dwg.spec:1615]: (style) Unused variable: rcount3
+[src/dwg.spec:1615]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1676]: (style) Unused variable: vcount
+[src/dwg.spec:1676]: (style) Unused variable: rcount
+[src/dwg.spec:1676]: (style) Unused variable: rcount2
+[src/dwg.spec:1676]: (style) Unused variable: rcount3
+[src/dwg.spec:1676]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1696]: (style) Unused variable: vcount
+[src/dwg.spec:1696]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1738]: (style) Unused variable: rcount
+[src/dwg.spec:1738]: (style) Unused variable: rcount2
+[src/dwg.spec:1738]: (style) Unused variable: rcount3
+[src/dwg.spec:1738]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1753]: (style) Unused variable: rcount
+[src/dwg.spec:1753]: (style) Unused variable: rcount2
+[src/dwg.spec:1753]: (style) Unused variable: rcount3
+[src/dwg.spec:1753]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1840]: (style) Unused variable: rcount
+[src/dwg.spec:1840]: (style) Unused variable: rcount2
+[src/dwg.spec:1840]: (style) Unused variable: rcount3
+[src/dwg.spec:1840]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1852]: (style) Unused variable: rcount
+[src/dwg.spec:1852]: (style) Unused variable: rcount2
+[src/dwg.spec:1852]: (style) Unused variable: rcount3
+[src/dwg.spec:1852]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1899]: (style) Unused variable: rcount
+[src/dwg.spec:1899]: (style) Unused variable: rcount2
+[src/dwg.spec:1899]: (style) Unused variable: rcount3
+[src/dwg.spec:1899]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1911]: (style) Unused variable: rcount
+[src/dwg.spec:1911]: (style) Unused variable: rcount2
+[src/dwg.spec:1911]: (style) Unused variable: rcount3
+[src/dwg.spec:1911]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1944]: (style) Unused variable: rcount
+[src/dwg.spec:1944]: (style) Unused variable: rcount2
+[src/dwg.spec:1944]: (style) Unused variable: rcount3
+[src/dwg.spec:1944]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:1958]: (style) Unused variable: rcount2
+[src/dwg.spec:1958]: (style) Unused variable: rcount3
+[src/dwg.spec:1958]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2015]: (style) Unused variable: rcount
+[src/dwg.spec:2015]: (style) Unused variable: rcount2
+[src/dwg.spec:2015]: (style) Unused variable: rcount3
+[src/dwg.spec:2015]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2027]: (style) Unused variable: rcount
+[src/dwg.spec:2027]: (style) Unused variable: rcount2
+[src/dwg.spec:2027]: (style) Unused variable: rcount3
+[src/dwg.spec:2027]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2108]: (style) Unused variable: rcount
+[src/dwg.spec:2108]: (style) Unused variable: rcount2
+[src/dwg.spec:2108]: (style) Unused variable: rcount3
+[src/dwg.spec:2108]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2120]: (style) Unused variable: rcount
+[src/dwg.spec:2120]: (style) Unused variable: rcount2
+[src/dwg.spec:2120]: (style) Unused variable: rcount3
+[src/dwg.spec:2120]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2157]: (style) Unused variable: rcount
+[src/dwg.spec:2157]: (style) Unused variable: rcount2
+[src/dwg.spec:2157]: (style) Unused variable: rcount3
+[src/dwg.spec:2157]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2169]: (style) Unused variable: rcount
+[src/dwg.spec:2169]: (style) Unused variable: rcount2
+[src/dwg.spec:2169]: (style) Unused variable: rcount3
+[src/dwg.spec:2169]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2261]: (style) Unused variable: rcount
+[src/dwg.spec:2261]: (style) Unused variable: rcount2
+[src/dwg.spec:2261]: (style) Unused variable: rcount3
+[src/dwg.spec:2261]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2273]: (style) Unused variable: rcount
+[src/dwg.spec:2273]: (style) Unused variable: rcount2
+[src/dwg.spec:2273]: (style) Unused variable: rcount3
+[src/dwg.spec:2273]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2295]: (style) Unused variable: rcount
+[src/dwg.spec:2295]: (style) Unused variable: rcount2
+[src/dwg.spec:2295]: (style) Unused variable: rcount3
+[src/dwg.spec:2295]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2320]: (style) Unused variable: rcount
+[src/dwg.spec:2320]: (style) Unused variable: rcount2
+[src/dwg.spec:2320]: (style) Unused variable: rcount3
+[src/dwg.spec:2320]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2510]: (style) Unused variable: rcount
+[src/dwg.spec:2510]: (style) Unused variable: rcount2
+[src/dwg.spec:2510]: (style) Unused variable: rcount3
+[src/dwg.spec:2510]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2522]: (style) Unused variable: vcount
+[src/dwg.spec:2522]: (style) Unused variable: rcount
+[src/dwg.spec:2522]: (style) Unused variable: rcount2
+[src/dwg.spec:2522]: (style) Unused variable: rcount3
+[src/dwg.spec:2522]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2543]: (style) Unused variable: rcount
+[src/dwg.spec:2543]: (style) Unused variable: rcount2
+[src/dwg.spec:2543]: (style) Unused variable: rcount3
+[src/dwg.spec:2543]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2559]: (style) Unused variable: rcount2
+[src/dwg.spec:2559]: (style) Unused variable: rcount3
+[src/dwg.spec:2559]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2586]: (style) Unused variable: rcount
+[src/dwg.spec:2586]: (style) Unused variable: rcount2
+[src/dwg.spec:2586]: (style) Unused variable: rcount3
+[src/dwg.spec:2586]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2599]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2713]: (style) Unused variable: rcount
+[src/dwg.spec:2713]: (style) Unused variable: rcount2
+[src/dwg.spec:2713]: (style) Unused variable: rcount3
+[src/dwg.spec:2713]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2727]: (style) Unused variable: vcount
+[src/dwg.spec:2727]: (style) Unused variable: rcount2
+[src/dwg.spec:2727]: (style) Unused variable: rcount3
+[src/dwg.spec:2727]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2765]: (style) Unused variable: rcount
+[src/dwg.spec:2765]: (style) Unused variable: rcount2
+[src/dwg.spec:2765]: (style) Unused variable: rcount3
+[src/dwg.spec:2765]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2782]: (style) Unused variable: rcount
+[src/dwg.spec:2782]: (style) Unused variable: rcount2
+[src/dwg.spec:2782]: (style) Unused variable: rcount3
+[src/dwg.spec:2782]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2794]: (style) Unused variable: rcount2
+[src/dwg.spec:2794]: (style) Unused variable: rcount3
+[src/dwg.spec:2794]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2814]: (style) Unused variable: rcount
+[src/dwg.spec:2814]: (style) Unused variable: rcount2
+[src/dwg.spec:2814]: (style) Unused variable: rcount3
+[src/dwg.spec:2814]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2899]: (style) Unused variable: rcount2
+[src/dwg.spec:2899]: (style) Unused variable: rcount3
+[src/dwg.spec:2899]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2957]: (style) Unused variable: rcount
+[src/dwg.spec:2957]: (style) Unused variable: rcount2
+[src/dwg.spec:2957]: (style) Unused variable: rcount3
+[src/dwg.spec:2957]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2979]: (style) Unused variable: vcount
+[src/dwg.spec:2979]: (style) Unused variable: rcount
+[src/dwg.spec:2979]: (style) Unused variable: rcount2
+[src/dwg.spec:2979]: (style) Unused variable: rcount3
+[src/dwg.spec:2979]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:2995]: (style) Unused variable: rcount
+[src/dwg.spec:2995]: (style) Unused variable: rcount2
+[src/dwg.spec:2995]: (style) Unused variable: rcount3
+[src/dwg.spec:2995]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:3010]: (style) Unused variable: rcount
+[src/dwg.spec:3010]: (style) Unused variable: rcount2
+[src/dwg.spec:3010]: (style) Unused variable: rcount3
+[src/dwg.spec:3010]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:3029]: (style) Unused variable: rcount
+[src/dwg.spec:3029]: (style) Unused variable: rcount2
+[src/dwg.spec:3029]: (style) Unused variable: rcount3
+[src/dwg.spec:3029]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:3061]: (style) Unused variable: vcount
+[src/dwg.spec:3061]: (style) Unused variable: rcount
+[src/dwg.spec:3061]: (style) Unused variable: rcount2
+[src/dwg.spec:3061]: (style) Unused variable: rcount3
+[src/dwg.spec:3061]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:3076]: (style) Unused variable: rcount2
+[src/dwg.spec:3076]: (style) Unused variable: rcount3
+[src/dwg.spec:3076]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:3769]: (style) Unused variable: rcount
+[src/dwg.spec:3769]: (style) Unused variable: rcount2
+[src/dwg.spec:3769]: (style) Unused variable: rcount3
+[src/dwg.spec:3769]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/dwg.spec:3792]: (style) Unused variable: rcount
+[src/dwg.spec:3792]: (style) Unused variable: rcount2
+[src/dwg.spec:3792]: (style) Unused variable: rcount3
+[src/dwg.spec:3792]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/encode.c:1067]: (style) Variable '_obj' is assigned a value that is never used.
+[src/encode.c:1063]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/encode.c:1064]: (style) Unused variable: i
+[src/encode.c:1065]: (style) Unused variable: vcount
+[src/encode.c:1131]: (style) Variable 'obj' is assigned a value that is never used.
+[src/header_variables.spec:214]: (style) Variable 'c1' is assigned a value that is never used.
+[src/header_variables.spec:212]: (style) Variable 'c2' is assigned a value that is never used.
+[src/header_variables.spec:213]: (style) Variable 'c3' is assigned a value that is never used.
+[src/dwg.spec:1303]: (style) The scope of the variable 'vcount' can be reduced.
+[src/dwg.spec:1303]: (style) The scope of the variable 'rcount' can be reduced.
+[src/dwg.spec:1303]: (style) The scope of the variable 'rcount2' can be reduced.
+[src/dwg.spec:1303]: (style) The scope of the variable 'index' can be reduced.
+[src/dwg.spec:1304]: (style) The scope of the variable 'i' can be reduced.
+[src/dwg.spec:1304]: (style) The scope of the variable 'j' can be reduced.
+[src/dwg.spec:1304]: (style) The scope of the variable 'total_size' can be reduced.
+[src/dwg.spec:1304]: (style) The scope of the variable 'num_blocks' can be reduced.
+[src/dwg.spec:1302]: (style) Variable 'dwg' is assigned a value that is never used.
+[src/handle.c:34]: (style) Unused variable: antckr
+[src/handle.c:35]: (style) Unused variable: size
+[src/handle.c:70]: (style) Variable 'last_handle' is assigned a value that is never used.
+[src/handle.c:89]: (style) Variable 'kobj' is assigned a value that is never used.
+[src/handle.c:211]: (style) Variable 'last_handle' is assigned a value that is never used.
+[src/handle.c:297]: (style) Variable 'last_handle' is assigned a value that is never used.
+[src/header.c:45]: (style) Variable 'c1' is assigned a value that is never used.
+[src/header.c:46]: (style) Variable 'c2' is assigned a value that is never used.
+[src/header.c:47]: (style) Variable 'c3' is assigned a value that is never used.
+[src/dwg.spec:1449]: (style) Variable '_obj' is assigned a value that is never used.
+[src/dwg.spec:1463]: (style) Variable '_obj' is assigned a value that is never used.
+[src/dwg.spec:1477]: (style) Variable '_obj' is assigned a value that is never used.
+[src/dwg.c:301]: (style) The function 'dwg_get_object_count' is never used.
+[src/dwg.c:307]: (style) The function 'dwg_get_object_object_count' is never used.
+(information) Cppcheck cannot find all the include files (use --check-config for details)

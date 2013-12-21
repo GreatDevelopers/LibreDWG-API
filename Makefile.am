@@ -19,5 +19,10 @@
 
 ACLOCAL_AMFLAGS = -I m4
 
+<<<<<<< HEAD
 SUBDIRS = src doc examples bindings unit-testing
+=======
+SUBDIRS = src doc examples bindings
+
+>>>>>>> origin/refactoring
 EXTRA_DIST = README README-alpha

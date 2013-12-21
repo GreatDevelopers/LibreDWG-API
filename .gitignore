@@ -3,7 +3,13 @@
 *.lo
 *.la
 
+<<<<<<< HEAD
 *~
+=======
+*.c~
+*.h~
+*.*~
+>>>>>>> origin/refactoring
 
 # filenames, anywhere
 Makefile.in

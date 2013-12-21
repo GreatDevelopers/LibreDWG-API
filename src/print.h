@@ -7,12 +7,13 @@
 /*  General Public License as published by the Free Software Foundation,     */
 /*  either version 3 of the License, or (at your option) any later version.  */
 /*  You should have received a copy of the GNU General Public License        */
-/*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
-/*****************************************************************************/
+/**
+ *     \file       print.h
+ *     \brief      Print helper function prototypes
+ *     \author     written by Rodrigo Rodrigues da Silva
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
 
-/*
- * print.h: print helper function prototypes
- * written by Rodrigo Rodrigues da Silva
  */
 
 #ifndef PRINT_H
@@ -24,3 +25,5 @@ void
 dwg_print_object(Dwg_Object *obj);
 
 #endif
+
+

@@ -2,6 +2,11 @@
 ##
 ## Copyright (C) 2010 Free Software Foundation, Inc.
 ##
+## Makefile.am
+##
+## Copyright (C) 2010 Free Software Foundation, Inc.
+##
+
 ## This file is part of LibreDWG.
 ##
 ## LibreDWG is free software: you can redistribute it and/or modify it
@@ -15,36 +20,51 @@
 ## See the GNU General Public License for more details.
 ##
 ## You should have received a copy of the GNU General Public License
-## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+libredwg_la_SOURCES =         \
+	bits.c                \
+	classes.c             \
+	common.c              \
+        compress_decompress.c \
+	decode.c              \
+        decode_r13_r15.c      \
+        decode_r2004.c        \
+        decode_r2007.c        \
+        dwg.c                 \
+	encode.c              \
+        handle.c              \
+        header.c              \
+        object.c              \
+        print.c               \
+        resolve_pointers.c    \
+        section_locate.c
 
-lib_LTLIBRARIES = libredwg.la
-
-libredwg_la_SOURCES = \
-	dwg.c \
-	common.c \
-	bits.c \
-	decode.c \
-        decode_r2007.c \
-	encode.c \
-        print.c \
-	dwg_api.c
 libredwg_la_LDFLAGS = \
 	-version-info 0:0:0
 
-include_HEADERS = dwg.h \
-		dwg_api.h
+include_HEADERS = dwg.h
 
 EXTRA_DIST = \
-	dwg.spec \
-        header_variables.spec \
+	dwg.spec                       \
+        header_variables.spec          \
         common_entity_handle_data.spec \
-	$(include_HEADERS) \
-	common.h \
-	bits.h \
-	decode.h \
-	encode.h \
-	logging.h \
-        print.h
+	$(include_HEADERS)             \
+	common.h                       \
+	bits.h                         \
+        classes.h                      \
+        compress_decompress.h          \
+	decode.h                       \
+        decode_r13_r15.h               \
+        decode_r2004.h                 \
+        decode_r2007.h                 \
+	encode.h                       \
+        handle.h                       \
+        header.h                       \
+	logging.h                      \
+        object.h                       \
+        print.h                        \
+        resolve_pointers.h             \
+        section_locate.h
+
 
 #check_PROGRAMS = test testsvg
 

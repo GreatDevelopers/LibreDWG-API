@@ -7,14 +7,15 @@
 /*  General Public License as published by the Free Software Foundation,     */
 /*  either version 3 of the License, or (at your option) any later version.  */
 /*  You should have received a copy of the GNU General Public License        */
-/*  along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
-/*****************************************************************************/
+/**
+ *     \file       encode.h
+ *     \brief      Encoding function prototypes
+ *     \author     written by Felipe Castro
+ *     \author     modified by Felipe Corrêa da Silva Sances
+ *     \author     modified by Rodrigo Rodrigues da Silva
+ *     \version    
+ *     \copyright  GNU General Public License (version 3 or later)
 
-/*
- * encode.h: encoding function prototypes
- * written by Felipe Castro
- * modified by Felipe Corrêa da Silva Sances
- * modified by Rodrigo Rodrigues da Silva
  */
 
 #ifndef ENCODE_H
@@ -24,6 +25,28 @@
 #include "dwg.h"
 
 int
-dwg_encode_chains(Dwg_Data * dwg_struct, Bit_Chain * bitaro);
+dwg_encode_chains(Dwg_Data *dwg_struct, Bit_Chain *bitaro);
+
+void
+dwg_encode_entity(Dwg_Object *obj, Bit_Chain *dat);
+
+void
+dwg_encode_object(Dwg_Object *obj, Bit_Chain *dat);
+
+void
+dwg_encode_header_variables(Bit_Chain *dat, Dwg_Data *dwg);
+
+void
+dwg_encode_handleref(Bit_Chain *dat, Dwg_Object *obj, Dwg_Data *dwg,
+                     Dwg_Object_Ref *ref);
+
+void 
+dwg_encode_handleref_with_code(Bit_Chain *dat, Dwg_Object *obj, Dwg_Data *dwg,
+                               Dwg_Object_Ref *ref, int code);
+
+void
+dwg_encode_add_object(Dwg_Object *obj, Bit_Chain *dat,
+                      long unsigned int address);
+
 
 #endif
